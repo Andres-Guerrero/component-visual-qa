@@ -302,5 +302,97 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-TB-OBS-01</td><td>Effects</td><td><span class="tag pass">MATCH</span></td><td>Correctly uses a 2px border, no elevation — per the outline spec.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'time-slot-button',
+    name: 'Time Slot Button',
+    group: 'Actions',
+    status: '1 open a11y',
+    statusType: 'fail',
+    swatches: [
+      {n:'TurboTrack · Default',  bg:'#ffffff', fg:'#757575', bd:'#0eb252', icon:'none',  label:'8AM – 12PM'},
+      {n:'TurboTrack · Selected', bg:'#0eb252', fg:'#ffffff', bd:'#0eb252', icon:'check', label:'8AM – 12PM'},
+      {n:'TurboTrack · Disabled', bg:'#f8f8f8', fg:'#c4c4c4', bd:'#e3e3e3', icon:'none',  label:'8AM – 12PM'},
+      {n:'Pickup · Default',      bg:'#ffffff', fg:'#757575', bd:'#343434', icon:'none',  label:'8AM – 12PM'},
+      {n:'Pickup · Selected',     bg:'#343434', fg:'#ffffff', bd:'#343434', icon:'check', label:'8AM – 12PM'},
+      {n:'Pickup · Disabled',     bg:'#f8f8f8', fg:'#c4c4c4', bd:'#e3e3e3', icon:'none',  label:'8AM – 12PM'}
+    ],
+    html: `
+      <h1 class="rt">Time Slot Button</h1>
+      <p class="rmeta">Figma component 5510:2911 · Frame doc 15921:307059 · Storybook /docs/actions-time-slot-button · Captured 2026-07-27</p>
+      <p>A selectable delivery/time-slot option. Two delivery types — <strong>TurboTrack</strong> (green; free delivery, shows a FREE badge) and <strong>Pickup</strong> (neutral/dark) — behaving like a selectable card across four states (Default, Hover, Selected = filled + check icon, Disabled = muted + strikethrough). Two sizes; the FREE badge (TurboTrack only) is toggled by the <code>Free</code> prop (default on).</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Both deliveries, all states, badge, sizes &amp; border match</p></div>
+        <div class="v pass"><p class="k">STATES · VARIANTS · PROPS</p><div class="val">Pass</div><p class="sub">Delivery × Size × State + Free badge toggle present</p></div>
+        <div class="v fail"><p class="k">ACCESSIBILITY</p><div class="val">1 open</div><p class="sub">TurboTrack Selected label 2.80:1 — flagged for team review</p></div>
+      </div>
+      <p>The build faithfully reproduces every token for both delivery types and all states. There is <strong>one open accessibility item</strong> — already flagged by the team in the frame doc — where the TurboTrack Selected label falls below the contrast minimum.</p>
+
+      <h2>1. Token fidelity</h2>
+      <h3>Color per delivery &amp; state</h3>
+      <table>
+        <tr><th>Delivery / State</th><th>Property</th><th>Figma variable</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>TurboTrack · Default/Hover</td><td>bg / text / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#757575"></span><span class="mono">#757575</span> / <span class="chip" style="background:#0eb252"></span><span class="mono">#0eb252</span></td><td class="mono">#ffffff / #757575 / #0eb252</td><td class="m y">✓</td></tr>
+        <tr><td>TurboTrack · Selected</td><td>bg / text / border</td><td><span class="chip" style="background:#0eb252"></span><span class="mono">#0eb252</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="mono">#0eb252</span></td><td class="mono">#0eb252 / #ffffff / #0eb252</td><td class="m y">✓</td></tr>
+        <tr><td>TurboTrack · Disabled</td><td>bg / text / border</td><td><span class="chip" style="background:#f8f8f8"></span><span class="mono">#f8f8f8</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span> / <span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span></td><td class="mono">#f8f8f8 / #c4c4c4 / #e3e3e3</td><td class="m y">✓</td></tr>
+        <tr><td>TurboTrack · FREE badge</td><td>bg / text / border</td><td><span class="chip" style="background:#0eb252"></span><span class="mono">#0eb252</span> / <span class="mono">#ffffff</span> / <span class="mono">#ffffff</span></td><td class="mono">#0eb252 / #ffffff / #ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Pickup · Default/Hover</td><td>bg / text / border</td><td><span class="mono">#ffffff</span> / <span class="mono">#757575</span> / <span class="chip" style="background:#343434"></span><span class="mono">#343434</span></td><td class="mono">#ffffff / #757575 / #343434</td><td class="m y">✓</td></tr>
+        <tr><td>Pickup · Selected</td><td>bg / text / border</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> / <span class="mono">#ffffff</span> / <span class="mono">#343434</span></td><td class="mono">#343434 / #ffffff / #343434</td><td class="m y">✓</td></tr>
+        <tr><td>Pickup · Disabled</td><td>bg / text / border</td><td class="mono">#f8f8f8 / #c4c4c4 / #e3e3e3</td><td class="mono">#f8f8f8 / #c4c4c4 / #e3e3e3</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h3>Sizing, border &amp; radius</h3>
+      <table>
+        <tr><th>Property</th><th>Large (md)</th><th>Small (sm)</th><th>Match</th></tr>
+        <tr><td>Slot size (W × H)</td><td>200 × 50px</td><td>140 × 36px</td><td class="m y">✓</td></tr>
+        <tr><td>Border width</td><td>2px</td><td>2px</td><td class="m y">✓</td></tr>
+        <tr><td>Corner radius</td><td>0px</td><td>0px</td><td class="m y">✓</td></tr>
+        <tr><td>Label type</td><td>Maison Neue Bold 13px, UPPER</td><td>Maison Neue Bold 11px, UPPER</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side — states (Large)</h2>
+      <p>Rendered from the actual token values on each side; identical per state. (Facsimile — FREE badge and elevation not drawn.)</p>
+      <div id="vqa-swatches" class="swatchgrid">
+        <div class="hd">Delivery · State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+      </div>
+
+      <h2>3. States, variants &amp; props</h2>
+      <p>Delivery (TurboTrack, Pickup) × Size (Large, Small) × State (Default, Hover, Selected, Disabled) all render and match Figma, verified in the "Delivery × Size × State Matrix" story. The <code>Free</code> boolean (TurboTrack only, default on) is covered by the "FREE badge — on vs off" story; a "Controlled Group" story exercises single-select behavior. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <h3>Focus, keyboard &amp; non-color cues</h3>
+      <p>Tab to focus, Enter or Space to select; focus tokens (<span class="mono">#005fcc</span> / 2px) match. Selection is conveyed by <strong>fill + a check icon</strong>, not color alone; disabled is not focusable and conveyed by <strong>strikethrough + muted</strong> treatment beyond color. <span class="m y">✓ Good practice</span></p>
+
+      <h3>Contrast (time label vs. slot fill)</h3>
+      <table>
+        <tr><th>Delivery / State</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>TurboTrack · Default / Hover</td><td>4.61:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>TurboTrack · Selected</td><td>2.80:1</td><td class="m n">Fail — flagged for review</td></tr>
+        <tr><td>Pickup · Default / Hover</td><td>4.61:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Pickup · Selected</td><td>12.45:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Both · Disabled</td><td>1.64:1</td><td>Exempt (disabled control)</td></tr>
+      </table>
+      <div class="callout warn">
+        <p><span class="tag fail">QA-TS-A11Y-01 · OPEN — FLAGGED FOR REVIEW</span></p>
+        <strong>TurboTrack Selected label contrast is 2.80:1</strong> (white on green <span class="mono">#0EB252</span>) — below even the 3:1 minimum, and Storybook's axe panel flags it (1 violation). The frame doc has this as an <em>open</em> item pending a team decision on a darker selected green or dark-on-green text. Faithfully implemented from the token; the fix is a token/design decision. Mitigation: selection is also signalled by the check icon and fill, so the <em>state</em> is still perceivable — the concern is the label legibility.
+      </div>
+
+      <h2>5. Observations (non-blocking)</h2>
+      <div class="callout">
+        <p style="margin:0"><span class="tag obs">QA-TS-OBS-01</span> Pickup Selected (white on <span class="mono">#343434</span>) is 12.45:1 — the same "selected" pattern reads very differently between the two deliveries. If the team darkens the TurboTrack selected fill to fix QA-TS-A11Y-01, keep both deliveries visually balanced.</p>
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-TS-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Both deliveries, all states, FREE badge, sizes, and 2px border match Figma.</td></tr>
+        <tr><td class="id">QA-TS-STATE</td><td>States · variants · props</td><td><span class="tag pass">PASS</span></td><td>Delivery × Size × State + Free toggle + controlled group all present.</td></tr>
+        <tr><td class="id">QA-TS-FOCUS</td><td>Focus &amp; non-color cues</td><td><span class="tag pass">PASS</span></td><td>Focus tokens match; selection = fill + check; disabled = strikethrough + muted (beyond color).</td></tr>
+        <tr><td class="id">QA-TS-A11Y-01</td><td>Contrast</td><td><span class="tag fail">OPEN</span></td><td>TurboTrack Selected 2.80:1 (&lt; 3:1) — team-flagged; pending darker green / dark-on-green decision.</td></tr>
+        <tr><td class="id">QA-TS-OBS-01</td><td>Consistency</td><td><span class="tag obs">INFO</span></td><td>Pickup Selected 12.45:1 vs TurboTrack 2.80:1 — keep deliveries balanced when fixing.</td></tr>
+      </table>
+    `
   }
 ];
