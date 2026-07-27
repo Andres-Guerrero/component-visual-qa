@@ -1692,5 +1692,106 @@ Storybook coverage only - no production change required. Approach is the team's 
         <tr><td class="id">QA-TF-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Add pinned Hover / Focus (with glow) / Auto-filled demos so every state is visually QA-able, matching the individual state stories.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'search-field',
+    name: 'Search Field',
+    group: 'Forms',
+    status: 'a11y note',
+    statusType: 'note',
+    handoffs: [{
+      code: 'QA-SF-REC',
+      title: 'Add pinned Hover / Focus stories (Storybook coverage)',
+      text: `Component: Search Field
+Storybook: http://34.74.189.135:30100/?path=/docs/forms-searchfield
+Figma (source of truth): UI-Kit__Web node 15974:305732
+
+Follow-up QA-SF-REC - state coverage
+Context: the states-matrix names Hover and Focus but renders them at rest (Default look), so they can't be visually QA'd. Their token values are verified to match Figma.
+Task: add pinned Storybook stories/args for the Hover and Focus states.
+
+Acceptance criteria:
+- A story renders the Hover field with border #07729c.
+- A story renders the Focus field with border #66afe9 plus the focus glow.
+- Values match Figma node 15974:305732.
+
+Storybook coverage only - no production change required. Approach is the team's call.`
+    }],
+    html: `
+      <h1 class="rt">Search Field</h1>
+      <p class="rmeta">Figma component 15974:305732 · Frame doc 15992:312052 · Storybook /story/forms-searchfield · Captured 2026-07-27</p>
+      <p>A single-line input for search queries on the shared form-field tokens. No visible label (search icon + placeholder convey purpose), two sizes, and states Default, Hover, Focus, Filled, Disabled. The trailing button shows a Search icon (white on blue) or a Clear (X) icon.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Field states, trailing button &amp; sizes match Figma</p></div>
+        <div class="v pass"><p class="k">STATES · PROPS</p><div class="val">Pass</div><p class="sub">Default/Filled/Disabled/Small pinned; Hover/Focus interactive</p></div>
+        <div class="v fail"><p class="k">ACCESSIBILITY</p><div class="val">a11y note</div><p class="sub">Accessible name present; default/focus border below 3:1 (shared)</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>Element</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Default</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / border <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#ffffff / #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Hover</td><td>border <span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Focus</td><td>border <span class="chip" style="background:#66afe9"></span><span class="mono">#66afe9</span> + glow</td><td class="mono">#66afe9 + glow</td><td class="m y">✓</td></tr>
+        <tr><td>Filled</td><td>text <span class="chip" style="background:#343434"></span><span class="mono">#343434</span> / border #c4c4c4</td><td class="mono">#343434 / #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td><span class="chip" style="background:#f8f8f8"></span><span class="mono">#f8f8f8</span> / border <span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span> / text #c4c4c4</td><td class="mono">#f8f8f8 / #e3e3e3 / #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Placeholder</td><td><span class="chip" style="background:#757575"></span><span class="mono">#757575</span></td><td class="mono">#757575</td><td class="m y">✓</td></tr>
+        <tr><td>Trailing Search button</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> bg, white icon</td><td class="mono">#07729c / #ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Trailing Clear icon</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> on white</td><td class="mono">#343434</td><td class="m y">✓</td></tr>
+      </table>
+      <h3>Sizing</h3>
+      <table>
+        <tr><th>Property</th><th>Figma</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Height (Large / Small)</td><td class="mono">50 / 40px</td><td class="mono">50 / 40px</td><td class="m y">✓</td></tr>
+        <tr><td>Border width / radius</td><td class="mono">1px / 0px</td><td class="mono">1px / 0px</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side - states</h2>
+      <p>Facsimiles from the matching token values (Large). Hover / Focus are interactive.</p>
+      <div class="swatchgrid" style="grid-template-columns:150px 1fr 1fr">
+        <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+        <div class="stc">Default</div>
+          <div class="cell" id="sf-default-fig"></div><div class="cell" id="sf-default-sb"></div>
+        <div class="stc">Filled</div>
+          <div class="cell" id="sf-filled-fig"></div><div class="cell" id="sf-filled-sb"></div>
+        <div class="stc">Focus <span style="font-weight:400;color:#757575">(interactive)</span></div>
+          <div class="cell" id="sf-focus-fig"></div><div class="cell" id="sf-focus-sb"></div>
+        <div class="stc">Disabled</div>
+          <div class="cell" id="sf-disabled-fig"></div><div class="cell" id="sf-disabled-sb"></div>
+      </div>
+
+      <h2>3. States, variants &amp; props</h2>
+      <p>Size Large / Small; states Default, Hover, Focus, Filled, Disabled; trailing Search Buttons component swaps between Search (white on blue) and Clear (X). Stories pin Default, Filled, Disabled, Small, and Controlled; Hover and Focus are interactive. <span class="m y">✓ Pass</span></p>
+      <div class="callout info"><strong>On the states matrix.</strong> Like the other form fields, the <code>states-matrix</code> names Hover and Focus but renders them at rest. Both are token-verified (<span class="mono">#07729c</span> / <span class="mono">#66afe9</span> match Figma), just not visually pinned.</p></div>
+
+      <h2>4. Accessibility</h2>
+      <p>No visible label, so the input carries an accessible name: the build sets <code>&lt;input type="search" aria-label="Search"&gt;</code> and the trailing button is labeled "Search". Tab to focus, type to search; the Clear button is focusable and labeled. Focus shows the blue border + glow.</p>
+      <table>
+        <tr><th>Element</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Placeholder text</td><td>4.61:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Filled text</td><td>12.45:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Search icon (white on blue)</td><td>5.39:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Clear icon (gray on white)</td><td>12.45:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Default border</td><td>1.74:1</td><td class="m n">Below 3:1 - flagged</td></tr>
+        <tr><td>Focus border</td><td>2.37:1</td><td class="m n">Below 3:1 (glow reinforces)</td></tr>
+      </table>
+      <div class="callout warn">
+        <p><span class="tag fail">QA-SF-A11Y-01 · KNOWN / SYSTEM-WIDE</span></p>
+        <strong>Default and focus borders fall below the 3:1 non-text minimum.</strong> Default <span class="mono">#c4c4c4</span> is 1.74:1 and focus <span class="mono">#66afe9</span> is 2.37:1 (glow reinforces). The same shared form-control token flagged on Checkbox, Radio, Select, Combobox, and Text Field. System-level decision pending team review; fix across all form fields together.
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-SF-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Field states, placeholder, trailing Search/Clear, sizes, 0px radius match Figma.</td></tr>
+        <tr><td class="id">QA-SF-STATE</td><td>States · props</td><td><span class="tag pass">PASS</span></td><td>Default/Filled/Disabled/Small/Controlled pinned; Hover/Focus interactive.</td></tr>
+        <tr><td class="id">QA-SF-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Accessible name (aria-label "Search") present; Clear button labeled; text contrast AA+.</td></tr>
+        <tr><td class="id">QA-SF-A11Y-01</td><td>Contrast (borders)</td><td><span class="tag fail">KNOWN</span></td><td>Default 1.74:1 &amp; focus 2.37:1 below 3:1, shared system-wide (see QA-CB/RD/SL/CX/TF-A11Y-01).</td></tr>
+        <tr><td class="id">QA-SF-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Add pinned Hover / Focus (with glow) demos so every state is visually QA-able.</td></tr>
+      </table>
+    `,
+    searchset: true
   }
 ];

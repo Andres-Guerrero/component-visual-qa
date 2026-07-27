@@ -149,6 +149,23 @@ const VQA = (function(){
       const set='<span style="display:inline-flex;align-items:flex-end;font-size:14px">'+tab('Overview','3',true,false)+tab('Specs','12',false,false)+tab('Reviews','42',false,false)+tab('Archived','0',false,true)+'</span>';
       [c.querySelector('#tabfig'),c.querySelector('#tabsb')].forEach(h=>{if(h)h.innerHTML=set;});
     }
+    if(r.searchset){
+      const svgSearch='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.6" y2="16.6"/></svg>';
+      const svgClear='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#343434" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+      const mk=(o)=>{
+        const trailing=o.clear
+          ?'<span style="width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center">'+svgClear+'</span>'
+          :'<span style="width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;background:'+(o.disabled?'#dcdcdc':'#07729c')+'">'+svgSearch+'</span>';
+        return '<span style="display:inline-flex;align-items:center;width:250px;height:44px;border:1px solid '+o.border+';background:'+o.bg+';'+(o.glow?'box-shadow:0 0 0 3px rgba(102,175,233,0.30);':'')+'"><span style="flex:1;padding:0 16px;color:'+o.color+';font-size:14px">'+o.txt+'</span>'+trailing+'</span>';
+      };
+      const states={
+        'default':{border:'#c4c4c4',bg:'#ffffff',color:'#757575',txt:'Search',clear:false},
+        'filled':{border:'#c4c4c4',bg:'#ffffff',color:'#343434',txt:'circulator pump',clear:true},
+        'focus':{border:'#66afe9',bg:'#ffffff',color:'#343434',txt:'circulator pump',clear:true,glow:true},
+        'disabled':{border:'#e3e3e3',bg:'#f8f8f8',color:'#c4c4c4',txt:'Search',clear:false,disabled:true}
+      };
+      Object.keys(states).forEach(k=>{const html=mk(states[k]);['fig','sb'].forEach(sfx=>{const el=c.querySelector('#sf-'+k+'-'+sfx);if(el)el.innerHTML=html;});});
+    }
     if(r.handoffs && r.handoffs.length){
       const sec=document.createElement('div');sec.className='handoff';
       const h=document.createElement('h2');h.textContent='Hand off to Claude Code';sec.appendChild(h);
