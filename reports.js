@@ -1233,5 +1233,79 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-MD-01</td><td>Outer border contrast</td><td><span class="tag obs">BY DESIGN</span></td><td>1.74:1 acceptable — the overlay scrim is the primary separation, per the dialog pattern.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'pagination',
+    name: 'Pagination',
+    group: 'Navigation',
+    status: 'Align fix',
+    statusType: 'wip',
+    html: `
+      <h1 class="rt">Pagination</h1>
+      <p class="rmeta">Figma component 10633:3912 · Frame doc 16112:301624 · Storybook /story/navigation-pagination · Captured 2026-07-27</p>
+      <p>Lets users move through content split across pages — shows the current page, nearby pages, and first/last, truncating the middle with an ellipsis. Previous/next arrows step one page and disable at the first/last page. Layouts: Start, Middle, End.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Number, current, ellipsis, arrow colors + type match</p></div>
+        <div class="v pass"><p class="k">STATES · LAYOUTS</p><div class="val">Pass</div><p class="sub">Start/Middle/End; arrow disable at ends; current underline</p></div>
+        <div class="v fail"><p class="k">ALIGNMENT</p><div class="val">1 fix</div><p class="sub">Ellipsis sits on the baseline — lower than numbers/arrows</p></div>
+      </div>
+      <p>Tokens and accessibility are clean. The one issue — the one you spotted — is the <strong>ellipsis vertical alignment</strong>: it renders on the text baseline and sits visibly lower than the numbers and arrows.</p>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>Element</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Number (default / hover)</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> (link)</td><td class="mono">#07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Current page</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> + 2px underline bar</td><td class="mono">#343434 · underline bar · aria-current</td><td class="m y">✓</td></tr>
+        <tr><td>Ellipsis</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span></td><td class="mono">#343434</td><td class="m y">✓</td></tr>
+        <tr><td>Arrow (enabled)</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Arrow (disabled)</td><td><span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span> (icon/disabled)</td><td class="mono">#c4c4c4 · aria-disabled</td><td class="m y">✓</td></tr>
+        <tr><td>Type</td><td class="mono">Maison Neue Bold 14px</td><td class="mono">700 · 14px</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Alignment — Figma vs build (mid-range)</h2>
+      <p>Same content, showing the difference in ellipsis vertical position.</p>
+      <div class="swatchgrid" style="grid-template-columns:230px 1fr">
+        <div class="hd">Source</div><div class="hd">Rendering</div>
+        <div class="stc">Figma — ellipsis centered</div>
+        <div class="cell"><span style="display:flex;align-items:center;gap:14px;font-weight:700;font-size:14px">
+          <span style="color:#07729c">‹</span><span style="color:#07729c">1</span><span style="color:#343434">…</span><span style="color:#07729c">4</span><span style="color:#343434;border-bottom:2px solid #343434;padding-bottom:1px">5</span><span style="color:#07729c">6</span><span style="color:#343434">…</span><span style="color:#07729c">30</span><span style="color:#07729c">›</span>
+        </span></div>
+        <div class="stc">Storybook — ellipsis on baseline</div>
+        <div class="cell"><span style="display:flex;align-items:center;gap:14px;font-weight:700;font-size:14px">
+          <span style="color:#07729c">‹</span><span style="color:#07729c">1</span><span style="color:#343434;position:relative;top:5px">…</span><span style="color:#07729c">4</span><span style="color:#343434;border-bottom:2px solid #343434;padding-bottom:1px">5</span><span style="color:#07729c">6</span><span style="color:#343434;position:relative;top:5px">…</span><span style="color:#07729c">30</span><span style="color:#07729c">›</span>
+        </span></div>
+      </div>
+
+      <h2>3. States, layouts &amp; props</h2>
+      <p>Layout Start / Middle / End (where the current page sits in a truncated range); Left/Right Arrow booleans; page states Default, Hover, Current, Ellipsis; arrow states Default, Hover, Disabled. Verified across Start-of-list (Prev disabled), Mid-range, End-of-list, and Few-pages (no arrows). <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>Wrapped in a <code>nav</code> landmark labelled "Pagination"; page numbers are links in a list; current is <code>aria-current="page"</code> rendered as text (not a link); arrows have names "Previous page" / "Next page" and disable at the ends. Keyboard tab order + Enter; focus ring <span class="mono">#005fcc</span> / 2px. Current and Hover add an underline bar — a non-color cue (WCAG 1.4.1). Story: <strong>0 violations, 16 passes</strong>.</p>
+      <table>
+        <tr><th>Element</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Number (default / hover)</td><td>5.39:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Current page</td><td>12.45:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Ellipsis</td><td>12.45:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Arrow (enabled)</td><td>5.39:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Focus ring</td><td>5.98:1</td><td class="m y">Pass</td></tr>
+      </table>
+
+      <h2>5. Findings</h2>
+      <div class="callout warn">
+        <p><span class="tag fail">QA-PG-01 · ALIGNMENT — FIX</span></p>
+        <strong>The ellipsis is not vertically centered.</strong> It renders on the text baseline, so the three dots sit visibly lower than the numbers and arrows (which are centered on the row). In Figma the ellipsis is centered within the row. Not an a11y issue — a visual polish fix. Recommend centering it (e.g., a midline treatment / flex-center the dots, or shift up to the optical center), then re-verify against Figma.
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-PG-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Number #07729c, current #343434+bar, ellipsis #343434, arrows enabled #07729c / disabled #c4c4c4, 14px bold — all match.</td></tr>
+        <tr><td class="id">QA-PG-STATE</td><td>States &amp; layouts</td><td><span class="tag pass">PASS</span></td><td>Start/Middle/End, arrow disable at ends, current underline, few-pages (no arrows) all correct.</td></tr>
+        <tr><td class="id">QA-PG-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>nav landmark, links list, aria-current text, arrow names, underline non-color cue; 0 axe violations.</td></tr>
+        <tr><td class="id">QA-PG-01</td><td>Vertical alignment</td><td><span class="tag fail">FIX</span></td><td>Ellipsis renders on baseline — sits lower than numbers/arrows; Figma centers it. Visual polish.</td></tr>
+      </table>
+    `
   }
 ];
