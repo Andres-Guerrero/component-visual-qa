@@ -910,7 +910,7 @@ window.VQA_REPORTS = [
       <h2>Verdict</h2>
       <div class="verdict">
         <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Shared form-field tokens match Figma; count badge per doc</p></div>
-        <div class="v pass"><p class="k">STATE COVERAGE</p><div class="val">Pass · note</div><p class="sub">Default/Open/Selected/Multi/Error/Disabled pinned; Hover/Focus token-only</p></div>
+        <div class="v pass"><p class="k">STATE COVERAGE</p><div class="val">Pass · note</div><p class="sub">Trigger + open panel (search/controls/rows) pinned; only Hover/Focus interactive</p></div>
         <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · notes</div><p class="sub">Same system-wide default/focus border items as Select</p></div>
       </div>
 
@@ -960,7 +960,19 @@ window.VQA_REPORTS = [
           <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#f8f8f8;border:1px solid #e3e3e3;color:#c4c4c4;font-size:13px">Choose an option<span style="color:#c4c4c4">▾</span></span></div>
       </div>
 
-      <h2>3. Figma ↔ build mapping</h2>
+      <h2>3. Open panel (listbox)</h2>
+      <p>The <code>item-type-rows</code> story pins the open panel for both single and multi. Verified against Menus &amp; Lists:</p>
+      <table>
+        <tr><th>Element</th><th>Figma</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Surface</td><td class="mono">#ffffff · +4y · #dcdcdc</td><td class="mono">#ffffff · 0 4/8 rgba(.1)+0 0/1 rgba(.2) · 1px #dcdcdc</td><td class="m y">✓</td></tr>
+        <tr><td>Search slot</td><td class="mono">form-field, border #c4c4c4</td><td class="mono">input · #c4c4c4 · "Search…"</td><td class="m y">✓</td></tr>
+        <tr><td>Controls slot (APPLY)</td><td class="mono">secondary button #07729c / white</td><td class="mono">#07729c / #ffffff "APPLY"</td><td class="m y">✓</td></tr>
+        <tr><td>Row default / selected / disabled</td><td class="mono">#ffffff · #eff5fd · #f8f8f8/#c4c4c4</td><td class="mono">#ffffff · #eff5fd · #f8f8f8/#c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Selection control</td><td class="mono">single = radio · multi = checkbox</td><td class="mono">radio (single) / checkbox (multi)</td><td class="m y">✓</td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--sh-mid-gray)">Row height 42; selection by control not bg (List Items QA-LI-01). Open-panel a11y: 0 violations, 11 passes. Surface/rows detailed under Menus &amp; Lists → Dropdown / List Items.</p>
+
+      <h2>4. Figma ↔ build mapping</h2>
       <table>
         <tr><th>Figma variant</th><th>How the build exposes it</th><th>Visually pinned?</th></tr>
         <tr><td>State = Default</td><td><code>trigger-matrix</code> default · <code>playground</code></td><td class="m y">✓ pinned</td></tr>
@@ -975,7 +987,7 @@ window.VQA_REPORTS = [
         <tr><td><em>(no Figma variant)</em></td><td>build-only: <code>flag-rows</code>, <code>item-type-rows</code></td><td>—</td></tr>
       </table>
 
-      <h2>4. Accessibility</h2>
+      <h2>5. Accessibility</h2>
       <p>Tab to focus; type to filter; Arrows/Enter to select; multi-select toggles options. Focus uses the shared convention; error is conveyed by red border + message (not color alone); disabled fully muted.</p>
       <h3>Text vs field</h3>
       <table>
@@ -1003,7 +1015,7 @@ window.VQA_REPORTS = [
       <table>
         <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
         <tr><td class="id">QA-CX-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Shared form-field state tokens match Figma; count badge white-on-blue per doc.</td></tr>
-        <tr><td class="id">QA-CX-STATE</td><td>State coverage</td><td><span class="tag obs">PASS · NOTE</span></td><td>Default/Open/Selected/Multi-selected/Error/Disabled pinned; Hover/Focus &amp; Multi-selected-disabled interactive-only.</td></tr>
+        <tr><td class="id">QA-CX-STATE</td><td>State coverage</td><td><span class="tag obs">PASS · NOTE</span></td><td>Trigger states + full open panel (search, APPLY control, radio/checkbox rows) pinned; only Hover/Focus &amp; Multi-selected-disabled interactive-only.</td></tr>
         <tr><td class="id">QA-CX-MAP</td><td>Figma↔build mapping</td><td><span class="tag obs">INFO</span></td><td>Feature stories, not Figma's state matrix (§3). Build-only: flag-rows, item-type-rows.</td></tr>
         <tr><td class="id">QA-CX-A11Y-01</td><td>Contrast (borders)</td><td><span class="tag fail">KNOWN</span></td><td>Default 1.74:1 &amp; focus 2.37:1 below 3:1 — shared system-wide (see QA-SL-A11Y-01 / QA-CB-A11Y-01).</td></tr>
         <tr><td class="id">QA-CX-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Pin Hover/Focus (with glow) demos so every state is visually QA-able.</td></tr>
