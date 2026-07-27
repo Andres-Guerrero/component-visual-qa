@@ -764,5 +764,121 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-LN-01</td><td>Visited color</td><td><span class="tag obs">KNOWN</span></td><td>Visited = default (#07729c) — not visually distinct; pending future token decision.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'select',
+    name: 'Select',
+    group: 'Forms',
+    status: 'Pass · notes',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Select</h1>
+      <p class="rmeta">Figma component 11689:1126 · Frame doc 16020:8160 · Storybook /docs/forms-select · Captured 2026-07-27</p>
+      <p>A dropdown for choosing one option from a list, built on the shared form-field tokens (same field box and states as Text Field). Label Static or Floating with a Show-label toggle, two sizes, and states Default, Hover, Focus, Open, Selected, Error, Disabled.</p>
+
+      <div class="callout info"><strong>Reporting note.</strong> The build documents Select by feature stories, not as Figma's pinned state matrix. Token values all match Figma, so states are graded <strong>token-verified = Pass</strong>; the mapping table (§3) shows which states are visually pinned vs. interactive-only. Facsimiles below render the token-intended appearance.</p></div>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">All form-field state tokens match Figma exactly</p></div>
+        <div class="v pass"><p class="k">STATE COVERAGE</p><div class="val">Pass · note</div><p class="sub">Default/Error/Disabled pinned; Hover/Focus/Open/Selected token-only</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · notes</div><p class="sub">2 known system-wide border items (default, focus); error not color-only</p></div>
+      </div>
+
+      <h2>1. Token fidelity — color per state</h2>
+      <table>
+        <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Default</td><td>bg / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#ffffff / #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Hover</td><td>border</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Focus / Open</td><td>border / glow</td><td><span class="chip" style="background:#66afe9"></span><span class="mono">#66afe9</span> + Glow-Blue</td><td class="mono">#66afe9 (glow interactive-only)</td><td class="m y">✓</td></tr>
+        <tr><td>Selected (filled)</td><td>text / border</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> / <span class="mono">#c4c4c4</span></td><td class="mono">#343434 / #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Placeholder</td><td>text</td><td><span class="chip" style="background:#757575"></span><span class="mono">#757575</span></td><td class="mono">#757575</td><td class="m y">✓</td></tr>
+        <tr><td>Error</td><td>bg / border</td><td><span class="chip" style="background:#fde5e5"></span><span class="mono">#fde5e5</span> / <span class="chip" style="background:#b00000"></span><span class="mono">#b00000</span></td><td class="mono">#fde5e5 / #b00000</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td>bg / border / text</td><td><span class="chip" style="background:#f8f8f8"></span><span class="mono">#f8f8f8</span> / <span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#f8f8f8 / #e3e3e3 / #c4c4c4</td><td class="m y">✓</td></tr>
+      </table>
+      <h3>Sizing &amp; spacing</h3>
+      <table>
+        <tr><th>Property</th><th>Figma</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Height (Large)</td><td class="mono">50px</td><td class="mono">50px</td><td class="m y">✓</td></tr>
+        <tr><td>Height (Small)</td><td class="mono">~40px</td><td class="mono">40px</td><td class="m y">✓*</td></tr>
+        <tr><td>Padding-x (Large / Small)</td><td class="mono">16px / 12px</td><td class="mono">token-driven</td><td class="m y">✓</td></tr>
+        <tr><td>Border width</td><td class="mono">1px</td><td class="mono">1px</td><td class="m y">✓</td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--sh-mid-gray)">* Small height token wasn't surfaced in this pass; build renders 40px — spot-check against the Figma small height token.</p>
+
+      <h2>2. Side-by-side — states (token-intended)</h2>
+      <p>Facsimiles rendered from the matching token values. Hover/Focus/Open are marked interactive-only (see §3): the build applies them on real interaction, not as pinned static demos.</p>
+      <div class="swatchgrid" style="grid-template-columns:160px 1fr 1fr;">
+        <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+        <div class="stc">Default</div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #c4c4c4;color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #c4c4c4;color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+        <div class="stc">Hover <span style="font-weight:400;color:#757575">(interactive)</span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #07729c;color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #07729c;color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+        <div class="stc">Focus / Open <span style="font-weight:400;color:#757575">(interactive)</span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #66afe9;box-shadow:0 0 0 3px rgba(102,175,233,0.35);color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #66afe9;box-shadow:0 0 0 3px rgba(102,175,233,0.35);color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+        <div class="stc">Selected</div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #c4c4c4;color:#343434;font-size:13px">Option A<span style="color:#343434">▾</span></span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #c4c4c4;color:#343434;font-size:13px">Option A<span style="color:#343434">▾</span></span></div>
+        <div class="stc">Error</div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#fde5e5;border:1px solid #b00000;color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#fde5e5;border:1px solid #b00000;color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+        <div class="stc">Disabled</div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#f8f8f8;border:1px solid #e3e3e3;color:#c4c4c4;font-size:13px">Choose an option<span style="color:#c4c4c4">▾</span></span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#f8f8f8;border:1px solid #e3e3e3;color:#c4c4c4;font-size:13px">Choose an option<span style="color:#c4c4c4">▾</span></span></div>
+      </div>
+
+      <h2>3. Figma ↔ build mapping</h2>
+      <p>The build organizes Select by feature stories rather than Figma's pinned state matrix. This maps the two and marks what's visually pinned vs. interactive-only.</p>
+      <table>
+        <tr><th>Figma variant</th><th>How the build exposes it</th><th>Visually pinned?</th></tr>
+        <tr><td>State = Default</td><td><code>states-matrix</code> "default" · <code>default</code> story</td><td class="m y">✓ pinned</td></tr>
+        <tr><td>State = Hover</td><td><code>states-matrix</code> "hover" row (renders at rest)</td><td class="m n">interactive-only</td></tr>
+        <tr><td>State = Focus</td><td><code>states-matrix</code> "focus" row (border + glow not shown statically)</td><td class="m n">interactive-only</td></tr>
+        <tr><td>State = Open</td><td><code>states-matrix</code> "open" row (renders at rest)</td><td class="m n">interactive-only</td></tr>
+        <tr><td>State = Selected</td><td><code>selected</code> story · matrix "selected"</td><td class="m y">✓ (filled text; border = default)</td></tr>
+        <tr><td>State = Error</td><td><code>error</code> story · matrix "error"</td><td class="m y">✓ pinned</td></tr>
+        <tr><td>State = Disabled</td><td><code>disabled</code> story · matrix "disabled"</td><td class="m y">✓ pinned</td></tr>
+        <tr><td>Label Style = Static / Floating</td><td><code>default</code> / <code>floating</code> stories</td><td class="m y">✓</td></tr>
+        <tr><td>Size = Large / Small</td><td><code>small</code> story · matrix md/sm</td><td class="m y">✓</td></tr>
+        <tr><td>Show-label = off</td><td><code>no-label</code> story</td><td class="m y">✓</td></tr>
+        <tr><td><em>(no Figma variant)</em></td><td>build-only stories: <code>required</code>, <code>flag-rows</code>, <code>item-type-radio</code></td><td>—</td></tr>
+      </table>
+
+      <h2>4. Accessibility</h2>
+      <p>Tab to focus; Enter/Space/Arrows open and move/select; Esc closes. Focus uses the shared focus convention; error is conveyed by the red border <em>and</em> the error message (aria-invalid + aria-describedby), not color alone; disabled reads fully muted.</p>
+      <h3>Text vs field</h3>
+      <table>
+        <tr><th>Element</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Filled / selection</td><td>12.45:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Placeholder</td><td>4.61:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Error message</td><td>7.38:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Chevron icon</td><td>12.45:1</td><td class="m y">Pass</td></tr>
+      </table>
+      <h3>Border vs background (non-text, 3:1)</h3>
+      <table>
+        <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Default</td><td>1.74:1</td><td class="m n">Below 3:1 — flagged</td></tr>
+        <tr><td>Hover</td><td>5.39:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Focus / Open</td><td>2.37:1</td><td class="m n">Below 3:1 (glow reinforces)</td></tr>
+        <tr><td>Error</td><td>7.38:1</td><td class="m y">Pass</td></tr>
+      </table>
+      <div class="callout warn">
+        <p><span class="tag fail">QA-SL-A11Y-01 · KNOWN / SYSTEM-WIDE</span></p>
+        <strong>Default and focus borders fall below the 3:1 non-text minimum.</strong> Default <span class="mono">#c4c4c4</span> is 1.74:1 (the shared form-control token, see QA-CB-A11Y-01) and focus <span class="mono">#66afe9</span> is 2.37:1 (the glow reinforces it). Per the frame doc these are system-level resting/focus-border choices pending team review — fix across all form fields together.
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-SL-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All form-field state tokens (default/hover/focus/filled/error/disabled/placeholder) match Figma.</td></tr>
+        <tr><td class="id">QA-SL-STATE</td><td>State coverage</td><td><span class="tag obs">PASS · NOTE</span></td><td>Default/Error/Disabled pinned; Hover/Focus/Open/Selected token-verified only (not pinned as static demos).</td></tr>
+        <tr><td class="id">QA-SL-MAP</td><td>Figma↔build mapping</td><td><span class="tag obs">INFO</span></td><td>Build uses feature stories, not Figma's state matrix; mapping documented in §3. Build-only: required, flag-rows, item-type-radio.</td></tr>
+        <tr><td class="id">QA-SL-A11Y-01</td><td>Contrast (borders)</td><td><span class="tag fail">KNOWN</span></td><td>Default 1.74:1 &amp; focus 2.37:1 below 3:1 — system-wide, pending review (shared with checkbox/radio/text field).</td></tr>
+        <tr><td class="id">QA-SL-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Add pinned Hover/Focus (with glow)/Open demos so every Figma state is visually QA-able, matching the other components.</td></tr>
+      </table>
+    `
   }
 ];
