@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SupplyHouse — Component Visual QA</title>
+<title>SupplyHouse - Component Visual QA</title>
 <style>
   /* Self-hosted Maison Neue (the design system's typeface). Files in /fonts. */
   @font-face{font-family:'Maison Neue';src:url('fonts/MaisonNeueWEB-Book.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
@@ -152,7 +152,7 @@ const VQA = (function(){
     if(r.handoffs && r.handoffs.length){
       const sec=document.createElement('div');sec.className='handoff';
       const h=document.createElement('h2');h.textContent='Hand off to Claude Code';sec.appendChild(h);
-      const note=document.createElement('p');note.className='hnote';note.textContent='Copies a context + acceptance-criteria brief to paste into Claude Code. No prescribed code — the fix approach is the dev team’s call.';sec.appendChild(note);
+      const note=document.createElement('p');note.className='hnote';note.textContent='Copies a context + acceptance-criteria brief to paste into Claude Code. No prescribed code - the fix approach is the dev team’s call.';sec.appendChild(note);
       r.handoffs.forEach(ho=>{
         const wrap=document.createElement('div');wrap.className='hcard';
         const btn=document.createElement('button');btn.className='hbtn';btn.textContent='⧉ Copy for Claude Code · '+ho.code;

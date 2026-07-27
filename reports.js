@@ -1,4 +1,4 @@
-/* SupplyHouse Component Visual QA — report data.
+/* SupplyHouse Component Visual QA - report data.
    To add a component: append an object to VQA_REPORTS with
    { id, name, group, status, statusType: 'pass'|'fail'|'wip', html, swatches? }.
    'html' is injected into the report pane. If you include a
@@ -25,15 +25,15 @@ window.VQA_REPORTS = [
     html: `
       <h1 class="rt">Purchase Button</h1>
       <p class="rmeta">Figma component 427:3453 · Frame doc 15904:301476 · Storybook /docs/actions-purchase-button · Captured 2026-07-27</p>
-      <p>The primary commerce call-to-action for adding items to the cart — highest-emphasis (orange fill), two sizes, the full range of interactive/loading/confirmation states, and an optional leading icon (<code>Show icon</code>, default on). Built on auto-layout with token-driven padding, height, and spacing; <strong>fills its container width</strong> with the label and icon centered.</p>
+      <p>The primary commerce call-to-action for adding items to the cart - highest-emphasis (orange fill), two sizes, the full range of interactive/loading/confirmation states, and an optional leading icon (<code>Show icon</code>, default on). Built on auto-layout with token-driven padding, height, and spacing; <strong>fills its container width</strong> with the label and icon centered.</p>
 
       <h2>Verdict</h2>
       <div class="verdict">
-        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Colors, sizing, type &amp; elevation all match — 9 states × 2 sizes</p></div>
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Colors, sizing, type &amp; elevation all match - 9 states × 2 sizes</p></div>
         <div class="v pass"><p class="k">STATES · VARIANTS · PROPS</p><div class="val">Pass</div><p class="sub">9 states, both sizes, and Show icon on/off present</p></div>
-        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Acknowledged</div><p class="sub">Passes bold/large AA (3:1); below 4.5:1 normal-text — team decision</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Acknowledged</div><p class="sub">Passes bold/large AA (3:1); below 4.5:1 normal-text - team decision</p></div>
       </div>
-      <p>The developer's token translation is <strong>faithful</strong> — every state renders the exact bound values, including the elevation effect. The label-contrast item is a <em>known, documented</em> design decision (kept here for the record), not a build defect.</p>
+      <p>The developer's token translation is <strong>faithful</strong> - every state renders the exact bound values, including the elevation effect. The label-contrast item is a <em>known, documented</em> design decision (kept here for the record), not a build defect.</p>
 
       <h2>1. Token fidelity</h2>
       <h3>Color per state</h3>
@@ -53,7 +53,7 @@ window.VQA_REPORTS = [
       <h3>Elevation &amp; effects</h3>
       <table>
         <tr><th>Property</th><th>Figma</th><th>Storybook computed</th><th>Match</th></tr>
-        <tr><td>Elevation (filled states)</td><td class="mono">Elevation/-2y — inner shadow, offset 0/−2, rgba(0,0,0,0.25)</td><td class="mono">box-shadow: inset 0 -2px 0 rgba(0,0,0,0.25)</td><td class="m y">✓</td></tr>
+        <tr><td>Elevation (filled states)</td><td class="mono">Elevation/-2y - inner shadow, offset 0/−2, rgba(0,0,0,0.25)</td><td class="mono">box-shadow: inset 0 -2px 0 rgba(0,0,0,0.25)</td><td class="m y">✓</td></tr>
         <tr><td>Corner radius</td><td class="mono">0px</td><td class="mono">0px</td><td class="m y">✓</td></tr>
       </table>
 
@@ -69,18 +69,18 @@ window.VQA_REPORTS = [
         <tr><td>Transform</td><td>UPPERCASE</td><td>UPPERCASE</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Side-by-side — states (Large)</h2>
-      <p>Rendered from the actual token values on each side. Because every value matches, the Figma spec and the Storybook build are visually identical per state. (Facsimile — elevation shadow not drawn.)</p>
+      <h2>2. Side-by-side - states (Large)</h2>
+      <p>Rendered from the actual token values on each side. Because every value matches, the Figma spec and the Storybook build are visually identical per state. (Facsimile - elevation shadow not drawn.)</p>
       <div id="vqa-swatches" class="swatchgrid">
         <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
       </div>
 
       <h2>3. States, variants &amp; props</h2>
-      <p>All 9 states (Default, Hover, Press, Active Hover, Disabled, Added, Active-Added, Loading-Add, Loading-Update) render in both sizes and match Figma. The <code>Show icon</code> boolean (default on) is covered by the "Icon — on vs off" story; turning it off hides the leading icon and collapses the icon-gap, as documented. <span class="m y">✓ Pass</span></p>
+      <p>All 9 states (Default, Hover, Press, Active Hover, Disabled, Added, Active-Added, Loading-Add, Loading-Update) render in both sizes and match Figma. The <code>Show icon</code> boolean (default on) is covered by the "Icon - on vs off" story; turning it off hides the leading icon and collapses the icon-gap, as documented. <span class="m y">✓ Pass</span></p>
 
       <h2>4. Accessibility</h2>
       <h3>Focus &amp; keyboard</h3>
-      <p>Per the frame doc: Tab to focus, Enter or Space to activate; disabled is not focusable and its state is conveyed beyond color alone. Keyboard focus shows a 2px outer ring in <code>color.focus.ring</code>. The build confirms the foundation tokens — <span class="mono">--color-focus-ring: #005fcc</span> and <span class="mono">--stroke-focus-ring-width: 2px</span> — matching the spec. <span class="m y">✓ Match</span></p>
+      <p>Per the frame doc: Tab to focus, Enter or Space to activate; disabled is not focusable and its state is conveyed beyond color alone. Keyboard focus shows a 2px outer ring in <code>color.focus.ring</code>. The build confirms the foundation tokens - <span class="mono">--color-focus-ring: #005fcc</span> and <span class="mono">--stroke-focus-ring-width: 2px</span> - matching the spec. <span class="m y">✓ Match</span></p>
 
       <h3>Contrast (label vs. fill)</h3>
       <p>Labels are bold uppercase. The team documents these ratios and treats them against the bold/large-text threshold (3:1):</p>
@@ -96,12 +96,12 @@ window.VQA_REPORTS = [
       <div class="callout warn">
         <p><span class="tag fail">QA-PB-A11Y-01 · KNOWN / ACKNOWLEDGED</span></p>
         <strong>Label contrast is below WCAG AA for normal text on the light-label states.</strong> Storybook's axe panel flags these against 4.5:1 because at 13px (Large) / 11px (Small) the bold labels sit below WCAG's large-text <em>size</em> threshold (≈18.66px bold), so the 3:1 exemption the frame doc cites doesn't strictly apply. Under normal-text AA, only <strong>Press (4.64:1)</strong> clears 4.5:1.
-        <br><br>The team has documented this and decided: <em>"Don't change token values to chase contrast without team discussion."</em> Kept here for the record per QA policy — no code change implied.
+        <br><br>The team has documented this and decided: <em>"Don't change token values to chase contrast without team discussion."</em> Kept here for the record per QA policy - no code change implied.
       </div>
 
       <h2>5. Observations (non-blocking)</h2>
       <div class="callout">
-        <p><span class="tag obs">QA-PB-OBS-01</span> <strong>Elevation, not a border.</strong> The filled states use an inner-shadow elevation (<code>Elevation/-2y</code>), and the build reproduces it exactly (<span class="mono">inset 0 -2px 0 rgba(0,0,0,0.25)</span>). The 2px same-color line on filled states is an intentional height-parity device with the outlined states — not a visible border. Match.</p>
+        <p><span class="tag obs">QA-PB-OBS-01</span> <strong>Elevation, not a border.</strong> The filled states use an inner-shadow elevation (<code>Elevation/-2y</code>), and the build reproduces it exactly (<span class="mono">inset 0 -2px 0 rgba(0,0,0,0.25)</span>). The 2px same-color line on filled states is an intentional height-parity device with the outlined states - not a visible border. Match.</p>
         <p style="margin:0"><span class="tag obs">QA-PB-OBS-02</span> <strong>No fixed width.</strong> The button fills its container and centers its content; there is no fixed-width spec. Behaves as designed.</p>
       </div>
 
@@ -111,7 +111,7 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-PB-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Colors, sizing, typography, and elevation match Figma across 9 states × 2 sizes.</td></tr>
         <tr><td class="id">QA-PB-STATE</td><td>States · variants · props</td><td><span class="tag pass">PASS</span></td><td>9 states, both sizes, and Show icon on/off present and correct.</td></tr>
         <tr><td class="id">QA-PB-FOCUS</td><td>Focus &amp; keyboard</td><td><span class="tag pass">PASS</span></td><td>Focus-ring tokens (#005FCC / 2px) match the doc; Tab/Enter/Space; disabled not focusable.</td></tr>
-        <tr><td class="id">QA-PB-A11Y-01</td><td>Contrast</td><td><span class="tag fail">ACKNOWLEDGED</span></td><td>Light-label states below 4.5:1 normal-text; team treats as bold/large (3:1). Documented decision — no token change without discussion.</td></tr>
+        <tr><td class="id">QA-PB-A11Y-01</td><td>Contrast</td><td><span class="tag fail">ACKNOWLEDGED</span></td><td>Light-label states below 4.5:1 normal-text; team treats as bold/large (3:1). Documented decision - no token change without discussion.</td></tr>
         <tr><td class="id">QA-PB-OBS-01</td><td>Elevation</td><td><span class="tag pass">MATCH</span></td><td>Inner-shadow elevation reproduced; same-color border is a height-parity device.</td></tr>
         <tr><td class="id">QA-PB-OBS-02</td><td>Width</td><td><span class="tag obs">INFO</span></td><td>Fills container; no fixed width, by design.</td></tr>
       </table>
@@ -136,11 +136,11 @@ window.VQA_REPORTS = [
 
       <h2>Verdict</h2>
       <div class="verdict">
-        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Colors, sizing, type &amp; elevation all match — 4 states × 2 sizes</p></div>
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Colors, sizing, type &amp; elevation all match - 4 states × 2 sizes</p></div>
         <div class="v pass"><p class="k">STATES · VARIANTS · PROPS</p><div class="val">Pass</div><p class="sub">4 states, both sizes, Show icon; +loading/anchor in build (see note)</p></div>
         <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">All states meet WCAG AA (5.39–8.57:1); focus ring matches</p></div>
       </div>
-      <p>Clean pass. The token translation is faithful across all four states and both sizes, and — unlike the orange Purchase button — the blue fill clears WCAG AA contrast on every state.</p>
+      <p>Clean pass. The token translation is faithful across all four states and both sizes, and - unlike the orange Purchase button - the blue fill clears WCAG AA contrast on every state.</p>
 
       <h2>1. Token fidelity</h2>
       <h3>Color per state</h3>
@@ -155,7 +155,7 @@ window.VQA_REPORTS = [
       <h3>Elevation &amp; effects</h3>
       <table>
         <tr><th>Property</th><th>Figma</th><th>Storybook computed</th><th>Match</th></tr>
-        <tr><td>Elevation</td><td class="mono">Elevation/-2y — inner shadow, offset 0/−2, rgba(0,0,0,0.25)</td><td class="mono">box-shadow: inset 0 -2px 0 rgba(0,0,0,0.25)</td><td class="m y">✓</td></tr>
+        <tr><td>Elevation</td><td class="mono">Elevation/-2y - inner shadow, offset 0/−2, rgba(0,0,0,0.25)</td><td class="mono">box-shadow: inset 0 -2px 0 rgba(0,0,0,0.25)</td><td class="m y">✓</td></tr>
         <tr><td>Border / radius</td><td class="mono">none / 0px</td><td class="mono">none / 0px</td><td class="m y">✓</td></tr>
       </table>
 
@@ -171,8 +171,8 @@ window.VQA_REPORTS = [
         <tr><td>Transform</td><td>UPPERCASE</td><td>UPPERCASE</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Side-by-side — states (Large)</h2>
-      <p>Rendered from the actual token values on each side; identical per state. (Facsimile — elevation shadow not drawn.)</p>
+      <h2>2. Side-by-side - states (Large)</h2>
+      <p>Rendered from the actual token values on each side; identical per state. (Facsimile - elevation shadow not drawn.)</p>
       <div id="vqa-swatches" class="swatchgrid">
         <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
       </div>
@@ -180,12 +180,12 @@ window.VQA_REPORTS = [
       <h2>3. States, variants &amp; props</h2>
       <p>All 4 states render in both sizes and match Figma. The <code>Show icon</code> boolean (default off) is covered by the "With icons" story. <span class="m y">✓ Pass</span></p>
       <div class="callout info">
-        <p style="margin:0"><span class="tag obs">QA-SB-OBS-02</span> <strong>Build exposes more than the doc.</strong> Storybook ships <code>isLoading</code> and an "As anchor (href)" story, but the frame doc lists only 4 states (Default, Hover, Press, Disabled). Not a defect — but confirm whether loading / anchor rendering are intended for Secondary and, if so, add them to the component doc so design and code agree.</p>
+        <p style="margin:0"><span class="tag obs">QA-SB-OBS-02</span> <strong>Build exposes more than the doc.</strong> Storybook ships <code>isLoading</code> and an "As anchor (href)" story, but the frame doc lists only 4 states (Default, Hover, Press, Disabled). Not a defect - but confirm whether loading / anchor rendering are intended for Secondary and, if so, add them to the component doc so design and code agree.</p>
       </div>
 
       <h2>4. Accessibility</h2>
       <h3>Focus &amp; keyboard</h3>
-      <p>Tab to focus, Enter or Space to activate; disabled is not focusable and conveyed beyond color. The build confirms the foundation focus tokens — <span class="mono">--color-focus-ring: #005fcc</span> and <span class="mono">--stroke-focus-ring-width: 2px</span> — matching the doc. <span class="m y">✓ Match</span></p>
+      <p>Tab to focus, Enter or Space to activate; disabled is not focusable and conveyed beyond color. The build confirms the foundation focus tokens - <span class="mono">--color-focus-ring: #005fcc</span> and <span class="mono">--stroke-focus-ring-width: 2px</span> - matching the doc. <span class="m y">✓ Match</span></p>
 
       <h3>Contrast (label vs. fill)</h3>
       <table>
@@ -233,7 +233,7 @@ window.VQA_REPORTS = [
 
       <h2>Verdict</h2>
       <div class="verdict">
-        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Colors, border, sizing &amp; type all match — 4 states × 2 sizes</p></div>
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Colors, border, sizing &amp; type all match - 4 states × 2 sizes</p></div>
         <div class="v pass"><p class="k">STATES · VARIANTS · PROPS</p><div class="val">Pass</div><p class="sub">4 states, both sizes, Show icon (default off)</p></div>
         <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">Labels AA (4.92–5.39:1); border affordance ≥ 3:1 non-text</p></div>
       </div>
@@ -269,7 +269,7 @@ window.VQA_REPORTS = [
         <tr><td>Transform</td><td>UPPERCASE</td><td>UPPERCASE</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Side-by-side — states (Large)</h2>
+      <h2>2. Side-by-side - states (Large)</h2>
       <p>Rendered from the actual token values on each side; identical per state.</p>
       <div id="vqa-swatches" class="swatchgrid">
         <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
@@ -280,7 +280,7 @@ window.VQA_REPORTS = [
 
       <h2>4. Accessibility</h2>
       <h3>Focus &amp; keyboard</h3>
-      <p>Tab to focus, Enter or Space to activate; disabled is not focusable and conveyed beyond color. Build confirms the foundation focus tokens — <span class="mono">--color-focus-ring: #005fcc</span> and <span class="mono">--stroke-focus-ring-width: 2px</span> — matching the doc. <span class="m y">✓ Match</span></p>
+      <p>Tab to focus, Enter or Space to activate; disabled is not focusable and conveyed beyond color. Build confirms the foundation focus tokens - <span class="mono">--color-focus-ring: #005fcc</span> and <span class="mono">--stroke-focus-ring-width: 2px</span> - matching the doc. <span class="m y">✓ Match</span></p>
 
       <h3>Contrast</h3>
       <table>
@@ -290,7 +290,7 @@ window.VQA_REPORTS = [
         <tr><td>Press</td><td>5.39:1</td><td class="m y">Pass AA</td></tr>
         <tr><td>Disabled</td><td>1.64:1</td><td>Exempt (disabled control)</td></tr>
       </table>
-      <div class="callout info"><strong>Border affordance:</strong> the outline is the button's primary affordance. The Default/Press border (<span class="mono">#07729C</span> on white) is 5.39:1 — above the 3:1 non-text minimum; disabled border is exempt. No issues.</div>
+      <div class="callout info"><strong>Border affordance:</strong> the outline is the button's primary affordance. The Default/Press border (<span class="mono">#07729C</span> on white) is 5.39:1 - above the 3:1 non-text minimum; disabled border is exempt. No issues.</div>
 
       <h2>Findings log</h2>
       <table>
@@ -299,7 +299,7 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-TB-STATE</td><td>States · variants · props</td><td><span class="tag pass">PASS</span></td><td>4 states, both sizes, Show icon (default off).</td></tr>
         <tr><td class="id">QA-TB-FOCUS</td><td>Focus &amp; keyboard</td><td><span class="tag pass">PASS</span></td><td>Focus-ring tokens (#005FCC / 2px) match; Tab/Enter/Space; disabled not focusable.</td></tr>
         <tr><td class="id">QA-TB-A11Y</td><td>Contrast</td><td><span class="tag pass">PASS</span></td><td>Labels 4.92–5.39:1 (≥ 4.5:1 AA); border affordance 5.39:1 (≥ 3:1); disabled exempt.</td></tr>
-        <tr><td class="id">QA-TB-OBS-01</td><td>Effects</td><td><span class="tag pass">MATCH</span></td><td>Correctly uses a 2px border, no elevation — per the outline spec.</td></tr>
+        <tr><td class="id">QA-TB-OBS-01</td><td>Effects</td><td><span class="tag pass">MATCH</span></td><td>Correctly uses a 2px border, no elevation - per the outline spec.</td></tr>
       </table>
     `
   },
@@ -320,15 +320,15 @@ window.VQA_REPORTS = [
     html: `
       <h1 class="rt">Time Slot Button</h1>
       <p class="rmeta">Figma component 5510:2911 · Frame doc 15921:307059 · Storybook /docs/actions-time-slot-button · Captured 2026-07-27</p>
-      <p>A selectable delivery/time-slot option. Two delivery types — <strong>TurboTrack</strong> (green; free delivery, shows a FREE badge) and <strong>Pickup</strong> (neutral/dark) — behaving like a selectable card across four states (Default, Hover, Selected = filled + check icon, Disabled = muted + strikethrough). Two sizes; the FREE badge (TurboTrack only) is toggled by the <code>Free</code> prop (default on).</p>
+      <p>A selectable delivery/time-slot option. Two delivery types - <strong>TurboTrack</strong> (green; free delivery, shows a FREE badge) and <strong>Pickup</strong> (neutral/dark) - behaving like a selectable card across four states (Default, Hover, Selected = filled + check icon, Disabled = muted + strikethrough). Two sizes; the FREE badge (TurboTrack only) is toggled by the <code>Free</code> prop (default on).</p>
 
       <h2>Verdict</h2>
       <div class="verdict">
         <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Both deliveries, all states, badge, sizes &amp; border match</p></div>
         <div class="v pass"><p class="k">STATES · VARIANTS · PROPS</p><div class="val">Pass</div><p class="sub">Delivery × Size × State + Free badge toggle present</p></div>
-        <div class="v fail"><p class="k">ACCESSIBILITY</p><div class="val">1 open</div><p class="sub">TurboTrack Selected label 2.80:1 — flagged for team review</p></div>
+        <div class="v fail"><p class="k">ACCESSIBILITY</p><div class="val">1 open</div><p class="sub">TurboTrack Selected label 2.80:1 - flagged for team review</p></div>
       </div>
-      <p>The build faithfully reproduces every token for both delivery types and all states. There is <strong>one open accessibility item</strong> — already flagged by the team in the frame doc — where the TurboTrack Selected label falls below the contrast minimum.</p>
+      <p>The build faithfully reproduces every token for both delivery types and all states. There is <strong>one open accessibility item</strong> - already flagged by the team in the frame doc - where the TurboTrack Selected label falls below the contrast minimum.</p>
 
       <h2>1. Token fidelity</h2>
       <h3>Color per delivery &amp; state</h3>
@@ -352,14 +352,14 @@ window.VQA_REPORTS = [
         <tr><td>Label type</td><td>Maison Neue Bold 13px, UPPER</td><td>Maison Neue Bold 11px, UPPER</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Side-by-side — states (Large)</h2>
-      <p>Rendered from the actual token values on each side; identical per state. (Facsimile — FREE badge and elevation not drawn.)</p>
+      <h2>2. Side-by-side - states (Large)</h2>
+      <p>Rendered from the actual token values on each side; identical per state. (Facsimile - FREE badge and elevation not drawn.)</p>
       <div id="vqa-swatches" class="swatchgrid">
         <div class="hd">Delivery · State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
       </div>
 
       <h2>3. States, variants &amp; props</h2>
-      <p>Delivery (TurboTrack, Pickup) × Size (Large, Small) × State (Default, Hover, Selected, Disabled) all render and match Figma, verified in the "Delivery × Size × State Matrix" story. The <code>Free</code> boolean (TurboTrack only, default on) is covered by the "FREE badge — on vs off" story; a "Controlled Group" story exercises single-select behavior. <span class="m y">✓ Pass</span></p>
+      <p>Delivery (TurboTrack, Pickup) × Size (Large, Small) × State (Default, Hover, Selected, Disabled) all render and match Figma, verified in the "Delivery × Size × State Matrix" story. The <code>Free</code> boolean (TurboTrack only, default on) is covered by the "FREE badge - on vs off" story; a "Controlled Group" story exercises single-select behavior. <span class="m y">✓ Pass</span></p>
 
       <h2>4. Accessibility</h2>
       <h3>Focus, keyboard &amp; non-color cues</h3>
@@ -369,19 +369,19 @@ window.VQA_REPORTS = [
       <table>
         <tr><th>Delivery / State</th><th>Ratio</th><th>Result</th></tr>
         <tr><td>TurboTrack · Default / Hover</td><td>4.61:1</td><td class="m y">Pass AA</td></tr>
-        <tr><td>TurboTrack · Selected</td><td>2.80:1</td><td class="m n">Fail — flagged for review</td></tr>
+        <tr><td>TurboTrack · Selected</td><td>2.80:1</td><td class="m n">Fail - flagged for review</td></tr>
         <tr><td>Pickup · Default / Hover</td><td>4.61:1</td><td class="m y">Pass AA</td></tr>
         <tr><td>Pickup · Selected</td><td>12.45:1</td><td class="m y">Pass AAA</td></tr>
         <tr><td>Both · Disabled</td><td>1.64:1</td><td>Exempt (disabled control)</td></tr>
       </table>
       <div class="callout warn">
-        <p><span class="tag fail">QA-TS-A11Y-01 · OPEN — FLAGGED FOR REVIEW</span></p>
-        <strong>TurboTrack Selected label contrast is 2.80:1</strong> (white on green <span class="mono">#0EB252</span>) — below even the 3:1 minimum, and Storybook's axe panel flags it (1 violation). The frame doc has this as an <em>open</em> item pending a team decision on a darker selected green or dark-on-green text. Faithfully implemented from the token; the fix is a token/design decision. Mitigation: selection is also signalled by the check icon and fill, so the <em>state</em> is still perceivable — the concern is the label legibility.
+        <p><span class="tag fail">QA-TS-A11Y-01 · OPEN - FLAGGED FOR REVIEW</span></p>
+        <strong>TurboTrack Selected label contrast is 2.80:1</strong> (white on green <span class="mono">#0EB252</span>) - below even the 3:1 minimum, and Storybook's axe panel flags it (1 violation). The frame doc has this as an <em>open</em> item pending a team decision on a darker selected green or dark-on-green text. Faithfully implemented from the token; the fix is a token/design decision. Mitigation: selection is also signalled by the check icon and fill, so the <em>state</em> is still perceivable - the concern is the label legibility.
       </div>
 
       <h2>5. Observations (non-blocking)</h2>
       <div class="callout">
-        <p style="margin:0"><span class="tag obs">QA-TS-OBS-01</span> Pickup Selected (white on <span class="mono">#343434</span>) is 12.45:1 — the same "selected" pattern reads very differently between the two deliveries. If the team darkens the TurboTrack selected fill to fix QA-TS-A11Y-01, keep both deliveries visually balanced.</p>
+        <p style="margin:0"><span class="tag obs">QA-TS-OBS-01</span> Pickup Selected (white on <span class="mono">#343434</span>) is 12.45:1 - the same "selected" pattern reads very differently between the two deliveries. If the team darkens the TurboTrack selected fill to fix QA-TS-A11Y-01, keep both deliveries visually balanced.</p>
       </div>
 
       <h2>Findings log</h2>
@@ -390,8 +390,8 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-TS-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Both deliveries, all states, FREE badge, sizes, and 2px border match Figma.</td></tr>
         <tr><td class="id">QA-TS-STATE</td><td>States · variants · props</td><td><span class="tag pass">PASS</span></td><td>Delivery × Size × State + Free toggle + controlled group all present.</td></tr>
         <tr><td class="id">QA-TS-FOCUS</td><td>Focus &amp; non-color cues</td><td><span class="tag pass">PASS</span></td><td>Focus tokens match; selection = fill + check; disabled = strikethrough + muted (beyond color).</td></tr>
-        <tr><td class="id">QA-TS-A11Y-01</td><td>Contrast</td><td><span class="tag fail">OPEN</span></td><td>TurboTrack Selected 2.80:1 (&lt; 3:1) — team-flagged; pending darker green / dark-on-green decision.</td></tr>
-        <tr><td class="id">QA-TS-OBS-01</td><td>Consistency</td><td><span class="tag obs">INFO</span></td><td>Pickup Selected 12.45:1 vs TurboTrack 2.80:1 — keep deliveries balanced when fixing.</td></tr>
+        <tr><td class="id">QA-TS-A11Y-01</td><td>Contrast</td><td><span class="tag fail">OPEN</span></td><td>TurboTrack Selected 2.80:1 (&lt; 3:1) - team-flagged; pending darker green / dark-on-green decision.</td></tr>
+        <tr><td class="id">QA-TS-OBS-01</td><td>Consistency</td><td><span class="tag obs">INFO</span></td><td>Pickup Selected 12.45:1 vs TurboTrack 2.80:1 - keep deliveries balanced when fixing.</td></tr>
       </table>
     `
   },
@@ -404,7 +404,7 @@ window.VQA_REPORTS = [
     html: `
       <h1 class="rt">Breadcrumb</h1>
       <p class="rmeta">Figma desktop 16100:62660 · mobile 16100:62665 · Frame doc 16100:62667 · Storybook /docs/navigation-breadcrumb · Captured 2026-07-27</p>
-      <p>A secondary navigation aid showing the user's location as a trail of links separated by a trailing chevron. The last item is the current page and is non-interactive. States: Default, Hover, Current. On mobile the trail collapses to a single up-one-level "‹ Home" back affordance (separate Breadcrumb — Back component).</p>
+      <p>A secondary navigation aid showing the user's location as a trail of links separated by a trailing chevron. The last item is the current page and is non-interactive. States: Default, Hover, Current. On mobile the trail collapses to a single up-one-level "‹ Home" back affordance (separate Breadcrumb - Back component).</p>
 
       <h2>Verdict</h2>
       <div class="verdict">
@@ -422,27 +422,27 @@ window.VQA_REPORTS = [
         <tr><td>Current page</td><td class="mono">text, aria-current="page", not a link</td><td class="mono">&lt;span aria-current="page"&gt;, non-link</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Token fidelity — color</h2>
+      <h2>2. Token fidelity - color</h2>
       <table>
         <tr><th>Element</th><th>Figma / doc</th><th>Storybook computed</th><th>Match</th></tr>
         <tr><td>Link (default)</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> (color.text.link)</td><td class="mono">#07729c</td><td class="m y">✓</td></tr>
         <tr><td>Link (hover)</td><td class="mono">underline added (not color)</td><td class="mono">text-decoration: underline on :hover</td><td class="m y">✓</td></tr>
         <tr><td>Current page text</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> (color.text.default)</td><td class="mono">#343434</td><td class="m y">✓</td></tr>
-        <tr><td>Separator chevron</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> (component icon var — source of truth)</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="m y">✓</td></tr>
+        <tr><td>Separator chevron</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> (component icon var - source of truth)</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="m y">✓</td></tr>
         <tr><td>Focus ring</td><td class="mono">#005FCC / 2px</td><td class="mono">#005fcc / 2px</td><td class="m y">✓</td></tr>
       </table>
 
       <h2>3. Side-by-side</h2>
       <div class="swatchgrid" style="grid-template-columns:180px 1fr;">
         <div class="hd">Source</div><div class="hd">Rendering</div>
-        <div class="stc">Frame doc — erroneous (being fixed)</div>
+        <div class="stc">Frame doc - erroneous (being fixed)</div>
         <div class="cell" style="gap:6px;font-size:13px;">
           <span style="color:#07729c">Home</span><span style="color:#343434">›</span>
           <span style="color:#07729c">Circulator Pumps</span><span style="color:#343434">›</span>
           <span style="color:#07729c">Taco Pumps</span><span style="color:#343434">›</span>
           <span style="color:#343434;font-weight:700">Taco Cast Iron Pumps</span>
         </div>
-        <div class="stc">Component &amp; build — correct</div>
+        <div class="stc">Component &amp; build - correct</div>
         <div class="cell" style="gap:6px;font-size:13px;">
           <span style="color:#07729c">Home</span><span style="color:#07729c">›</span>
           <span style="color:#07729c">Circulator Pumps</span><span style="color:#07729c">›</span>
@@ -455,12 +455,12 @@ window.VQA_REPORTS = [
       <p>Default / Hover / Current all present. Stories cover Full path, Hover, Truncated (long trails), Single item, and Mobile back (the "‹ Home" up-one-level pattern). The trailing separator is suppressed on the current crumb so the trail never ends with a dangling chevron. <span class="m y">✓ Pass</span></p>
 
       <h2>5. Accessibility</h2>
-      <p>Semantic <code>nav</code>/<code>ol</code>/<code>li</code> with <code>aria-current="page"</code> on the current crumb; links tabbable in source order; hover adds an underline (not color alone, WCAG 1.4.1); focus ring <span class="mono">#005fcc</span> / 2px. Contrast per the frame doc: link 5.39:1, current 12.45:1, focus ring 5.98:1 — all pass. The built blue separator is 5.39:1 (≥ 3:1 non-text), so it passes regardless of the color question below.</p>
+      <p>Semantic <code>nav</code>/<code>ol</code>/<code>li</code> with <code>aria-current="page"</code> on the current crumb; links tabbable in source order; hover adds an underline (not color alone, WCAG 1.4.1); focus ring <span class="mono">#005fcc</span> / 2px. Contrast per the frame doc: link 5.39:1, current 12.45:1, focus ring 5.98:1 - all pass. The built blue separator is 5.39:1 (≥ 3:1 non-text), so it passes regardless of the color question below.</p>
 
       <h2>6. Findings</h2>
       <div class="callout info">
         <p><span class="tag pass">QA-BC-01 · RESOLVED</span></p>
-        <strong>Separator chevron color — resolved.</strong> The component and build are correct: the chevron is link-blue <span class="mono">#07729c</span>. The frame doc's <span class="mono">#343434</span> was a documentation error and is being corrected manually. No code change needed.
+        <strong>Separator chevron color - resolved.</strong> The component and build are correct: the chevron is link-blue <span class="mono">#07729c</span>. The frame doc's <span class="mono">#343434</span> was a documentation error and is being corrected manually. No code change needed.
       </div>
 
       <h2>Findings log</h2>
@@ -486,13 +486,13 @@ window.VQA_REPORTS = [
 
       <h2>Verdict</h2>
       <div class="verdict">
-        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">All 9 states × 2 sizes — fill, border, size &amp; glyph match</p></div>
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">All 9 states × 2 sizes - fill, border, size &amp; glyph match</p></div>
         <div class="v pass"><p class="k">STATES · VARIANTS</p><div class="val">Pass</div><p class="sub">9 states, both sizes; check &amp; dash glyphs present</p></div>
         <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · note</div><p class="sub">Indicator 12.45:1; unselected border is a known system-wide item</p></div>
       </div>
-      <p>Faithful token translation across every state. The only accessibility note is a <em>known, system-wide</em> one — the unselected resting border — documented in the frame doc and pending team discussion, not a build defect.</p>
+      <p>Faithful token translation across every state. The only accessibility note is a <em>known, system-wide</em> one - the unselected resting border - documented in the frame doc and pending team discussion, not a build defect.</p>
 
-      <h2>1. Token fidelity — color per state</h2>
+      <h2>1. Token fidelity - color per state</h2>
       <table>
         <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
         <tr><td>Unselected</td><td>bg / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#ffffff / #c4c4c4</td><td class="m y">✓</td></tr>
@@ -511,7 +511,7 @@ window.VQA_REPORTS = [
         <tr><td>Corner radius</td><td class="mono">0px</td><td class="mono">0px</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Side-by-side — states (Large &amp; Small)</h2>
+      <h2>2. Side-by-side - states (Large &amp; Small)</h2>
       <p>Rendered from the actual token values on each side; identical per state. Each cell shows Large (24px) then Small (20px).</p>
       <div class="swatchgrid">
         <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
@@ -543,26 +543,26 @@ window.VQA_REPORTS = [
 
       <h2>4. Accessibility</h2>
       <h3>Focus, keyboard &amp; non-color cues</h3>
-      <p>Tab to focus, Space to toggle. Focus shows a 2px ring in <span class="mono">--color-focus-ring: #005fcc</span> (width 2px) — applied at runtime, not as a component variant. Indeterminate is conveyed by the dash (a mixed selection, not on/off); disabled is not focusable and conveyed by the muted fill beyond color. <span class="m y">✓</span></p>
+      <p>Tab to focus, Space to toggle. Focus shows a 2px ring in <span class="mono">--color-focus-ring: #005fcc</span> (width 2px) - applied at runtime, not as a component variant. Indeterminate is conveyed by the dash (a mixed selection, not on/off); disabled is not focusable and conveyed by the muted fill beyond color. <span class="m y">✓</span></p>
 
-      <h3>Contrast — indicator (check/dash) vs box fill</h3>
+      <h3>Contrast - indicator (check/dash) vs box fill</h3>
       <table>
         <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
         <tr><td>Selected / Selected Hover / Indeterminate</td><td>12.45:1</td><td class="m y">Pass</td></tr>
         <tr><td>Disabled Selected / Disabled Indeterminate</td><td>1.28:1</td><td>Exempt (disabled)</td></tr>
       </table>
 
-      <h3>Contrast — box outline vs background (non-text, 3:1)</h3>
+      <h3>Contrast - box outline vs background (non-text, 3:1)</h3>
       <table>
         <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
-        <tr><td>Unselected</td><td>1.74:1</td><td class="m n">Below 3:1 — flagged</td></tr>
+        <tr><td>Unselected</td><td>1.74:1</td><td class="m n">Below 3:1 - flagged</td></tr>
         <tr><td>Unselected Hover</td><td>5.39:1</td><td class="m y">Pass</td></tr>
         <tr><td>Error</td><td>7.38:1</td><td class="m y">Pass</td></tr>
         <tr><td>Disabled</td><td>1.28:1</td><td>Exempt (disabled)</td></tr>
       </table>
       <div class="callout warn">
         <p><span class="tag fail">QA-CB-A11Y-01 · KNOWN / SYSTEM-WIDE</span></p>
-        <strong>Unselected resting border is below the 3:1 non-text minimum.</strong> The gray <span class="mono">#c4c4c4</span> outline is 1.74:1 — but it intentionally matches the text-field and select resting border. Per the frame doc this is a <em>system-wide</em> choice pending team discussion, not to be changed unilaterally on the checkbox alone. Faithfully implemented from the token; any fix should be made across all form controls together.
+        <strong>Unselected resting border is below the 3:1 non-text minimum.</strong> The gray <span class="mono">#c4c4c4</span> outline is 1.74:1 - but it intentionally matches the text-field and select resting border. Per the frame doc this is a <em>system-wide</em> choice pending team discussion, not to be changed unilaterally on the checkbox alone. Faithfully implemented from the token; any fix should be made across all form controls together.
       </div>
 
       <h2>Findings log</h2>
@@ -571,7 +571,7 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-CB-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 9 states × 2 sizes: fill, border, border-width, size, glyph match Figma.</td></tr>
         <tr><td class="id">QA-CB-STATE</td><td>States &amp; variants</td><td><span class="tag pass">PASS</span></td><td>9 states, both sizes; check + dash glyphs correct.</td></tr>
         <tr><td class="id">QA-CB-FOCUS</td><td>Focus &amp; non-color cues</td><td><span class="tag pass">PASS</span></td><td>Focus ring #005FCC / 2px (runtime); indeterminate dash; disabled muted beyond color.</td></tr>
-        <tr><td class="id">QA-CB-A11Y-01</td><td>Contrast (outline)</td><td><span class="tag obs">KNOWN</span></td><td>Unselected border 1.74:1 (&lt; 3:1); matches inputs/selects — system-wide, pending discussion.</td></tr>
+        <tr><td class="id">QA-CB-A11Y-01</td><td>Contrast (outline)</td><td><span class="tag obs">KNOWN</span></td><td>Unselected border 1.74:1 (&lt; 3:1); matches inputs/selects - system-wide, pending discussion.</td></tr>
       </table>
     `
   },
@@ -588,13 +588,13 @@ window.VQA_REPORTS = [
 
       <h2>Verdict</h2>
       <div class="verdict">
-        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">All 7 states × 2 sizes — fill, border, size &amp; circle match</p></div>
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">All 7 states × 2 sizes - fill, border, size &amp; circle match</p></div>
         <div class="v pass"><p class="k">STATES · VARIANTS</p><div class="val">Pass</div><p class="sub">7 states, both sizes; circular with center dot</p></div>
         <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · note</div><p class="sub">Dot 12.45:1; unselected border is the shared system-wide item</p></div>
       </div>
-      <p>Faithful token translation — the radio reuses the checkbox's form-control tokens and renders them correctly, just circular. The one accessibility note is the same <em>system-wide</em> unselected-border item shared with the checkbox and inputs.</p>
+      <p>Faithful token translation - the radio reuses the checkbox's form-control tokens and renders them correctly, just circular. The one accessibility note is the same <em>system-wide</em> unselected-border item shared with the checkbox and inputs.</p>
 
-      <h2>1. Token fidelity — color per state</h2>
+      <h2>1. Token fidelity - color per state</h2>
       <table>
         <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
         <tr><td>Unselected</td><td>bg / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#ffffff / #c4c4c4</td><td class="m y">✓</td></tr>
@@ -613,7 +613,7 @@ window.VQA_REPORTS = [
         <tr><td>Shape</td><td class="mono">circle</td><td class="mono">border-radius: 50%</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Side-by-side — states (Large &amp; Small)</h2>
+      <h2>2. Side-by-side - states (Large &amp; Small)</h2>
       <p>Rendered from the actual token values on each side; identical per state. Each cell shows Large (24px) then Small (20px).</p>
       <div class="swatchgrid">
         <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
@@ -644,24 +644,24 @@ window.VQA_REPORTS = [
       <h3>Focus, keyboard &amp; non-color cues</h3>
       <p>Arrow keys move selection within a group; Tab moves between groups; Space/Arrow selects. Focus shows a 2px ring in <span class="mono">--color-focus-ring: #005fcc</span> (applied at runtime, not a component variant). Selection is conveyed by the filled circle + center dot (not color alone); disabled is not focusable and muted beyond color. <span class="m y">✓</span></p>
 
-      <h3>Contrast — dot vs circle fill (selected)</h3>
+      <h3>Contrast - dot vs circle fill (selected)</h3>
       <table>
         <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
         <tr><td>Selected / Selected Hover</td><td>12.45:1</td><td class="m y">Pass</td></tr>
         <tr><td>Disabled Selected</td><td>1.28:1</td><td>Exempt (disabled)</td></tr>
       </table>
 
-      <h3>Contrast — outline vs background (non-text, 3:1)</h3>
+      <h3>Contrast - outline vs background (non-text, 3:1)</h3>
       <table>
         <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
-        <tr><td>Unselected</td><td>1.74:1</td><td class="m n">Below 3:1 — flagged</td></tr>
+        <tr><td>Unselected</td><td>1.74:1</td><td class="m n">Below 3:1 - flagged</td></tr>
         <tr><td>Unselected Hover</td><td>5.39:1</td><td class="m y">Pass</td></tr>
         <tr><td>Error</td><td>7.38:1</td><td class="m y">Pass</td></tr>
         <tr><td>Disabled</td><td>1.28:1</td><td>Exempt (disabled)</td></tr>
       </table>
       <div class="callout warn">
         <p><span class="tag fail">QA-RD-A11Y-01 · KNOWN / SYSTEM-WIDE</span></p>
-        <strong>Unselected resting border below the 3:1 non-text minimum.</strong> The gray <span class="mono">#c4c4c4</span> outline is 1.74:1 — the <em>same shared token</em> flagged on the Checkbox (QA-CB-A11Y-01) and used by text fields and selects. A system-wide decision pending team discussion; fix all form controls together, not the radio alone.
+        <strong>Unselected resting border below the 3:1 non-text minimum.</strong> The gray <span class="mono">#c4c4c4</span> outline is 1.74:1 - the <em>same shared token</em> flagged on the Checkbox (QA-CB-A11Y-01) and used by text fields and selects. A system-wide decision pending team discussion; fix all form controls together, not the radio alone.
       </div>
 
       <h2>Findings log</h2>
@@ -670,7 +670,7 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-RD-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 7 states × 2 sizes: fill, border, size, and circular shape match Figma.</td></tr>
         <tr><td class="id">QA-RD-STATE</td><td>States &amp; variants</td><td><span class="tag pass">PASS</span></td><td>7 states, both sizes; center dot on selected states.</td></tr>
         <tr><td class="id">QA-RD-FOCUS</td><td>Focus &amp; non-color cues</td><td><span class="tag pass">PASS</span></td><td>Focus ring #005FCC / 2px (runtime); arrow-key group nav; disabled muted beyond color.</td></tr>
-        <tr><td class="id">QA-RD-A11Y-01</td><td>Contrast (outline)</td><td><span class="tag obs">KNOWN</span></td><td>Unselected border 1.74:1 (&lt; 3:1) — shared system-wide token (see QA-CB-A11Y-01).</td></tr>
+        <tr><td class="id">QA-RD-A11Y-01</td><td>Contrast (outline)</td><td><span class="tag obs">KNOWN</span></td><td>Unselected border 1.74:1 (&lt; 3:1) - shared system-wide token (see QA-CB-A11Y-01).</td></tr>
       </table>
     `
   },
@@ -683,7 +683,7 @@ window.VQA_REPORTS = [
     html: `
       <h1 class="rt">Link</h1>
       <p class="rmeta">Figma component 8931:5582 · Frame doc 15928:2067 · Storybook /docs/navigation-link · Captured 2026-07-27</p>
-      <p>A text link for navigation or inline actions. States: Default, Hover (underlined), Active (darker + underlined), Visited, Disabled — color plus the underline convey state. Optional icon via the icon toggle (default on) and a custom label via the link-text property. No size variant — the link inherits its text style (14px Bold).</p>
+      <p>A text link for navigation or inline actions. States: Default, Hover (underlined), Active (darker + underlined), Visited, Disabled - color plus the underline convey state. Optional icon via the icon toggle (default on) and a custom label via the link-text property. No size variant - the link inherits its text style (14px Bold).</p>
 
       <h2>Verdict</h2>
       <div class="verdict">
@@ -711,7 +711,7 @@ window.VQA_REPORTS = [
         <tr><td>Icon</td><td class="mono">optional, default on</td><td class="mono">leading &amp; trailing icon stories</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Side-by-side — states</h2>
+      <h2>2. Side-by-side - states</h2>
       <p>Rendered from the actual token values on each side; identical per state.</p>
       <div class="swatchgrid">
         <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
@@ -736,7 +736,7 @@ window.VQA_REPORTS = [
       </div>
 
       <h2>3. States, variants &amp; props</h2>
-      <p>All 5 states render and match Figma (States Matrix story). Standalone and inline variants; leading- and trailing-icon stories cover the icon toggle (default on); custom label via the link-text prop. No size variant — the link inherits surrounding text size. <span class="m y">✓ Pass</span></p>
+      <p>All 5 states render and match Figma (States Matrix story). Standalone and inline variants; leading- and trailing-icon stories cover the icon toggle (default on); custom label via the link-text prop. No size variant - the link inherits surrounding text size. <span class="m y">✓ Pass</span></p>
 
       <h2>4. Accessibility</h2>
       <h3>Focus, keyboard &amp; color independence</h3>
@@ -751,7 +751,7 @@ window.VQA_REPORTS = [
       </table>
       <div class="callout warn">
         <p><span class="tag fail">QA-LN-01 · KNOWN</span></p>
-        <strong>Visited is not visually distinct from Default.</strong> Both resolve to <span class="mono">#07729c</span> (the <code>link/visited</code> token maps to <code>text.link</code>). Faithfully implemented — but a user can't tell visited from unvisited by color. Per the frame doc this is pending a future token decision; no build change implied.
+        <strong>Visited is not visually distinct from Default.</strong> Both resolve to <span class="mono">#07729c</span> (the <code>link/visited</code> token maps to <code>text.link</code>). Faithfully implemented - but a user can't tell visited from unvisited by color. Per the frame doc this is pending a future token decision; no build change implied.
       </div>
 
       <h2>Findings log</h2>
@@ -761,7 +761,7 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-LN-STATE</td><td>States · variants · props</td><td><span class="tag pass">PASS</span></td><td>5 states, inline persistent-underline, leading/trailing icon, custom label.</td></tr>
         <tr><td class="id">QA-LN-FOCUS</td><td>Focus &amp; color independence</td><td><span class="tag pass">PASS</span></td><td>Focus ring #005FCC / 2px; hover/active underline; inline persistent underline (1.4.1).</td></tr>
         <tr><td class="id">QA-LN-A11Y</td><td>Contrast</td><td><span class="tag pass">PASS</span></td><td>Default/hover/visited 5.39:1; active 8.57:1; disabled exempt.</td></tr>
-        <tr><td class="id">QA-LN-01</td><td>Visited color</td><td><span class="tag obs">KNOWN</span></td><td>Visited = default (#07729c) — not visually distinct; pending future token decision.</td></tr>
+        <tr><td class="id">QA-LN-01</td><td>Visited color</td><td><span class="tag obs">KNOWN</span></td><td>Visited = default (#07729c) - not visually distinct; pending future token decision.</td></tr>
       </table>
     `
   },
@@ -778,7 +778,7 @@ window.VQA_REPORTS = [
 Storybook: http://34.74.189.135:30100/?path=/docs/forms-select
 Figma (source of truth): UI-Kit__Web node 11689:1126
 
-Follow-up QA-SL-REC — state coverage
+Follow-up QA-SL-REC - state coverage
 Context: the trigger Hover and Focus states are verified by token only. In the states matrix they render at rest as Default, so they can't be visually QA'd like the other components' pinned states.
 Task: add pinned Storybook stories/args that display the trigger in Hover and in Focus.
 
@@ -787,7 +787,7 @@ Acceptance criteria:
 - A story renders the Focus trigger with border #66afe9 plus the focus glow.
 - Values match Figma node 11689:1126.
 
-Storybook coverage only — no production component change required. Approach is the team's call.`
+Storybook coverage only - no production component change required. Approach is the team's call.`
     }],
     html: `
       <h1 class="rt">Select</h1>
@@ -795,7 +795,7 @@ Storybook coverage only — no production component change required. Approach is
       <p>A dropdown for choosing one option from a list, built on the shared form-field tokens (same field box and states as Text Field). Label Static or Floating with a Show-label toggle, two sizes, and states Default, Hover, Focus, Open, Selected, Error, Disabled.</p>
 
       <div class="callout info"><strong>Reporting note.</strong> The build documents Select by feature stories, not as Figma's pinned state matrix. Token values all match Figma, so states are graded <strong>token-verified = Pass</strong>; the mapping table (§4) shows which states are visually pinned vs. interactive-only. Facsimiles below render the token-intended appearance.</p></div>
-      <div class="callout"><strong>Where the dropdown lives.</strong> The open list surface and its rows are shared components documented on their own — see <strong>Menus &amp; Lists → Dropdown</strong> (the surface) and <strong>List Items</strong> (the rows). This report covers the Select trigger plus a summary of its open panel (§3); the full surface/row token detail is not duplicated here.</p></div>
+      <div class="callout"><strong>Where the dropdown lives.</strong> The open list surface and its rows are shared components documented on their own - see <strong>Menus &amp; Lists → Dropdown</strong> (the surface) and <strong>List Items</strong> (the rows). This report covers the Select trigger plus a summary of its open panel (§3); the full surface/row token detail is not duplicated here.</p></div>
 
       <h2>Verdict</h2>
       <div class="verdict">
@@ -804,7 +804,7 @@ Storybook coverage only — no production component change required. Approach is
         <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · notes</div><p class="sub">2 known system-wide border items (default, focus); error not color-only</p></div>
       </div>
 
-      <h2>1. Token fidelity — color per state</h2>
+      <h2>1. Token fidelity - color per state</h2>
       <table>
         <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
         <tr><td>Default</td><td>bg / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#ffffff / #c4c4c4</td><td class="m y">✓</td></tr>
@@ -823,9 +823,9 @@ Storybook coverage only — no production component change required. Approach is
         <tr><td>Padding-x (Large / Small)</td><td class="mono">16px / 12px</td><td class="mono">token-driven</td><td class="m y">✓</td></tr>
         <tr><td>Border width</td><td class="mono">1px</td><td class="mono">1px</td><td class="m y">✓</td></tr>
       </table>
-      <p style="font-size:12px;color:var(--sh-mid-gray)">* Small height token wasn't surfaced in this pass; build renders 40px — spot-check against the Figma small height token.</p>
+      <p style="font-size:12px;color:var(--sh-mid-gray)">* Small height token wasn't surfaced in this pass; build renders 40px - spot-check against the Figma small height token.</p>
 
-      <h2>2. Side-by-side — states (token-intended)</h2>
+      <h2>2. Side-by-side - states (token-intended)</h2>
       <p>Facsimiles rendered from the matching token values. Hover/Focus/Open are marked interactive-only (see §3): the build applies them on real interaction, not as pinned static demos.</p>
       <div class="swatchgrid" style="grid-template-columns:160px 1fr 1fr;">
         <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
@@ -876,7 +876,7 @@ Storybook coverage only — no production component change required. Approach is
         <tr><td>Label Style = Static / Floating</td><td><code>default</code> / <code>floating</code> stories</td><td class="m y">✓</td></tr>
         <tr><td>Size = Large / Small</td><td><code>small</code> story · matrix md/sm</td><td class="m y">✓</td></tr>
         <tr><td>Show-label = off</td><td><code>no-label</code> story</td><td class="m y">✓</td></tr>
-        <tr><td><em>(no Figma variant)</em></td><td>build-only stories: <code>required</code>, <code>flag-rows</code>, <code>item-type-radio</code></td><td>—</td></tr>
+        <tr><td><em>(no Figma variant)</em></td><td>build-only stories: <code>required</code>, <code>flag-rows</code>, <code>item-type-radio</code></td><td>-</td></tr>
       </table>
 
       <h2>5. Accessibility</h2>
@@ -892,14 +892,14 @@ Storybook coverage only — no production component change required. Approach is
       <h3>Border vs background (non-text, 3:1)</h3>
       <table>
         <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
-        <tr><td>Default</td><td>1.74:1</td><td class="m n">Below 3:1 — flagged</td></tr>
+        <tr><td>Default</td><td>1.74:1</td><td class="m n">Below 3:1 - flagged</td></tr>
         <tr><td>Hover</td><td>5.39:1</td><td class="m y">Pass</td></tr>
         <tr><td>Focus / Open</td><td>2.37:1</td><td class="m n">Below 3:1 (glow reinforces)</td></tr>
         <tr><td>Error</td><td>7.38:1</td><td class="m y">Pass</td></tr>
       </table>
       <div class="callout warn">
         <p><span class="tag fail">QA-SL-A11Y-01 · KNOWN / SYSTEM-WIDE</span></p>
-        <strong>Default and focus borders fall below the 3:1 non-text minimum.</strong> Default <span class="mono">#c4c4c4</span> is 1.74:1 (the shared form-control token, see QA-CB-A11Y-01) and focus <span class="mono">#66afe9</span> is 2.37:1 (the glow reinforces it). Per the frame doc these are system-level resting/focus-border choices pending team review — fix across all form fields together.
+        <strong>Default and focus borders fall below the 3:1 non-text minimum.</strong> Default <span class="mono">#c4c4c4</span> is 1.74:1 (the shared form-control token, see QA-CB-A11Y-01) and focus <span class="mono">#66afe9</span> is 2.37:1 (the glow reinforces it). Per the frame doc these are system-level resting/focus-border choices pending team review - fix across all form fields together.
       </div>
 
       <h2>Findings log</h2>
@@ -908,7 +908,7 @@ Storybook coverage only — no production component change required. Approach is
         <tr><td class="id">QA-SL-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All form-field state tokens (default/hover/focus/filled/error/disabled/placeholder) match Figma.</td></tr>
         <tr><td class="id">QA-SL-STATE</td><td>State coverage</td><td><span class="tag obs">PASS · NOTE</span></td><td>Trigger Default/Error/Disabled + full open panel pinned; only trigger Hover/Focus render at rest.</td></tr>
         <tr><td class="id">QA-SL-MAP</td><td>Figma↔build mapping</td><td><span class="tag obs">INFO</span></td><td>Build uses feature stories, not Figma's state matrix; mapping documented in §3. Build-only: required, flag-rows, item-type-radio.</td></tr>
-        <tr><td class="id">QA-SL-A11Y-01</td><td>Contrast (borders)</td><td><span class="tag fail">KNOWN</span></td><td>Default 1.74:1 &amp; focus 2.37:1 below 3:1 — system-wide, pending review (shared with checkbox/radio/text field).</td></tr>
+        <tr><td class="id">QA-SL-A11Y-01</td><td>Contrast (borders)</td><td><span class="tag fail">KNOWN</span></td><td>Default 1.74:1 &amp; focus 2.37:1 below 3:1 - system-wide, pending review (shared with checkbox/radio/text field).</td></tr>
         <tr><td class="id">QA-SL-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Add pinned trigger Hover/Focus (with glow) demos; the open panel is already pinned via item-type-radio.</td></tr>
       </table>
     `
@@ -926,7 +926,7 @@ Storybook coverage only — no production component change required. Approach is
 Storybook: http://34.74.189.135:30100/?path=/docs/forms-combobox
 Figma (source of truth): UI-Kit__Web node 12215:22625
 
-Follow-up QA-CX-REC — state coverage
+Follow-up QA-CX-REC - state coverage
 Context: the trigger Hover and Focus states are verified by token only; they render at rest as Default in the trigger matrix.
 Task: add pinned Storybook stories/args that display the trigger in Hover and in Focus.
 
@@ -935,15 +935,15 @@ Acceptance criteria:
 - A story renders the Focus trigger with border #66afe9 plus the focus glow.
 - Values match Figma node 12215:22625.
 
-Storybook coverage only — no production change required. Approach is the team's call.`
+Storybook coverage only - no production change required. Approach is the team's call.`
     }],
     html: `
       <h1 class="rt">Combobox</h1>
       <p class="rmeta">Figma component 12215:22625 · Frame doc 16020:8230 · Storybook /docs/forms-combobox · Captured 2026-07-27</p>
-      <p>An editable/filterable select supporting single and multi-selection — same form-field family as Select/Text Field. Static/Floating label + Show-label toggle, two sizes, and states Default, Hover, Focus, Open, Selected, Multi-selected, Multi-selected disabled, Error, Disabled. A count badge shows the number of selections in multi-select.</p>
+      <p>An editable/filterable select supporting single and multi-selection - same form-field family as Select/Text Field. Static/Floating label + Show-label toggle, two sizes, and states Default, Hover, Focus, Open, Selected, Multi-selected, Multi-selected disabled, Error, Disabled. A count badge shows the number of selections in multi-select.</p>
 
       <div class="callout info"><strong>Reporting note.</strong> Same approach as Select: tokens all match, so states are graded <strong>token-verified = Pass</strong>; the mapping table (§4) shows pinned vs. interactive-only. Facsimiles render the token-intended appearance.</p></div>
-      <div class="callout"><strong>Where the dropdown lives.</strong> The open list surface and its rows are shared components documented on their own — see <strong>Menus &amp; Lists → Dropdown</strong> (the surface) and <strong>List Items</strong> (the rows). This report covers the Combobox trigger plus a summary of its open panel (§3); the full surface/row token detail is not duplicated here.</p></div>
+      <div class="callout"><strong>Where the dropdown lives.</strong> The open list surface and its rows are shared components documented on their own - see <strong>Menus &amp; Lists → Dropdown</strong> (the surface) and <strong>List Items</strong> (the rows). This report covers the Combobox trigger plus a summary of its open panel (§3); the full surface/row token detail is not duplicated here.</p></div>
 
       <h2>Verdict</h2>
       <div class="verdict">
@@ -952,7 +952,7 @@ Storybook coverage only — no production change required. Approach is the team'
         <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · notes</div><p class="sub">Same system-wide default/focus border items as Select</p></div>
       </div>
 
-      <h2>1. Token fidelity — color per state</h2>
+      <h2>1. Token fidelity - color per state</h2>
       <table>
         <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
         <tr><td>Default</td><td>bg / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#ffffff / #c4c4c4</td><td class="m y">✓</td></tr>
@@ -971,7 +971,7 @@ Storybook coverage only — no production change required. Approach is the team'
         <tr><td>Border width</td><td class="mono">1px</td><td class="mono">1px</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Side-by-side — states (token-intended)</h2>
+      <h2>2. Side-by-side - states (token-intended)</h2>
       <p>Facsimiles from the matching token values. Hover/Focus are interactive-only (see §3).</p>
       <div class="swatchgrid" style="grid-template-columns:170px 1fr 1fr;">
         <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
@@ -1022,7 +1022,7 @@ Storybook coverage only — no production change required. Approach is the team'
         <tr><td>State = Multi-selected disabled</td><td><code>multi-select</code> + disabled (interactive combo)</td><td class="m n">interactive-only</td></tr>
         <tr><td>State = Error / Disabled</td><td><code>trigger-matrix</code> error / disabled rows</td><td class="m y">✓ pinned</td></tr>
         <tr><td>Label Static / Floating · Size L/S</td><td><code>playground</code> · <code>trigger-matrix</code></td><td class="m y">✓</td></tr>
-        <tr><td><em>(no Figma variant)</em></td><td>build-only: <code>flag-rows</code>, <code>item-type-rows</code></td><td>—</td></tr>
+        <tr><td><em>(no Figma variant)</em></td><td>build-only: <code>flag-rows</code>, <code>item-type-rows</code></td><td>-</td></tr>
       </table>
 
       <h2>5. Accessibility</h2>
@@ -1039,14 +1039,14 @@ Storybook coverage only — no production change required. Approach is the team'
       <h3>Border vs background (non-text, 3:1)</h3>
       <table>
         <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
-        <tr><td>Default</td><td>1.74:1</td><td class="m n">Below 3:1 — flagged</td></tr>
+        <tr><td>Default</td><td>1.74:1</td><td class="m n">Below 3:1 - flagged</td></tr>
         <tr><td>Hover</td><td>5.39:1</td><td class="m y">Pass</td></tr>
         <tr><td>Focus / Open</td><td>2.37:1</td><td class="m n">Below 3:1 (glow reinforces)</td></tr>
         <tr><td>Error</td><td>7.38:1</td><td class="m y">Pass</td></tr>
       </table>
       <div class="callout warn">
         <p><span class="tag fail">QA-CX-A11Y-01 · KNOWN / SYSTEM-WIDE</span></p>
-        <strong>Same default/focus border flags as Select.</strong> Default <span class="mono">#c4c4c4</span> (1.74:1) and focus <span class="mono">#66afe9</span> (2.37:1) fall below the 3:1 non-text minimum — the shared form-control tokens flagged on Checkbox, Radio, and Select. System-level resting/focus-border choices pending team review; fix across all form fields together.
+        <strong>Same default/focus border flags as Select.</strong> Default <span class="mono">#c4c4c4</span> (1.74:1) and focus <span class="mono">#66afe9</span> (2.37:1) fall below the 3:1 non-text minimum - the shared form-control tokens flagged on Checkbox, Radio, and Select. System-level resting/focus-border choices pending team review; fix across all form fields together.
       </div>
 
       <h2>Findings log</h2>
@@ -1055,7 +1055,7 @@ Storybook coverage only — no production change required. Approach is the team'
         <tr><td class="id">QA-CX-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Shared form-field state tokens match Figma; count badge white-on-blue per doc.</td></tr>
         <tr><td class="id">QA-CX-STATE</td><td>State coverage</td><td><span class="tag obs">PASS · NOTE</span></td><td>Trigger states + full open panel (search, APPLY control, radio/checkbox rows) pinned; only Hover/Focus &amp; Multi-selected-disabled interactive-only.</td></tr>
         <tr><td class="id">QA-CX-MAP</td><td>Figma↔build mapping</td><td><span class="tag obs">INFO</span></td><td>Feature stories, not Figma's state matrix (§3). Build-only: flag-rows, item-type-rows.</td></tr>
-        <tr><td class="id">QA-CX-A11Y-01</td><td>Contrast (borders)</td><td><span class="tag fail">KNOWN</span></td><td>Default 1.74:1 &amp; focus 2.37:1 below 3:1 — shared system-wide (see QA-SL-A11Y-01 / QA-CB-A11Y-01).</td></tr>
+        <tr><td class="id">QA-CX-A11Y-01</td><td>Contrast (borders)</td><td><span class="tag fail">KNOWN</span></td><td>Default 1.74:1 &amp; focus 2.37:1 below 3:1 - shared system-wide (see QA-SL-A11Y-01 / QA-CB-A11Y-01).</td></tr>
         <tr><td class="id">QA-CX-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Pin Hover/Focus (with glow) demos so every state is visually QA-able.</td></tr>
       </table>
     `
@@ -1069,9 +1069,9 @@ Storybook coverage only — no production change required. Approach is the team'
     html: `
       <h1 class="rt">Dropdown</h1>
       <p class="rmeta">Figma component 16267:306664 · Frame doc 16295:10147 (Menus &amp; Lists page) · Storybook: split across Overlays/Menu + Combobox open · Captured 2026-07-27</p>
-      <p>A trigger-agnostic list surface — built from List Items in a scrollable container — opened by a Select, a Combobox, or an overflow/three-dot button. Two semantics share the surface: <strong>Listbox</strong> (selecting options) and <strong>Menu</strong> (choosing an action). Layouts: Compact and Full-screen (mobile). Anatomy: optional Search slot · List Slot (List Items) · optional Controls slot.</p>
+      <p>A trigger-agnostic list surface - built from List Items in a scrollable container - opened by a Select, a Combobox, or an overflow/three-dot button. Two semantics share the surface: <strong>Listbox</strong> (selecting options) and <strong>Menu</strong> (choosing an action). Layouts: Compact and Full-screen (mobile). Anatomy: optional Search slot · List Slot (List Items) · optional Controls slot.</p>
 
-      <div class="callout info"><strong>Organization note.</strong> Figma keeps Dropdown + List Items together on the "Menus &amp; Lists" page; the build doesn't have a standalone Dropdown component — it's split into <code>Overlays/Menu</code> (menu semantic) and the Combobox/Select <em>open</em> panels (listbox semantic). This report keeps the Figma grouping; §3 maps it to the build.</p></div>
+      <div class="callout info"><strong>Organization note.</strong> Figma keeps Dropdown + List Items together on the "Menus &amp; Lists" page; the build doesn't have a standalone Dropdown component - it's split into <code>Overlays/Menu</code> (menu semantic) and the Combobox/Select <em>open</em> panels (listbox semantic). This report keeps the Figma grouping; §3 maps it to the build.</p></div>
 
       <h2>Verdict</h2>
       <div class="verdict">
@@ -1084,13 +1084,13 @@ Storybook coverage only — no production change required. Approach is the team'
       <table>
         <tr><th>Property</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
         <tr><td>Surface bg</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> (bg/elevated)</td><td class="mono">#ffffff</td><td class="m y">✓</td></tr>
-        <tr><td>Elevation</td><td class="mono">+4y — 0/4/8 rgba(0,0,0,.1) + 0/0/1 rgba(0,0,0,.2)</td><td class="mono">0 4px 8px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.2)</td><td class="m y">✓</td></tr>
+        <tr><td>Elevation</td><td class="mono">+4y - 0/4/8 rgba(0,0,0,.1) + 0/0/1 rgba(0,0,0,.2)</td><td class="mono">0 4px 8px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.2)</td><td class="m y">✓</td></tr>
         <tr><td>Border / divider</td><td><span class="chip" style="background:#dcdcdc"></span><span class="mono">#dcdcdc</span></td><td class="mono">1px #dcdcdc</td><td class="m y">✓</td></tr>
         <tr><td>Corner radius</td><td class="mono">0px</td><td class="mono">0px</td><td class="m y">✓</td></tr>
       </table>
 
       <h2>2. Rendered surface (menu semantic)</h2>
-      <p>From the "With icons and shortcuts" menu — elevated white surface, +4y shadow, rows built from List Items.</p>
+      <p>From the "With icons and shortcuts" menu - elevated white surface, +4y shadow, rows built from List Items.</p>
       <div style="display:inline-block;background:#ffffff;border:1px solid #dcdcdc;box-shadow:0 4px 8px rgba(0,0,0,0.1),0 0 1px rgba(0,0,0,0.2);width:200px;font-size:14px;color:#343434">
         <div style="display:flex;justify-content:space-between;align-items:center;height:42px;padding:0 12px">Edit<span style="color:#757575;font-size:12px">⌘E</span></div>
         <div style="display:flex;justify-content:space-between;align-items:center;height:42px;padding:0 12px;background:#eff5fd">Mark done<span style="color:#757575;font-size:12px">⌘D</span></div>
@@ -1106,7 +1106,7 @@ Storybook coverage only — no production change required. Approach is the team'
         <tr><td>Layout = Compact</td><td>Menu + Combobox open panels</td><td class="m y">✓ pinned</td></tr>
         <tr><td>Layout = Full-screen</td><td>mobile viewport (not a desktop story)</td><td class="m n">not pinned</td></tr>
         <tr><td>Search slot / Controls slot</td><td>Combobox <code>open-searchable</code> (search); Controls via secondary buttons</td><td class="m y">✓</td></tr>
-        <tr><td><em>Standalone "Dropdown" component</em></td><td>none — composed inside Menu / Combobox / Select</td><td>—</td></tr>
+        <tr><td><em>Standalone "Dropdown" component</em></td><td>none - composed inside Menu / Combobox / Select</td><td>-</td></tr>
       </table>
 
       <h2>4. Accessibility &amp; behavior</h2>
@@ -1133,16 +1133,16 @@ Storybook coverage only — no production change required. Approach is the team'
       <p class="rmeta">Figma component 9180:1464 · Frame doc 16295:10147 (Menus &amp; Lists page) · Storybook: rendered as menu/option rows · Captured 2026-07-27</p>
       <p>The row inside a Dropdown surface: Leading slot (control) · Label · Trailing slot (badge/accessory). States Default, Hover, Selected, Disabled; sizes Large and Small; editable label. Used for both listbox options and menu actions.</p>
 
-      <div class="callout info"><strong>Organization note.</strong> No standalone List Item component in the build — rows render as <code>role="menuitem"</code> (Overlays/Menu) and <code>role="option"</code> (Combobox/Select). Report kept under Figma's Menus &amp; Lists grouping.</p></div>
+      <div class="callout info"><strong>Organization note.</strong> No standalone List Item component in the build - rows render as <code>role="menuitem"</code> (Overlays/Menu) and <code>role="option"</code> (Combobox/Select). Report kept under Figma's Menus &amp; Lists grouping.</p></div>
 
       <h2>Verdict</h2>
       <div class="verdict">
         <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Default/Hover/Selected/Disabled bg + text match Figma</p></div>
         <div class="v pass"><p class="k">STATES · SIZES</p><div class="val">Pass</div><p class="sub">4 states; Large 42 confirmed, Small 38 (per Figma)</p></div>
-        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · note</div><p class="sub">Hover = Selected bg — selection must use a control/check</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · note</div><p class="sub">Hover = Selected bg - selection must use a control/check</p></div>
       </div>
 
-      <h2>1. Token fidelity — color per state</h2>
+      <h2>1. Token fidelity - color per state</h2>
       <table>
         <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
         <tr><td>Default</td><td>row bg / text</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#343434"></span><span class="mono">#343434</span></td><td class="mono">#ffffff / #343434</td><td class="m y">✓</td></tr>
@@ -1156,9 +1156,9 @@ Storybook coverage only — no production change required. Approach is the team'
         <tr><td>Row height (Large / Small)</td><td class="mono">42px / 38px</td><td class="mono">42px (menu) / 38 per Figma</td><td class="m y">✓*</td></tr>
         <tr><td>Label font</td><td class="mono">Maison Neue Book</td><td class="mono">Maison Neue</td><td class="m y">✓</td></tr>
       </table>
-      <p style="font-size:12px;color:var(--sh-mid-gray)">* Large row height 42 confirmed in the menu; Small 38 taken from Figma (build small-size menu story exists) — spot-check.</p>
+      <p style="font-size:12px;color:var(--sh-mid-gray)">* Large row height 42 confirmed in the menu; Small 38 taken from Figma (build small-size menu story exists) - spot-check.</p>
 
-      <h2>2. Side-by-side — states (Large)</h2>
+      <h2>2. Side-by-side - states (Large)</h2>
       <p>Row facsimiles from the matching token values. Selected shows a trailing check to convey selection (see the a11y note).</p>
       <div class="swatchgrid" style="grid-template-columns:130px 1fr 1fr;">
         <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
@@ -1180,7 +1180,7 @@ Storybook coverage only — no production change required. Approach is the team'
       <p>Contrast (frame doc): label <span class="mono">#343434</span> on white 12.45:1 (AAA); label on hover/selected <span class="mono">#eff5fd</span> 11.35:1 (AAA); focus ring <span class="mono">#005fcc</span> 5.98:1; disabled label 1.64:1 (exempt).</p>
       <div class="callout warn">
         <p><span class="tag fail">QA-LI-01 · DESIGN NOTE (correctly implemented)</span></p>
-        <strong>Hover and Selected share the same background (<span class="mono">#eff5fd</span>).</strong> So selection must be conveyed by the option's control (checkbox/radio checked state) or a checkmark — <em>not</em> by background alone. A plain "selected" row with no control would be indistinguishable from hover. The build follows this (selection carries a control/check); flagged so it stays true as new list content is added.</p>
+        <strong>Hover and Selected share the same background (<span class="mono">#eff5fd</span>).</strong> So selection must be conveyed by the option's control (checkbox/radio checked state) or a checkmark - <em>not</em> by background alone. A plain "selected" row with no control would be indistinguishable from hover. The build follows this (selection carries a control/check); flagged so it stays true as new list content is added.</p>
       </div>
 
       <h2>Findings log</h2>
@@ -1231,7 +1231,7 @@ Storybook coverage only — no production change required. Approach is the team'
       </table>
 
       <h2>2. Rendered (Default, L)</h2>
-      <p>The dialog on its <code>color.bg.overlay</code> scrim — from the "Default Large" story ("Reset Password").</p>
+      <p>The dialog on its <code>color.bg.overlay</code> scrim - from the "Default Large" story ("Reset Password").</p>
       <div style="background:rgba(0,0,0,0.4);padding:28px;display:flex;justify-content:center">
         <div style="width:340px;background:#ffffff;border:1px solid #c4c4c4">
           <div style="display:flex;justify-content:space-between;align-items:center;background:#f8f5f3;border-bottom:1px solid #dcdcdc;padding:14px 18px"><span style="font-size:18px;font-weight:700;color:#343434">Reset Password</span><span style="color:#343434">✕</span></div>
@@ -1256,17 +1256,17 @@ Storybook coverage only — no production change required. Approach is the team'
         <tr><td>Outer border #C4C4C4</td><td>1.74:1</td><td class="m y">Acceptable (see note)</td></tr>
       </table>
       <div class="callout info">
-        <p style="margin:0"><span class="tag obs">QA-MD-01 · BY DESIGN</span> The <strong>dimmed overlay (<span class="mono">color.bg.overlay</span>) is the primary separation</strong> between dialog and page — not the 1px border. So the outer border's below-3:1 contrast (1.74:1) is acceptable here, because the scrim carries the separation. This is the opposite call from the form-field border item, and it's the right one for the dialog pattern.</p>
+        <p style="margin:0"><span class="tag obs">QA-MD-01 · BY DESIGN</span> The <strong>dimmed overlay (<span class="mono">color.bg.overlay</span>) is the primary separation</strong> between dialog and page - not the 1px border. So the outer border's below-3:1 contrast (1.74:1) is acceptable here, because the scrim carries the separation. This is the opposite call from the form-field border item, and it's the right one for the dialog pattern.</p>
       </div>
 
       <h2>Findings log</h2>
       <table>
         <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
         <tr><td class="id">QA-MD-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Overlay #00000066, surface #ffffff/#c4c4c4, header #f8f5f3/#dcdcdc, 24px title all match; spacing per tokens.</td></tr>
-        <tr><td class="id">QA-MD-OVL</td><td>Overlay token</td><td><span class="tag pass">PASS</span></td><td>Backdrop applies color/bg/overlay (rgba(0,0,0,0.4)) — verified on the dialog's scrim element.</td></tr>
+        <tr><td class="id">QA-MD-OVL</td><td>Overlay token</td><td><span class="tag pass">PASS</span></td><td>Backdrop applies color/bg/overlay (rgba(0,0,0,0.4)) - verified on the dialog's scrim element.</td></tr>
         <tr><td class="id">QA-MD-STATE</td><td>Structure · variants</td><td><span class="tag pass">PASS</span></td><td>Default/Compact × L/S pinned; footer toggle + No-Footer, Mandatory Input, Destructive stories.</td></tr>
         <tr><td class="id">QA-MD-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>role=dialog/aria-modal, focus trap + return, Esc/close; 0 axe violations; contrast AAA.</td></tr>
-        <tr><td class="id">QA-MD-01</td><td>Outer border contrast</td><td><span class="tag obs">BY DESIGN</span></td><td>1.74:1 acceptable — the overlay scrim is the primary separation, per the dialog pattern.</td></tr>
+        <tr><td class="id">QA-MD-01</td><td>Outer border contrast</td><td><span class="tag obs">BY DESIGN</span></td><td>1.74:1 acceptable - the overlay scrim is the primary separation, per the dialog pattern.</td></tr>
       </table>
     `
   },
@@ -1283,7 +1283,7 @@ Storybook coverage only — no production change required. Approach is the team'
 Storybook: http://34.74.189.135:30100/?path=/story/navigation-pagination--mid-range
 Figma (source of truth): UI-Kit__Web node 10633:3912
 
-Finding QA-PG-01 — vertical alignment
+Finding QA-PG-01 - vertical alignment
 Observed: the ellipsis ("…") renders on the text baseline, so it sits lower than the page numbers and arrows, which are centered on the row.
 Expected: the ellipsis is optically centered on the row, aligned with the numbers and arrows (as in Figma).
 
@@ -1294,20 +1294,20 @@ Acceptance criteria:
 
 Reference values (design truth): number #07729c · current #343434 + 2px underline bar · ellipsis #343434 · arrows enabled #07729c / disabled #c4c4c4 · Maison Neue Bold 14px.
 
-Fix approach is the team's call — no code prescribed.`
+Fix approach is the team's call - no code prescribed.`
     }],
     html: `
       <h1 class="rt">Pagination</h1>
       <p class="rmeta">Figma component 10633:3912 · Frame doc 16112:301624 · Storybook /story/navigation-pagination · Captured 2026-07-27</p>
-      <p>Lets users move through content split across pages — shows the current page, nearby pages, and first/last, truncating the middle with an ellipsis. Previous/next arrows step one page and disable at the first/last page. Layouts: Start, Middle, End.</p>
+      <p>Lets users move through content split across pages - shows the current page, nearby pages, and first/last, truncating the middle with an ellipsis. Previous/next arrows step one page and disable at the first/last page. Layouts: Start, Middle, End.</p>
 
       <h2>Verdict</h2>
       <div class="verdict">
         <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Number, current, ellipsis, arrow colors + type match</p></div>
         <div class="v pass"><p class="k">STATES · LAYOUTS</p><div class="val">Pass</div><p class="sub">Start/Middle/End; arrow disable at ends; current underline</p></div>
-        <div class="v fix"><p class="k">ALIGNMENT</p><div class="val">1 fix</div><p class="sub">Ellipsis sits on the baseline — lower than numbers/arrows</p></div>
+        <div class="v fix"><p class="k">ALIGNMENT</p><div class="val">1 fix</div><p class="sub">Ellipsis sits on the baseline - lower than numbers/arrows</p></div>
       </div>
-      <p>Tokens and accessibility are clean. The one issue — the one you spotted — is the <strong>ellipsis vertical alignment</strong>: it renders on the text baseline and sits visibly lower than the numbers and arrows.</p>
+      <p>Tokens and accessibility are clean. The one issue - the one you spotted - is the <strong>ellipsis vertical alignment</strong>: it renders on the text baseline and sits visibly lower than the numbers and arrows.</p>
 
       <h2>1. Token fidelity</h2>
       <table>
@@ -1320,15 +1320,15 @@ Fix approach is the team's call — no code prescribed.`
         <tr><td>Type</td><td class="mono">Maison Neue Bold 14px</td><td class="mono">700 · 14px</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Alignment — Figma vs build (mid-range)</h2>
+      <h2>2. Alignment - Figma vs build (mid-range)</h2>
       <p>Same content, showing the difference in ellipsis vertical position.</p>
       <div class="swatchgrid" style="grid-template-columns:230px 1fr">
         <div class="hd">Source</div><div class="hd">Rendering</div>
-        <div class="stc">Figma — ellipsis centered</div>
+        <div class="stc">Figma - ellipsis centered</div>
         <div class="cell"><span style="display:flex;align-items:center;gap:14px;font-weight:700;font-size:14px">
           <span style="color:#07729c">‹</span><span style="color:#07729c">1</span><span style="color:#343434">…</span><span style="color:#07729c">4</span><span style="color:#343434;border-bottom:2px solid #343434;padding-bottom:1px">5</span><span style="color:#07729c">6</span><span style="color:#343434">…</span><span style="color:#07729c">30</span><span style="color:#07729c">›</span>
         </span></div>
-        <div class="stc">Storybook — ellipsis on baseline</div>
+        <div class="stc">Storybook - ellipsis on baseline</div>
         <div class="cell"><span style="display:flex;align-items:center;gap:14px;font-weight:700;font-size:14px">
           <span style="color:#07729c">‹</span><span style="color:#07729c">1</span><span style="color:#343434;position:relative;top:5px">…</span><span style="color:#07729c">4</span><span style="color:#343434;border-bottom:2px solid #343434;padding-bottom:1px">5</span><span style="color:#07729c">6</span><span style="color:#343434;position:relative;top:5px">…</span><span style="color:#07729c">30</span><span style="color:#07729c">›</span>
         </span></div>
@@ -1338,7 +1338,7 @@ Fix approach is the team's call — no code prescribed.`
       <p>Layout Start / Middle / End (where the current page sits in a truncated range); Left/Right Arrow booleans; page states Default, Hover, Current, Ellipsis; arrow states Default, Hover, Disabled. Verified across Start-of-list (Prev disabled), Mid-range, End-of-list, and Few-pages (no arrows). <span class="m y">✓ Pass</span></p>
 
       <h2>4. Accessibility</h2>
-      <p>Wrapped in a <code>nav</code> landmark labelled "Pagination"; page numbers are links in a list; current is <code>aria-current="page"</code> rendered as text (not a link); arrows have names "Previous page" / "Next page" and disable at the ends. Keyboard tab order + Enter; focus ring <span class="mono">#005fcc</span> / 2px. Current and Hover add an underline bar — a non-color cue (WCAG 1.4.1). Story: <strong>0 violations, 16 passes</strong>.</p>
+      <p>Wrapped in a <code>nav</code> landmark labelled "Pagination"; page numbers are links in a list; current is <code>aria-current="page"</code> rendered as text (not a link); arrows have names "Previous page" / "Next page" and disable at the ends. Keyboard tab order + Enter; focus ring <span class="mono">#005fcc</span> / 2px. Current and Hover add an underline bar - a non-color cue (WCAG 1.4.1). Story: <strong>0 violations, 16 passes</strong>.</p>
       <table>
         <tr><th>Element</th><th>Ratio</th><th>Result</th></tr>
         <tr><td>Number (default / hover)</td><td>5.39:1</td><td class="m y">Pass AA</td></tr>
@@ -1350,21 +1350,21 @@ Fix approach is the team's call — no code prescribed.`
 
       <h2>5. Findings</h2>
       <div class="callout warn">
-        <p><span class="tag fail">QA-PG-01 · ALIGNMENT — FIX</span></p>
-        <strong>The ellipsis is not vertically centered.</strong> It renders on the text baseline, so the three dots sit visibly lower than the numbers and arrows (which are centered on the row). In Figma the ellipsis is centered within the row. Not an a11y issue — a visual polish fix. Recommend centering it (e.g., a midline treatment / flex-center the dots, or shift up to the optical center), then re-verify against Figma.
+        <p><span class="tag fail">QA-PG-01 · ALIGNMENT - FIX</span></p>
+        <strong>The ellipsis is not vertically centered.</strong> It renders on the text baseline, so the three dots sit visibly lower than the numbers and arrows (which are centered on the row). In Figma the ellipsis is centered within the row. Not an a11y issue - a visual polish fix. Recommend centering it (e.g., a midline treatment / flex-center the dots, or shift up to the optical center), then re-verify against Figma.
       </div>
       <figure style="margin:16px 0;border:1px solid var(--sh-border)">
         <img src="assets/pagination-alignment.png" alt="Storybook vs Figma pagination with alignment gridlines; the Storybook ellipsis sits below the row centerline shared by the numbers and arrows" style="display:block;width:100%;height:auto">
-        <figcaption style="font-size:12px;color:var(--sh-mid-gray);padding:8px 12px;background:var(--sh-light-tan-1)"><strong>Evidence (Storybook vs Figma).</strong> With alignment gridlines overlaid, the Storybook ellipsis falls on the baseline — below the centerline the numbers and arrows share; Figma keeps the ellipsis on that centerline.</figcaption>
+        <figcaption style="font-size:12px;color:var(--sh-mid-gray);padding:8px 12px;background:var(--sh-light-tan-1)"><strong>Evidence (Storybook vs Figma).</strong> With alignment gridlines overlaid, the Storybook ellipsis falls on the baseline - below the centerline the numbers and arrows share; Figma keeps the ellipsis on that centerline.</figcaption>
       </figure>
 
       <h2>Findings log</h2>
       <table>
         <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
-        <tr><td class="id">QA-PG-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Number #07729c, current #343434+bar, ellipsis #343434, arrows enabled #07729c / disabled #c4c4c4, 14px bold — all match.</td></tr>
+        <tr><td class="id">QA-PG-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Number #07729c, current #343434+bar, ellipsis #343434, arrows enabled #07729c / disabled #c4c4c4, 14px bold - all match.</td></tr>
         <tr><td class="id">QA-PG-STATE</td><td>States &amp; layouts</td><td><span class="tag pass">PASS</span></td><td>Start/Middle/End, arrow disable at ends, current underline, few-pages (no arrows) all correct.</td></tr>
         <tr><td class="id">QA-PG-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>nav landmark, links list, aria-current text, arrow names, underline non-color cue; 0 axe violations.</td></tr>
-        <tr><td class="id">QA-PG-01</td><td>Vertical alignment</td><td><span class="tag fail">FIX</span></td><td>Ellipsis renders on baseline — sits lower than numbers/arrows; Figma centers it. Visual polish.</td></tr>
+        <tr><td class="id">QA-PG-01</td><td>Vertical alignment</td><td><span class="tag fail">FIX</span></td><td>Ellipsis renders on baseline - sits lower than numbers/arrows; Figma centers it. Visual polish.</td></tr>
       </table>
     `
   },
@@ -1377,7 +1377,7 @@ Fix approach is the team's call — no code prescribed.`
     html: `
       <h1 class="rt">Switch</h1>
       <p class="rmeta">Figma component 10027:3635 · Frame doc 15928:297865 · Storybook /docs/forms-switch · Captured 2026-07-27</p>
-      <p>A binary on/off toggle. The thumb slides left (off) / right (on) and the track color reinforces state — blue when on, gray when off. States: off and on (each with a hover) plus disabled off and on. No size variant.</p>
+      <p>A binary on/off toggle. The thumb slides left (off) / right (on) and the track color reinforces state - blue when on, gray when off. States: off and on (each with a hover) plus disabled off and on. No size variant.</p>
 
       <h2>Verdict</h2>
       <div class="verdict">
@@ -1401,7 +1401,7 @@ Fix approach is the team's call — no code prescribed.`
         <tr><td>Padding</td><td class="mono">3px</td><td class="mono">3px</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Side-by-side — states</h2>
+      <h2>2. Side-by-side - states</h2>
       <p>Rendered from the matching token values; thumb position carries the state.</p>
       <div class="swatchgrid" style="grid-template-columns:150px 1fr 1fr">
         <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
@@ -1432,16 +1432,16 @@ Fix approach is the team's call — no code prescribed.`
         <tr><td>Thumb vs Disabled track</td><td>1.28:1</td><td>Exempt (disabled)</td></tr>
       </table>
       <div class="callout info">
-        <p style="margin:0"><span class="tag obs">QA-SW-01 · BY DESIGN</span> Thumb-vs-off-track contrast is 1.74:1 (below 3:1), but a switch's on/off meaning is carried by <strong>thumb position</strong>, not thumb-vs-track contrast — so it doesn't impair usability. The state-distinguishing pair (on track vs off track) is 3.09:1, above the 3:1 non-text threshold. Acceptable, same reasoning as the Modal border/overlay call.</p>
+        <p style="margin:0"><span class="tag obs">QA-SW-01 · BY DESIGN</span> Thumb-vs-off-track contrast is 1.74:1 (below 3:1), but a switch's on/off meaning is carried by <strong>thumb position</strong>, not thumb-vs-track contrast - so it doesn't impair usability. The state-distinguishing pair (on track vs off track) is 3.09:1, above the 3:1 non-text threshold. Acceptable, same reasoning as the Modal border/overlay call.</p>
       </div>
 
       <h2>Findings log</h2>
       <table>
         <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
-        <tr><td class="id">QA-SW-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>On #07729c / off #c4c4c4 / disabled #e3e3e3 tracks, white thumb, track 38 / thumb 15 / pad 3 — all match.</td></tr>
+        <tr><td class="id">QA-SW-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>On #07729c / off #c4c4c4 / disabled #e3e3e3 tracks, white thumb, track 38 / thumb 15 / pad 3 - all match.</td></tr>
         <tr><td class="id">QA-SW-STATE</td><td>States</td><td><span class="tag pass">PASS</span></td><td>On/Off (+hover) and Disabled on/off; state carried by thumb position.</td></tr>
         <tr><td class="id">QA-SW-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Position conveys state (1.4.1); focus ring #005FCC; on-vs-off track 3.09:1.</td></tr>
-        <tr><td class="id">QA-SW-01</td><td>Thumb/off-track contrast</td><td><span class="tag obs">BY DESIGN</span></td><td>1.74:1 acceptable — state carried by thumb position, not contrast.</td></tr>
+        <tr><td class="id">QA-SW-01</td><td>Thumb/off-track contrast</td><td><span class="tag obs">BY DESIGN</span></td><td>1.74:1 acceptable - state carried by thumb position, not contrast.</td></tr>
       </table>
     `
   },
@@ -1472,7 +1472,7 @@ Fix approach is the team's call — no code prescribed.`
         <tr><td>Segment height / gap / padding</td><td>size</td><td class="mono">38px · gap 4 · pad 4</td><td class="mono">38px</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Side-by-side — states</h2>
+      <h2>2. Side-by-side - states</h2>
       <p>Rendered from the matching token values; selected segment is filled and bold.</p>
       <div class="swatchgrid" style="grid-template-columns:150px 1fr 1fr">
         <div class="hd">Active</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
@@ -1487,7 +1487,7 @@ Fix approach is the team's call — no code prescribed.`
       <h2>3. States &amp; props</h2>
       <p>Container State = list / grid (which segment is active); each segment has Default, Selected, Hover, Disabled. Selected renders filled + bold. <span class="m y">✓ Pass</span></p>
       <div class="callout info">
-        <p style="margin:0"><span class="tag obs">QA-TG-01 · PENDING (design-side)</span> Per the frame doc, the segment <strong>Hover</strong> currently uses a placeholder token identical to Default — a real hover treatment is pending. The build matches the current (placeholder) token, so this is a design decision to finalize, not a build defect. Re-QA hover once the token lands.</p>
+        <p style="margin:0"><span class="tag obs">QA-TG-01 · PENDING (design-side)</span> Per the frame doc, the segment <strong>Hover</strong> currently uses a placeholder token identical to Default - a real hover treatment is pending. The build matches the current (placeholder) token, so this is a design decision to finalize, not a build defect. Re-QA hover once the token lands.</p>
       </div>
 
       <h2>4. Accessibility</h2>
@@ -1502,7 +1502,7 @@ Fix approach is the team's call — no code prescribed.`
       <h2>Findings log</h2>
       <table>
         <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
-        <tr><td class="id">QA-TG-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Default #343434/white, selected white/#07729c (bold), container #c4c4c4 border, 38px segments — all match.</td></tr>
+        <tr><td class="id">QA-TG-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Default #343434/white, selected white/#07729c (bold), container #c4c4c4 border, 38px segments - all match.</td></tr>
         <tr><td class="id">QA-TG-STATE</td><td>States</td><td><span class="tag pass">PASS</span></td><td>List/Grid active; default vs selected (filled + bold) correct.</td></tr>
         <tr><td class="id">QA-TG-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Selected = fill + bold (not color alone); arrow-key nav; focus ring #005FCC.</td></tr>
         <tr><td class="id">QA-TG-01</td><td>Hover token</td><td><span class="tag obs">PENDING</span></td><td>Hover is a placeholder (= default) pending a real hover treatment; design-side, re-QA when it lands.</td></tr>
@@ -1533,12 +1533,12 @@ Fix approach is the team's call — no code prescribed.`
         <tr><td>Label (all states)</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> · 14px bold</td><td class="mono">#343434 · 700</td><td class="m y">✓</td></tr>
         <tr><td>Selected indicator</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> · 2px bottom</td><td class="mono">inset 0 -2px 0 #07729c</td><td class="m y">✓</td></tr>
         <tr><td>Default baseline track</td><td><span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span> · 1px</td><td class="mono">inset 0 -1px 0 #c4c4c4</td><td class="m y">✓</td></tr>
-        <tr><td>Counter — default</td><td><span class="mono">#343434</span> on <span class="chip" style="background:#eeeeee"></span><span class="mono">#eeeeee</span></td><td class="mono">#343434 on #eeeeee</td><td class="m y">✓</td></tr>
-        <tr><td>Counter — selected</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> on <span class="chip" style="background:#eff5fd"></span><span class="mono">#eff5fd</span></td><td class="mono">#07729c on #eff5fd</td><td class="m y">✓</td></tr>
+        <tr><td>Counter - default</td><td><span class="mono">#343434</span> on <span class="chip" style="background:#eeeeee"></span><span class="mono">#eeeeee</span></td><td class="mono">#343434 on #eeeeee</td><td class="m y">✓</td></tr>
+        <tr><td>Counter - selected</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> on <span class="chip" style="background:#eff5fd"></span><span class="mono">#eff5fd</span></td><td class="mono">#07729c on #eff5fd</td><td class="m y">✓</td></tr>
         <tr><td>Disabled</td><td><span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span> label · #e3e3e3 border · count on #f8f8f8</td><td class="mono">#c4c4c4 · #e3e3e3 · #f8f8f8</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Side-by-side — tab set</h2>
+      <h2>2. Side-by-side - tab set</h2>
       <p>Rendered from the matching token values (Overview selected). Selected = blue underline + selected counter; disabled muted.</p>
       <div class="swatchgrid" style="grid-template-columns:110px 1fr">
         <div class="hd">Source</div><div class="hd">Rendering</div>
@@ -1566,7 +1566,7 @@ Fix approach is the team's call — no code prescribed.`
       <h2>Findings log</h2>
       <table>
         <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
-        <tr><td class="id">QA-TAB-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Label #343434 bold, indicator 2px #07729c, baseline 1px #c4c4c4, counter default/selected/disabled badges — all match.</td></tr>
+        <tr><td class="id">QA-TAB-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Label #343434 bold, indicator 2px #07729c, baseline 1px #c4c4c4, counter default/selected/disabled badges - all match.</td></tr>
         <tr><td class="id">QA-TAB-STATE</td><td>States &amp; props</td><td><span class="tag pass">PASS</span></td><td>Default/Selected/Disabled correct; counter on/off; hover indicator + #f8f8f8 bg (interactive).</td></tr>
         <tr><td class="id">QA-TAB-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>tablist/tab/tabpanel, roving tabindex, arrow nav, disabled skipped; state via indicator + text.</td></tr>
         <tr><td class="id">QA-TAB-01</td><td>Baseline track contrast</td><td><span class="tag obs">BY DESIGN</span></td><td>Decorative divider (1.74:1); state carried by indicator + text, not the track.</td></tr>
