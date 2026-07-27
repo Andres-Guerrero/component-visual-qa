@@ -574,5 +574,104 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-CB-A11Y-01</td><td>Contrast (outline)</td><td><span class="tag obs">KNOWN</span></td><td>Unselected border 1.74:1 (&lt; 3:1); matches inputs/selects — system-wide, pending discussion.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'radio',
+    name: 'Radio',
+    group: 'Forms',
+    status: 'Pass · notes',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Radio</h1>
+      <p class="rmeta">Figma component 11269:5496 · Frame doc 15928:1812 · Storybook /docs/forms-radio · Captured 2026-07-27</p>
+      <p>A selection control for choosing exactly one option from a set. The circular control fills with a center dot when selected. Seven states (Unselected, Unselected Hover, Selected, Selected Hover, Error, Disabled, Disabled Selected), two sizes. Built on the same shared form-control container as Checkbox (24 Large / 20 Small, 1px border); borders align with text fields, selects, and checkboxes.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">All 7 states × 2 sizes — fill, border, size &amp; circle match</p></div>
+        <div class="v pass"><p class="k">STATES · VARIANTS</p><div class="val">Pass</div><p class="sub">7 states, both sizes; circular with center dot</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · note</div><p class="sub">Dot 12.45:1; unselected border is the shared system-wide item</p></div>
+      </div>
+      <p>Faithful token translation — the radio reuses the checkbox's form-control tokens and renders them correctly, just circular. The one accessibility note is the same <em>system-wide</em> unselected-border item shared with the checkbox and inputs.</p>
+
+      <h2>1. Token fidelity — color per state</h2>
+      <table>
+        <tr><th>State</th><th>Property</th><th>Figma variable</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Unselected</td><td>bg / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#ffffff / #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Unselected Hover</td><td>bg / border</td><td><span class="mono">#ffffff</span> / <span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#ffffff / #07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Selected / Selected Hover</td><td>fill / border / dot</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> / <span class="mono">#343434</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span></td><td class="mono">#343434 / #343434 / #ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Error</td><td>bg / border</td><td><span class="chip" style="background:#fde5e5"></span><span class="mono">#fde5e5</span> / <span class="chip" style="background:#b00000"></span><span class="mono">#b00000</span></td><td class="mono">#fde5e5 / #b00000</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td>bg / border</td><td><span class="chip" style="background:#f8f8f8"></span><span class="mono">#f8f8f8</span> / <span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span></td><td class="mono">#f8f8f8 / #e3e3e3</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled Selected</td><td>fill / border / dot</td><td><span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span> / <span class="mono">#e3e3e3</span> / <span class="mono">#ffffff</span></td><td class="mono">#e3e3e3 / #e3e3e3 / #ffffff</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h3>Sizing, border &amp; shape</h3>
+      <table>
+        <tr><th>Property</th><th>Figma</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Size (Large / Small)</td><td class="mono">24px / 20px</td><td class="mono">24px / 20px</td><td class="m y">✓</td></tr>
+        <tr><td>Border width</td><td class="mono">1px</td><td class="mono">1px</td><td class="m y">✓</td></tr>
+        <tr><td>Shape</td><td class="mono">circle</td><td class="mono">border-radius: 50%</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side — states (Large)</h2>
+      <p>Rendered from the actual token values on each side; identical per state.</p>
+      <div class="swatchgrid">
+        <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+        <div class="stc">Unselected</div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#ffffff;border:1px solid #c4c4c4"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#ffffff;border:1px solid #c4c4c4"></span></div>
+        <div class="stc">Unselected Hover</div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#ffffff;border:1px solid #07729c"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#ffffff;border:1px solid #07729c"></span></div>
+        <div class="stc">Selected</div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#343434;border:1px solid #343434;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#ffffff;display:block"></span></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#343434;border:1px solid #343434;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#ffffff;display:block"></span></span></div>
+        <div class="stc">Error</div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#fde5e5;border:1px solid #b00000"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#fde5e5;border:1px solid #b00000"></span></div>
+        <div class="stc">Disabled</div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#f8f8f8;border:1px solid #e3e3e3"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#f8f8f8;border:1px solid #e3e3e3"></span></div>
+        <div class="stc">Disabled Selected</div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#e3e3e3;border:1px solid #e3e3e3;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#ffffff;display:block"></span></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#e3e3e3;border:1px solid #e3e3e3;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#ffffff;display:block"></span></span></div>
+      </div>
+
+      <h2>3. States, variants &amp; props</h2>
+      <p>All 7 states render in both sizes and match Figma, verified in the "State × Size Matrix" story. Circular control with a centered dot for the selected states. A radio group allows exactly one selection. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <h3>Focus, keyboard &amp; non-color cues</h3>
+      <p>Arrow keys move selection within a group; Tab moves between groups; Space/Arrow selects. Focus shows a 2px ring in <span class="mono">--color-focus-ring: #005fcc</span> (applied at runtime, not a component variant). Selection is conveyed by the filled circle + center dot (not color alone); disabled is not focusable and muted beyond color. <span class="m y">✓</span></p>
+
+      <h3>Contrast — dot vs circle fill (selected)</h3>
+      <table>
+        <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Selected / Selected Hover</td><td>12.45:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Disabled Selected</td><td>1.28:1</td><td>Exempt (disabled)</td></tr>
+      </table>
+
+      <h3>Contrast — outline vs background (non-text, 3:1)</h3>
+      <table>
+        <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Unselected</td><td>1.74:1</td><td class="m n">Below 3:1 — flagged</td></tr>
+        <tr><td>Unselected Hover</td><td>5.39:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Error</td><td>7.38:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Disabled</td><td>1.28:1</td><td>Exempt (disabled)</td></tr>
+      </table>
+      <div class="callout warn">
+        <p><span class="tag fail">QA-RD-A11Y-01 · KNOWN / SYSTEM-WIDE</span></p>
+        <strong>Unselected resting border below the 3:1 non-text minimum.</strong> The gray <span class="mono">#c4c4c4</span> outline is 1.74:1 — the <em>same shared token</em> flagged on the Checkbox (QA-CB-A11Y-01) and used by text fields and selects. A system-wide decision pending team discussion; fix all form controls together, not the radio alone.
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-RD-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 7 states × 2 sizes: fill, border, size, and circular shape match Figma.</td></tr>
+        <tr><td class="id">QA-RD-STATE</td><td>States &amp; variants</td><td><span class="tag pass">PASS</span></td><td>7 states, both sizes; center dot on selected states.</td></tr>
+        <tr><td class="id">QA-RD-FOCUS</td><td>Focus &amp; non-color cues</td><td><span class="tag pass">PASS</span></td><td>Focus ring #005FCC / 2px (runtime); arrow-key group nav; disabled muted beyond color.</td></tr>
+        <tr><td class="id">QA-RD-A11Y-01</td><td>Contrast (outline)</td><td><span class="tag obs">KNOWN</span></td><td>Unselected border 1.74:1 (&lt; 3:1) — shared system-wide token (see QA-CB-A11Y-01).</td></tr>
+      </table>
+    `
   }
 ];
