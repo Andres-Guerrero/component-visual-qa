@@ -880,5 +880,121 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-SL-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Add pinned Hover/Focus (with glow)/Open demos so every Figma state is visually QA-able, matching the other components.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'combobox',
+    name: 'Combobox',
+    group: 'Forms',
+    status: 'Pass · notes',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Combobox</h1>
+      <p class="rmeta">Figma component 12215:22625 · Frame doc 16020:8230 · Storybook /docs/forms-combobox · Captured 2026-07-27</p>
+      <p>An editable/filterable select supporting single and multi-selection — same form-field family as Select/Text Field. Static/Floating label + Show-label toggle, two sizes, and states Default, Hover, Focus, Open, Selected, Multi-selected, Multi-selected disabled, Error, Disabled. A count badge shows the number of selections in multi-select.</p>
+
+      <div class="callout info"><strong>Reporting note.</strong> Same approach as Select: tokens all match, so states are graded <strong>token-verified = Pass</strong>; the mapping table (§3) shows pinned vs. interactive-only. Facsimiles render the token-intended appearance.</p></div>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Shared form-field tokens match Figma; count badge per doc</p></div>
+        <div class="v pass"><p class="k">STATE COVERAGE</p><div class="val">Pass · note</div><p class="sub">Default/Open/Selected/Multi/Error/Disabled pinned; Hover/Focus token-only</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · notes</div><p class="sub">Same system-wide default/focus border items as Select</p></div>
+      </div>
+
+      <h2>1. Token fidelity — color per state</h2>
+      <table>
+        <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Default</td><td>bg / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#ffffff / #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Hover</td><td>border</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Focus / Open</td><td>border / glow</td><td><span class="chip" style="background:#66afe9"></span><span class="mono">#66afe9</span> + Glow-Blue</td><td class="mono">#66afe9 (glow interactive-only)</td><td class="m y">✓</td></tr>
+        <tr><td>Selected (filled)</td><td>text / border</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> / <span class="mono">#c4c4c4</span></td><td class="mono">#343434 / #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Multi-selected badge</td><td>bg / text</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> (white on blue)</td><td class="mono">white on blue</td><td class="m y">✓*</td></tr>
+        <tr><td>Error</td><td>bg / border</td><td><span class="chip" style="background:#fde5e5"></span><span class="mono">#fde5e5</span> / <span class="chip" style="background:#b00000"></span><span class="mono">#b00000</span></td><td class="mono">#fde5e5 / #b00000</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td>bg / border / text</td><td><span class="chip" style="background:#f8f8f8"></span><span class="mono">#f8f8f8</span> / <span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#f8f8f8 / #e3e3e3 / #c4c4c4</td><td class="m y">✓</td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--sh-mid-gray)">* Count-badge token name didn't surface this pass; the doc's white-on-blue 5.39:1 corresponds to Primary Blue #07729c — spot-check the exact badge token.</p>
+      <h3>Sizing</h3>
+      <table>
+        <tr><th>Property</th><th>Figma</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Height (Large / Small)</td><td class="mono">50px / ~40px</td><td class="mono">50px / 40px</td><td class="m y">✓</td></tr>
+        <tr><td>Border width</td><td class="mono">1px</td><td class="mono">1px</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side — states (token-intended)</h2>
+      <p>Facsimiles from the matching token values. Hover/Focus are interactive-only (see §3).</p>
+      <div class="swatchgrid" style="grid-template-columns:170px 1fr 1fr;">
+        <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+        <div class="stc">Default</div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #c4c4c4;color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #c4c4c4;color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+        <div class="stc">Hover <span style="font-weight:400;color:#757575">(interactive)</span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #07729c;color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #07729c;color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+        <div class="stc">Focus / Open <span style="font-weight:400;color:#757575">(Open pinned)</span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #66afe9;box-shadow:0 0 0 3px rgba(102,175,233,0.35);color:#757575;font-size:13px">Type to filter…<span style="color:#343434">▾</span></span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #66afe9;box-shadow:0 0 0 3px rgba(102,175,233,0.35);color:#757575;font-size:13px">Type to filter…<span style="color:#343434">▾</span></span></div>
+        <div class="stc">Selected</div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #c4c4c4;color:#343434;font-size:13px">Apple<span style="color:#343434">▾</span></span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #c4c4c4;color:#343434;font-size:13px">Apple<span style="color:#343434">▾</span></span></div>
+        <div class="stc">Multi-selected</div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #c4c4c4;color:#343434;font-size:13px"><span>Apple<span style="background:#07729c;color:#fff;font-size:11px;font-weight:700;padding:1px 7px;margin-left:6px">2</span></span><span style="color:#343434">▾</span></span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#ffffff;border:1px solid #c4c4c4;color:#343434;font-size:13px"><span>Apple<span style="background:#07729c;color:#fff;font-size:11px;font-weight:700;padding:1px 7px;margin-left:6px">2</span></span><span style="color:#343434">▾</span></span></div>
+        <div class="stc">Error</div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#fde5e5;border:1px solid #b00000;color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#fde5e5;border:1px solid #b00000;color:#757575;font-size:13px">Choose an option<span style="color:#343434">▾</span></span></div>
+        <div class="stc">Disabled</div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#f8f8f8;border:1px solid #e3e3e3;color:#c4c4c4;font-size:13px">Choose an option<span style="color:#c4c4c4">▾</span></span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#f8f8f8;border:1px solid #e3e3e3;color:#c4c4c4;font-size:13px">Choose an option<span style="color:#c4c4c4">▾</span></span></div>
+      </div>
+
+      <h2>3. Figma ↔ build mapping</h2>
+      <table>
+        <tr><th>Figma variant</th><th>How the build exposes it</th><th>Visually pinned?</th></tr>
+        <tr><td>State = Default</td><td><code>trigger-matrix</code> default · <code>playground</code></td><td class="m y">✓ pinned</td></tr>
+        <tr><td>State = Hover</td><td><code>trigger-matrix</code> hover row (at rest)</td><td class="m n">interactive-only</td></tr>
+        <tr><td>State = Focus</td><td><code>trigger-matrix</code> focus row (border + glow not static)</td><td class="m n">interactive-only</td></tr>
+        <tr><td>State = Open</td><td><code>open-normal</code> · <code>open-searchable</code> stories</td><td class="m y">✓ pinned</td></tr>
+        <tr><td>State = Selected</td><td><code>trigger-matrix</code> (filled text)</td><td class="m y">✓ pinned</td></tr>
+        <tr><td>State = Multi-selected</td><td><code>multi-select</code> story (with count badge)</td><td class="m y">✓ pinned</td></tr>
+        <tr><td>State = Multi-selected disabled</td><td><code>multi-select</code> + disabled (interactive combo)</td><td class="m n">interactive-only</td></tr>
+        <tr><td>State = Error / Disabled</td><td><code>trigger-matrix</code> error / disabled rows</td><td class="m y">✓ pinned</td></tr>
+        <tr><td>Label Static / Floating · Size L/S</td><td><code>playground</code> · <code>trigger-matrix</code></td><td class="m y">✓</td></tr>
+        <tr><td><em>(no Figma variant)</em></td><td>build-only: <code>flag-rows</code>, <code>item-type-rows</code></td><td>—</td></tr>
+      </table>
+
+      <h2>4. Accessibility</h2>
+      <p>Tab to focus; type to filter; Arrows/Enter to select; multi-select toggles options. Focus uses the shared convention; error is conveyed by red border + message (not color alone); disabled fully muted.</p>
+      <h3>Text vs field</h3>
+      <table>
+        <tr><th>Element</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Filled / selection</td><td>12.45:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Placeholder</td><td>4.61:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Error message</td><td>7.38:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Chevron icon</td><td>12.45:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Count badge (white on blue)</td><td>5.39:1</td><td class="m y">Pass</td></tr>
+      </table>
+      <h3>Border vs background (non-text, 3:1)</h3>
+      <table>
+        <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Default</td><td>1.74:1</td><td class="m n">Below 3:1 — flagged</td></tr>
+        <tr><td>Hover</td><td>5.39:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Focus / Open</td><td>2.37:1</td><td class="m n">Below 3:1 (glow reinforces)</td></tr>
+        <tr><td>Error</td><td>7.38:1</td><td class="m y">Pass</td></tr>
+      </table>
+      <div class="callout warn">
+        <p><span class="tag fail">QA-CX-A11Y-01 · KNOWN / SYSTEM-WIDE</span></p>
+        <strong>Same default/focus border flags as Select.</strong> Default <span class="mono">#c4c4c4</span> (1.74:1) and focus <span class="mono">#66afe9</span> (2.37:1) fall below the 3:1 non-text minimum — the shared form-control tokens flagged on Checkbox, Radio, and Select. System-level resting/focus-border choices pending team review; fix across all form fields together.
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-CX-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Shared form-field state tokens match Figma; count badge white-on-blue per doc.</td></tr>
+        <tr><td class="id">QA-CX-STATE</td><td>State coverage</td><td><span class="tag obs">PASS · NOTE</span></td><td>Default/Open/Selected/Multi-selected/Error/Disabled pinned; Hover/Focus &amp; Multi-selected-disabled interactive-only.</td></tr>
+        <tr><td class="id">QA-CX-MAP</td><td>Figma↔build mapping</td><td><span class="tag obs">INFO</span></td><td>Feature stories, not Figma's state matrix (§3). Build-only: flag-rows, item-type-rows.</td></tr>
+        <tr><td class="id">QA-CX-A11Y-01</td><td>Contrast (borders)</td><td><span class="tag fail">KNOWN</span></td><td>Default 1.74:1 &amp; focus 2.37:1 below 3:1 — shared system-wide (see QA-SL-A11Y-01 / QA-CB-A11Y-01).</td></tr>
+        <tr><td class="id">QA-CX-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Pin Hover/Focus (with glow) demos; verify the exact count-badge token.</td></tr>
+      </table>
+    `
   }
 ];
