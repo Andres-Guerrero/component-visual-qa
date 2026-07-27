@@ -4,19 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SupplyHouse — Component Visual QA</title>
-<link rel="stylesheet" href="https://use.typekit.net/gpz5ale.css">
 <style>
-  /* Self-hosted Interstate (works on github.io where the Typekit kit is domain-locked).
-     Drop the files in /fonts with these names; falls back to Roboto/Arial if absent. */
-  @font-face{font-family:'interstate';src:url('fonts/interstate-regular.woff2') format('woff2'),url('fonts/interstate-regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap;}
-  @font-face{font-family:'interstate';src:url('fonts/interstate-bold.woff2') format('woff2'),url('fonts/interstate-bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap;}
+  /* Self-hosted Maison Neue (the design system's typeface). Files in /fonts. */
+  @font-face{font-family:'Maison Neue';src:url('fonts/MaisonNeueWEB-Book.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+  @font-face{font-family:'Maison Neue';src:url('fonts/MaisonNeueWEB-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
   :root{
     --sh-dark-brown:#331811; --sh-mid-brown:#603423; --sh-tan:#B7804E;
     --sh-light-tan-1:#F8F5F3; --sh-light-tan-2:#F0ECE8; --sh-light-tan-3:#ECDED1;
     --sh-white:#FFFFFF; --sh-blue:#07729C; --sh-off-white:#F4F4F4;
     --sh-black:#1E1E1E; --sh-dark-gray:#343434; --sh-mid-gray:#757575; --sh-border:#DCDCDC;
     --ok:#1d6b3f; --okbg:#dff0e6; --warn:#9a4a12; --warnbg:#fce9d9; --info:#0a5d7e; --infobg:#e4eef4;
-    --sh-font:'interstate','Roboto',Arial,sans-serif;
+    --sh-font:'Maison Neue','Roboto',Arial,sans-serif;
     --sidebar:280px;
   }
   *{box-sizing:border-box;}
