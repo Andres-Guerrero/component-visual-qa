@@ -771,6 +771,24 @@ window.VQA_REPORTS = [
     group: 'Forms',
     status: 'a11y note',
     statusType: 'note',
+    handoffs: [{
+      code: 'QA-SL-REC',
+      title: 'Add pinned Hover/Focus trigger stories (Storybook coverage)',
+      text: `Component: Select
+Storybook: http://34.74.189.135:30100/?path=/docs/forms-select
+Figma (source of truth): UI-Kit__Web node 11689:1126
+
+Follow-up QA-SL-REC — state coverage
+Context: the trigger Hover and Focus states are verified by token only. In the states matrix they render at rest as Default, so they can't be visually QA'd like the other components' pinned states.
+Task: add pinned Storybook stories/args that display the trigger in Hover and in Focus.
+
+Acceptance criteria:
+- A story renders the Hover trigger with border #07729c.
+- A story renders the Focus trigger with border #66afe9 plus the focus glow.
+- Values match Figma node 11689:1126.
+
+Storybook coverage only — no production component change required. Approach is the team's call.`
+    }],
     html: `
       <h1 class="rt">Select</h1>
       <p class="rmeta">Figma component 11689:1126 · Frame doc 16020:8160 · Storybook /docs/forms-select · Captured 2026-07-27</p>
@@ -901,6 +919,24 @@ window.VQA_REPORTS = [
     group: 'Forms',
     status: 'a11y note',
     statusType: 'note',
+    handoffs: [{
+      code: 'QA-CX-REC',
+      title: 'Add pinned Hover/Focus trigger stories (Storybook coverage)',
+      text: `Component: Combobox
+Storybook: http://34.74.189.135:30100/?path=/docs/forms-combobox
+Figma (source of truth): UI-Kit__Web node 12215:22625
+
+Follow-up QA-CX-REC — state coverage
+Context: the trigger Hover and Focus states are verified by token only; they render at rest as Default in the trigger matrix.
+Task: add pinned Storybook stories/args that display the trigger in Hover and in Focus.
+
+Acceptance criteria:
+- A story renders the Hover trigger with border #07729c.
+- A story renders the Focus trigger with border #66afe9 plus the focus glow.
+- Values match Figma node 12215:22625.
+
+Storybook coverage only — no production change required. Approach is the team's call.`
+    }],
     html: `
       <h1 class="rt">Combobox</h1>
       <p class="rmeta">Figma component 12215:22625 · Frame doc 16020:8230 · Storybook /docs/forms-combobox · Captured 2026-07-27</p>
@@ -1240,6 +1276,26 @@ window.VQA_REPORTS = [
     group: 'Navigation',
     status: 'Fix',
     statusType: 'fix',
+    handoffs: [{
+      code: 'QA-PG-01',
+      title: 'Ellipsis vertical alignment (fix)',
+      text: `Component: Pagination
+Storybook: http://34.74.189.135:30100/?path=/story/navigation-pagination--mid-range
+Figma (source of truth): UI-Kit__Web node 10633:3912
+
+Finding QA-PG-01 — vertical alignment
+Observed: the ellipsis ("…") renders on the text baseline, so it sits lower than the page numbers and arrows, which are centered on the row.
+Expected: the ellipsis is optically centered on the row, aligned with the numbers and arrows (as in Figma).
+
+Acceptance criteria:
+- Ellipsis vertical center matches the numbers/arrows in Start, Middle, and End layouts.
+- No change to number, arrow, or current-underline positioning.
+- Re-verify visually against Figma node 10633:3912.
+
+Reference values (design truth): number #07729c · current #343434 + 2px underline bar · ellipsis #343434 · arrows enabled #07729c / disabled #c4c4c4 · Maison Neue Bold 14px.
+
+Fix approach is the team's call — no code prescribed.`
+    }],
     html: `
       <h1 class="rt">Pagination</h1>
       <p class="rmeta">Figma component 10633:3912 · Frame doc 16112:301624 · Storybook /story/navigation-pagination · Captured 2026-07-27</p>
