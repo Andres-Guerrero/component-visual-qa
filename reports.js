@@ -1155,5 +1155,82 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-LI-01</td><td>Selection cue</td><td><span class="tag obs">NOTE</span></td><td>Hover = Selected bg; selection conveyed by control/check, not bg alone. Keep true for new rows.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'modal-dialog',
+    name: 'Modal Dialog',
+    group: 'Overlays',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Modal Dialog</h1>
+      <p class="rmeta">Figma component 6799:7554 · Frame doc 16236:306054 · Storybook /story/overlays-modal · Captured 2026-07-27</p>
+      <p>A centered overlay dialog for focused tasks and confirmations, shown above a dimmed backdrop. Default has a titled header; Compact is headerless for short confirmations. The surface sits on <code>color.bg.elevated</code> with a <code>color.bg.overlay</code> scrim; the Default header uses <code>color.bg.section</code>. Body and actions are editable slots.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Overlay, surface, header, borders &amp; title all match</p></div>
+        <div class="v pass"><p class="k">STRUCTURE · VARIANTS</p><div class="val">Pass</div><p class="sub">Default/Compact × L/S pinned; footer toggle; slots</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">role=dialog, focus trap; 0 axe violations</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>Element</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td><strong>Overlay scrim</strong></td><td><span class="mono">color/bg/overlay = #00000066</span> (black 40%)</td><td class="mono">rgba(0,0,0,0.4)</td><td class="m y">✓</td></tr>
+        <tr><td>Surface bg</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> (bg/elevated)</td><td class="mono">#ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Surface border</td><td><span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span> 1px</td><td class="mono">1px #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Header bg</td><td><span class="chip" style="background:#f8f5f3;border:1px solid #ddd"></span><span class="mono">#f8f5f3</span> (bg/section)</td><td class="mono">#f8f5f3</td><td class="m y">✓</td></tr>
+        <tr><td>Header / footer divider</td><td><span class="chip" style="background:#dcdcdc"></span><span class="mono">#dcdcdc</span> 1px</td><td class="mono">1px #dcdcdc</td><td class="m y">✓</td></tr>
+        <tr><td>Title</td><td class="mono">Headline3 24px Bold · #343434</td><td class="mono">24px 700 · #343434</td><td class="m y">✓</td></tr>
+        <tr><td>Corner radius</td><td class="mono">0px</td><td class="mono">0px</td><td class="m y">✓</td></tr>
+      </table>
+      <h3>Spacing</h3>
+      <table>
+        <tr><th>Region</th><th>Figma</th><th>Match</th></tr>
+        <tr><td>Header padding</td><td class="mono">30 × 24 · close-icon-gap 16</td><td class="m y">✓</td></tr>
+        <tr><td>Body padding</td><td class="mono">30 × 30</td><td class="m y">✓</td></tr>
+        <tr><td>Footer padding / action-gap</td><td class="mono">30 × 20 · gap 20</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Rendered (Default, L)</h2>
+      <p>The dialog on its <code>color.bg.overlay</code> scrim — from the "Default Large" story ("Reset Password").</p>
+      <div style="background:rgba(0,0,0,0.4);padding:28px;display:flex;justify-content:center">
+        <div style="width:340px;background:#ffffff;border:1px solid #c4c4c4">
+          <div style="display:flex;justify-content:space-between;align-items:center;background:#f8f5f3;border-bottom:1px solid #dcdcdc;padding:14px 18px"><span style="font-size:18px;font-weight:700;color:#343434">Reset Password</span><span style="color:#343434">✕</span></div>
+          <div style="padding:18px;font-size:14px;color:#343434">Enter your email and we'll send a reset link.</div>
+          <div style="display:flex;justify-content:flex-end;gap:12px;border-top:1px solid #dcdcdc;padding:12px 18px">
+            <span style="display:inline-flex;align-items:center;height:36px;padding:0 20px;border:2px solid #07729c;color:#07729c;font-weight:700;font-size:11px;text-transform:uppercase">Cancel</span>
+            <span style="display:inline-flex;align-items:center;height:36px;padding:0 20px;background:#07729c;color:#fff;font-weight:700;font-size:11px;text-transform:uppercase">Confirm</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>3. Structure, variants &amp; props</h2>
+      <p>Type Default (titled) / Compact (headerless); Size L / S; <code>buttons</code> toggles the footer; Content and Buttons slots are editable. Stories pin the matrix: Default Large, Default Small, Compact Large, Compact Small, No Footer, Mandatory Input, Destructive Focuses Safe Button. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p><code>role="dialog"</code> with <code>aria-modal="true"</code>; Default is labelled by its header (aria-labelledby), Compact needs an aria-label. On open, focus moves into the dialog and is trapped; on close it returns to the trigger. Close button and Esc both dismiss. Focus ring <span class="mono">#005fcc</span> / 2px. Story: <strong>0 a11y violations, 3 passes</strong>.</p>
+      <table>
+        <tr><th>Element</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Header title / close icon #343434 on #f8f5f3</td><td>11.47:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Body text #343434 on white</td><td>12.45:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Focus ring #005FCC</td><td>5.98:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Outer border #C4C4C4</td><td>1.74:1</td><td class="m y">Acceptable (see note)</td></tr>
+      </table>
+      <div class="callout info">
+        <p style="margin:0"><span class="tag obs">QA-MD-01 · BY DESIGN</span> The <strong>dimmed overlay (<span class="mono">color.bg.overlay</span>) is the primary separation</strong> between dialog and page — not the 1px border. So the outer border's below-3:1 contrast (1.74:1) is acceptable here, because the scrim carries the separation. This is the opposite call from the form-field border item, and it's the right one for the dialog pattern.</p>
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-MD-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Overlay #00000066, surface #ffffff/#c4c4c4, header #f8f5f3/#dcdcdc, 24px title all match; spacing per tokens.</td></tr>
+        <tr><td class="id">QA-MD-OVL</td><td>Overlay token</td><td><span class="tag pass">PASS</span></td><td>Backdrop applies color/bg/overlay (rgba(0,0,0,0.4)) — verified on the dialog's scrim element.</td></tr>
+        <tr><td class="id">QA-MD-STATE</td><td>Structure · variants</td><td><span class="tag pass">PASS</span></td><td>Default/Compact × L/S pinned; footer toggle + No-Footer, Mandatory Input, Destructive stories.</td></tr>
+        <tr><td class="id">QA-MD-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>role=dialog/aria-modal, focus trap + return, Esc/close; 0 axe violations; contrast AAA.</td></tr>
+        <tr><td class="id">QA-MD-01</td><td>Outer border contrast</td><td><span class="tag obs">BY DESIGN</span></td><td>1.74:1 acceptable — the overlay scrim is the primary separation, per the dialog pattern.</td></tr>
+      </table>
+    `
   }
 ];
