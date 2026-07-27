@@ -1191,6 +1191,7 @@ window.VQA_REPORTS = [
         <tr><td>Header padding</td><td class="mono">30 × 24 · close-icon-gap 16</td><td class="m y">✓</td></tr>
         <tr><td>Body padding</td><td class="mono">30 × 30</td><td class="m y">✓</td></tr>
         <tr><td>Footer padding / action-gap</td><td class="mono">30 × 20 · gap 20</td><td class="m y">✓</td></tr>
+        <tr><td>Dialog width (Large / Small)</td><td class="mono">600px / 400px</td><td class="m y">✓</td></tr>
       </table>
 
       <h2>2. Rendered (Default, L)</h2>
@@ -1199,9 +1200,9 @@ window.VQA_REPORTS = [
         <div style="width:340px;background:#ffffff;border:1px solid #c4c4c4">
           <div style="display:flex;justify-content:space-between;align-items:center;background:#f8f5f3;border-bottom:1px solid #dcdcdc;padding:14px 18px"><span style="font-size:18px;font-weight:700;color:#343434">Reset Password</span><span style="color:#343434">✕</span></div>
           <div style="padding:18px;font-size:14px;color:#343434">Enter your email and we'll send a reset link.</div>
-          <div style="display:flex;justify-content:flex-end;gap:12px;border-top:1px solid #dcdcdc;padding:12px 18px">
-            <span style="display:inline-flex;align-items:center;height:36px;padding:0 20px;border:2px solid #07729c;color:#07729c;font-weight:700;font-size:11px;text-transform:uppercase">Cancel</span>
-            <span style="display:inline-flex;align-items:center;height:36px;padding:0 20px;background:#07729c;color:#fff;font-weight:700;font-size:11px;text-transform:uppercase">Confirm</span>
+          <div style="display:flex;gap:12px;border-top:1px solid #dcdcdc;padding:12px 18px">
+            <span style="flex:1;display:inline-flex;align-items:center;justify-content:center;height:36px;border:2px solid #07729c;color:#07729c;font-weight:700;font-size:11px;text-transform:uppercase">Cancel</span>
+            <span style="flex:1;display:inline-flex;align-items:center;justify-content:center;height:36px;background:#07729c;color:#fff;font-weight:700;font-size:11px;text-transform:uppercase">Confirm</span>
           </div>
         </div>
       </div>
