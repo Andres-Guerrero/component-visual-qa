@@ -116,5 +116,102 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-PB-OBS-02</td><td>Width</td><td><span class="tag obs">INFO</span></td><td>Fills container; no fixed width, by design.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'secondary-button',
+    name: 'Secondary Button',
+    group: 'Actions',
+    status: 'Pass',
+    statusType: 'pass',
+    swatches: [
+      {n:'Default',  bg:'#07729c', fg:'#ffffff', bd:'#07729c', icon:'none', label:'CONTINUE'},
+      {n:'Hover',    bg:'#066488', fg:'#ffffff', bd:'#066488', icon:'none', label:'CONTINUE'},
+      {n:'Press',    bg:'#055271', fg:'#ffffff', bd:'#055271', icon:'none', label:'CONTINUE'},
+      {n:'Disabled', bg:'#dcdcdc', fg:'#ffffff', bd:'#dcdcdc', icon:'none', label:'CONTINUE'}
+    ],
+    html: `
+      <h1 class="rt">Secondary Button</h1>
+      <p class="rmeta">Figma component 429:3121 · Frame doc 15905:306542 · Storybook /docs/actions-secondary-button · Captured 2026-07-27</p>
+      <p>The medium-emphasis action button (solid blue fill) that pairs with the Primary (Purchase) button for less-dominant calls to action. Two sizes and four states (Default, Hover, Press, Disabled), with an optional leading icon (<code>Show icon</code>, default off). Auto-layout, token-driven; <strong>fills its container width</strong> with content centered.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Colors, sizing, type &amp; elevation all match — 4 states × 2 sizes</p></div>
+        <div class="v pass"><p class="k">STATES · VARIANTS · PROPS</p><div class="val">Pass</div><p class="sub">4 states, both sizes, Show icon; +loading/anchor in build (see note)</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">All states meet WCAG AA (5.39–8.57:1); focus ring matches</p></div>
+      </div>
+      <p>Clean pass. The token translation is faithful across all four states and both sizes, and — unlike the orange Purchase button — the blue fill clears WCAG AA contrast on every state.</p>
+
+      <h2>1. Token fidelity</h2>
+      <h3>Color per state</h3>
+      <table>
+        <tr><th>State</th><th>Property</th><th>Figma variable</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Default</td><td>bg / text</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span></td><td class="mono">#07729c / #ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Hover</td><td>bg / text</td><td><span class="chip" style="background:#066488"></span><span class="mono">#066488</span> / <span class="mono">#ffffff</span></td><td class="mono">#066488 / #ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Press (active)</td><td>bg / text</td><td><span class="chip" style="background:#055271"></span><span class="mono">#055271</span> / <span class="mono">#ffffff</span></td><td class="mono">#055271 / #ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td>bg / text</td><td><span class="chip" style="background:#dcdcdc"></span><span class="mono">#dcdcdc</span> / <span class="mono">#ffffff</span></td><td class="mono">#dcdcdc / #ffffff</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h3>Elevation &amp; effects</h3>
+      <table>
+        <tr><th>Property</th><th>Figma</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Elevation</td><td class="mono">Elevation/-2y — inner shadow, offset 0/−2, rgba(0,0,0,0.25)</td><td class="mono">box-shadow: inset 0 -2px 0 rgba(0,0,0,0.25)</td><td class="m y">✓</td></tr>
+        <tr><td>Border / radius</td><td class="mono">none / 0px</td><td class="mono">none / 0px</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h3>Sizing &amp; typography</h3>
+      <table>
+        <tr><th>Property</th><th>Large (md)</th><th>Small (sm)</th><th>Match</th></tr>
+        <tr><td>Height</td><td>50px</td><td>36px</td><td class="m y">✓</td></tr>
+        <tr><td>Padding (Y / X)</td><td>12px / 32px</td><td>8px / 28px</td><td class="m y">✓</td></tr>
+        <tr><td>Icon gap</td><td>8px</td><td>8px</td><td class="m y">✓</td></tr>
+        <tr><td>Font</td><td>Maison Neue Bold</td><td>Maison Neue Bold</td><td class="m y">✓</td></tr>
+        <tr><td>Size / line-height</td><td>13px / 1.6 (20.8px)</td><td>11px / 1.0 (11px)</td><td class="m y">✓</td></tr>
+        <tr><td>Letter-spacing</td><td>0</td><td>2% (0.22px)</td><td class="m y">✓</td></tr>
+        <tr><td>Transform</td><td>UPPERCASE</td><td>UPPERCASE</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side — states (Large)</h2>
+      <p>Rendered from the actual token values on each side; identical per state. (Facsimile — elevation shadow not drawn.)</p>
+      <div id="vqa-swatches" class="swatchgrid">
+        <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+      </div>
+
+      <h2>3. States, variants &amp; props</h2>
+      <p>All 4 states render in both sizes and match Figma. The <code>Show icon</code> boolean (default off) is covered by the "With icons" story. <span class="m y">✓ Pass</span></p>
+      <div class="callout info">
+        <p style="margin:0"><span class="tag obs">QA-SB-OBS-02</span> <strong>Build exposes more than the doc.</strong> Storybook ships <code>isLoading</code> and an "As anchor (href)" story, but the frame doc lists only 4 states (Default, Hover, Press, Disabled). Not a defect — but confirm whether loading / anchor rendering are intended for Secondary and, if so, add them to the component doc so design and code agree.</p>
+      </div>
+
+      <h2>4. Accessibility</h2>
+      <h3>Focus &amp; keyboard</h3>
+      <p>Tab to focus, Enter or Space to activate; disabled is not focusable and conveyed beyond color. The build confirms the foundation focus tokens — <span class="mono">--color-focus-ring: #005fcc</span> and <span class="mono">--stroke-focus-ring-width: 2px</span> — matching the doc. <span class="m y">✓ Match</span></p>
+
+      <h3>Contrast (label vs. fill)</h3>
+      <table>
+        <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Default</td><td>5.39:1</td><td class="m y">Pass AA (normal + large)</td></tr>
+        <tr><td>Hover</td><td>6.59:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Press</td><td>8.57:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Disabled</td><td>1.37:1</td><td>Exempt (disabled control)</td></tr>
+      </table>
+      <div class="callout info"><strong>No contrast issues.</strong> Every interactive state clears the 4.5:1 normal-text threshold; the build's computed colors match these ratios. Nothing to escalate.</div>
+
+      <h2>5. Observations (non-blocking)</h2>
+      <div class="callout">
+        <p style="margin:0"><span class="tag obs">QA-SB-OBS-01</span> <strong>Elevation, not a border.</strong> The blue fill uses the inner-shadow elevation (<code>Elevation/-2y</code>), reproduced exactly in the build (<span class="mono">inset 0 -2px 0 rgba(0,0,0,0.25)</span>). No border, matching Figma.</p>
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-SB-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Colors, sizing, typography, and elevation match Figma across 4 states × 2 sizes.</td></tr>
+        <tr><td class="id">QA-SB-STATE</td><td>States · variants · props</td><td><span class="tag pass">PASS</span></td><td>4 states, both sizes, Show icon (default off) present and correct.</td></tr>
+        <tr><td class="id">QA-SB-FOCUS</td><td>Focus &amp; keyboard</td><td><span class="tag pass">PASS</span></td><td>Focus-ring tokens (#005FCC / 2px) match; Tab/Enter/Space; disabled not focusable.</td></tr>
+        <tr><td class="id">QA-SB-A11Y</td><td>Contrast</td><td><span class="tag pass">PASS</span></td><td>All interactive states 5.39–8.57:1 (≥ 4.5:1 AA); disabled exempt.</td></tr>
+        <tr><td class="id">QA-SB-OBS-01</td><td>Elevation</td><td><span class="tag pass">MATCH</span></td><td>Inner-shadow elevation reproduced; no border, per Figma.</td></tr>
+        <tr><td class="id">QA-SB-OBS-02</td><td>Doc vs build</td><td><span class="tag obs">CONFIRM</span></td><td>Build has isLoading + as-anchor beyond the doc's 4 states; reconcile doc &amp; code.</td></tr>
+      </table>
+    `
   }
 ];
