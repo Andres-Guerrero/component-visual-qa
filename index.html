@@ -6,6 +6,10 @@
 <title>SupplyHouse — Component Visual QA</title>
 <link rel="stylesheet" href="https://use.typekit.net/gpz5ale.css">
 <style>
+  /* Self-hosted Interstate (works on github.io where the Typekit kit is domain-locked).
+     Drop the files in /fonts with these names; falls back to Roboto/Arial if absent. */
+  @font-face{font-family:'interstate';src:url('fonts/interstate-regular.woff2') format('woff2'),url('fonts/interstate-regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap;}
+  @font-face{font-family:'interstate';src:url('fonts/interstate-bold.woff2') format('woff2'),url('fonts/interstate-bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap;}
   :root{
     --sh-dark-brown:#331811; --sh-mid-brown:#603423; --sh-tan:#B7804E;
     --sh-light-tan-1:#F8F5F3; --sh-light-tan-2:#F0ECE8; --sh-light-tan-3:#ECDED1;
