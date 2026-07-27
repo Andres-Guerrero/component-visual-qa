@@ -908,11 +908,11 @@ window.VQA_REPORTS = [
         <tr><td>Hover</td><td>border</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#07729c</td><td class="m y">✓</td></tr>
         <tr><td>Focus / Open</td><td>border / glow</td><td><span class="chip" style="background:#66afe9"></span><span class="mono">#66afe9</span> + Glow-Blue</td><td class="mono">#66afe9 (glow interactive-only)</td><td class="m y">✓</td></tr>
         <tr><td>Selected (filled)</td><td>text / border</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> / <span class="mono">#c4c4c4</span></td><td class="mono">#343434 / #c4c4c4</td><td class="m y">✓</td></tr>
-        <tr><td>Multi-selected badge</td><td>bg / text</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> (white on blue)</td><td class="mono">white on blue</td><td class="m y">✓*</td></tr>
+        <tr><td>Multi-selected badge</td><td>bg / text</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span></td><td class="mono">#07729c / #ffffff · disabled <span class="chip" style="background:#e3e3e3"></span>#e3e3e3</td><td class="m y">✓</td></tr>
         <tr><td>Error</td><td>bg / border</td><td><span class="chip" style="background:#fde5e5"></span><span class="mono">#fde5e5</span> / <span class="chip" style="background:#b00000"></span><span class="mono">#b00000</span></td><td class="mono">#fde5e5 / #b00000</td><td class="m y">✓</td></tr>
         <tr><td>Disabled</td><td>bg / border / text</td><td><span class="chip" style="background:#f8f8f8"></span><span class="mono">#f8f8f8</span> / <span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#f8f8f8 / #e3e3e3 / #c4c4c4</td><td class="m y">✓</td></tr>
       </table>
-      <p style="font-size:12px;color:var(--sh-mid-gray)">* Count-badge token name didn't surface this pass; the doc's white-on-blue 5.39:1 corresponds to Primary Blue #07729c — spot-check the exact badge token.</p>
+      <p style="font-size:12px;color:var(--sh-mid-gray)">Count badge verified in the multi-select story: enabled <span class="mono">#07729c</span> / white (5.39:1), disabled <span class="mono">#e3e3e3</span> / white (exempt), 4px radius (allowed subtle-surface exception).</p>
       <h3>Sizing</h3>
       <table>
         <tr><th>Property</th><th>Figma</th><th>Storybook</th><th>Match</th></tr>
@@ -993,7 +993,7 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-CX-STATE</td><td>State coverage</td><td><span class="tag obs">PASS · NOTE</span></td><td>Default/Open/Selected/Multi-selected/Error/Disabled pinned; Hover/Focus &amp; Multi-selected-disabled interactive-only.</td></tr>
         <tr><td class="id">QA-CX-MAP</td><td>Figma↔build mapping</td><td><span class="tag obs">INFO</span></td><td>Feature stories, not Figma's state matrix (§3). Build-only: flag-rows, item-type-rows.</td></tr>
         <tr><td class="id">QA-CX-A11Y-01</td><td>Contrast (borders)</td><td><span class="tag fail">KNOWN</span></td><td>Default 1.74:1 &amp; focus 2.37:1 below 3:1 — shared system-wide (see QA-SL-A11Y-01 / QA-CB-A11Y-01).</td></tr>
-        <tr><td class="id">QA-CX-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Pin Hover/Focus (with glow) demos; verify the exact count-badge token.</td></tr>
+        <tr><td class="id">QA-CX-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Pin Hover/Focus (with glow) demos so every state is visually QA-able.</td></tr>
       </table>
     `
   }
