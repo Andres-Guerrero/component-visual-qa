@@ -776,7 +776,8 @@ window.VQA_REPORTS = [
       <p class="rmeta">Figma component 11689:1126 · Frame doc 16020:8160 · Storybook /docs/forms-select · Captured 2026-07-27</p>
       <p>A dropdown for choosing one option from a list, built on the shared form-field tokens (same field box and states as Text Field). Label Static or Floating with a Show-label toggle, two sizes, and states Default, Hover, Focus, Open, Selected, Error, Disabled.</p>
 
-      <div class="callout info"><strong>Reporting note.</strong> The build documents Select by feature stories, not as Figma's pinned state matrix. Token values all match Figma, so states are graded <strong>token-verified = Pass</strong>; the mapping table (§3) shows which states are visually pinned vs. interactive-only. Facsimiles below render the token-intended appearance.</p></div>
+      <div class="callout info"><strong>Reporting note.</strong> The build documents Select by feature stories, not as Figma's pinned state matrix. Token values all match Figma, so states are graded <strong>token-verified = Pass</strong>; the mapping table (§4) shows which states are visually pinned vs. interactive-only. Facsimiles below render the token-intended appearance.</p></div>
+      <div class="callout"><strong>Where the dropdown lives.</strong> The open list surface and its rows are shared components documented on their own — see <strong>Menus &amp; Lists → Dropdown</strong> (the surface) and <strong>List Items</strong> (the rows). This report covers the Select trigger plus a summary of its open panel (§3); the full surface/row token detail is not duplicated here.</p></div>
 
       <h2>Verdict</h2>
       <div class="verdict">
@@ -905,7 +906,8 @@ window.VQA_REPORTS = [
       <p class="rmeta">Figma component 12215:22625 · Frame doc 16020:8230 · Storybook /docs/forms-combobox · Captured 2026-07-27</p>
       <p>An editable/filterable select supporting single and multi-selection — same form-field family as Select/Text Field. Static/Floating label + Show-label toggle, two sizes, and states Default, Hover, Focus, Open, Selected, Multi-selected, Multi-selected disabled, Error, Disabled. A count badge shows the number of selections in multi-select.</p>
 
-      <div class="callout info"><strong>Reporting note.</strong> Same approach as Select: tokens all match, so states are graded <strong>token-verified = Pass</strong>; the mapping table (§3) shows pinned vs. interactive-only. Facsimiles render the token-intended appearance.</p></div>
+      <div class="callout info"><strong>Reporting note.</strong> Same approach as Select: tokens all match, so states are graded <strong>token-verified = Pass</strong>; the mapping table (§4) shows pinned vs. interactive-only. Facsimiles render the token-intended appearance.</p></div>
+      <div class="callout"><strong>Where the dropdown lives.</strong> The open list surface and its rows are shared components documented on their own — see <strong>Menus &amp; Lists → Dropdown</strong> (the surface) and <strong>List Items</strong> (the rows). This report covers the Combobox trigger plus a summary of its open panel (§3); the full surface/row token detail is not duplicated here.</p></div>
 
       <h2>Verdict</h2>
       <div class="verdict">
