@@ -9,8 +9,8 @@ window.VQA_REPORTS = [
     id: 'purchase-button',
     name: 'Purchase Button',
     group: 'Actions',
-    status: 'Pass · notes',
-    statusType: 'pass',
+    status: 'a11y note',
+    statusType: 'note',
     swatches: [
       {n:'Default',        bg:'#f15c02', fg:'#ffffff', bd:'#f15c02', icon:'cart',  label:'ADD TO CART'},
       {n:'Hover',          bg:'#e05400', fg:'#ffffff', bd:'#e05400', icon:'cart',  label:'ADD TO CART'},
@@ -307,8 +307,8 @@ window.VQA_REPORTS = [
     id: 'time-slot-button',
     name: 'Time Slot Button',
     group: 'Actions',
-    status: '1 open a11y',
-    statusType: 'fail',
+    status: 'a11y note',
+    statusType: 'note',
     swatches: [
       {n:'TurboTrack · Default',  bg:'#ffffff', fg:'#757575', bd:'#0eb252', icon:'none',  label:'8AM – 12PM'},
       {n:'TurboTrack · Selected', bg:'#0eb252', fg:'#ffffff', bd:'#0eb252', icon:'check', label:'8AM – 12PM'},
@@ -477,8 +477,8 @@ window.VQA_REPORTS = [
     id: 'checkbox',
     name: 'Checkbox',
     group: 'Forms',
-    status: 'Pass · notes',
-    statusType: 'pass',
+    status: 'a11y note',
+    statusType: 'note',
     html: `
       <h1 class="rt">Checkbox</h1>
       <p class="rmeta">Figma component 11804:15097 · Frame doc 15927:307326 · Storybook /docs/forms-checkbox · Captured 2026-07-27</p>
@@ -579,8 +579,8 @@ window.VQA_REPORTS = [
     id: 'radio',
     name: 'Radio',
     group: 'Forms',
-    status: 'Pass · notes',
-    statusType: 'pass',
+    status: 'a11y note',
+    statusType: 'note',
     html: `
       <h1 class="rt">Radio</h1>
       <p class="rmeta">Figma component 11269:5496 · Frame doc 15928:1812 · Storybook /docs/forms-radio · Captured 2026-07-27</p>
@@ -678,8 +678,8 @@ window.VQA_REPORTS = [
     id: 'link',
     name: 'Link',
     group: 'Navigation',
-    status: 'Pass · notes',
-    statusType: 'pass',
+    status: 'a11y note',
+    statusType: 'note',
     html: `
       <h1 class="rt">Link</h1>
       <p class="rmeta">Figma component 8931:5582 · Frame doc 15928:2067 · Storybook /docs/navigation-link · Captured 2026-07-27</p>
@@ -769,8 +769,8 @@ window.VQA_REPORTS = [
     id: 'select',
     name: 'Select',
     group: 'Forms',
-    status: 'Pass · notes',
-    statusType: 'pass',
+    status: 'a11y note',
+    statusType: 'note',
     html: `
       <h1 class="rt">Select</h1>
       <p class="rmeta">Figma component 11689:1126 · Frame doc 16020:8160 · Storybook /docs/forms-select · Captured 2026-07-27</p>
@@ -899,8 +899,8 @@ window.VQA_REPORTS = [
     id: 'combobox',
     name: 'Combobox',
     group: 'Forms',
-    status: 'Pass · notes',
-    statusType: 'pass',
+    status: 'a11y note',
+    statusType: 'note',
     html: `
       <h1 class="rt">Combobox</h1>
       <p class="rmeta">Figma component 12215:22625 · Frame doc 16020:8230 · Storybook /docs/forms-combobox · Captured 2026-07-27</p>
@@ -1090,8 +1090,8 @@ window.VQA_REPORTS = [
     id: 'list-items',
     name: 'List Items',
     group: 'Menus & Lists',
-    status: 'Pass · note',
-    statusType: 'pass',
+    status: 'a11y note',
+    statusType: 'note',
     html: `
       <h1 class="rt">List Items</h1>
       <p class="rmeta">Figma component 9180:1464 · Frame doc 16295:10147 (Menus &amp; Lists page) · Storybook: rendered as menu/option rows · Captured 2026-07-27</p>
@@ -1238,8 +1238,8 @@ window.VQA_REPORTS = [
     id: 'pagination',
     name: 'Pagination',
     group: 'Navigation',
-    status: 'Align fix',
-    statusType: 'wip',
+    status: 'Fix',
+    statusType: 'fix',
     html: `
       <h1 class="rt">Pagination</h1>
       <p class="rmeta">Figma component 10633:3912 · Frame doc 16112:301624 · Storybook /story/navigation-pagination · Captured 2026-07-27</p>
@@ -1249,7 +1249,7 @@ window.VQA_REPORTS = [
       <div class="verdict">
         <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Number, current, ellipsis, arrow colors + type match</p></div>
         <div class="v pass"><p class="k">STATES · LAYOUTS</p><div class="val">Pass</div><p class="sub">Start/Middle/End; arrow disable at ends; current underline</p></div>
-        <div class="v fail"><p class="k">ALIGNMENT</p><div class="val">1 fix</div><p class="sub">Ellipsis sits on the baseline — lower than numbers/arrows</p></div>
+        <div class="v fix"><p class="k">ALIGNMENT</p><div class="val">1 fix</div><p class="sub">Ellipsis sits on the baseline — lower than numbers/arrows</p></div>
       </div>
       <p>Tokens and accessibility are clean. The one issue — the one you spotted — is the <strong>ellipsis vertical alignment</strong>: it renders on the text baseline and sits visibly lower than the numbers and arrows.</p>
 
