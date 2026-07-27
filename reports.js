@@ -38,7 +38,7 @@ window.VQA_REPORTS = [
       <h2>1. Token fidelity</h2>
       <h3>Color per state</h3>
       <table>
-        <tr><th>State</th><th>Property</th><th>Figma variable</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
         <tr><td>Default</td><td>bg / text·icon</td><td><span class="chip" style="background:#f15c02"></span><span class="mono">#f15c02</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span></td><td class="mono">#f15c02 / #ffffff</td><td class="m y">✓</td></tr>
         <tr><td>Hover</td><td>bg / text·icon</td><td><span class="chip" style="background:#e05400"></span><span class="mono">#e05400</span> / <span class="mono">#ffffff</span></td><td class="mono">#e05400 / #ffffff</td><td class="m y">✓</td></tr>
         <tr><td>Press (active)</td><td>bg / text·icon</td><td><span class="chip" style="background:#d63d08"></span><span class="mono">#d63d08</span> / <span class="mono">#ffffff</span></td><td class="mono">#d63d08 / #ffffff</td><td class="m y">✓</td></tr>
@@ -145,7 +145,7 @@ window.VQA_REPORTS = [
       <h2>1. Token fidelity</h2>
       <h3>Color per state</h3>
       <table>
-        <tr><th>State</th><th>Property</th><th>Figma variable</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
         <tr><td>Default</td><td>bg / text</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span></td><td class="mono">#07729c / #ffffff</td><td class="m y">✓</td></tr>
         <tr><td>Hover</td><td>bg / text</td><td><span class="chip" style="background:#066488"></span><span class="mono">#066488</span> / <span class="mono">#ffffff</span></td><td class="mono">#066488 / #ffffff</td><td class="m y">✓</td></tr>
         <tr><td>Press (active)</td><td>bg / text</td><td><span class="chip" style="background:#055271"></span><span class="mono">#055271</span> / <span class="mono">#ffffff</span></td><td class="mono">#055271 / #ffffff</td><td class="m y">✓</td></tr>
@@ -242,7 +242,7 @@ window.VQA_REPORTS = [
       <h2>1. Token fidelity</h2>
       <h3>Color per state</h3>
       <table>
-        <tr><th>State</th><th>Property</th><th>Figma variable</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
         <tr><td>Default</td><td>bg / text / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> / <span class="mono">#07729c</span></td><td class="mono">#ffffff / #07729c / #07729c</td><td class="m y">✓</td></tr>
         <tr><td>Hover</td><td>bg / text / border</td><td><span class="chip" style="background:#eff5fd"></span><span class="mono">#eff5fd</span> / <span class="mono">#07729c</span> / <span class="mono">#07729c</span></td><td class="mono">#eff5fd / #07729c / #07729c</td><td class="m y">✓</td></tr>
         <tr><td>Press (active)</td><td>bg / text / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="mono">#07729c</span> / <span class="chip" style="background:#055271"></span><span class="mono">#055271</span></td><td class="mono">#ffffff / #07729c / #055271</td><td class="m y">✓</td></tr>
@@ -333,7 +333,7 @@ window.VQA_REPORTS = [
       <h2>1. Token fidelity</h2>
       <h3>Color per delivery &amp; state</h3>
       <table>
-        <tr><th>Delivery / State</th><th>Property</th><th>Figma variable</th><th>Storybook</th><th>Match</th></tr>
+        <tr><th>Delivery / State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
         <tr><td>TurboTrack · Default/Hover</td><td>bg / text / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#757575"></span><span class="mono">#757575</span> / <span class="chip" style="background:#0eb252"></span><span class="mono">#0eb252</span></td><td class="mono">#ffffff / #757575 / #0eb252</td><td class="m y">✓</td></tr>
         <tr><td>TurboTrack · Selected</td><td>bg / text / border</td><td><span class="chip" style="background:#0eb252"></span><span class="mono">#0eb252</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="mono">#0eb252</span></td><td class="mono">#0eb252 / #ffffff / #0eb252</td><td class="m y">✓</td></tr>
         <tr><td>TurboTrack · Disabled</td><td>bg / text / border</td><td><span class="chip" style="background:#f8f8f8"></span><span class="mono">#f8f8f8</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span> / <span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span></td><td class="mono">#f8f8f8 / #c4c4c4 / #e3e3e3</td><td class="m y">✓</td></tr>
@@ -494,7 +494,7 @@ window.VQA_REPORTS = [
 
       <h2>1. Token fidelity — color per state</h2>
       <table>
-        <tr><th>State</th><th>Property</th><th>Figma variable</th><th>Storybook</th><th>Match</th></tr>
+        <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
         <tr><td>Unselected</td><td>bg / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#ffffff / #c4c4c4</td><td class="m y">✓</td></tr>
         <tr><td>Unselected Hover</td><td>bg / border</td><td><span class="mono">#ffffff</span> / <span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#ffffff / #07729c</td><td class="m y">✓</td></tr>
         <tr><td>Selected / Sel. Hover / Indeterminate</td><td>bg / border / glyph</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> / <span class="mono">#343434</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span></td><td class="mono">#343434 / #343434 / #ffffff</td><td class="m y">✓</td></tr>
@@ -596,7 +596,7 @@ window.VQA_REPORTS = [
 
       <h2>1. Token fidelity — color per state</h2>
       <table>
-        <tr><th>State</th><th>Property</th><th>Figma variable</th><th>Storybook</th><th>Match</th></tr>
+        <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
         <tr><td>Unselected</td><td>bg / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#ffffff / #c4c4c4</td><td class="m y">✓</td></tr>
         <tr><td>Unselected Hover</td><td>bg / border</td><td><span class="mono">#ffffff</span> / <span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#ffffff / #07729c</td><td class="m y">✓</td></tr>
         <tr><td>Selected / Selected Hover</td><td>fill / border / dot</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> / <span class="mono">#343434</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span></td><td class="mono">#343434 / #343434 / #ffffff</td><td class="m y">✓</td></tr>
@@ -695,7 +695,7 @@ window.VQA_REPORTS = [
 
       <h2>1. Token fidelity</h2>
       <table>
-        <tr><th>State</th><th>Figma variable</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><th>State</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
         <tr><td>Default</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#07729c · no underline</td><td class="m y">✓</td></tr>
         <tr><td>Hover</td><td><span class="mono">#07729c</span> + underline</td><td class="mono">#07729c · underline</td><td class="m y">✓</td></tr>
         <tr><td>Active</td><td><span class="chip" style="background:#055271"></span><span class="mono">#055271</span> + underline</td><td class="mono">#055271 · underline</td><td class="m y">✓</td></tr>
