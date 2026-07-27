@@ -1444,5 +1444,69 @@ Fix approach is the team's call — no code prescribed.`
         <tr><td class="id">QA-SW-01</td><td>Thumb/off-track contrast</td><td><span class="tag obs">BY DESIGN</span></td><td>1.74:1 acceptable — state carried by thumb position, not contrast.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'toggle',
+    name: 'Toggle',
+    group: 'Forms',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Toggle</h1>
+      <p class="rmeta">Figma component 9726:12904 · Frame doc 15930:297932 · Storybook /story/forms-toggle · Captured 2026-07-27</p>
+      <p>A segmented control for switching between mutually exclusive views or modes (e.g. List / Grid). Exactly one segment is selected at a time. A bordered container holding segments; each segment has default, selected, hover, and disabled states.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Segment + container colors, size &amp; selected weight match</p></div>
+        <div class="v pass"><p class="k">STATES</p><div class="val">Pass</div><p class="sub">Default / selected / disabled; list &amp; grid active</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">Selected = fill + bold, not color alone; focus ring matches</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>Element</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Segment default</td><td>text / bg</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> · 14px regular</td><td class="mono">#343434 / #ffffff · 400</td><td class="m y">✓</td></tr>
+        <tr><td>Segment selected</td><td>text / bg</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> · 14px bold</td><td class="mono">#ffffff / #07729c · 700</td><td class="m y">✓</td></tr>
+        <tr><td>Container</td><td>bg / border</td><td><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span> 1px</td><td class="mono">#ffffff / #c4c4c4 1px</td><td class="m y">✓</td></tr>
+        <tr><td>Segment height / gap / padding</td><td>size</td><td class="mono">38px · gap 4 · pad 4</td><td class="mono">38px</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side — states</h2>
+      <p>Rendered from the matching token values; selected segment is filled and bold.</p>
+      <div class="swatchgrid" style="grid-template-columns:150px 1fr 1fr">
+        <div class="hd">Active</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+        <div class="stc">List</div>
+          <div class="cell"><span style="display:inline-flex;border:1px solid #c4c4c4;background:#fff;padding:4px;gap:4px;font-size:14px"><span style="display:inline-flex;align-items:center;height:38px;padding:0 16px;background:#07729c;color:#fff;font-weight:700">List</span><span style="display:inline-flex;align-items:center;height:38px;padding:0 16px;color:#343434">Grid</span></span></div>
+          <div class="cell"><span style="display:inline-flex;border:1px solid #c4c4c4;background:#fff;padding:4px;gap:4px;font-size:14px"><span style="display:inline-flex;align-items:center;height:38px;padding:0 16px;background:#07729c;color:#fff;font-weight:700">List</span><span style="display:inline-flex;align-items:center;height:38px;padding:0 16px;color:#343434">Grid</span></span></div>
+        <div class="stc">Grid</div>
+          <div class="cell"><span style="display:inline-flex;border:1px solid #c4c4c4;background:#fff;padding:4px;gap:4px;font-size:14px"><span style="display:inline-flex;align-items:center;height:38px;padding:0 16px;color:#343434">List</span><span style="display:inline-flex;align-items:center;height:38px;padding:0 16px;background:#07729c;color:#fff;font-weight:700">Grid</span></span></div>
+          <div class="cell"><span style="display:inline-flex;border:1px solid #c4c4c4;background:#fff;padding:4px;gap:4px;font-size:14px"><span style="display:inline-flex;align-items:center;height:38px;padding:0 16px;color:#343434">List</span><span style="display:inline-flex;align-items:center;height:38px;padding:0 16px;background:#07729c;color:#fff;font-weight:700">Grid</span></span></div>
+      </div>
+
+      <h2>3. States &amp; props</h2>
+      <p>Container State = list / grid (which segment is active); each segment has Default, Selected, Hover, Disabled. Selected renders filled + bold. <span class="m y">✓ Pass</span></p>
+      <div class="callout info">
+        <p style="margin:0"><span class="tag obs">QA-TG-01 · PENDING (design-side)</span> Per the frame doc, the segment <strong>Hover</strong> currently uses a placeholder token identical to Default — a real hover treatment is pending. The build matches the current (placeholder) token, so this is a design decision to finalize, not a build defect. Re-QA hover once the token lands.</p>
+      </div>
+
+      <h2>4. Accessibility</h2>
+      <p>Tab to focus the group; Arrow keys move between segments; Space or Enter selects. Selection is conveyed by a filled background <em>and</em> a text color + weight change (not color alone). Focus ring <span class="mono">#005fcc</span> / 2px; disabled not focusable and muted.</p>
+      <table>
+        <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Default / Hover (#343434 on white)</td><td>12.45:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Selected (white on #07729c)</td><td>5.39:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Disabled (gray-400 on gray-50)</td><td>~1.6:1</td><td>Exempt (disabled)</td></tr>
+      </table>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-TG-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Default #343434/white, selected white/#07729c (bold), container #c4c4c4 border, 38px segments — all match.</td></tr>
+        <tr><td class="id">QA-TG-STATE</td><td>States</td><td><span class="tag pass">PASS</span></td><td>List/Grid active; default vs selected (filled + bold) correct.</td></tr>
+        <tr><td class="id">QA-TG-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Selected = fill + bold (not color alone); arrow-key nav; focus ring #005FCC.</td></tr>
+        <tr><td class="id">QA-TG-01</td><td>Hover token</td><td><span class="tag obs">PENDING</span></td><td>Hover is a placeholder (= default) pending a real hover treatment; design-side, re-QA when it lands.</td></tr>
+      </table>
+    `
   }
 ];
