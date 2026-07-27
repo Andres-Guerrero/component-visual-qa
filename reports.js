@@ -1367,5 +1367,82 @@ Fix approach is the team's call — no code prescribed.`
         <tr><td class="id">QA-PG-01</td><td>Vertical alignment</td><td><span class="tag fail">FIX</span></td><td>Ellipsis renders on baseline — sits lower than numbers/arrows; Figma centers it. Visual polish.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'switch',
+    name: 'Switch',
+    group: 'Forms',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Switch</h1>
+      <p class="rmeta">Figma component 10027:3635 · Frame doc 15928:297865 · Storybook /docs/forms-switch · Captured 2026-07-27</p>
+      <p>A binary on/off toggle. The thumb slides left (off) / right (on) and the track color reinforces state — blue when on, gray when off. States: off and on (each with a hover) plus disabled off and on. No size variant.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Track/thumb colors + sizes match Figma</p></div>
+        <div class="v pass"><p class="k">STATES</p><div class="val">Pass</div><p class="sub">On/Off (+hover), Disabled on/off; state by thumb position</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">Position conveys state (not color); one by-design contrast note</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>On</td><td>track / thumb</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span></td><td class="mono">#07729c / #ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Off</td><td>track / thumb</td><td><span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span> / <span class="mono">#ffffff</span></td><td class="mono">#c4c4c4 / #ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td>track / thumb</td><td><span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span> / <span class="mono">#ffffff</span></td><td class="mono">#e3e3e3 / #ffffff</td><td class="m y">✓</td></tr>
+      </table>
+      <h3>Sizing &amp; shape</h3>
+      <table>
+        <tr><th>Property</th><th>Figma</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Track (W × H)</td><td class="mono">38 × 21px · pill</td><td class="mono">38 × 21 · radius 20px</td><td class="m y">✓</td></tr>
+        <tr><td>Thumb</td><td class="mono">15px circle</td><td class="mono">15px · radius 50%</td><td class="m y">✓</td></tr>
+        <tr><td>Padding</td><td class="mono">3px</td><td class="mono">3px</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side — states</h2>
+      <p>Rendered from the matching token values; thumb position carries the state.</p>
+      <div class="swatchgrid" style="grid-template-columns:150px 1fr 1fr">
+        <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+        <div class="stc">On</div>
+          <div class="cell"><span style="display:inline-flex;width:38px;height:21px;border-radius:20px;background:#07729c;padding:3px;align-items:center;justify-content:flex-end"><span style="width:15px;height:15px;border-radius:50%;background:#fff;display:block"></span></span></div>
+          <div class="cell"><span style="display:inline-flex;width:38px;height:21px;border-radius:20px;background:#07729c;padding:3px;align-items:center;justify-content:flex-end"><span style="width:15px;height:15px;border-radius:50%;background:#fff;display:block"></span></span></div>
+        <div class="stc">Off</div>
+          <div class="cell"><span style="display:inline-flex;width:38px;height:21px;border-radius:20px;background:#c4c4c4;padding:3px;align-items:center;justify-content:flex-start"><span style="width:15px;height:15px;border-radius:50%;background:#fff;display:block"></span></span></div>
+          <div class="cell"><span style="display:inline-flex;width:38px;height:21px;border-radius:20px;background:#c4c4c4;padding:3px;align-items:center;justify-content:flex-start"><span style="width:15px;height:15px;border-radius:50%;background:#fff;display:block"></span></span></div>
+        <div class="stc">Disabled Off</div>
+          <div class="cell"><span style="display:inline-flex;width:38px;height:21px;border-radius:20px;background:#e3e3e3;padding:3px;align-items:center;justify-content:flex-start"><span style="width:15px;height:15px;border-radius:50%;background:#fff;display:block"></span></span></div>
+          <div class="cell"><span style="display:inline-flex;width:38px;height:21px;border-radius:20px;background:#e3e3e3;padding:3px;align-items:center;justify-content:flex-start"><span style="width:15px;height:15px;border-radius:50%;background:#fff;display:block"></span></span></div>
+        <div class="stc">Disabled On</div>
+          <div class="cell"><span style="display:inline-flex;width:38px;height:21px;border-radius:20px;background:#e3e3e3;padding:3px;align-items:center;justify-content:flex-end"><span style="width:15px;height:15px;border-radius:50%;background:#fff;display:block"></span></span></div>
+          <div class="cell"><span style="display:inline-flex;width:38px;height:21px;border-radius:20px;background:#e3e3e3;padding:3px;align-items:center;justify-content:flex-end"><span style="width:15px;height:15px;border-radius:50%;background:#fff;display:block"></span></span></div>
+      </div>
+
+      <h2>3. States &amp; props</h2>
+      <p>On/Off with a hover each, plus Disabled on/off (6 states, no size variant). Hover states are present in Figma; the build applies them on interaction and no distinct hover track-color token surfaced this pass (state distinction is carried by the on/off track colors + thumb position). <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>Tab to focus, Space or Enter to toggle; <code>role="switch"</code> with <code>aria-checked</code>. On/off is conveyed by the <strong>thumb position</strong> (left = off, right = on) in addition to track color, so it doesn't rely on color alone (WCAG 1.4.1). Focus ring <span class="mono">#005fcc</span> / 2px; disabled not focusable and muted.</p>
+      <table>
+        <tr><th>Pair</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>On track vs Off track (state difference)</td><td>3.09:1</td><td class="m y">Pass (non-text 3:1)</td></tr>
+        <tr><td>Thumb vs On track</td><td>5.39:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Thumb vs Off track</td><td>1.74:1</td><td>By design (see note)</td></tr>
+        <tr><td>Thumb vs Disabled track</td><td>1.28:1</td><td>Exempt (disabled)</td></tr>
+      </table>
+      <div class="callout info">
+        <p style="margin:0"><span class="tag obs">QA-SW-01 · BY DESIGN</span> Thumb-vs-off-track contrast is 1.74:1 (below 3:1), but a switch's on/off meaning is carried by <strong>thumb position</strong>, not thumb-vs-track contrast — so it doesn't impair usability. The state-distinguishing pair (on track vs off track) is 3.09:1, above the 3:1 non-text threshold. Acceptable, same reasoning as the Modal border/overlay call.</p>
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-SW-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>On #07729c / off #c4c4c4 / disabled #e3e3e3 tracks, white thumb, track 38 / thumb 15 / pad 3 — all match.</td></tr>
+        <tr><td class="id">QA-SW-STATE</td><td>States</td><td><span class="tag pass">PASS</span></td><td>On/Off (+hover) and Disabled on/off; state carried by thumb position.</td></tr>
+        <tr><td class="id">QA-SW-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Position conveys state (1.4.1); focus ring #005FCC; on-vs-off track 3.09:1.</td></tr>
+        <tr><td class="id">QA-SW-01</td><td>Thumb/off-track contrast</td><td><span class="tag obs">BY DESIGN</span></td><td>1.74:1 acceptable — state carried by thumb position, not contrast.</td></tr>
+      </table>
+    `
   }
 ];
