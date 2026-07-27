@@ -511,31 +511,31 @@ window.VQA_REPORTS = [
         <tr><td>Corner radius</td><td class="mono">0px</td><td class="mono">0px</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Side-by-side — states (Large)</h2>
-      <p>Rendered from the actual token values on each side; identical per state.</p>
+      <h2>2. Side-by-side — states (Large &amp; Small)</h2>
+      <p>Rendered from the actual token values on each side; identical per state. Each cell shows Large (24px) then Small (20px).</p>
       <div class="swatchgrid">
         <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
         <div class="stc">Unselected</div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#ffffff;border:1px solid #c4c4c4"></span></div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#ffffff;border:1px solid #c4c4c4"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;background:#ffffff;border:1px solid #c4c4c4"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;background:#ffffff;border:1px solid #c4c4c4"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;background:#ffffff;border:1px solid #c4c4c4"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;background:#ffffff;border:1px solid #c4c4c4"></span></div>
         <div class="stc">Unselected Hover</div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#ffffff;border:1px solid #07729c"></span></div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#ffffff;border:1px solid #07729c"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;background:#ffffff;border:1px solid #07729c"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;background:#ffffff;border:1px solid #07729c"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;background:#ffffff;border:1px solid #07729c"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;background:#ffffff;border:1px solid #07729c"></span></div>
         <div class="stc">Selected</div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700">✓</span></div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700">✓</span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700;font-size:14px">✓</span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700;font-size:11px">✓</span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700;font-size:14px">✓</span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700;font-size:11px">✓</span></div>
         <div class="stc">Indeterminate</div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700">–</span></div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700">–</span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700;font-size:14px">–</span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700;font-size:11px">–</span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700;font-size:14px">–</span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700;font-size:11px">–</span></div>
         <div class="stc">Error</div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#fde5e5;border:1px solid #b00000"></span></div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#fde5e5;border:1px solid #b00000"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;background:#fde5e5;border:1px solid #b00000"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;background:#fde5e5;border:1px solid #b00000"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;background:#fde5e5;border:1px solid #b00000"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;background:#fde5e5;border:1px solid #b00000"></span></div>
         <div class="stc">Disabled</div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#f8f8f8;border:1px solid #e3e3e3"></span></div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#f8f8f8;border:1px solid #e3e3e3"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;background:#f8f8f8;border:1px solid #e3e3e3"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;background:#f8f8f8;border:1px solid #e3e3e3"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;background:#f8f8f8;border:1px solid #e3e3e3"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;background:#f8f8f8;border:1px solid #e3e3e3"></span></div>
         <div class="stc">Disabled Selected</div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#e3e3e3;border:1px solid #e3e3e3;color:#fff;font-weight:700">✓</span></div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#e3e3e3;border:1px solid #e3e3e3;color:#fff;font-weight:700">✓</span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#e3e3e3;border:1px solid #e3e3e3;color:#fff;font-weight:700;font-size:14px">✓</span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;align-items:center;justify-content:center;background:#e3e3e3;border:1px solid #e3e3e3;color:#fff;font-weight:700;font-size:11px">✓</span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#e3e3e3;border:1px solid #e3e3e3;color:#fff;font-weight:700;font-size:14px">✓</span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;align-items:center;justify-content:center;background:#e3e3e3;border:1px solid #e3e3e3;color:#fff;font-weight:700;font-size:11px">✓</span></div>
       </div>
 
       <h2>3. States, variants &amp; props</h2>
@@ -613,28 +613,28 @@ window.VQA_REPORTS = [
         <tr><td>Shape</td><td class="mono">circle</td><td class="mono">border-radius: 50%</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Side-by-side — states (Large)</h2>
-      <p>Rendered from the actual token values on each side; identical per state.</p>
+      <h2>2. Side-by-side — states (Large &amp; Small)</h2>
+      <p>Rendered from the actual token values on each side; identical per state. Each cell shows Large (24px) then Small (20px).</p>
       <div class="swatchgrid">
         <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
         <div class="stc">Unselected</div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#ffffff;border:1px solid #c4c4c4"></span></div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#ffffff;border:1px solid #c4c4c4"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#ffffff;border:1px solid #c4c4c4"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;border-radius:50%;background:#ffffff;border:1px solid #c4c4c4"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#ffffff;border:1px solid #c4c4c4"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;border-radius:50%;background:#ffffff;border:1px solid #c4c4c4"></span></div>
         <div class="stc">Unselected Hover</div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#ffffff;border:1px solid #07729c"></span></div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#ffffff;border:1px solid #07729c"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#ffffff;border:1px solid #07729c"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;border-radius:50%;background:#ffffff;border:1px solid #07729c"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#ffffff;border:1px solid #07729c"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;border-radius:50%;background:#ffffff;border:1px solid #07729c"></span></div>
         <div class="stc">Selected</div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#343434;border:1px solid #343434;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#ffffff;display:block"></span></span></div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#343434;border:1px solid #343434;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#ffffff;display:block"></span></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#343434;border:1px solid #343434;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#ffffff;display:block"></span></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;border-radius:50%;background:#343434;border:1px solid #343434;align-items:center;justify-content:center"><span style="width:6px;height:6px;border-radius:50%;background:#ffffff;display:block"></span></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#343434;border:1px solid #343434;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#ffffff;display:block"></span></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;border-radius:50%;background:#343434;border:1px solid #343434;align-items:center;justify-content:center"><span style="width:6px;height:6px;border-radius:50%;background:#ffffff;display:block"></span></span></div>
         <div class="stc">Error</div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#fde5e5;border:1px solid #b00000"></span></div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#fde5e5;border:1px solid #b00000"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#fde5e5;border:1px solid #b00000"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;border-radius:50%;background:#fde5e5;border:1px solid #b00000"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#fde5e5;border:1px solid #b00000"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;border-radius:50%;background:#fde5e5;border:1px solid #b00000"></span></div>
         <div class="stc">Disabled</div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#f8f8f8;border:1px solid #e3e3e3"></span></div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#f8f8f8;border:1px solid #e3e3e3"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#f8f8f8;border:1px solid #e3e3e3"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;border-radius:50%;background:#f8f8f8;border:1px solid #e3e3e3"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#f8f8f8;border:1px solid #e3e3e3"></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;border-radius:50%;background:#f8f8f8;border:1px solid #e3e3e3"></span></div>
         <div class="stc">Disabled Selected</div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#e3e3e3;border:1px solid #e3e3e3;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#ffffff;display:block"></span></span></div>
-          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#e3e3e3;border:1px solid #e3e3e3;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#ffffff;display:block"></span></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#e3e3e3;border:1px solid #e3e3e3;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#ffffff;display:block"></span></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;border-radius:50%;background:#e3e3e3;border:1px solid #e3e3e3;align-items:center;justify-content:center"><span style="width:6px;height:6px;border-radius:50%;background:#ffffff;display:block"></span></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;border-radius:50%;background:#e3e3e3;border:1px solid #e3e3e3;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:#ffffff;display:block"></span></span><span style="display:inline-flex;width:20px;height:20px;margin-left:10px;border-radius:50%;background:#e3e3e3;border:1px solid #e3e3e3;align-items:center;justify-content:center"><span style="width:6px;height:6px;border-radius:50%;background:#ffffff;display:block"></span></span></div>
       </div>
 
       <h2>3. States, variants &amp; props</h2>
