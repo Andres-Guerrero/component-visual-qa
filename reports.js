@@ -771,24 +771,6 @@ window.VQA_REPORTS = [
     group: 'Forms',
     status: 'a11y note',
     statusType: 'note',
-    handoffs: [{
-      code: 'QA-SL-REC',
-      title: 'Add pinned Hover/Focus trigger stories (Storybook coverage)',
-      text: `Component: Select
-Storybook: http://34.74.189.135:30100/?path=/docs/forms-select
-Figma (source of truth): UI-Kit__Web node 11689:1126
-
-Follow-up QA-SL-REC - state coverage
-Context: the trigger Hover and Focus states are verified by token only. In the states matrix they render at rest as Default, so they can't be visually QA'd like the other components' pinned states.
-Task: add pinned Storybook stories/args that display the trigger in Hover and in Focus.
-
-Acceptance criteria:
-- A story renders the Hover trigger with border #07729c.
-- A story renders the Focus trigger with border #66afe9 plus the focus glow.
-- Values match Figma node 11689:1126.
-
-Storybook coverage only - no production component change required. Approach is the team's call.`
-    }],
     html: `
       <h1 class="rt">Select</h1>
       <p class="rmeta">Figma component 11689:1126 · Frame doc 16020:8160 · Storybook /docs/forms-select · Captured 2026-07-27</p>
@@ -919,24 +901,6 @@ Storybook coverage only - no production component change required. Approach is t
     group: 'Forms',
     status: 'a11y note',
     statusType: 'note',
-    handoffs: [{
-      code: 'QA-CX-REC',
-      title: 'Add pinned Hover/Focus trigger stories (Storybook coverage)',
-      text: `Component: Combobox
-Storybook: http://34.74.189.135:30100/?path=/docs/forms-combobox
-Figma (source of truth): UI-Kit__Web node 12215:22625
-
-Follow-up QA-CX-REC - state coverage
-Context: the trigger Hover and Focus states are verified by token only; they render at rest as Default in the trigger matrix.
-Task: add pinned Storybook stories/args that display the trigger in Hover and in Focus.
-
-Acceptance criteria:
-- A story renders the Hover trigger with border #07729c.
-- A story renders the Focus trigger with border #66afe9 plus the focus glow.
-- Values match Figma node 12215:22625.
-
-Storybook coverage only - no production change required. Approach is the team's call.`
-    }],
     html: `
       <h1 class="rt">Combobox</h1>
       <p class="rmeta">Figma component 12215:22625 · Frame doc 16020:8230 · Storybook /docs/forms-combobox · Captured 2026-07-27</p>
@@ -1580,25 +1544,6 @@ Fix approach is the team's call - no code prescribed.`
     group: 'Forms',
     status: 'a11y note',
     statusType: 'note',
-    handoffs: [{
-      code: 'QA-TF-REC',
-      title: 'Add pinned Hover / Focus / Auto-filled stories (Storybook coverage)',
-      text: `Component: Text Field
-Storybook: http://34.74.189.135:30100/?path=/docs/forms-textfield
-Figma (source of truth): UI-Kit__Web node 9327:7519
-
-Follow-up QA-TF-REC - state coverage
-Context: the states-matrix names Hover, Focus, and Auto-filled but renders them at rest (Default look), so they can't be visually QA'd. Their token values are verified to match Figma.
-Task: add pinned Storybook stories/args that display these three states.
-
-Acceptance criteria:
-- A story renders the Hover field with border #07729c.
-- A story renders the Focus field with border #66afe9 plus the focus glow.
-- A story renders the Auto-filled field with bg #eff5fd.
-- Values match Figma node 9327:7519.
-
-Storybook coverage only - no production change required. Approach is the team's call.`
-    }],
     html: `
       <h1 class="rt">Text Field</h1>
       <p class="rmeta">Figma component 9327:7519 · Frame doc 15989:311951 · Storybook /story/forms-textfield · Captured 2026-07-27</p>
@@ -1699,24 +1644,6 @@ Storybook coverage only - no production change required. Approach is the team's 
     group: 'Forms',
     status: 'a11y note',
     statusType: 'note',
-    handoffs: [{
-      code: 'QA-SF-REC',
-      title: 'Add pinned Hover / Focus stories (Storybook coverage)',
-      text: `Component: Search Field
-Storybook: http://34.74.189.135:30100/?path=/docs/forms-searchfield
-Figma (source of truth): UI-Kit__Web node 15974:305732
-
-Follow-up QA-SF-REC - state coverage
-Context: the states-matrix names Hover and Focus but renders them at rest (Default look), so they can't be visually QA'd. Their token values are verified to match Figma.
-Task: add pinned Storybook stories/args for the Hover and Focus states.
-
-Acceptance criteria:
-- A story renders the Hover field with border #07729c.
-- A story renders the Focus field with border #66afe9 plus the focus glow.
-- Values match Figma node 15974:305732.
-
-Storybook coverage only - no production change required. Approach is the team's call.`
-    }],
     html: `
       <h1 class="rt">Search Field</h1>
       <p class="rmeta">Figma component 15974:305732 · Frame doc 15992:312052 · Storybook /story/forms-searchfield · Captured 2026-07-27</p>
