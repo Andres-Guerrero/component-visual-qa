@@ -394,5 +394,83 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-TS-OBS-01</td><td>Consistency</td><td><span class="tag obs">INFO</span></td><td>Pickup Selected 12.45:1 vs TurboTrack 2.80:1 — keep deliveries balanced when fixing.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'breadcrumb',
+    name: 'Breadcrumb',
+    group: 'Navigation',
+    status: 'Doc mismatch',
+    statusType: 'wip',
+    html: `
+      <h1 class="rt">Breadcrumb</h1>
+      <p class="rmeta">Figma desktop 16100:62660 · mobile 16100:62665 · Frame doc 16100:62667 · Storybook /docs/navigation-breadcrumb · Captured 2026-07-27</p>
+      <p>A secondary navigation aid showing the user's location as a trail of links separated by a trailing chevron. The last item is the current page and is non-interactive. States: Default, Hover, Current. On mobile the trail collapses to a single up-one-level "‹ Home" back affordance (separate Breadcrumb — Back component).</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">SEMANTICS &amp; TOKENS</p><div class="val">Pass</div><p class="sub">nav/ol/li, aria-current, link &amp; current colors match</p></div>
+        <div class="v fail"><p class="k">SEPARATOR COLOR</p><div class="val">Mismatch</div><p class="sub">Build #07729c vs frame doc #343434 — reconcile</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">All ≥ WCAG min; hover underline; focus ring matches</p></div>
+      </div>
+      <p>Structurally and semantically this is a clean, accessible build. The one thing to reconcile is the <strong>separator chevron color</strong>: the code renders it link-blue, matching the component's own icon variable — but the frame doc specifies a neutral dark. Design source disagrees with itself; QA can't call it without a decision.</p>
+
+      <h2>1. Semantic structure</h2>
+      <table>
+        <tr><th>Aspect</th><th>Expected (frame doc)</th><th>Storybook build</th><th>Match</th></tr>
+        <tr><td>Landmark</td><td class="mono">&lt;nav aria-label="Breadcrumb"&gt;</td><td class="mono">nav aria-label="Breadcrumb"</td><td class="m y">✓</td></tr>
+        <tr><td>List</td><td class="mono">ordered list &lt;ol&gt; / &lt;li&gt;</td><td class="mono">&lt;ol&gt; with &lt;li&gt; per crumb</td><td class="m y">✓</td></tr>
+        <tr><td>Current page</td><td class="mono">text, aria-current="page", not a link</td><td class="mono">&lt;span aria-current="page"&gt;, non-link</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Token fidelity — color</h2>
+      <table>
+        <tr><th>Element</th><th>Figma / doc</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Link (default)</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> (color.text.link)</td><td class="mono">#07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Link (hover)</td><td class="mono">underline added (not color)</td><td class="mono">text-decoration: underline on :hover</td><td class="m y">✓</td></tr>
+        <tr><td>Current page text</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> (color.text.default)</td><td class="mono">#343434</td><td class="m y">✓</td></tr>
+        <tr><td>Separator chevron</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> <em>(frame doc)</em> · <span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> <em>(component icon var)</em></td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="m n">✗ see QA-BC-01</td></tr>
+        <tr><td>Focus ring</td><td class="mono">#005FCC / 2px</td><td class="mono">#005fcc / 2px</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>3. Side-by-side</h2>
+      <div class="swatchgrid" style="grid-template-columns:180px 1fr;">
+        <div class="hd">Source</div><div class="hd">Rendering</div>
+        <div class="stc">Frame doc (neutral sep)</div>
+        <div class="cell" style="gap:6px;font-size:13px;">
+          <span style="color:#07729c">Home</span><span style="color:#343434">›</span>
+          <span style="color:#07729c">Circulator Pumps</span><span style="color:#343434">›</span>
+          <span style="color:#07729c">Taco Pumps</span><span style="color:#343434">›</span>
+          <span style="color:#343434;font-weight:700">Taco Cast Iron Pumps</span>
+        </div>
+        <div class="stc">Storybook build (blue sep)</div>
+        <div class="cell" style="gap:6px;font-size:13px;">
+          <span style="color:#07729c">Home</span><span style="color:#07729c">›</span>
+          <span style="color:#07729c">Circulator Pumps</span><span style="color:#07729c">›</span>
+          <span style="color:#07729c">Taco Pumps</span><span style="color:#07729c">›</span>
+          <span style="color:#343434;font-weight:700">Taco Cast Iron Pumps</span>
+        </div>
+      </div>
+
+      <h2>4. States, variants &amp; props</h2>
+      <p>Default / Hover / Current all present. Stories cover Full path, Hover, Truncated (long trails), Single item, and Mobile back (the "‹ Home" up-one-level pattern). The trailing separator is suppressed on the current crumb so the trail never ends with a dangling chevron. <span class="m y">✓ Pass</span></p>
+
+      <h2>5. Accessibility</h2>
+      <p>Semantic <code>nav</code>/<code>ol</code>/<code>li</code> with <code>aria-current="page"</code> on the current crumb; links tabbable in source order; hover adds an underline (not color alone, WCAG 1.4.1); focus ring <span class="mono">#005fcc</span> / 2px. Contrast per the frame doc: link 5.39:1, current 12.45:1, focus ring 5.98:1 — all pass. The built blue separator is 5.39:1 (≥ 3:1 non-text), so it passes regardless of the color question below.</p>
+
+      <h2>6. Findings</h2>
+      <div class="callout warn">
+        <p><span class="tag fail">QA-BC-01 · RECONCILE</span></p>
+        <strong>Separator chevron color: build vs doc disagree.</strong> The build renders the chevron <span class="mono">#07729c</span> (link-blue), which matches the desktop component's bound icon variable — but the frame doc specifies <span class="mono">#343434</span> (neutral). Separators are conventionally neutral, so the doc's intent is plausible and the component's blue binding may be the error. Not an a11y issue (blue passes 3:1). Decide the intended color and align component, doc, and build.
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-BC-STRUCT</td><td>Semantics</td><td><span class="tag pass">PASS</span></td><td>nav/ol/li, aria-current on current page (text, not link).</td></tr>
+        <tr><td class="id">QA-BC-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Link, hover-underline, current text, and focus ring match. (Separator: see QA-BC-01.)</td></tr>
+        <tr><td class="id">QA-BC-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Contrast link 5.39 / current 12.45 / focus 5.98; hover not-by-color.</td></tr>
+        <tr><td class="id">QA-BC-01</td><td>Separator color</td><td><span class="tag fail">RECONCILE</span></td><td>Build #07729c (matches component var) vs frame doc #343434. Align doc/component/build.</td></tr>
+      </table>
+    `
   }
 ];
