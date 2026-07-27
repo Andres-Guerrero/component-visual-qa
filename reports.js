@@ -472,5 +472,107 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-BC-01</td><td>Separator color</td><td><span class="tag pass">RESOLVED</span></td><td>Component &amp; build correct (#07729c); frame doc error being corrected manually.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'checkbox',
+    name: 'Checkbox',
+    group: 'Forms',
+    status: 'Pass · notes',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Checkbox</h1>
+      <p class="rmeta">Figma component 11804:15097 · Frame doc 15927:307326 · Storybook /docs/forms-checkbox · Captured 2026-07-27</p>
+      <p>A selection control for one or more options (or a single binary on/off). The square shows a check when selected and a dash when indeterminate (partially-selected group). Shared form-control container (24 Large / 20 Small) with the glyph centered; tokens drive fill, border, and the 1px border-width. Borders align with text fields and selects.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">All 9 states × 2 sizes — fill, border, size &amp; glyph match</p></div>
+        <div class="v pass"><p class="k">STATES · VARIANTS</p><div class="val">Pass</div><p class="sub">9 states, both sizes; check &amp; dash glyphs present</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · note</div><p class="sub">Indicator 12.45:1; unselected border is a known system-wide item</p></div>
+      </div>
+      <p>Faithful token translation across every state. The only accessibility note is a <em>known, system-wide</em> one — the unselected resting border — documented in the frame doc and pending team discussion, not a build defect.</p>
+
+      <h2>1. Token fidelity — color per state</h2>
+      <table>
+        <tr><th>State</th><th>Property</th><th>Figma variable</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Unselected</td><td>bg / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#ffffff / #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Unselected Hover</td><td>bg / border</td><td><span class="mono">#ffffff</span> / <span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#ffffff / #07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Selected / Sel. Hover / Indeterminate</td><td>bg / border / glyph</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> / <span class="mono">#343434</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span></td><td class="mono">#343434 / #343434 / #ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Error</td><td>bg / border</td><td><span class="chip" style="background:#fde5e5"></span><span class="mono">#fde5e5</span> / <span class="chip" style="background:#b00000"></span><span class="mono">#b00000</span></td><td class="mono">#fde5e5 / #b00000</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td>bg / border</td><td><span class="chip" style="background:#f8f8f8"></span><span class="mono">#f8f8f8</span> / <span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span></td><td class="mono">#f8f8f8 / #e3e3e3</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled Selected / Indeterminate</td><td>bg / border / glyph</td><td><span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span> / <span class="mono">#e3e3e3</span> / <span class="mono">#ffffff</span></td><td class="mono">#e3e3e3 / #e3e3e3 / #ffffff</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h3>Sizing &amp; border</h3>
+      <table>
+        <tr><th>Property</th><th>Figma</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Box size (Large / Small)</td><td class="mono">24px / 20px</td><td class="mono">24px / 20px</td><td class="m y">✓</td></tr>
+        <tr><td>Border width</td><td class="mono">1px</td><td class="mono">1px</td><td class="m y">✓</td></tr>
+        <tr><td>Corner radius</td><td class="mono">0px</td><td class="mono">0px</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side — states (Large)</h2>
+      <p>Rendered from the actual token values on each side; identical per state.</p>
+      <div class="swatchgrid">
+        <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+        <div class="stc">Unselected</div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#ffffff;border:1px solid #c4c4c4"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#ffffff;border:1px solid #c4c4c4"></span></div>
+        <div class="stc">Unselected Hover</div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#ffffff;border:1px solid #07729c"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#ffffff;border:1px solid #07729c"></span></div>
+        <div class="stc">Selected</div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700">✓</span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700">✓</span></div>
+        <div class="stc">Indeterminate</div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700">–</span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#343434;border:1px solid #343434;color:#fff;font-weight:700">–</span></div>
+        <div class="stc">Error</div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#fde5e5;border:1px solid #b00000"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#fde5e5;border:1px solid #b00000"></span></div>
+        <div class="stc">Disabled</div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#f8f8f8;border:1px solid #e3e3e3"></span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#f8f8f8;border:1px solid #e3e3e3"></span></div>
+        <div class="stc">Disabled Selected</div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#e3e3e3;border:1px solid #e3e3e3;color:#fff;font-weight:700">✓</span></div>
+          <div class="cell"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;background:#e3e3e3;border:1px solid #e3e3e3;color:#fff;font-weight:700">✓</span></div>
+      </div>
+
+      <h2>3. States, variants &amp; props</h2>
+      <p>All 9 states (Unselected, Unselected Hover, Selected, Selected Hover, Indeterminate, Error, Disabled, Disabled Selected, Disabled Indeterminate) render in both sizes and match Figma, verified in the "States × Sizes" story. Check glyph for selected, dash for indeterminate. A separate CheckboxGroup component composes these. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <h3>Focus, keyboard &amp; non-color cues</h3>
+      <p>Tab to focus, Space to toggle. Focus shows a 2px ring in <span class="mono">--color-focus-ring: #005fcc</span> (width 2px) — applied at runtime, not as a component variant. Indeterminate is conveyed by the dash (a mixed selection, not on/off); disabled is not focusable and conveyed by the muted fill beyond color. <span class="m y">✓</span></p>
+
+      <h3>Contrast — indicator (check/dash) vs box fill</h3>
+      <table>
+        <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Selected / Selected Hover / Indeterminate</td><td>12.45:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Disabled Selected / Disabled Indeterminate</td><td>1.28:1</td><td>Exempt (disabled)</td></tr>
+      </table>
+
+      <h3>Contrast — box outline vs background (non-text, 3:1)</h3>
+      <table>
+        <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Unselected</td><td>1.74:1</td><td class="m n">Below 3:1 — flagged</td></tr>
+        <tr><td>Unselected Hover</td><td>5.39:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Error</td><td>7.38:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Disabled</td><td>1.28:1</td><td>Exempt (disabled)</td></tr>
+      </table>
+      <div class="callout warn">
+        <p><span class="tag fail">QA-CB-A11Y-01 · KNOWN / SYSTEM-WIDE</span></p>
+        <strong>Unselected resting border is below the 3:1 non-text minimum.</strong> The gray <span class="mono">#c4c4c4</span> outline is 1.74:1 — but it intentionally matches the text-field and select resting border. Per the frame doc this is a <em>system-wide</em> choice pending team discussion, not to be changed unilaterally on the checkbox alone. Faithfully implemented from the token; any fix should be made across all form controls together.
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-CB-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 9 states × 2 sizes: fill, border, border-width, size, glyph match Figma.</td></tr>
+        <tr><td class="id">QA-CB-STATE</td><td>States &amp; variants</td><td><span class="tag pass">PASS</span></td><td>9 states, both sizes; check + dash glyphs correct.</td></tr>
+        <tr><td class="id">QA-CB-FOCUS</td><td>Focus &amp; non-color cues</td><td><span class="tag pass">PASS</span></td><td>Focus ring #005FCC / 2px (runtime); indeterminate dash; disabled muted beyond color.</td></tr>
+        <tr><td class="id">QA-CB-A11Y-01</td><td>Contrast (outline)</td><td><span class="tag obs">KNOWN</span></td><td>Unselected border 1.74:1 (&lt; 3:1); matches inputs/selects — system-wide, pending discussion.</td></tr>
+      </table>
+    `
   }
 ];
