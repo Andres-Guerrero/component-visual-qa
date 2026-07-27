@@ -1573,5 +1573,103 @@ Fix approach is the team's call - no code prescribed.`
       </table>
     `,
     tabset: true
+  },
+  {
+    id: 'text-field',
+    name: 'Text Field',
+    group: 'Forms',
+    status: 'a11y note',
+    statusType: 'note',
+    html: `
+      <h1 class="rt">Text Field</h1>
+      <p class="rmeta">Figma component 9327:7519 · Frame doc 15989:311951 · Storybook /story/forms-textfield · Captured 2026-07-27</p>
+      <p>A single-line input on the shared form-field tokens (same field box as Select and Combobox). Two label styles (static, floating) and two sizes, across states Default, Hover, Focus, Filled, Auto-filled, Disabled, Error. Supports a label, an optional required asterisk, helper text, an error message, and an optional trailing affordance (icon or "Show").</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">All 7 state tokens, placeholder, sizes match Figma</p></div>
+        <div class="v pass"><p class="k">STATES · PROPS</p><div class="val">Pass</div><p class="sub">Default/Filled/Error/Disabled/Small/Floating pinned as stories</p></div>
+        <div class="v fail"><p class="k">ACCESSIBILITY</p><div class="val">a11y note</div><p class="sub">Default &amp; focus border below 3:1 (shared system-wide item)</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Default</td><td>bg / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#ffffff / #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Hover</td><td>border</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Focus</td><td>border + glow</td><td><span class="chip" style="background:#66afe9"></span><span class="mono">#66afe9</span> + Glow-Blue</td><td class="mono">#66afe9 + glow</td><td class="m y">✓</td></tr>
+        <tr><td>Filled</td><td>bg / border / text</td><td><span class="mono">#ffffff</span> / <span class="mono">#c4c4c4</span> / <span class="chip" style="background:#343434"></span><span class="mono">#343434</span></td><td class="mono">#ffffff / #c4c4c4 / #343434</td><td class="m y">✓</td></tr>
+        <tr><td>Auto-filled</td><td>bg / border</td><td><span class="chip" style="background:#eff5fd"></span><span class="mono">#eff5fd</span> / <span class="mono">#c4c4c4</span></td><td class="mono">#eff5fd / #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Error</td><td>bg / border / text</td><td><span class="chip" style="background:#fde5e5"></span><span class="mono">#fde5e5</span> / <span class="chip" style="background:#b00000"></span><span class="mono">#b00000</span></td><td class="mono">#fde5e5 / #b00000</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td>bg / border / text</td><td><span class="chip" style="background:#f8f8f8"></span><span class="mono">#f8f8f8</span> / <span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#f8f8f8 / #e3e3e3 / #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Placeholder</td><td>text</td><td><span class="chip" style="background:#757575"></span><span class="mono">#757575</span></td><td class="mono">#757575</td><td class="m y">✓</td></tr>
+      </table>
+      <h3>Sizing</h3>
+      <table>
+        <tr><th>Property</th><th>Figma</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Height (Large / Small)</td><td class="mono">50 / 40px</td><td class="mono">50 / 40px</td><td class="m y">✓</td></tr>
+        <tr><td>Padding-x (Large / Small)</td><td class="mono">16 / 12px</td><td class="mono">token-driven</td><td class="m y">✓</td></tr>
+        <tr><td>Border width / radius</td><td class="mono">1px / 0px</td><td class="mono">1px / 0px</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side - states</h2>
+      <p>Facsimiles rendered from the matching token values (Large). Hover / Focus / Auto-filled are interactive; the rest are pinned as stories.</p>
+      <div class="swatchgrid" style="grid-template-columns:150px 1fr 1fr">
+        <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+        <div class="stc">Default</div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;width:220px;height:44px;padding:0 16px;background:#ffffff;border:1px solid #c4c4c4;color:#757575;font-size:14px">you@example.com</span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;width:220px;height:44px;padding:0 16px;background:#ffffff;border:1px solid #c4c4c4;color:#757575;font-size:14px">you@example.com</span></div>
+        <div class="stc">Filled</div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;width:220px;height:44px;padding:0 16px;background:#ffffff;border:1px solid #c4c4c4;color:#343434;font-size:14px">jane@supplyhouse.com</span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;width:220px;height:44px;padding:0 16px;background:#ffffff;border:1px solid #c4c4c4;color:#343434;font-size:14px">jane@supplyhouse.com</span></div>
+        <div class="stc">Focus <span style="font-weight:400;color:#757575">(interactive)</span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;width:220px;height:44px;padding:0 16px;background:#ffffff;border:1px solid #66afe9;box-shadow:0 0 0 3px rgba(102,175,233,0.30);color:#343434;font-size:14px">jane@supplyhouse.com</span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;width:220px;height:44px;padding:0 16px;background:#ffffff;border:1px solid #66afe9;box-shadow:0 0 0 3px rgba(102,175,233,0.30);color:#343434;font-size:14px">jane@supplyhouse.com</span></div>
+        <div class="stc">Auto-filled <span style="font-weight:400;color:#757575">(interactive)</span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;width:220px;height:44px;padding:0 16px;background:#eff5fd;border:1px solid #c4c4c4;color:#343434;font-size:14px">jane@supplyhouse.com</span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;width:220px;height:44px;padding:0 16px;background:#eff5fd;border:1px solid #c4c4c4;color:#343434;font-size:14px">jane@supplyhouse.com</span></div>
+        <div class="stc">Error</div>
+          <div class="cell"><div><span style="display:inline-flex;align-items:center;width:220px;height:44px;padding:0 16px;background:#fde5e5;border:1px solid #b00000;color:#343434;font-size:14px">not-an-email</span><div style="color:#b00000;font-size:12px;margin-top:4px">Enter a valid email address</div></div></div>
+          <div class="cell"><div><span style="display:inline-flex;align-items:center;width:220px;height:44px;padding:0 16px;background:#fde5e5;border:1px solid #b00000;color:#343434;font-size:14px">not-an-email</span><div style="color:#b00000;font-size:12px;margin-top:4px">Enter a valid email address</div></div></div>
+        <div class="stc">Disabled</div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;width:220px;height:44px;padding:0 16px;background:#f8f8f8;border:1px solid #e3e3e3;color:#c4c4c4;font-size:14px">Unavailable</span></div>
+          <div class="cell"><span style="display:inline-flex;align-items:center;width:220px;height:44px;padding:0 16px;background:#f8f8f8;border:1px solid #e3e3e3;color:#c4c4c4;font-size:14px">Unavailable</span></div>
+      </div>
+
+      <h2>3. States, variants &amp; props</h2>
+      <p>Label Style static / floating; Size Large / Small; Label boolean (default on, off collapses the label + spacing for inline/filter use); CTA boolean + trailing instance-swap (icon or "Show"); required asterisk; helper text; error message. Stories pin Default, Filled, Error, Disabled, Required, Small, and Floating; Hover, Focus, and Auto-filled are interactive. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>Tab to focus, type to enter text. Focus shows a blue border + glow (<code>color/pattern/form-field/focus/*</code>). Error is conveyed by the red border AND a red error message (not color alone), paired with <code>aria-invalid</code> + <code>aria-describedby</code>; helper and error are separate lines. Labels associate with the input via for/id.</p>
+      <h3>Text vs field</h3>
+      <table>
+        <tr><th>Element</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Filled text</td><td>12.45:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Placeholder</td><td>4.61:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Error message</td><td>7.38:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Disabled text</td><td>1.64:1</td><td>Exempt (disabled)</td></tr>
+      </table>
+      <h3>Border vs background (non-text, 3:1)</h3>
+      <table>
+        <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Default</td><td>1.74:1</td><td class="m n">Below 3:1 - flagged</td></tr>
+        <tr><td>Hover</td><td>5.39:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Focus</td><td>2.37:1</td><td class="m n">Below 3:1 (glow reinforces)</td></tr>
+        <tr><td>Error</td><td>7.38:1</td><td class="m y">Pass</td></tr>
+      </table>
+      <div class="callout warn">
+        <p><span class="tag fail">QA-TF-A11Y-01 · KNOWN / SYSTEM-WIDE</span></p>
+        <strong>Default and focus borders fall below the 3:1 non-text minimum.</strong> Default <span class="mono">#c4c4c4</span> is 1.74:1 and focus <span class="mono">#66afe9</span> is 2.37:1 (the glow reinforces it). This is the shared form-control token, and the default border matches the checkbox/radio resting border, flagged on Checkbox, Radio, Select, and Combobox too. A system-level resting/focus-border choice pending team review; fix across all form fields together.
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-TF-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 7 state tokens, placeholder, sizes, 0px radius match Figma.</td></tr>
+        <tr><td class="id">QA-TF-STATE</td><td>States · props</td><td><span class="tag pass">PASS</span></td><td>Default/Filled/Error/Disabled/Required/Small/Floating pinned; Hover/Focus/Auto-filled interactive.</td></tr>
+        <tr><td class="id">QA-TF-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Error = border + message (aria-invalid/describedby); labels for/id; text contrast AA+.</td></tr>
+        <tr><td class="id">QA-TF-A11Y-01</td><td>Contrast (borders)</td><td><span class="tag fail">KNOWN</span></td><td>Default 1.74:1 &amp; focus 2.37:1 below 3:1, shared system-wide (see QA-CB/RD/SL/CX-A11Y-01).</td></tr>
+      </table>
+    `
   }
 ];
