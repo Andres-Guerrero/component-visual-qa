@@ -781,7 +781,7 @@ window.VQA_REPORTS = [
       <h2>Verdict</h2>
       <div class="verdict">
         <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">All form-field state tokens match Figma exactly</p></div>
-        <div class="v pass"><p class="k">STATE COVERAGE</p><div class="val">Pass · note</div><p class="sub">Default/Error/Disabled pinned; Hover/Focus/Open/Selected token-only</p></div>
+        <div class="v pass"><p class="k">STATE COVERAGE</p><div class="val">Pass · note</div><p class="sub">Trigger + open panel pinned; only trigger Hover/Focus interactive-only</p></div>
         <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · notes</div><p class="sub">2 known system-wide border items (default, focus); error not color-only</p></div>
       </div>
 
@@ -830,14 +830,27 @@ window.VQA_REPORTS = [
           <div class="cell"><span style="display:inline-flex;align-items:center;justify-content:space-between;width:190px;height:40px;padding:0 12px;background:#f8f8f8;border:1px solid #e3e3e3;color:#c4c4c4;font-size:13px">Choose an option<span style="color:#c4c4c4">▾</span></span></div>
       </div>
 
-      <h2>3. Figma ↔ build mapping</h2>
+      <h2>3. Open panel (listbox)</h2>
+      <p>The <code>item-type-radio</code> story pins Select's open listbox. Verified against the Menus &amp; Lists family:</p>
+      <table>
+        <tr><th>Element</th><th>Figma</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Surface</td><td class="mono">#ffffff · +4y · #dcdcdc</td><td class="mono">#ffffff · 0 4/8 rgba(.1)+0 0/1 rgba(.2) · 1px #dcdcdc</td><td class="m y">✓</td></tr>
+        <tr><td>Row height (Large / Small)</td><td class="mono">42 / 38</td><td class="mono">42 / 38</td><td class="m y">✓</td></tr>
+        <tr><td>Option default</td><td class="mono">bg #ffffff / text #343434</td><td class="mono">#ffffff / #343434</td><td class="m y">✓</td></tr>
+        <tr><td>Option selected</td><td class="mono">bg #eff5fd + checked radio</td><td class="mono">#eff5fd + radio checked (aria-selected)</td><td class="m y">✓</td></tr>
+        <tr><td>Option disabled</td><td class="mono">bg #f8f8f8 / #c4c4c4</td><td class="mono">#f8f8f8 / #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Single-select control</td><td class="mono">radio</td><td class="mono">role=radio per row</td><td class="m y">✓</td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--sh-mid-gray)">Selection is conveyed by the radio, not the background (consistent with List Items QA-LI-01). Open-panel a11y: 0 violations, 14 passes. Surface/rows detailed under Menus &amp; Lists → Dropdown / List Items.</p>
+
+      <h2>4. Figma ↔ build mapping</h2>
       <p>The build organizes Select by feature stories rather than Figma's pinned state matrix. This maps the two and marks what's visually pinned vs. interactive-only.</p>
       <table>
         <tr><th>Figma variant</th><th>How the build exposes it</th><th>Visually pinned?</th></tr>
         <tr><td>State = Default</td><td><code>states-matrix</code> "default" · <code>default</code> story</td><td class="m y">✓ pinned</td></tr>
         <tr><td>State = Hover</td><td><code>states-matrix</code> "hover" row (renders at rest)</td><td class="m n">interactive-only</td></tr>
         <tr><td>State = Focus</td><td><code>states-matrix</code> "focus" row (border + glow not shown statically)</td><td class="m n">interactive-only</td></tr>
-        <tr><td>State = Open</td><td><code>states-matrix</code> "open" row (renders at rest)</td><td class="m n">interactive-only</td></tr>
+        <tr><td>State = Open</td><td><code>item-type-radio</code> / <code>flag-rows</code> (open listbox pinned)</td><td class="m y">✓ pinned</td></tr>
         <tr><td>State = Selected</td><td><code>selected</code> story · matrix "selected"</td><td class="m y">✓ (filled text; border = default)</td></tr>
         <tr><td>State = Error</td><td><code>error</code> story · matrix "error"</td><td class="m y">✓ pinned</td></tr>
         <tr><td>State = Disabled</td><td><code>disabled</code> story · matrix "disabled"</td><td class="m y">✓ pinned</td></tr>
@@ -847,7 +860,7 @@ window.VQA_REPORTS = [
         <tr><td><em>(no Figma variant)</em></td><td>build-only stories: <code>required</code>, <code>flag-rows</code>, <code>item-type-radio</code></td><td>—</td></tr>
       </table>
 
-      <h2>4. Accessibility</h2>
+      <h2>5. Accessibility</h2>
       <p>Tab to focus; Enter/Space/Arrows open and move/select; Esc closes. Focus uses the shared focus convention; error is conveyed by the red border <em>and</em> the error message (aria-invalid + aria-describedby), not color alone; disabled reads fully muted.</p>
       <h3>Text vs field</h3>
       <table>
@@ -874,10 +887,10 @@ window.VQA_REPORTS = [
       <table>
         <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
         <tr><td class="id">QA-SL-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All form-field state tokens (default/hover/focus/filled/error/disabled/placeholder) match Figma.</td></tr>
-        <tr><td class="id">QA-SL-STATE</td><td>State coverage</td><td><span class="tag obs">PASS · NOTE</span></td><td>Default/Error/Disabled pinned; Hover/Focus/Open/Selected token-verified only (not pinned as static demos).</td></tr>
+        <tr><td class="id">QA-SL-STATE</td><td>State coverage</td><td><span class="tag obs">PASS · NOTE</span></td><td>Trigger Default/Error/Disabled + full open panel pinned; only trigger Hover/Focus render at rest.</td></tr>
         <tr><td class="id">QA-SL-MAP</td><td>Figma↔build mapping</td><td><span class="tag obs">INFO</span></td><td>Build uses feature stories, not Figma's state matrix; mapping documented in §3. Build-only: required, flag-rows, item-type-radio.</td></tr>
         <tr><td class="id">QA-SL-A11Y-01</td><td>Contrast (borders)</td><td><span class="tag fail">KNOWN</span></td><td>Default 1.74:1 &amp; focus 2.37:1 below 3:1 — system-wide, pending review (shared with checkbox/radio/text field).</td></tr>
-        <tr><td class="id">QA-SL-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Add pinned Hover/Focus (with glow)/Open demos so every Figma state is visually QA-able, matching the other components.</td></tr>
+        <tr><td class="id">QA-SL-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Add pinned trigger Hover/Focus (with glow) demos; the open panel is already pinned via item-type-radio.</td></tr>
       </table>
     `
   },
