@@ -697,7 +697,7 @@ window.VQA_REPORTS = [
       <table>
         <tr><th>State</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
         <tr><td>Default</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#07729c · no underline</td><td class="m y">✓</td></tr>
-        <tr><td>Hover</td><td><span class="mono">#07729c</span> + underline</td><td class="mono">#07729c · underline</td><td class="m y">✓</td></tr>
+        <tr><td>Hover</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> + underline</td><td class="mono">#07729c · underline</td><td class="m y">✓</td></tr>
         <tr><td>Active</td><td><span class="chip" style="background:#055271"></span><span class="mono">#055271</span> + underline</td><td class="mono">#055271 · underline</td><td class="m y">✓</td></tr>
         <tr><td>Visited</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> (= default)</td><td class="mono">#07729c</td><td class="m y">✓</td></tr>
         <tr><td>Disabled</td><td><span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#c4c4c4</td><td class="m y">✓</td></tr>
