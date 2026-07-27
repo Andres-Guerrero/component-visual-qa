@@ -1297,6 +1297,10 @@ window.VQA_REPORTS = [
         <p><span class="tag fail">QA-PG-01 · ALIGNMENT — FIX</span></p>
         <strong>The ellipsis is not vertically centered.</strong> It renders on the text baseline, so the three dots sit visibly lower than the numbers and arrows (which are centered on the row). In Figma the ellipsis is centered within the row. Not an a11y issue — a visual polish fix. Recommend centering it (e.g., a midline treatment / flex-center the dots, or shift up to the optical center), then re-verify against Figma.
       </div>
+      <figure style="margin:16px 0;border:1px solid var(--sh-border)">
+        <img src="assets/pagination-alignment.png" alt="Storybook vs Figma pagination with alignment gridlines; the Storybook ellipsis sits below the row centerline shared by the numbers and arrows" style="display:block;width:100%;height:auto">
+        <figcaption style="font-size:12px;color:var(--sh-mid-gray);padding:8px 12px;background:var(--sh-light-tan-1)"><strong>Evidence (Storybook vs Figma).</strong> With alignment gridlines overlaid, the Storybook ellipsis falls on the baseline — below the centerline the numbers and arrows share; Figma keeps the ellipsis on that centerline.</figcaption>
+      </figure>
 
       <h2>Findings log</h2>
       <table>
