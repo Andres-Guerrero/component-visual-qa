@@ -213,5 +213,94 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-SB-OBS-02</td><td>Doc vs build</td><td><span class="tag obs">CONFIRM</span></td><td>Build has isLoading + as-anchor beyond the doc's 4 states; reconcile doc &amp; code.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'tertiary-button',
+    name: 'Tertiary Button',
+    group: 'Actions',
+    status: 'Pass',
+    statusType: 'pass',
+    swatches: [
+      {n:'Default',  bg:'#ffffff', fg:'#07729c', bd:'#07729c', icon:'none', label:'TERTIARY'},
+      {n:'Hover',    bg:'#eff5fd', fg:'#07729c', bd:'#07729c', icon:'none', label:'TERTIARY'},
+      {n:'Press',    bg:'#ffffff', fg:'#07729c', bd:'#055271', icon:'none', label:'TERTIARY'},
+      {n:'Disabled', bg:'#f8f8f8', fg:'#c4c4c4', bd:'#e3e3e3', icon:'none', label:'TERTIARY'}
+    ],
+    html: `
+      <h1 class="rt">Tertiary Button</h1>
+      <p class="rmeta">Figma component 3597:3722 · Frame doc 15905:306580 · Storybook /docs/actions-tertiary-button · Captured 2026-07-27</p>
+      <p>The lowest-emphasis action button, rendered as an outline (white fill, blue border and label) for least-dominant or supporting actions. Two sizes and four states (Default, Hover, Press, Disabled), optional leading icon (<code>Show icon</code>, default off). Auto-layout, token-driven padding/height/spacing with a token-bound 2px border; <strong>fills its container width</strong>.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Colors, border, sizing &amp; type all match — 4 states × 2 sizes</p></div>
+        <div class="v pass"><p class="k">STATES · VARIANTS · PROPS</p><div class="val">Pass</div><p class="sub">4 states, both sizes, Show icon (default off)</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">Labels AA (4.92–5.39:1); border affordance ≥ 3:1 non-text</p></div>
+      </div>
+      <p>Clean pass. The outline treatment is fully token-driven and reproduced exactly, including the darker press border and the muted disabled palette. Correctly uses a border (not the elevation effect the filled buttons carry).</p>
+
+      <h2>1. Token fidelity</h2>
+      <h3>Color per state</h3>
+      <table>
+        <tr><th>State</th><th>Property</th><th>Figma variable</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Default</td><td>bg / text / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> / <span class="mono">#07729c</span></td><td class="mono">#ffffff / #07729c / #07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Hover</td><td>bg / text / border</td><td><span class="chip" style="background:#eff5fd"></span><span class="mono">#eff5fd</span> / <span class="mono">#07729c</span> / <span class="mono">#07729c</span></td><td class="mono">#eff5fd / #07729c / #07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Press (active)</td><td>bg / text / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="mono">#07729c</span> / <span class="chip" style="background:#055271"></span><span class="mono">#055271</span></td><td class="mono">#ffffff / #07729c / #055271</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td>bg / text / border</td><td><span class="chip" style="background:#f8f8f8"></span><span class="mono">#f8f8f8</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span> / <span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span></td><td class="mono">#f8f8f8 / #c4c4c4 / #e3e3e3</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h3>Border, radius &amp; effects</h3>
+      <table>
+        <tr><th>Property</th><th>Figma</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Border width</td><td class="mono">2px (stroke token)</td><td class="mono">2px solid</td><td class="m y">✓</td></tr>
+        <tr><td>Elevation</td><td class="mono">none (outline button)</td><td class="mono">box-shadow: none</td><td class="m y">✓</td></tr>
+        <tr><td>Corner radius</td><td class="mono">0px</td><td class="mono">0px</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h3>Sizing &amp; typography</h3>
+      <table>
+        <tr><th>Property</th><th>Large (md)</th><th>Small (sm)</th><th>Match</th></tr>
+        <tr><td>Height</td><td>50px</td><td>36px</td><td class="m y">✓</td></tr>
+        <tr><td>Padding (Y / X)</td><td>12px / 32px</td><td>8px / 28px</td><td class="m y">✓</td></tr>
+        <tr><td>Icon gap</td><td>8px</td><td>8px</td><td class="m y">✓</td></tr>
+        <tr><td>Font</td><td>Maison Neue Bold</td><td>Maison Neue Bold</td><td class="m y">✓</td></tr>
+        <tr><td>Size / line-height</td><td>13px / 1.6 (20.8px)</td><td>11px / 1.0 (11px)</td><td class="m y">✓</td></tr>
+        <tr><td>Letter-spacing</td><td>0</td><td>2% (0.22px)</td><td class="m y">✓</td></tr>
+        <tr><td>Transform</td><td>UPPERCASE</td><td>UPPERCASE</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side — states (Large)</h2>
+      <p>Rendered from the actual token values on each side; identical per state.</p>
+      <div id="vqa-swatches" class="swatchgrid">
+        <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+      </div>
+
+      <h2>3. States, variants &amp; props</h2>
+      <p>All 4 states render in both sizes and match Figma. The <code>Show icon</code> boolean (default off) toggles an optional leading icon. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <h3>Focus &amp; keyboard</h3>
+      <p>Tab to focus, Enter or Space to activate; disabled is not focusable and conveyed beyond color. Build confirms the foundation focus tokens — <span class="mono">--color-focus-ring: #005fcc</span> and <span class="mono">--stroke-focus-ring-width: 2px</span> — matching the doc. <span class="m y">✓ Match</span></p>
+
+      <h3>Contrast</h3>
+      <table>
+        <tr><th>State</th><th>Label ratio</th><th>Result</th></tr>
+        <tr><td>Default</td><td>5.39:1</td><td class="m y">Pass AA (normal + large)</td></tr>
+        <tr><td>Hover</td><td>4.92:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Press</td><td>5.39:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Disabled</td><td>1.64:1</td><td>Exempt (disabled control)</td></tr>
+      </table>
+      <div class="callout info"><strong>Border affordance:</strong> the outline is the button's primary affordance. The Default/Press border (<span class="mono">#07729C</span> on white) is 5.39:1 — above the 3:1 non-text minimum; disabled border is exempt. No issues.</div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-TB-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Colors, border width, sizing, and typography match Figma across 4 states × 2 sizes.</td></tr>
+        <tr><td class="id">QA-TB-STATE</td><td>States · variants · props</td><td><span class="tag pass">PASS</span></td><td>4 states, both sizes, Show icon (default off).</td></tr>
+        <tr><td class="id">QA-TB-FOCUS</td><td>Focus &amp; keyboard</td><td><span class="tag pass">PASS</span></td><td>Focus-ring tokens (#005FCC / 2px) match; Tab/Enter/Space; disabled not focusable.</td></tr>
+        <tr><td class="id">QA-TB-A11Y</td><td>Contrast</td><td><span class="tag pass">PASS</span></td><td>Labels 4.92–5.39:1 (≥ 4.5:1 AA); border affordance 5.39:1 (≥ 3:1); disabled exempt.</td></tr>
+        <tr><td class="id">QA-TB-OBS-01</td><td>Effects</td><td><span class="tag pass">MATCH</span></td><td>Correctly uses a 2px border, no elevation — per the outline spec.</td></tr>
+      </table>
+    `
   }
 ];
