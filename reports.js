@@ -996,5 +996,137 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-CX-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Pin Hover/Focus (with glow) demos so every state is visually QA-able.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'dropdown',
+    name: 'Dropdown',
+    group: 'Menus & Lists',
+    status: 'Pass · notes',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Dropdown</h1>
+      <p class="rmeta">Figma component 16267:306664 · Frame doc 16295:10147 (Menus &amp; Lists page) · Storybook: split across Overlays/Menu + Combobox open · Captured 2026-07-27</p>
+      <p>A trigger-agnostic list surface — built from List Items in a scrollable container — opened by a Select, a Combobox, or an overflow/three-dot button. Two semantics share the surface: <strong>Listbox</strong> (selecting options) and <strong>Menu</strong> (choosing an action). Layouts: Compact and Full-screen (mobile). Anatomy: optional Search slot · List Slot (List Items) · optional Controls slot.</p>
+
+      <div class="callout info"><strong>Organization note.</strong> Figma keeps Dropdown + List Items together on the "Menus &amp; Lists" page; the build doesn't have a standalone Dropdown component — it's split into <code>Overlays/Menu</code> (menu semantic) and the Combobox/Select <em>open</em> panels (listbox semantic). This report keeps the Figma grouping; §3 maps it to the build.</p></div>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">SURFACE &amp; TOKENS</p><div class="val">Pass</div><p class="sub">Elevated bg, +4y shadow, divider all match Figma</p></div>
+        <div class="v pass"><p class="k">ANATOMY · LAYOUT</p><div class="val">Pass · note</div><p class="sub">Compact pinned (Menu); Listbox via Combobox open; Full-screen = mobile</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">Menu 0 a11y violations; roles + focus-on-row correct</p></div>
+      </div>
+
+      <h2>1. Surface tokens</h2>
+      <table>
+        <tr><th>Property</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Surface bg</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> (bg/elevated)</td><td class="mono">#ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Elevation</td><td class="mono">+4y — 0/4/8 rgba(0,0,0,.1) + 0/0/1 rgba(0,0,0,.2)</td><td class="mono">0 4px 8px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.2)</td><td class="m y">✓</td></tr>
+        <tr><td>Border / divider</td><td><span class="chip" style="background:#dcdcdc"></span><span class="mono">#dcdcdc</span></td><td class="mono">1px #dcdcdc</td><td class="m y">✓</td></tr>
+        <tr><td>Corner radius</td><td class="mono">0px</td><td class="mono">0px</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Rendered surface (menu semantic)</h2>
+      <p>From the "With icons and shortcuts" menu — elevated white surface, +4y shadow, rows built from List Items.</p>
+      <div style="display:inline-block;background:#ffffff;border:1px solid #dcdcdc;box-shadow:0 4px 8px rgba(0,0,0,0.1),0 0 1px rgba(0,0,0,0.2);width:200px;font-size:14px;color:#343434">
+        <div style="display:flex;justify-content:space-between;align-items:center;height:42px;padding:0 12px">Edit<span style="color:#757575;font-size:12px">⌘E</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;height:42px;padding:0 12px;background:#eff5fd">Mark done<span style="color:#757575;font-size:12px">⌘D</span></div>
+        <div style="height:1px;background:#dcdcdc"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;height:42px;padding:0 12px;background:#f8f8f8;color:#c4c4c4">Delete<span style="font-size:12px">⌫</span></div>
+      </div>
+
+      <h2>3. Figma ↔ build mapping</h2>
+      <table>
+        <tr><th>Figma</th><th>How the build exposes it</th><th>Pinned?</th></tr>
+        <tr><td>Dropdown (Menu semantic)</td><td><code>Overlays/Menu</code>: overflow-menu, custom-trigger, with-icons-and-shortcuts, small-size, scrolling-menu</td><td class="m y">✓ pinned</td></tr>
+        <tr><td>Dropdown (Listbox semantic)</td><td>Combobox <code>open-normal</code> / <code>open-searchable</code>; Select open (on interaction)</td><td class="m y">✓ (combobox) / interactive (select)</td></tr>
+        <tr><td>Layout = Compact</td><td>Menu + Combobox open panels</td><td class="m y">✓ pinned</td></tr>
+        <tr><td>Layout = Full-screen</td><td>mobile viewport (not a desktop story)</td><td class="m n">not pinned</td></tr>
+        <tr><td>Search slot / Controls slot</td><td>Combobox <code>open-searchable</code> (search); Controls via secondary buttons</td><td class="m y">✓</td></tr>
+        <tr><td><em>Standalone "Dropdown" component</em></td><td>none — composed inside Menu / Combobox / Select</td><td>—</td></tr>
+      </table>
+
+      <h2>4. Accessibility &amp; behavior</h2>
+      <p>Roles: trigger <code>aria-haspopup="listbox"</code>/<code>"menu"</code>; list <code>role="listbox"</code>/<code>"menu"</code>; items <code>option</code>/<code>menuitem</code>. Keyboard: Up/Down move the active row (scrolled into view), Enter/Space select/activate, Esc closes and returns focus to the trigger, Home/End jump, type-ahead; disabled rows skipped. Focus = 2px ring <span class="mono">#005fcc</span> on the active row. Behavior: the list hugs content up to ~5.5 rows, then caps and scrolls (half-row peek signals more); Full-screen fills the viewport on mobile. Menu story: <strong>0 a11y violations, 9 passes</strong>.</p>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-DD-TOK</td><td>Surface tokens</td><td><span class="tag pass">PASS</span></td><td>Elevated bg #ffffff, +4y shadow, #dcdcdc divider, 0px radius all match Figma.</td></tr>
+        <tr><td class="id">QA-DD-STATE</td><td>Anatomy / layout</td><td><span class="tag obs">PASS · NOTE</span></td><td>Compact pinned; Full-screen is mobile-only (not a desktop story).</td></tr>
+        <tr><td class="id">QA-DD-MAP</td><td>Figma↔build mapping</td><td><span class="tag obs">INFO</span></td><td>No standalone component; split across Overlays/Menu + Combobox/Select open panels (§3).</td></tr>
+        <tr><td class="id">QA-DD-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Roles/keyboard/focus correct; Menu story 0 axe violations.</td></tr>
+      </table>
+    `
+  },
+  {
+    id: 'list-items',
+    name: 'List Items',
+    group: 'Menus & Lists',
+    status: 'Pass · note',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">List Items</h1>
+      <p class="rmeta">Figma component 9180:1464 · Frame doc 16295:10147 (Menus &amp; Lists page) · Storybook: rendered as menu/option rows · Captured 2026-07-27</p>
+      <p>The row inside a Dropdown surface: Leading slot (control) · Label · Trailing slot (badge/accessory). States Default, Hover, Selected, Disabled; sizes Large and Small; editable label. Used for both listbox options and menu actions.</p>
+
+      <div class="callout info"><strong>Organization note.</strong> No standalone List Item component in the build — rows render as <code>role="menuitem"</code> (Overlays/Menu) and <code>role="option"</code> (Combobox/Select). Report kept under Figma's Menus &amp; Lists grouping.</p></div>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Default/Hover/Selected/Disabled bg + text match Figma</p></div>
+        <div class="v pass"><p class="k">STATES · SIZES</p><div class="val">Pass</div><p class="sub">4 states; Large 42 confirmed, Small 38 (per Figma)</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · note</div><p class="sub">Hover = Selected bg — selection must use a control/check</p></div>
+      </div>
+
+      <h2>1. Token fidelity — color per state</h2>
+      <table>
+        <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Default</td><td>row bg / text</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#343434"></span><span class="mono">#343434</span></td><td class="mono">#ffffff / #343434</td><td class="m y">✓</td></tr>
+        <tr><td>Hover</td><td>row bg</td><td><span class="chip" style="background:#eff5fd"></span><span class="mono">#eff5fd</span></td><td class="mono">#eff5fd</td><td class="m y">✓</td></tr>
+        <tr><td>Selected</td><td>row bg</td><td><span class="chip" style="background:#eff5fd"></span><span class="mono">#eff5fd</span> (= hover)</td><td class="mono">#eff5fd</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td>row bg / text</td><td><span class="chip" style="background:#f8f8f8"></span><span class="mono">#f8f8f8</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#f8f8f8 / #c4c4c4</td><td class="m y">✓</td></tr>
+      </table>
+      <h3>Sizing &amp; type</h3>
+      <table>
+        <tr><th>Property</th><th>Figma</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Row height (Large / Small)</td><td class="mono">42px / 38px</td><td class="mono">42px (menu) / 38 per Figma</td><td class="m y">✓*</td></tr>
+        <tr><td>Label font</td><td class="mono">Maison Neue Book</td><td class="mono">Maison Neue</td><td class="m y">✓</td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--sh-mid-gray)">* Large row height 42 confirmed in the menu; Small 38 taken from Figma (build small-size menu story exists) — spot-check.</p>
+
+      <h2>2. Side-by-side — states (Large)</h2>
+      <p>Row facsimiles from the matching token values. Selected shows a trailing check to convey selection (see the a11y note).</p>
+      <div class="swatchgrid" style="grid-template-columns:130px 1fr 1fr;">
+        <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+        <div class="stc">Default</div>
+          <div class="cell"><span style="display:flex;align-items:center;width:190px;height:42px;padding:0 12px;background:#ffffff;border:1px solid #dcdcdc;color:#343434;font-size:14px">Option label</span></div>
+          <div class="cell"><span style="display:flex;align-items:center;width:190px;height:42px;padding:0 12px;background:#ffffff;border:1px solid #dcdcdc;color:#343434;font-size:14px">Option label</span></div>
+        <div class="stc">Hover</div>
+          <div class="cell"><span style="display:flex;align-items:center;width:190px;height:42px;padding:0 12px;background:#eff5fd;border:1px solid #dcdcdc;color:#343434;font-size:14px">Option label</span></div>
+          <div class="cell"><span style="display:flex;align-items:center;width:190px;height:42px;padding:0 12px;background:#eff5fd;border:1px solid #dcdcdc;color:#343434;font-size:14px">Option label</span></div>
+        <div class="stc">Selected</div>
+          <div class="cell"><span style="display:flex;align-items:center;justify-content:space-between;width:190px;height:42px;padding:0 12px;background:#eff5fd;border:1px solid #dcdcdc;color:#343434;font-size:14px">Option label<span style="color:#07729c;font-weight:700">✓</span></span></div>
+          <div class="cell"><span style="display:flex;align-items:center;justify-content:space-between;width:190px;height:42px;padding:0 12px;background:#eff5fd;border:1px solid #dcdcdc;color:#343434;font-size:14px">Option label<span style="color:#07729c;font-weight:700">✓</span></span></div>
+        <div class="stc">Disabled</div>
+          <div class="cell"><span style="display:flex;align-items:center;width:190px;height:42px;padding:0 12px;background:#f8f8f8;border:1px solid #dcdcdc;color:#c4c4c4;font-size:14px">Option label</span></div>
+          <div class="cell"><span style="display:flex;align-items:center;width:190px;height:42px;padding:0 12px;background:#f8f8f8;border:1px solid #dcdcdc;color:#c4c4c4;font-size:14px">Option label</span></div>
+      </div>
+
+      <h2>3. Accessibility</h2>
+      <p>Contrast (frame doc): label <span class="mono">#343434</span> on white 12.45:1 (AAA); label on hover/selected <span class="mono">#eff5fd</span> 11.35:1 (AAA); focus ring <span class="mono">#005fcc</span> 5.98:1; disabled label 1.64:1 (exempt).</p>
+      <div class="callout warn">
+        <p><span class="tag fail">QA-LI-01 · DESIGN NOTE (correctly implemented)</span></p>
+        <strong>Hover and Selected share the same background (<span class="mono">#eff5fd</span>).</strong> So selection must be conveyed by the option's control (checkbox/radio checked state) or a checkmark — <em>not</em> by background alone. A plain "selected" row with no control would be indistinguishable from hover. The build follows this (selection carries a control/check); flagged so it stays true as new list content is added.</p>
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-LI-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Default/Hover/Selected/Disabled bg + text match Figma (menu-item tokens).</td></tr>
+        <tr><td class="id">QA-LI-STATE</td><td>States &amp; sizes</td><td><span class="tag pass">PASS</span></td><td>4 states; Large 42 confirmed; Small 38 per Figma (spot-check).</td></tr>
+        <tr><td class="id">QA-LI-01</td><td>Selection cue</td><td><span class="tag obs">NOTE</span></td><td>Hover = Selected bg; selection conveyed by control/check, not bg alone. Keep true for new rows.</td></tr>
+      </table>
+    `
   }
 ];
