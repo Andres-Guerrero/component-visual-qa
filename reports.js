@@ -673,5 +673,96 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-RD-A11Y-01</td><td>Contrast (outline)</td><td><span class="tag obs">KNOWN</span></td><td>Unselected border 1.74:1 (&lt; 3:1) — shared system-wide token (see QA-CB-A11Y-01).</td></tr>
       </table>
     `
+  },
+  {
+    id: 'link',
+    name: 'Link',
+    group: 'Navigation',
+    status: 'Pass · notes',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Link</h1>
+      <p class="rmeta">Figma component 8931:5582 · Frame doc 15928:2067 · Storybook /docs/navigation-link · Captured 2026-07-27</p>
+      <p>A text link for navigation or inline actions. States: Default, Hover (underlined), Active (darker + underlined), Visited, Disabled — color plus the underline convey state. Optional icon via the icon toggle (default on) and a custom label via the link-text property. No size variant — the link inherits its text style (14px Bold).</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">All 5 state colors, type &amp; icon-gap match</p></div>
+        <div class="v pass"><p class="k">STATES · VARIANTS · PROPS</p><div class="val">Pass</div><p class="sub">5 states + inline persistent-underline + leading/trailing icon</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · note</div><p class="sub">Contrast AA+; underline cues; visited=default is a known item</p></div>
+      </div>
+      <p>Faithful token translation with strong color-independence (hover/active underline, inline persistent underline). One documented note: visited currently resolves to the same blue as default.</p>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>State</th><th>Figma variable</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Default</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#07729c · no underline</td><td class="m y">✓</td></tr>
+        <tr><td>Hover</td><td><span class="mono">#07729c</span> + underline</td><td class="mono">#07729c · underline</td><td class="m y">✓</td></tr>
+        <tr><td>Active</td><td><span class="chip" style="background:#055271"></span><span class="mono">#055271</span> + underline</td><td class="mono">#055271 · underline</td><td class="m y">✓</td></tr>
+        <tr><td>Visited</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> (= default)</td><td class="mono">#07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td><span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span></td><td class="mono">#c4c4c4</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h3>Type &amp; spacing</h3>
+      <table>
+        <tr><th>Property</th><th>Figma</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Font</td><td class="mono">Maison Neue Bold 14px / 1.6</td><td class="mono">Maison Neue 700, 14px</td><td class="m y">✓</td></tr>
+        <tr><td>Icon gap</td><td class="mono">8px</td><td class="mono">8px</td><td class="m y">✓</td></tr>
+        <tr><td>Icon</td><td class="mono">optional, default on</td><td class="mono">leading &amp; trailing icon stories</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side — states</h2>
+      <p>Rendered from the actual token values on each side; identical per state.</p>
+      <div class="swatchgrid">
+        <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+        <div class="stc">Default</div>
+          <div class="cell"><span style="color:#07729c;font-weight:700;font-size:14px">Link</span></div>
+          <div class="cell"><span style="color:#07729c;font-weight:700;font-size:14px">Link</span></div>
+        <div class="stc">Hover</div>
+          <div class="cell"><span style="color:#07729c;font-weight:700;font-size:14px;text-decoration:underline">Link</span></div>
+          <div class="cell"><span style="color:#07729c;font-weight:700;font-size:14px;text-decoration:underline">Link</span></div>
+        <div class="stc">Active</div>
+          <div class="cell"><span style="color:#055271;font-weight:700;font-size:14px;text-decoration:underline">Link</span></div>
+          <div class="cell"><span style="color:#055271;font-weight:700;font-size:14px;text-decoration:underline">Link</span></div>
+        <div class="stc">Visited</div>
+          <div class="cell"><span style="color:#07729c;font-weight:700;font-size:14px">Link</span></div>
+          <div class="cell"><span style="color:#07729c;font-weight:700;font-size:14px">Link</span></div>
+        <div class="stc">Disabled</div>
+          <div class="cell"><span style="color:#c4c4c4;font-weight:700;font-size:14px">Link</span></div>
+          <div class="cell"><span style="color:#c4c4c4;font-weight:700;font-size:14px">Link</span></div>
+        <div class="stc">Inline (persistent underline)</div>
+          <div class="cell" style="font-size:13px;color:#343434">…lorem <span style="color:#07729c;font-weight:700;text-decoration:underline">inline link</span> ipsum…</div>
+          <div class="cell" style="font-size:13px;color:#343434">…lorem <span style="color:#07729c;font-weight:700;text-decoration:underline">inline link</span> ipsum…</div>
+      </div>
+
+      <h2>3. States, variants &amp; props</h2>
+      <p>All 5 states render and match Figma (States Matrix story). Standalone and inline variants; leading- and trailing-icon stories cover the icon toggle (default on); custom label via the link-text prop. No size variant — the link inherits surrounding text size. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <h3>Focus, keyboard &amp; color independence</h3>
+      <p>Tab to focus, Enter to activate; focus ring <span class="mono">#005fcc</span> / 2px (runtime). Hover and active add an underline (a non-color cue); the inline variant carries a <strong>persistent underline</strong> so links aren't distinguished by color alone within body text (WCAG 1.4.1). <span class="m y">✓</span></p>
+
+      <h3>Contrast (link text vs background)</h3>
+      <table>
+        <tr><th>State</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Default / Hover / Visited (#07729c)</td><td>5.39:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Active (#055271)</td><td>8.57:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Disabled (#c4c4c4)</td><td>1.74:1</td><td>Exempt (disabled)</td></tr>
+      </table>
+      <div class="callout warn">
+        <p><span class="tag fail">QA-LN-01 · KNOWN</span></p>
+        <strong>Visited is not visually distinct from Default.</strong> Both resolve to <span class="mono">#07729c</span> (the <code>link/visited</code> token maps to <code>text.link</code>). Faithfully implemented — but a user can't tell visited from unvisited by color. Per the frame doc this is pending a future token decision; no build change implied.
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-LN-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 5 state colors, 14px bold type, and icon-gap match Figma.</td></tr>
+        <tr><td class="id">QA-LN-STATE</td><td>States · variants · props</td><td><span class="tag pass">PASS</span></td><td>5 states, inline persistent-underline, leading/trailing icon, custom label.</td></tr>
+        <tr><td class="id">QA-LN-FOCUS</td><td>Focus &amp; color independence</td><td><span class="tag pass">PASS</span></td><td>Focus ring #005FCC / 2px; hover/active underline; inline persistent underline (1.4.1).</td></tr>
+        <tr><td class="id">QA-LN-A11Y</td><td>Contrast</td><td><span class="tag pass">PASS</span></td><td>Default/hover/visited 5.39:1; active 8.57:1; disabled exempt.</td></tr>
+        <tr><td class="id">QA-LN-01</td><td>Visited color</td><td><span class="tag obs">KNOWN</span></td><td>Visited = default (#07729c) — not visually distinct; pending future token decision.</td></tr>
+      </table>
+    `
   }
 ];
