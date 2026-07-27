@@ -137,6 +137,16 @@ const VQA = (function(){
         });
       });
     }
+    if(r.tabset){
+      const tab=(label,count,sel,dis)=>{
+        const line=dis?'inset 0 -1px 0 #e3e3e3':(sel?'inset 0 -2px 0 #07729c':'inset 0 -1px 0 #c4c4c4');
+        const txt=dis?'#c4c4c4':'#343434';
+        const badge=dis?'background:#f8f8f8;color:#c4c4c4':(sel?'background:#eff5fd;color:#07729c':'background:#eeeeee;color:#343434');
+        return '<span style="display:inline-flex;align-items:center;padding:8px 16px;font-weight:700;color:'+txt+';box-shadow:'+line+'">'+label+'<span style="margin-left:8px;font-size:12px;padding:1px 8px;border-radius:4px;font-weight:700;'+badge+'">'+count+'</span></span>';
+      };
+      const set='<span style="display:inline-flex;align-items:flex-end;font-size:14px">'+tab('Overview','3',true,false)+tab('Specs','12',false,false)+tab('Reviews','42',false,false)+tab('Archived','0',false,true)+'</span>';
+      [c.querySelector('#tabfig'),c.querySelector('#tabsb')].forEach(h=>{if(h)h.innerHTML=set;});
+    }
     if(r.handoffs && r.handoffs.length){
       const sec=document.createElement('div');sec.className='handoff';
       const h=document.createElement('h2');h.textContent='Hand off to Claude Code';sec.appendChild(h);

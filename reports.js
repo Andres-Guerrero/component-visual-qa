@@ -1508,5 +1508,70 @@ Fix approach is the team's call — no code prescribed.`
         <tr><td class="id">QA-TG-01</td><td>Hover token</td><td><span class="tag obs">PENDING</span></td><td>Hover is a placeholder (= default) pending a real hover treatment; design-side, re-QA when it lands.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'tabs',
+    name: 'Tabs',
+    group: 'Navigation',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Tabs</h1>
+      <p class="rmeta">Figma component 9327:7373 · Frame doc 16197:302181 · Storybook /story/navigation-tabs · Captured 2026-07-27</p>
+      <p>Let people switch between related views in the same context, showing one panel at a time. The selected tab is marked by a blue underline; labels can optionally carry a count. Tabs are background-transparent and adapt to whatever surface they sit on; only the indicator, label, and optional counter carry color.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Label, indicator, baseline &amp; counter badges match Figma</p></div>
+        <div class="v pass"><p class="k">STATES · PROPS</p><div class="val">Pass</div><p class="sub">Default/Selected/Disabled; counter on/off</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">tablist/tab/tabpanel + roving tabindex; state by indicator + text</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>Element</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Label (all states)</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> · 14px bold</td><td class="mono">#343434 · 700</td><td class="m y">✓</td></tr>
+        <tr><td>Selected indicator</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> · 2px bottom</td><td class="mono">inset 0 -2px 0 #07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Default baseline track</td><td><span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span> · 1px</td><td class="mono">inset 0 -1px 0 #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Counter — default</td><td><span class="mono">#343434</span> on <span class="chip" style="background:#eeeeee"></span><span class="mono">#eeeeee</span></td><td class="mono">#343434 on #eeeeee</td><td class="m y">✓</td></tr>
+        <tr><td>Counter — selected</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> on <span class="chip" style="background:#eff5fd"></span><span class="mono">#eff5fd</span></td><td class="mono">#07729c on #eff5fd</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td><span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span> label · #e3e3e3 border · count on #f8f8f8</td><td class="mono">#c4c4c4 · #e3e3e3 · #f8f8f8</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side — tab set</h2>
+      <p>Rendered from the matching token values (Overview selected). Selected = blue underline + selected counter; disabled muted.</p>
+      <div class="swatchgrid" style="grid-template-columns:110px 1fr">
+        <div class="hd">Source</div><div class="hd">Rendering</div>
+        <div class="stc">Figma</div><div class="cell" id="tabfig"></div>
+        <div class="stc">Storybook</div><div class="cell" id="tabsb"></div>
+      </div>
+
+      <h2>3. States &amp; props</h2>
+      <p>State: Default, Hover, Selected, Disabled. Counter boolean (count badge after the label, default on; "without counter" story hides it). Hover adds the 2px indicator plus a subtle <span class="mono">#f8f8f8</span> background (interactive; applied on hover). <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>Container <code>role="tablist"</code>; each tab <code>role="tab"</code> with <code>aria-selected</code>; panel <code>role="tabpanel"</code> with <code>aria-labelledby</code>; tabs reference panels via <code>aria-controls</code>. Keyboard: Tab enters the tablist (roving tabindex, only the selected tab is tabbable), Left/Right move, Home/End jump, Enter/Space activate, disabled tabs skipped. Focus ring <span class="mono">#005fcc</span> / 2px.</p>
+      <table>
+        <tr><th>Element</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Label #343434</td><td>12.45:1</td><td class="m y">AAA</td></tr>
+        <tr><td>Selected / hover indicator #07729c</td><td>5.39:1</td><td class="m y">Pass (non-text ≥3:1)</td></tr>
+        <tr><td>Counter default #343434 on #eeeeee</td><td>10.73:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Counter selected #07729c on #eff5fd</td><td>4.92:1</td><td class="m y">Pass AA</td></tr>
+        <tr><td>Default baseline track #c4c4c4</td><td>1.74:1</td><td>Decorative (see note)</td></tr>
+      </table>
+      <div class="callout info">
+        <p style="margin:0"><span class="tag obs">QA-TAB-01 · BY DESIGN</span> The resting baseline track (<span class="mono">#c4c4c4</span>, 1.74:1) is a decorative divider; the selected state is carried by the 2px indicator + text/counter, not by the baseline contrast. Acceptable, same reasoning as the switch/modal.</p>
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-TAB-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Label #343434 bold, indicator 2px #07729c, baseline 1px #c4c4c4, counter default/selected/disabled badges — all match.</td></tr>
+        <tr><td class="id">QA-TAB-STATE</td><td>States &amp; props</td><td><span class="tag pass">PASS</span></td><td>Default/Selected/Disabled correct; counter on/off; hover indicator + #f8f8f8 bg (interactive).</td></tr>
+        <tr><td class="id">QA-TAB-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>tablist/tab/tabpanel, roving tabindex, arrow nav, disabled skipped; state via indicator + text.</td></tr>
+        <tr><td class="id">QA-TAB-01</td><td>Baseline track contrast</td><td><span class="tag obs">BY DESIGN</span></td><td>Decorative divider (1.74:1); state carried by indicator + text, not the track.</td></tr>
+      </table>
+    `,
+    tabset: true
   }
 ];
