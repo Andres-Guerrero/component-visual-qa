@@ -1580,6 +1580,25 @@ Fix approach is the team's call - no code prescribed.`
     group: 'Forms',
     status: 'a11y note',
     statusType: 'note',
+    handoffs: [{
+      code: 'QA-TF-REC',
+      title: 'Add pinned Hover / Focus / Auto-filled stories (Storybook coverage)',
+      text: `Component: Text Field
+Storybook: http://34.74.189.135:30100/?path=/docs/forms-textfield
+Figma (source of truth): UI-Kit__Web node 9327:7519
+
+Follow-up QA-TF-REC - state coverage
+Context: the states-matrix names Hover, Focus, and Auto-filled but renders them at rest (Default look), so they can't be visually QA'd. Their token values are verified to match Figma.
+Task: add pinned Storybook stories/args that display these three states.
+
+Acceptance criteria:
+- A story renders the Hover field with border #07729c.
+- A story renders the Focus field with border #66afe9 plus the focus glow.
+- A story renders the Auto-filled field with bg #eff5fd.
+- Values match Figma node 9327:7519.
+
+Storybook coverage only - no production change required. Approach is the team's call.`
+    }],
     html: `
       <h1 class="rt">Text Field</h1>
       <p class="rmeta">Figma component 9327:7519 · Frame doc 15989:311951 · Storybook /story/forms-textfield · Captured 2026-07-27</p>
@@ -1638,6 +1657,7 @@ Fix approach is the team's call - no code prescribed.`
 
       <h2>3. States, variants &amp; props</h2>
       <p>Label Style static / floating; Size Large / Small; Label boolean (default on, off collapses the label + spacing for inline/filter use); CTA boolean + trailing instance-swap (icon or "Show"); required asterisk; helper text; error message. Stories pin Default, Filled, Error, Disabled, Required, Small, and Floating; Hover, Focus, and Auto-filled are interactive. <span class="m y">✓ Pass</span></p>
+      <div class="callout info"><strong>On the states matrix.</strong> Like Select, the <code>states-matrix</code> story <em>names</em> every state but renders Hover, Focus, and Auto-filled at rest (they show the Default look). Those three are graded token-verified: their token values (<span class="mono">#07729c</span> / <span class="mono">#66afe9</span> / <span class="mono">#eff5fd</span>) match Figma, they're just not visually pinned.</p></div>
 
       <h2>4. Accessibility</h2>
       <p>Tab to focus, type to enter text. Focus shows a blue border + glow (<code>color/pattern/form-field/focus/*</code>). Error is conveyed by the red border AND a red error message (not color alone), paired with <code>aria-invalid</code> + <code>aria-describedby</code>; helper and error are separate lines. Labels associate with the input via for/id.</p>
@@ -1669,6 +1689,7 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-TF-STATE</td><td>States · props</td><td><span class="tag pass">PASS</span></td><td>Default/Filled/Error/Disabled/Required/Small/Floating pinned; Hover/Focus/Auto-filled interactive.</td></tr>
         <tr><td class="id">QA-TF-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Error = border + message (aria-invalid/describedby); labels for/id; text contrast AA+.</td></tr>
         <tr><td class="id">QA-TF-A11Y-01</td><td>Contrast (borders)</td><td><span class="tag fail">KNOWN</span></td><td>Default 1.74:1 &amp; focus 2.37:1 below 3:1, shared system-wide (see QA-CB/RD/SL/CX-A11Y-01).</td></tr>
+        <tr><td class="id">QA-TF-REC</td><td>Recommendation</td><td><span class="tag obs">SUGGEST</span></td><td>Add pinned Hover / Focus (with glow) / Auto-filled demos so every state is visually QA-able, matching the individual state stories.</td></tr>
       </table>
     `
   }
