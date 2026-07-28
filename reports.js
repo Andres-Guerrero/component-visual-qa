@@ -2244,5 +2244,70 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-QS-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Value field is a spinbutton (valuemin/now/max); disabled boundaries native; trash beyond color; focus ring. White-on-orange icons ~3.3:1 (passes 3:1 non-text); muted states are disabled-exempt.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'stepper-add-first',
+    name: 'Quantity Stepper Button (Add-first)',
+    group: 'Steppers',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Quantity Stepper Button (Add-first)</h1>
+      <p class="rmeta">Figma component 16515:10708 · Shared frame doc 16575:1040 · Storybook /docs/forms-quantity-stepper-button · Captured 2026-07-28</p>
+      <p>The Add-first member of the quantity stepper family. It starts as an outlined "Add +" trigger that expands into the orange stepper on first add, shows a checkmark badge on add, and floats an "Added!" callout as an overlay on the first add (the callout does not affect the component footprint). Single size. From qty 1 onward it behaves like the Standard stepper (trash at quantity 1, plus disabled at Max).</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Trigger, badge, callout, shared states match; radius 6</p></div>
+        <div class="v pass"><p class="k">STATES</p><div class="val">Pass</div><p class="sub">Add / Add Hover / Focus / Qty 0 / Qty 1 / Filled / Max / Edit / Loading / Disabled / Added first + repeat</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">trigger is a button; expanded field is a spinbutton; trash beyond color</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <p>Read from the states-matrix and the added-first / added-repeat stories, checked against <code>quantity-stepper/add-first/*</code>.</p>
+      <table>
+        <tr><th>Element / state</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Add trigger</td><td class="mono">text #343434 · icon #f15c02 · border #c4c4c4 1px</td><td class="mono">#343434 · #f15c02 · #c4c4c4 1px</td><td class="m y">✓</td></tr>
+        <tr><td>Container radius</td><td class="mono">6 (radius/6)</td><td class="mono">6px</td><td class="m y">✓</td></tr>
+        <tr><td>Added badge</td><td class="mono">bg #f15c02 · icon #ffffff (check)</td><td class="mono">#f15c02 · #ffffff check</td><td class="m y">✓</td></tr>
+        <tr><td>Added! callout (first add)</td><td class="mono">text/border #f15c02 · bg #ffffff</td><td class="mono">overlay fires on first add</td><td class="m y">✓</td></tr>
+        <tr><td>Qty 0</td><td class="mono">minus #f6b48d / plus #f15c02, icons #fff</td><td class="mono">#f6b48d / #f15c02</td><td class="m y">✓</td></tr>
+        <tr><td>Qty 1 (remove) · Filled</td><td class="mono">minus &amp; plus #f15c02, icons #fff</td><td class="mono">#f15c02 both</td><td class="m y">✓</td></tr>
+        <tr><td>Filled Hover</td><td class="mono">plus #e05400</td><td class="mono">#e05400</td><td class="m y">✓</td></tr>
+        <tr><td>Max</td><td class="mono">plus #f6b48d (disabled) · label #f15c02</td><td class="mono">#f6b48d · disabled</td><td class="m y">✓</td></tr>
+        <tr><td>Edit · Loading · Disabled</td><td class="mono">pencil plus / spinner / #dcdcdc</td><td class="mono">match Standard values</td><td class="m y">✓</td></tr>
+        <tr><td>Field bg / text · focus border</td><td class="mono">#ffffff / #343434 · #66afe9</td><td class="mono">#ffffff / #343434 · #66afe9</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side (rendered from tokens)</h2>
+      <p>Trigger, the first-add moment (badge + "Added!" callout), Filled, and Max. Radius 6.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;margin:14px 0">
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Add trigger</div><div style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border:1px solid #c4c4c4;border-radius:6px;font-size:15px;font-weight:700;color:#343434">Add <span style="color:#f15c02">+</span></div></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Added (first)</div><div style="position:relative;display:inline-block;padding-top:14px">
+          <div style="position:absolute;top:-14px;left:24px;background:#fff;border:1px solid #f15c02;color:#f15c02;font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px">Added!</div>
+          <div style="display:inline-flex;height:40px;border-radius:6px;overflow:hidden;font-size:15px;font-weight:700;position:relative">
+            <span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f15c02;color:#fff"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></span>
+            <span style="min-width:52px;display:flex;align-items:center;justify-content:center;background:#fff;color:#343434;border-top:1px solid #c4c4c4;border-bottom:1px solid #c4c4c4">1</span>
+            <span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f15c02;color:#fff;position:relative">+<span style="position:absolute;top:-6px;right:-6px;width:18px;height:18px;border-radius:50%;background:#f15c02;border:2px solid #fff;display:flex;align-items:center;justify-content:center"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span></span>
+          </div>
+        </div></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Filled (2+)</div><div style="display:inline-flex;height:40px;border-radius:6px;overflow:hidden;font-size:15px;font-weight:700"><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f15c02;color:#fff">&minus;</span><span style="min-width:52px;display:flex;align-items:center;justify-content:center;background:#fff;color:#343434;border-top:1px solid #c4c4c4;border-bottom:1px solid #c4c4c4">2</span><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f15c02;color:#fff">+</span></div></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Max</div><div style="display:inline-flex;height:40px;border-radius:6px;overflow:hidden;font-weight:700"><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f15c02;color:#fff;font-size:15px">&minus;</span><span style="min-width:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;border-top:1px solid #c4c4c4;border-bottom:1px solid #c4c4c4"><span style="font-size:9px;color:#f15c02;line-height:1">Max</span><span style="font-size:14px;color:#343434;line-height:1.1">10</span></span><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f6b48d;color:#fff;font-size:15px">+</span></div></div>
+      </div>
+
+      <h2>3. States</h2>
+      <p>Stories pin Add, Filled, Qty 1 (remove), Max, Added (first), Added (repeat), Edit, Loading, Disabled, plus a states-matrix (which also covers Add Hover, Focus, and Qty 0). Single size (no Large / Small). The trigger expands into the stepper on first add; the checkmark badge and the "Added!" callout are transient overlays that fire on add and fade, matching the frame doc, so their exact colors were confirmed visually and against the tokens rather than as a static resting state. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>The initial "Add +" is a <code>button</code>; once expanded, the value field is a <code>role="spinbutton"</code> with <code>aria-valuemin</code> / <code>valuemax</code> / <code>valuenow</code>, and minus/plus are increment/decrement controls that carry native <code>disabled</code> at the boundaries. The trash icon at quantity 1 conveys Remove beyond color. Focus ring is the shared <span class="mono">#005fcc</span> / 2px foundation. Contrast: white glyphs on <span class="mono">#f15c02</span> compute about <strong>3.3:1</strong> (passes 3:1 non-text); the Qty 0 / Max / Disabled muted treatments are inactive controls under the WCAG disabled exemption.</p>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-QSB-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Add trigger (#343434 / #f15c02 / #c4c4c4), radius 6, badge (#f15c02 + white check), Added! callout (#f15c02 on white), and all shared states match quantity-stepper/add-first/* token-for-token.</td></tr>
+        <tr><td class="id">QA-QSB-STATE</td><td>States</td><td><span class="tag pass">PASS</span></td><td>Add / Add Hover / Focus / Qty 0 / Qty 1 remove / Filled / Filled Hover / Max / Edit / Loading / Disabled / Added first + repeat; single size. Trigger expands on add; badge + callout fire as overlays.</td></tr>
+        <tr><td class="id">QA-QSB-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Trigger is a button; expanded field is a spinbutton (valuemin/now/max); disabled boundaries native; trash beyond color; focus ring. White-on-orange ~3.3:1 (passes 3:1 non-text); muted states disabled-exempt.</td></tr>
+      </table>
+    `
   }
 ];
