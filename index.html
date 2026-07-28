@@ -172,7 +172,7 @@ const VQA = (function(){
         if(kind==='disabled')return '<span style="width:20px;height:20px;border-radius:50%;background:#f8f8f8;border:1px solid #e3e3e3;flex:0 0 20px;display:inline-block"></span>';
         return '<span style="width:20px;height:20px;border-radius:50%;background:#fff;border:1px solid #c4c4c4;flex:0 0 20px;display:inline-block"></span>';
       };
-      const card=(o)=>'<span style="display:inline-flex;align-items:center;gap:12px;width:250px;padding:16px;background:'+o.bg+';border:'+o.border+';border-radius:6px">'+radio(o.radio)+'<span style="flex:1"><span style="display:block;font-weight:700;font-size:16px;color:'+o.txt+'">Standard shipping</span><span style="font-size:14px;color:'+o.sub+'">3 to 5 business days</span></span></span>';
+      const card=(o)=>'<span style="display:inline-flex;align-items:flex-start;gap:12px;width:250px;padding:16px;background:'+o.bg+';border:'+o.border+';border-radius:6px">'+radio(o.radio)+'<span style="flex:1"><span style="display:block;font-weight:700;font-size:16px;color:'+o.txt+'">Standard shipping</span><span style="font-size:14px;color:'+o.sub+'">3 to 5 business days</span></span></span>';
       const states={
         'default':{bg:'#ffffff',border:'1px solid #c4c4c4',radio:'default',txt:'#343434',sub:'#757575'},
         'hover':{bg:'#eff5fd',border:'1px solid #c5e0f0',radio:'default',txt:'#343434',sub:'#757575'},

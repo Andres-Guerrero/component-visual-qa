@@ -1856,6 +1856,7 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-SC-STATE</td><td>States · variants</td><td><span class="tag pass">PASS</span></td><td>State x Size; radio (single) and checkbox (multi); content + trailing-action slots pinned.</td></tr>
         <tr><td class="id">QA-SC-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>radio/checkbox roles, whole-card target, arrow-key group nav, disabled skipped; selection = control + border, not color alone.</td></tr>
         <tr><td class="id">QA-SC-01</td><td>Hover border contrast</td><td><span class="tag obs">BY DESIGN</span></td><td>~1.2:1 decorative; hover fill + control convey state. Selected 2px border = 1px border + 1px inset shadow.</td></tr>
+        <tr><td class="id">QA-SC-02</td><td>Control vertical position</td><td><span class="tag pass">PASS</span></td><td>On multi-line cards the control is top-aligned to the title line (control center y33 vs title y34), not centered in the card, matching the usage doc.</td></tr>
       </table>
     `,
     cardset: true
