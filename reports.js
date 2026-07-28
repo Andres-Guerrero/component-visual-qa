@@ -2309,5 +2309,64 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-QSB-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Trigger is a button; expanded field is a spinbutton (valuemin/now/max); disabled boundaries native; trash beyond color; focus ring. White-on-orange ~3.3:1 (passes 3:1 non-text); muted states disabled-exempt.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'stepper-autofilled',
+    name: 'Quantity Stepper Autofilled',
+    group: 'Steppers',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Quantity Stepper Autofilled</h1>
+      <p class="rmeta">Figma component 16515:11267 · Shared frame doc 16575:1040 · Storybook /docs/forms-quantity-stepper-autofilled · Captured 2026-07-28</p>
+      <p>The Autofilled member: a pre-populated quantity with gray-outlined controls and teal (<span class="mono">#07729c</span>) icons on a light-blue value field (<span class="mono">#eff5fd</span>, bg.autofilled). Single size. It has no empty or entry states, and no Qty 0 or Max, so it starts already filled and supports decrement to the Remove (trash) action, direct edit, loading, and disabled. Third of the three stepper members.</p>
+
+      <div class="callout info"><strong>Design note (from the frame doc): weak hover feedback.</strong> On Autofilled Hover, the plus button background is <code>quantity-stepper/autofilled/color/hover/plus-bg</code> = <span class="mono">#eff5fd</span>, which is the same as the field background. The build faithfully implements this token (verified: the plus hover var resolves to #eff5fd, equal to the field bg), so on hover the plus visually blends into the field and the feedback reads as weak. This is a pending design decision the doc flags, not a build defect. Tracked as QA-QSA-HOVER.</div>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Teal controls, blue field, disabled treatment match; radius 6</p></div>
+        <div class="v pass"><p class="k">STATES</p><div class="val">Pass</div><p class="sub">Filled / Hover / Focus / Qty 1 / Edit / Loading / Disabled; single size</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass<span style="font-size:11px;font-weight:400;color:#757575"> · 1 note</span></div><p class="sub">spinbutton; trash beyond color; hover-blend design note</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <p>Read from the states-matrix and per-state stories, checked against <code>quantity-stepper/autofilled/*</code>. The plus hover value was confirmed by resolving the bound CSS variable.</p>
+      <table>
+        <tr><th>State</th><th>Minus (bg / icon / border)</th><th>Plus (bg / icon)</th><th>Field bg</th><th>Match</th></tr>
+        <tr><td>Filled</td><td class="mono">#ffffff / #07729c / #c4c4c4</td><td class="mono">#ffffff / #07729c</td><td class="mono">#eff5fd</td><td class="m y">✓</td></tr>
+        <tr><td>Hover</td><td class="mono">#ffffff / #07729c / #c4c4c4</td><td class="mono">#eff5fd / #07729c</td><td class="mono">#eff5fd</td><td class="m y">✓</td></tr>
+        <tr><td>Focus</td><td class="mono">#ffffff / #07729c / #c4c4c4</td><td class="mono">#ffffff / #07729c</td><td class="mono">#eff5fd · border #66afe9</td><td class="m y">✓</td></tr>
+        <tr><td>Qty 1 (remove)</td><td class="mono">#ffffff / #07729c (trash) / #c4c4c4</td><td class="mono">#ffffff / #07729c</td><td class="mono">#eff5fd</td><td class="m y">✓</td></tr>
+        <tr><td>Edit</td><td class="mono">field-driven</td><td class="mono">#ffffff / #07729c (pencil)</td><td class="mono">#eff5fd</td><td class="m y">✓</td></tr>
+        <tr><td>Loading</td><td class="mono">controls disabled</td><td class="mono">spinner #07729c</td><td class="mono">field border #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td class="mono">#f8f8f8 / #c4c4c4 / #e3e3e3</td><td class="mono">#f8f8f8 / #c4c4c4</td><td class="mono">#f8f8f8 · text #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Field text · radius</td><td class="mono" colspan="2">#343434 · radius 6</td><td class="mono">bg.autofilled</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side (rendered from tokens)</h2>
+      <p>Teal outlined controls on the light-blue field. The Hover cell shows the plus taking the field blue, which is the blend the design note flags.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:24px;margin:14px 0">
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Filled</div><div style="display:inline-flex;height:40px;border:1px solid #c4c4c4;border-radius:6px;overflow:hidden;font-size:15px;font-weight:700"><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#fff;color:#07729c;border-right:1px solid #c4c4c4">&minus;</span><span style="min-width:52px;display:flex;align-items:center;justify-content:center;background:#eff5fd;color:#343434">2</span><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#fff;color:#07729c;border-left:1px solid #c4c4c4">+</span></div></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Hover (plus blends)</div><div style="display:inline-flex;height:40px;border:1px solid #c4c4c4;border-radius:6px;overflow:hidden;font-size:15px;font-weight:700"><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#fff;color:#07729c;border-right:1px solid #c4c4c4">&minus;</span><span style="min-width:52px;display:flex;align-items:center;justify-content:center;background:#eff5fd;color:#343434">2</span><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#eff5fd;color:#07729c;border-left:1px solid #c4c4c4">+</span></div></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Qty 1 (remove)</div><div style="display:inline-flex;height:40px;border:1px solid #c4c4c4;border-radius:6px;overflow:hidden;font-size:15px;font-weight:700"><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#fff;border-right:1px solid #c4c4c4"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#07729c" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></span><span style="min-width:52px;display:flex;align-items:center;justify-content:center;background:#eff5fd;color:#343434">1</span><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#fff;color:#07729c;border-left:1px solid #c4c4c4">+</span></div></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Disabled</div><div style="display:inline-flex;height:40px;border:1px solid #e3e3e3;border-radius:6px;overflow:hidden;font-size:15px;font-weight:700"><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f8f8f8;color:#c4c4c4;border-right:1px solid #e3e3e3">&minus;</span><span style="min-width:52px;display:flex;align-items:center;justify-content:center;background:#f8f8f8;color:#c4c4c4">1</span><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f8f8f8;color:#c4c4c4;border-left:1px solid #e3e3e3">+</span></div></div>
+      </div>
+
+      <h2>3. States</h2>
+      <p>Stories pin Filled, Qty 1 (remove), Hover, Edit, Loading, Disabled, plus a states-matrix (which also covers Focus). Single size. No Add / Empty / Qty 0 / Max, matching the frame doc: Autofilled starts pre-populated and has no entry states. The minus becomes a teal trash at quantity 1 (not orange, since Autofilled uses teal controls throughout). <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>The value field is a <code>role="spinbutton"</code> with <code>aria-valuemin</code> / <code>valuemax</code> / <code>valuenow</code>; minus and plus are increment/decrement controls with native <code>disabled</code>. The trash icon at quantity 1 conveys Remove beyond color. Focus ring is the shared <span class="mono">#005fcc</span> / 2px foundation, plus the field border shifts to <span class="mono">#66afe9</span>. Contrast: teal <span class="mono">#07729c</span> icons and <span class="mono">#343434</span> text on the light <span class="mono">#eff5fd</span> field are high-contrast; the disabled treatment (icons #c4c4c4 on #f8f8f8) is an inactive control under the WCAG disabled exemption.</p>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-QSA-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All states match quantity-stepper/autofilled/* token-for-token: teal #07729c icons, white control bg, #c4c4c4 borders, #eff5fd field, #343434 text, focus border #66afe9, disabled #f8f8f8 / #e3e3e3 / #c4c4c4, radius 6.</td></tr>
+        <tr><td class="id">QA-QSA-STATE</td><td>States</td><td><span class="tag pass">PASS</span></td><td>Filled / Hover / Focus / Qty 1 remove / Edit / Loading / Disabled; single size; no Add / Empty / Qty 0 / Max; teal trash at qty 1.</td></tr>
+        <tr><td class="id">QA-QSA-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Spinbutton (valuemin/now/max); disabled native; trash beyond color; focus ring + #66afe9 field border. Teal/dark on light-blue high contrast; disabled exempt.</td></tr>
+        <tr><td class="id">QA-QSA-HOVER</td><td>Hover feedback</td><td><span class="tag obs">NOTE</span></td><td>Design decision (per frame doc note), not a build defect: the plus hover bg token (#eff5fd) equals the field bg, so the plus blends into the field on hover. Build correctly implements the current token. Pending the owner's call on a distinct hover value.</td></tr>
+      </table>
+    `
   }
 ];
