@@ -2025,5 +2025,72 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-FIL-SEEMORE</td><td>Long-list truncation</td><td><span class="tag fail">FIX</span></td><td>Frame doc + sample 8653:7455: a group of more than 10 items shows 10 plus a "See more" link (layer <code>see more</code>, in the panel below the content); a group of 10 or fewer shows none. Build has no such element, prop, or truncation and renders every item. See the handoff for context + acceptance criteria.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'footer-accordion',
+    name: 'Footer Accordion',
+    group: 'Accordions',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Footer Accordion</h1>
+      <p class="rmeta">Figma component 8646:6886 · Usage 16365:71761 · Shared frame doc 16369:309440 · Storybook /docs/disclosure-footeraccordion · Captured 2026-07-28</p>
+      <p>The accordion tuned for dark footer surfaces. Small / Medium / Large sizes, a <strong>filled</strong> header band (<span class="mono">#89847f</span>) with an inverse white label and +/- icon, a hairline bottom divider between sections, and a filled band that wraps the expanded content. Shares the accordion behavior model with FAQ, Filters, and Product Specification.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Filled band, white label/icon, divider, per-size padding match</p></div>
+        <div class="v pass"><p class="k">STATES · SIZES</p><div class="val">Pass</div><p class="sub">Small / Medium / Large, Collapsed / Expanded, +/- icon</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass<span style="font-size:11px;font-weight:400;color:#757575"> · 1 note</span></div><p class="sub">button + aria-expanded, region; white-on-band contrast note</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>Element</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Header label</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> · Maison Neue 18px / 400</td><td class="mono">#ffffff · 18px · 400</td><td class="m y">✓</td></tr>
+        <tr><td>Icon (+/-)</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> · svg</td><td class="mono">#ffffff · svg</td><td class="m y">✓</td></tr>
+        <tr><td>Header band bg</td><td><span class="chip" style="background:#89847f"></span><span class="mono">#89847f</span> (accordion/footer/color/default/bg)</td><td class="mono">#89847f (on header wrapper)</td><td class="m y">✓</td></tr>
+        <tr><td>Divider (bottom)</td><td><span class="chip" style="background:#b6afa8"></span><span class="mono">#b6afa8</span> · 1px</td><td class="mono">1px #b6afa8 bottom</td><td class="m y">✓</td></tr>
+        <tr><td>Band wraps content</td><td class="mono">expanded content on the #89847f band</td><td class="mono">content wrapper bg #89847f</td><td class="m y">✓</td></tr>
+        <tr><td>Header padding-x / y (Small)</td><td class="mono">16 / 20</td><td class="mono">16 / 20</td><td class="m y">✓</td></tr>
+        <tr><td>Header padding-x / y (Medium)</td><td class="mono">20 / 24</td><td class="mono">20 / 24</td><td class="m y">✓</td></tr>
+        <tr><td>Header padding-x / y (Large)</td><td class="mono">36 / 24</td><td class="mono">36 / 24</td><td class="m y">✓</td></tr>
+        <tr><td>content-padding-bottom · icon-gap</td><td class="mono">28 · 16 (all sizes)</td><td class="mono">token-verified</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side</h2>
+      <p>Header chrome matches across sizes (filled band, white label, white +/- toggle, hairline divider between sections). One content difference: the Figma sample renders the expanded links in white; the Storybook story renders them as default black underlined links (see the content note below).</p>
+      <div class="swatchgrid" style="grid-template-columns:170px 1fr">
+        <div class="hd">Source</div><div class="hd">Rendering</div>
+        <div class="stc">Figma sample<br><span style="font-weight:400;color:#757575">(white links)</span></div><div class="cell">
+          <div style="width:320px;font-size:14px">
+            <div style="background:#89847f;border-bottom:1px solid #b6afa8"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#fff;font-size:18px">Customer Service</span><span style="color:#fff;font-size:18px">&minus;</span></div><div style="padding:0 16px 28px 16px"><div style="color:#fff;padding:6px 0">Order Status</div><div style="color:#fff;padding:6px 0">Contact Us</div><div style="color:#fff;padding:6px 0">Shipping Policy</div><div style="color:#fff;padding:6px 0">FAQs</div></div></div>
+            <div style="background:#89847f;border-bottom:1px solid #b6afa8"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#fff;font-size:18px">About Us</span><span style="color:#fff;font-size:18px">+</span></div></div>
+          </div>
+        </div>
+        <div class="stc">Storybook build<br><span style="font-weight:400;color:#757575">(black links)</span></div><div class="cell">
+          <div style="width:320px;font-size:14px">
+            <div style="background:#89847f;border-bottom:1px solid #b6afa8"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#fff;font-size:18px">Company</span><span style="color:#fff;font-size:18px">&minus;</span></div><div style="padding:0 16px 28px 16px"><div style="color:#000;text-decoration:underline;padding:4px 0">Shipping &amp; Returns</div><div style="color:#000;text-decoration:underline;padding:4px 0">Order Status</div><div style="color:#000;text-decoration:underline;padding:4px 0">FAQs</div></div></div>
+            <div style="background:#89847f;border-bottom:1px solid #b6afa8"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#fff;font-size:18px">Help</span><span style="color:#fff;font-size:18px">+</span></div></div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:#757575">Component chrome (band, label, icon, divider, padding) is identical. Only the consumer-supplied link color differs, which is the content note below.</p>
+
+      <h2>3. States &amp; sizes</h2>
+      <p>Three sizes present as separate stories: Small (padding 16 / 20), Medium (20 / 24), Large (36 / 24), all with the white 18px label and #89847f band. State Collapsed / Expanded toggles via the header; the +/- icon is an svg. All match the frame doc. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>Each section header is a <code>button</code> with <code>aria-expanded</code>; the expanded content is a <code>role="region"</code>. The +/- icon conveys collapsed vs expanded beyond color. One known contrast note: the white label/icon on the <span class="mono">#89847f</span> band computes about <strong>3.7:1</strong>, which clears 3:1 for non-text and large text but is under 4.5:1 for 18px normal-weight text. The frame doc acknowledges this and treats it as acceptable at the title size. Carried as a note, not a blocker (consistent with the other known-contrast items).</p>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-FTR-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>White #fff 18px label + icon, #89847f band, #b6afa8 1px divider, per-size padding (16/20, 20/24, 36/24) all match Figma; band wraps expanded content.</td></tr>
+        <tr><td class="id">QA-FTR-STATE</td><td>States &amp; sizes</td><td><span class="tag pass">PASS</span></td><td>Small / Medium / Large stories; Collapsed / Expanded via header button; +/- svg icon.</td></tr>
+        <tr><td class="id">QA-FTR-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Header button + aria-expanded, content region, +/- beyond color. Note: white-on-#89847f label ~3.7:1 (passes 3:1 non-text/large, under 4.5:1 for 18px normal); documented and accepted in the frame doc.</td></tr>
+        <tr><td class="id">QA-FTR-CONTENT</td><td>Content color</td><td><span class="tag obs">NOTE</span></td><td>The story renders expanded links as default black underlined text; the Figma sample shows white. Content is a swappable slot and there is no content-text-color token, so link color is consumer-provided, not a component defect. Worth confirming with design/dev whether the footer band should set an inverse (white) text context for its content so links default to white.</td></tr>
+      </table>
+    `
   }
 ];
