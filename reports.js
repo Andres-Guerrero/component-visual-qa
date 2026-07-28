@@ -1720,5 +1720,73 @@ Fix approach is the team's call - no code prescribed.`
       </table>
     `,
     searchset: true
+  },
+  {
+    id: 'tooltip',
+    name: 'Tooltip',
+    group: 'Overlays',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Tooltip</h1>
+      <p class="rmeta">Figma component 8941:585 · Frame doc 16216:302586 · Storybook /story/overlays-tooltip · Captured 2026-07-27</p>
+      <p>Surfaces brief, supplementary information tied to a trigger. Compact is a hover-only label for short hints; Large and Small panels add a title, body copy, an optional close button, and a directional pointer for richer, dismissible content. Tooltip surfaces sit on an elevated background, separated by a shadow and a 1px border.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Compact + panels: bg, border, radius, padding, elevation match</p></div>
+        <div class="v pass"><p class="k">STRUCTURE · VARIANTS</p><div class="val">Pass</div><p class="sub">Compact / Small / Large; 4 pointer directions; close on/off</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">tooltip / dialog roles; 0 axe violations</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>Element</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Compact bg / border / text</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span> / <span class="chip" style="background:#343434"></span><span class="mono">#343434</span></td><td class="mono">#ffffff / #c4c4c4 / #343434</td><td class="m y">✓</td></tr>
+        <tr><td>Compact radius / padding</td><td class="mono">4px · 12 x 8</td><td class="mono">4px · 8px 12px</td><td class="m y">✓</td></tr>
+        <tr><td>Panel bg / border / radius</td><td class="mono">#ffffff / #c4c4c4 1px / 0px</td><td class="mono">#ffffff / 1px #c4c4c4 / 0px</td><td class="m y">✓</td></tr>
+        <tr><td>Panel padding (Small / Large)</td><td class="mono">24 / 32</td><td class="mono">24 / 32 (right + close clearance)</td><td class="m y">✓</td></tr>
+        <tr><td>Elevation</td><td class="mono">+4y: 0/4/8 rgba(0,0,0,.1) + 0/0/1 rgba(0,0,0,.2)</td><td class="mono">filter: drop-shadow(0 4px 8px .1) drop-shadow(0 0 1px .2)</td><td class="m y">✓</td></tr>
+        <tr><td>Title / body / close icon</td><td class="mono">#343434 (title bold)</td><td class="mono">title 16 bold, body 14, compact 12; #343434</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Rendered</h2>
+      <p>Facsimiles from the token values (elevation shown via the same drop-shadow).</p>
+      <div class="swatchgrid" style="grid-template-columns:150px 1fr 1fr">
+        <div class="hd">Variant</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+        <div class="stc">Compact</div>
+          <div class="cell"><span style="display:inline-block;background:#fff;border:1px solid #c4c4c4;border-radius:4px;padding:8px 12px;color:#343434;font-weight:700;font-size:12px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.1))">Edit</span></div>
+          <div class="cell"><span style="display:inline-block;background:#fff;border:1px solid #c4c4c4;border-radius:4px;padding:8px 12px;color:#343434;font-weight:700;font-size:12px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.1))">Edit</span></div>
+        <div class="stc">Panel (Small)</div>
+          <div class="cell"><span style="display:inline-block;width:230px;background:#fff;border:1px solid #c4c4c4;padding:24px 40px 24px 24px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.1));position:relative"><span style="position:absolute;top:12px;right:12px;color:#343434">✕</span><span style="display:block;font-weight:700;font-size:16px;color:#343434;margin-bottom:6px">Backorder notice</span><span style="font-size:14px;color:#343434">Ships in 2 to 3 weeks.</span></span></div>
+          <div class="cell"><span style="display:inline-block;width:230px;background:#fff;border:1px solid #c4c4c4;padding:24px 40px 24px 24px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.1));position:relative"><span style="position:absolute;top:12px;right:12px;color:#343434">✕</span><span style="display:block;font-weight:700;font-size:16px;color:#343434;margin-bottom:6px">Backorder notice</span><span style="font-size:14px;color:#343434">Ships in 2 to 3 weeks.</span></span></div>
+      </div>
+
+      <h2>3. Structure, variants &amp; props</h2>
+      <p>Size Compact / Small / Large; Pointer Top / Bottom / Left / Right (one at a time on panels); Close button boolean (default on, panels); Title and Body slots. Stories pin every pointer direction plus panel-with-close, panel-without-close, and hover / click triggers. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>Compact is <code>role="tooltip"</code> linked via <code>aria-describedby</code>, non-interactive, shown on hover/focus and dismissed on blur or Esc. Large/Small panels are popovers: <code>role="dialog"</code>, trigger <code>aria-expanded</code> + <code>aria-controls</code>, focus moves into the panel on open, Esc closes and returns focus to the trigger, Tab cycles, the close button activates with Enter/Space. Focus ring <span class="mono">#005fcc</span> / 2px. Story: <strong>0 a11y violations, 12 passes</strong>.</p>
+      <table>
+        <tr><th>Element</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Title / body text #343434</td><td>12.45:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Close icon #343434</td><td>12.45:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Focus ring #005FCC</td><td>5.98:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Border #C4C4C4</td><td>1.74:1</td><td>By design (see note)</td></tr>
+      </table>
+      <div class="callout info">
+        <p style="margin:0"><span class="tag obs">QA-TT-01 · BY DESIGN</span> The 1px border is 1.74:1, below the 3:1 non-text minimum on its own, but the surface separation is carried by the <code>+4y</code> elevation shadow plus the border (overlay pattern): the shadow separates on light backgrounds, the border defines the edge where the shadow washes out. The build applies the elevation correctly (as a CSS drop-shadow filter). Same reasoning as Modal.</p>
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-TT-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Compact (bg/border/text/radius 4/pad 12,8) and panels (bg/border/radius 0/pad 24,32) match; +4y elevation reproduced via drop-shadow.</td></tr>
+        <tr><td class="id">QA-TT-STATE</td><td>Structure · variants</td><td><span class="tag pass">PASS</span></td><td>Compact/Small/Large, all 4 pointer directions, close on/off, hover/click triggers pinned.</td></tr>
+        <tr><td class="id">QA-TT-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>role tooltip (compact) / dialog (panels), aria wiring, focus trap + return, Esc; 0 axe violations.</td></tr>
+        <tr><td class="id">QA-TT-01</td><td>Border contrast</td><td><span class="tag obs">BY DESIGN</span></td><td>1.74:1 acceptable; +4y shadow carries separation (overlay pattern).</td></tr>
+        <tr><td class="id">QA-TT-02</td><td>Panel padding</td><td><span class="tag obs">INFO</span></td><td>Right padding is larger than left to clear the close button; expected for the with-close default.</td></tr>
+      </table>
+    `
   }
 ];
