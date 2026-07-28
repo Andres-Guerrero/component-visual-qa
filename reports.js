@@ -2182,5 +2182,68 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-PS-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Header button + aria-expanded, content region, +/- beyond color; label + icon contrast clean.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'stepper-standard',
+    name: 'Quantity Stepper: Standard',
+    group: 'Steppers',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Quantity Stepper: Standard</h1>
+      <p class="rmeta">Figma component 3599:3741 · Shared frame doc 16575:1040 · Storybook /docs/forms-quantity-stepper · Captured 2026-07-28</p>
+      <p>The default quantity stepper: a decrement (minus) control, a direct-entry value field, and an increment (plus) control. Solid orange controls with a white value field, sized Large / Small. It starts Empty (outlined, decrement disabled) and fills as quantity is added; the minus becomes a Remove (trash) action at quantity 1 and is disabled at 0; the plus disables at Max. First of the three stepper members (Standard, Add-first, Autofilled) that share one behavior model.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">11 states + 2 sizes match token-for-token; radius 8</p></div>
+        <div class="v pass"><p class="k">STATES · SIZES</p><div class="val">Pass</div><p class="sub">Empty / Focus / Qty 0 / Qty 1 / Filled / Max / Edit / Loading / Disabled; Large + Small</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">spinbutton with valuemin/now/max; trash beyond color</p></div>
+      </div>
+
+      <h2>1. Token fidelity (by state)</h2>
+      <p>Values are the computed build styles read from the states-matrix story, checked against the <code>quantity-stepper/standard/*</code> tokens.</p>
+      <table>
+        <tr><th>State</th><th>Minus bg / icon</th><th>Plus bg / icon</th><th>Notes</th><th>Match</th></tr>
+        <tr><td>Empty</td><td class="mono">#ffffff / #c4c4c4</td><td class="mono">#ffffff / #07729c</td><td>Outlined; decrement disabled, plus blue</td><td class="m y">✓</td></tr>
+        <tr><td>Empty Hover</td><td class="mono">#ffffff / #c4c4c4</td><td class="mono">#eff5fd / #07729c</td><td>Plus hover bg light blue</td><td class="m y">✓</td></tr>
+        <tr><td>Focus</td><td class="mono">#ffffff / #c4c4c4</td><td class="mono">#ffffff / #07729c</td><td>Field border #66afe9</td><td class="m y">✓</td></tr>
+        <tr><td>Qty 0</td><td class="mono">#f6b48d / #ffffff</td><td class="mono">#f15c02 / #ffffff</td><td>Minus muted (cannot go below 0)</td><td class="m y">✓</td></tr>
+        <tr><td>Qty 1 (remove)</td><td class="mono">#f15c02 / #ffffff</td><td class="mono">#f15c02 / #ffffff</td><td>Minus shows trash icon</td><td class="m y">✓</td></tr>
+        <tr><td>Filled (2+)</td><td class="mono">#f15c02 / #ffffff</td><td class="mono">#f15c02 / #ffffff</td><td>Solid orange, white field</td><td class="m y">✓</td></tr>
+        <tr><td>Filled Hover</td><td class="mono">#f15c02 / #ffffff</td><td class="mono">#e05400 / #ffffff</td><td>Plus hover darker orange</td><td class="m y">✓</td></tr>
+        <tr><td>Max</td><td class="mono">#f15c02 / #ffffff</td><td class="mono">#f6b48d / #ffffff</td><td>Plus disabled; "Max" label #f15c02</td><td class="m y">✓</td></tr>
+        <tr><td>Edit</td><td class="mono">field-driven</td><td class="mono">#f15c02 / #ffffff</td><td>Direct entry; plus shows pencil</td><td class="m y">✓</td></tr>
+        <tr><td>Loading</td><td class="mono">controls disabled</td><td class="mono">controls disabled</td><td>Spinner #f15c02 (not tokenized, per doc)</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td class="mono">#dcdcdc / #ffffff</td><td class="mono">#dcdcdc / #ffffff</td><td>Field text #c4c4c4</td><td class="m y">✓</td></tr>
+        <tr><td>Field bg / text · radius</td><td class="mono" colspan="2">#ffffff / #343434 · radius 8</td><td>bg.page white field, Body text</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side (rendered from tokens)</h2>
+      <p>Representative Large states, drawn from the token values. Identical to the build.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;margin:14px 0">
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Empty</div><div style="display:inline-flex;height:40px;border:1px solid #c4c4c4;border-radius:8px;overflow:hidden;font-size:15px;font-weight:700"><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#fff;color:#c4c4c4;border-right:1px solid #c4c4c4">&minus;</span><span style="min-width:52px;display:flex;align-items:center;justify-content:center;background:#fff;color:#343434"></span><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#fff;color:#07729c;border-left:1px solid #c4c4c4">+</span></div></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Qty 0</div><div style="display:inline-flex;height:40px;border:1px solid #c4c4c4;border-radius:8px;overflow:hidden;font-size:15px;font-weight:700"><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f6b48d;color:#fff">&minus;</span><span style="min-width:52px;display:flex;align-items:center;justify-content:center;background:#fff;color:#343434">0</span><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f15c02;color:#fff">+</span></div></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Qty 1 (remove)</div><div style="display:inline-flex;height:40px;border:1px solid #c4c4c4;border-radius:8px;overflow:hidden;font-size:15px;font-weight:700"><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f15c02;color:#fff"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></span><span style="min-width:52px;display:flex;align-items:center;justify-content:center;background:#fff;color:#343434">1</span><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f15c02;color:#fff">+</span></div></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Filled (2+)</div><div style="display:inline-flex;height:40px;border:1px solid #c4c4c4;border-radius:8px;overflow:hidden;font-size:15px;font-weight:700"><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f15c02;color:#fff">&minus;</span><span style="min-width:52px;display:flex;align-items:center;justify-content:center;background:#fff;color:#343434">2</span><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f15c02;color:#fff">+</span></div></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Max</div><div style="display:inline-flex;height:40px;border:1px solid #c4c4c4;border-radius:8px;overflow:hidden;font-weight:700"><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f15c02;color:#fff;font-size:15px">&minus;</span><span style="min-width:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff"><span style="font-size:9px;color:#f15c02;line-height:1">Max</span><span style="font-size:14px;color:#343434;line-height:1.1">10</span></span><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#f6b48d;color:#fff;font-size:15px">+</span></div></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Disabled</div><div style="display:inline-flex;height:40px;border:1px solid #c4c4c4;border-radius:8px;overflow:hidden;font-size:15px;font-weight:700"><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#dcdcdc;color:#fff">&minus;</span><span style="min-width:52px;display:flex;align-items:center;justify-content:center;background:#fff;color:#c4c4c4">1</span><span style="width:44px;display:flex;align-items:center;justify-content:center;background:#dcdcdc;color:#fff">+</span></div></div>
+      </div>
+
+      <h2>3. States &amp; sizes</h2>
+      <p>Eleven states pinned across the stories (Empty, Empty Hover, Focus, Qty 0, Qty 1 remove, Filled, Filled Hover, Max, Edit, Loading, Disabled) plus a states-matrix. Two sizes: Large and Small (dedicated empty-large / empty-small / filled-large / filled-small stories). The minus glyph swaps to a trash at quantity 1 and the plus disables at Max, both matching Figma. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>The value field is exposed as a <code>role="spinbutton"</code> with <code>aria-valuemin</code> / <code>aria-valuemax</code> (0 / 10 in the stories) and <code>aria-valuenow</code>; minus and plus are increment/decrement controls that carry the native <code>disabled</code> state at the appropriate boundaries. The trash icon at quantity 1 conveys the Remove action beyond color. Focus ring is the shared <span class="mono">#005fcc</span> / 2px foundation. Contrast: white glyphs on the accent orange <span class="mono">#f15c02</span> compute about <strong>3.3:1</strong>, which clears 3:1 for non-text icons; the muted Qty 0 / Max / Disabled treatments are inactive controls and fall under the WCAG disabled exemption. Consistent with the frame doc's "verify before publish" note.</p>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-QS-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 11 states match quantity-stepper/standard/* token-for-token (minus/plus bg + icon, field bg #fff / text #343434, focus border #66afe9, hover bg #eff5fd / #e05400, radius 8).</td></tr>
+        <tr><td class="id">QA-QS-STATE</td><td>States &amp; sizes</td><td><span class="tag pass">PASS</span></td><td>Empty / Empty Hover / Focus / Qty 0 / Qty 1 remove / Filled / Filled Hover / Max / Edit / Loading / Disabled; Large + Small; trash at qty 1, plus disabled at Max.</td></tr>
+        <tr><td class="id">QA-QS-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Value field is a spinbutton (valuemin/now/max); disabled boundaries native; trash beyond color; focus ring. White-on-orange icons ~3.3:1 (passes 3:1 non-text); muted states are disabled-exempt.</td></tr>
+        <tr><td class="id">QA-QS-DOC</td><td>Design housekeeping</td><td><span class="tag obs">NOTE</span></td><td>Frame doc Open items (design-side, not build): Standard Max (Small) has a legacy duplicate "Input" group to remove in Figma; Loading spinner intentionally not tokenized. No build impact.</td></tr>
+      </table>
+    `
   }
 ];
