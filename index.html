@@ -181,6 +181,12 @@ const VQA = (function(){
       };
       Object.keys(states).forEach(k=>{const html=card(states[k]);['fig','sb'].forEach(sfx=>{const el=c.querySelector('#sc-'+k+'-'+sfx);if(el)el.innerHTML=html;});});
     }
+    if(r.faqset){
+      const row=(glyph,q)=>'<div style="display:flex;gap:12px;padding:16px 0;border-bottom:1px solid #dcdcdc"><span style="color:#07729c;font-weight:700;flex:0 0 14px">'+glyph+'</span><span style="color:#343434">'+q+'</span></div>';
+      const expanded='<div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;gap:12px;padding:16px 0"><span style="color:#07729c;font-weight:700;flex:0 0 14px">&minus;</span><span style="color:#343434">Why is my AC running but not cooling?</span></div><div style="padding-left:28px;padding-bottom:28px;color:#343434;font-size:14px">Common causes include a dirty filter, low refrigerant, a frozen evaporator coil, or a thermostat set incorrectly.</div></div>';
+      const faq='<div style="width:380px;font-size:16px">'+row('+','How often should I replace my HVAC air filter?')+expanded+row('+','What size furnace do I need for my home?')+'</div>';
+      [c.querySelector('#faq-fig'),c.querySelector('#faq-sb')].forEach(el=>{if(el)el.innerHTML=faq;});
+    }
     if(r.handoffs && r.handoffs.length){
       const sec=document.createElement('div');sec.className='handoff';
       const h=document.createElement('h2');h.textContent='Hand off to Claude Code';sec.appendChild(h);

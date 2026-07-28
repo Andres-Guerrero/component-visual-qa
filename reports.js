@@ -1860,5 +1860,58 @@ Fix approach is the team's call - no code prescribed.`
       </table>
     `,
     cardset: true
+  },
+  {
+    id: 'faq-accordion',
+    name: 'FAQ Accordion',
+    group: 'Accordions',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">FAQ Accordion</h1>
+      <p class="rmeta">Figma component 7627:949 · Usage 16365:71835 · Shared frame doc 16369:309440 · Storybook /story/disclosure-faqaccordion · Captured 2026-07-27</p>
+      <p>One of four purpose-built accordions (Product Specification, FAQs, Filters, Footer) that share one behavior model and differ in size options, icon placement, and surface. The FAQ variant is tuned for FAQ lists: a <strong>leading</strong> +/- toggle before the question, a bottom-border divider only, and expanded content indented to align under the question.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Label, toggle, divider, padding &amp; sizes match Figma</p></div>
+        <div class="v pass"><p class="k">STATES · LAYOUT</p><div class="val">Pass</div><p class="sub">Collapsed/Expanded, S/L, leading toggle, indented content</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">button + aria-expanded, region, +/- beyond color</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>Element</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Header bg</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span></td><td class="mono">#ffffff (transparent header)</td><td class="m y">✓</td></tr>
+        <tr><td>Question label</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span></td><td class="mono">#343434</td><td class="m y">✓</td></tr>
+        <tr><td>Toggle icon (leading)</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#07729c · leading (left of label)</td><td class="m y">✓</td></tr>
+        <tr><td>Divider (bottom only)</td><td><span class="chip" style="background:#dcdcdc"></span><span class="mono">#dcdcdc</span> 1px</td><td class="mono">1px #dcdcdc bottom</td><td class="m y">✓</td></tr>
+        <tr><td>Header padding-y (Small / Large)</td><td class="mono">12 / 16</td><td class="mono">16 (large); 12 (small)</td><td class="m y">✓</td></tr>
+        <tr><td>Expanded content-padding (left / bottom)</td><td class="mono">28 / 28</td><td class="mono">28 / 28</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side</h2>
+      <p>Rendered from the token values (leading +/- toggle, bottom-border divider, one row expanded with indented content).</p>
+      <div class="swatchgrid" style="grid-template-columns:110px 1fr">
+        <div class="hd">Source</div><div class="hd">Rendering</div>
+        <div class="stc">Figma</div><div class="cell" id="faq-fig"></div>
+        <div class="stc">Storybook</div><div class="cell" id="faq-sb"></div>
+      </div>
+
+      <h2>3. States &amp; sizes</h2>
+      <p>State Collapsed / Expanded (default Collapsed); Size Small / Large (no Medium, kept intentionally for the FAQ layout). The toggle is a leading + (collapsed) that becomes a - (expanded); expanded content indents to align under the question and adds bottom padding. Stories pin Small and Large. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>Each header is a <code>button</code> with <code>aria-expanded</code>; the content is a <code>role="region"</code> labelled by its header. Tab to the header, Enter or Space toggles. Focus ring <span class="mono">#005fcc</span> / 2px. The +/- icon conveys collapsed vs expanded independently of color. Per the shared frame doc, lint reports 0 contrast failures.</p>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-FAQ-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Label #343434, toggle #07729c (leading), bottom divider #dcdcdc, header-y 12/16, content indent 28/28 match Figma.</td></tr>
+        <tr><td class="id">QA-FAQ-STATE</td><td>States &amp; sizes</td><td><span class="tag pass">PASS</span></td><td>Collapsed/Expanded, Small/Large; +/- glyph swap; expanded content indented under the question.</td></tr>
+        <tr><td class="id">QA-FAQ-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Header button + aria-expanded, content region, +/- conveys state beyond color, focus ring; 0 contrast failures.</td></tr>
+      </table>
+    `,
+    faqset: true
   }
 ];
