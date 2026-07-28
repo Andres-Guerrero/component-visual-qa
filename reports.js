@@ -1238,28 +1238,8 @@ window.VQA_REPORTS = [
     id: 'pagination',
     name: 'Pagination',
     group: 'Navigation',
-    status: 'Fix',
-    statusType: 'fix',
-    handoffs: [{
-      code: 'QA-PG-01',
-      title: 'Ellipsis vertical alignment (fix)',
-      text: `Component: Pagination
-Storybook: http://34.74.189.135:30100/?path=/story/navigation-pagination--mid-range
-Figma (source of truth): UI-Kit__Web node 10633:3912
-
-Finding QA-PG-01 - vertical alignment
-Observed: the ellipsis ("…") renders on the text baseline, so it sits lower than the page numbers and arrows, which are centered on the row.
-Expected: the ellipsis is optically centered on the row, aligned with the numbers and arrows (as in Figma).
-
-Acceptance criteria:
-- Ellipsis vertical center matches the numbers/arrows in Start, Middle, and End layouts.
-- No change to number, arrow, or current-underline positioning.
-- Re-verify visually against Figma node 10633:3912.
-
-Reference values (design truth): number #07729c · current #343434 + 2px underline bar · ellipsis #343434 · arrows enabled #07729c / disabled #c4c4c4 · Maison Neue Bold 14px.
-
-Fix approach is the team's call - no code prescribed.`
-    }],
+    status: 'Pass · retested',
+    statusType: 'pass',
     html: `
       <h1 class="rt">Pagination</h1>
       <p class="rmeta">Figma component 10633:3912 · Frame doc 16112:301624 · Storybook /story/navigation-pagination · Captured 2026-07-27</p>
@@ -1269,9 +1249,9 @@ Fix approach is the team's call - no code prescribed.`
       <div class="verdict">
         <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Number, current, ellipsis, arrow colors + type match</p></div>
         <div class="v pass"><p class="k">STATES · LAYOUTS</p><div class="val">Pass</div><p class="sub">Start/Middle/End; arrow disable at ends; current underline</p></div>
-        <div class="v fix"><p class="k">ALIGNMENT</p><div class="val">1 fix</div><p class="sub">Ellipsis sits on the baseline - lower than numbers/arrows</p></div>
+        <div class="v pass"><p class="k">ALIGNMENT</p><div class="val">Fixed</div><p class="sub">Ellipsis now optically centered with numbers/arrows</p></div>
       </div>
-      <p>Tokens and accessibility are clean. The one issue - the one you spotted - is the <strong>ellipsis vertical alignment</strong>: it renders on the text baseline and sits visibly lower than the numbers and arrows.</p>
+      <p>Retested 2026-07-28 after the dev team's fix. The <strong>ellipsis vertical alignment</strong> that QA-PG-01 flagged is now resolved: the ellipsis center matches the numbers exactly (both at the same row centerline; measured vertical delta 0px, previously the ellipsis sat ~5px lower on the baseline). Tokens and accessibility remain clean, so Pagination is now a full pass.</p>
 
       <h2>1. Token fidelity</h2>
       <table>
@@ -1284,17 +1264,17 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td>Type</td><td class="mono">Maison Neue Bold 14px</td><td class="mono">700 · 14px</td><td class="m y">✓</td></tr>
       </table>
 
-      <h2>2. Alignment - Figma vs build (mid-range)</h2>
-      <p>Same content, showing the difference in ellipsis vertical position.</p>
+      <h2>2. Alignment - Figma vs build (mid-range, retested)</h2>
+      <p>Same content. After the fix, the build now matches Figma: the ellipsis is optically centered with the numbers and arrows.</p>
       <div class="swatchgrid" style="grid-template-columns:230px 1fr">
         <div class="hd">Source</div><div class="hd">Rendering</div>
         <div class="stc">Figma - ellipsis centered</div>
         <div class="cell"><span style="display:flex;align-items:center;gap:14px;font-weight:700;font-size:14px">
           <span style="color:#07729c">‹</span><span style="color:#07729c">1</span><span style="color:#343434">…</span><span style="color:#07729c">4</span><span style="color:#343434;border-bottom:2px solid #343434;padding-bottom:1px">5</span><span style="color:#07729c">6</span><span style="color:#343434">…</span><span style="color:#07729c">30</span><span style="color:#07729c">›</span>
         </span></div>
-        <div class="stc">Storybook - ellipsis on baseline</div>
+        <div class="stc">Storybook - ellipsis centered (fixed)</div>
         <div class="cell"><span style="display:flex;align-items:center;gap:14px;font-weight:700;font-size:14px">
-          <span style="color:#07729c">‹</span><span style="color:#07729c">1</span><span style="color:#343434;position:relative;top:5px">…</span><span style="color:#07729c">4</span><span style="color:#343434;border-bottom:2px solid #343434;padding-bottom:1px">5</span><span style="color:#07729c">6</span><span style="color:#343434;position:relative;top:5px">…</span><span style="color:#07729c">30</span><span style="color:#07729c">›</span>
+          <span style="color:#07729c">‹</span><span style="color:#07729c">1</span><span style="color:#343434">…</span><span style="color:#07729c">4</span><span style="color:#343434;border-bottom:2px solid #343434;padding-bottom:1px">5</span><span style="color:#07729c">6</span><span style="color:#343434">…</span><span style="color:#07729c">30</span><span style="color:#07729c">›</span>
         </span></div>
       </div>
 
@@ -1313,13 +1293,13 @@ Fix approach is the team's call - no code prescribed.`
       </table>
 
       <h2>5. Findings</h2>
-      <div class="callout warn">
-        <p><span class="tag fail">QA-PG-01 · ALIGNMENT - FIX</span></p>
-        <strong>The ellipsis is not vertically centered.</strong> It renders on the text baseline, so the three dots sit visibly lower than the numbers and arrows (which are centered on the row). In Figma the ellipsis is centered within the row. Not an a11y issue - a visual polish fix. Recommend centering it (e.g., a midline treatment / flex-center the dots, or shift up to the optical center), then re-verify against Figma.
+      <div class="callout info">
+        <p><span class="tag pass">QA-PG-01 · ALIGNMENT - RESOLVED</span></p>
+        <strong>The ellipsis is now vertically centered.</strong> Retested 2026-07-28 after the dev team's fix: the ellipsis shares the same row centerline as the numbers and arrows (measured vertical delta 0px, versus ~5px low before). No regressions to the number, arrow, or current-underline positioning. Matches Figma node 10633:3912.
       </div>
       <figure style="margin:16px 0;border:1px solid var(--sh-border)">
-        <img src="assets/pagination-alignment.png" alt="Storybook vs Figma pagination with alignment gridlines; the Storybook ellipsis sits below the row centerline shared by the numbers and arrows" style="display:block;width:100%;height:auto">
-        <figcaption style="font-size:12px;color:var(--sh-mid-gray);padding:8px 12px;background:var(--sh-light-tan-1)"><strong>Evidence (Storybook vs Figma).</strong> With alignment gridlines overlaid, the Storybook ellipsis falls on the baseline - below the centerline the numbers and arrows share; Figma keeps the ellipsis on that centerline.</figcaption>
+        <img src="assets/pagination-alignment.png" alt="Original evidence: Storybook vs Figma pagination with alignment gridlines; the Storybook ellipsis sat below the row centerline shared by the numbers and arrows" style="display:block;width:100%;height:auto">
+        <figcaption style="font-size:12px;color:var(--sh-mid-gray);padding:8px 12px;background:var(--sh-light-tan-1)"><strong>Original evidence (before the fix), kept for reference.</strong> With alignment gridlines overlaid, the Storybook ellipsis fell on the baseline, below the centerline the numbers and arrows share. As of the 2026-07-28 retest this is resolved and the ellipsis sits on that centerline.</figcaption>
       </figure>
 
       <h2>Findings log</h2>
@@ -1328,7 +1308,7 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-PG-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Number #07729c, current #343434+bar, ellipsis #343434, arrows enabled #07729c / disabled #c4c4c4, 14px bold - all match.</td></tr>
         <tr><td class="id">QA-PG-STATE</td><td>States &amp; layouts</td><td><span class="tag pass">PASS</span></td><td>Start/Middle/End, arrow disable at ends, current underline, few-pages (no arrows) all correct.</td></tr>
         <tr><td class="id">QA-PG-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>nav landmark, links list, aria-current text, arrow names, underline non-color cue; 0 axe violations.</td></tr>
-        <tr><td class="id">QA-PG-01</td><td>Vertical alignment</td><td><span class="tag fail">FIX</span></td><td>Ellipsis renders on baseline - sits lower than numbers/arrows; Figma centers it. Visual polish.</td></tr>
+        <tr><td class="id">QA-PG-01</td><td>Vertical alignment</td><td><span class="tag pass">RESOLVED</span></td><td>Fixed and retested 2026-07-28: ellipsis now optically centered with numbers/arrows (vertical delta 0px, was ~5px low). Matches Figma.</td></tr>
       </table>
     `
   },
