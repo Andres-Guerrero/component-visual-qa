@@ -1918,12 +1918,14 @@ Fix approach is the team's call - no code prescribed.`
     id: 'filter-accordion',
     name: 'Filter Accordion',
     group: 'Accordions',
-    status: 'Pass',
+    status: 'Pass · 1 open Q',
     statusType: 'pass',
     html: `
       <h1 class="rt">Filter Accordion</h1>
       <p class="rmeta">Figma component 8246:1551 · Usage 8653:7455 · Shared frame doc 16369:309440 · Storybook /story/disclosure-filteraccordion · Captured 2026-07-27</p>
       <p>The accordion tuned for PLP filter groups. Base size only, a full-width header with a <strong>trailing</strong> +/- toggle, a bottom-border divider, and a full-width content region (not indented) that holds the filter controls (checkbox, link, and rating filters). Shares the accordion behavior model with FAQ, Product Specification, and Footer.</p>
+
+      <div class="callout info"><strong>Open question: the "See more" affordance.</strong> The Figma component includes a built-in "See more" link in its Expanded state: a layer named <code>see more</code> that sits inside the panel, below the content slot (peer to it, not part of the swappable content). The coded component does not implement it. The Storybook API exposes only <code>type</code>, <code>value</code>, <code>defaultValue</code>, <code>onValueChange</code>, <code>collapsible</code>, <code>headingLevel</code>, <code>className</code>, <code>style</code>, and a generic <code>children</code> slot; there is no "See more" prop or element, and the base story omits it. This may be intentional (the page composes "See more" into <code>children</code>) or unimplemented. Flagged for design/dev alignment. See QA-FIL-SEEMORE.</div>
 
       <h2>Verdict</h2>
       <div class="verdict">
@@ -1943,24 +1945,24 @@ Fix approach is the team's call - no code prescribed.`
       </table>
 
       <h2>2. Side-by-side</h2>
-      <p>Rendered from the token values (full-width header, trailing +/- toggle, one group expanded with filter controls).</p>
-      <div class="swatchgrid" style="grid-template-columns:110px 1fr">
+      <p>Chrome parity matches (full-width header, trailing +/- toggle, bottom divider, non-indented content). The content differs because each side composes its own filter items, and the difference makes the gap visible: the Figma component ends the expanded group with a built-in "See more" link; the Storybook base story does not.</p>
+      <div class="swatchgrid" style="grid-template-columns:150px 1fr">
         <div class="hd">Source</div><div class="hd">Rendering</div>
-        <div class="stc">Figma</div><div class="cell">
+        <div class="stc">Figma component<br><span style="font-weight:400;color:#757575">(intended)</span></div><div class="cell">
           <div style="width:300px;font-size:14px;border-top:1px solid #dcdcdc">
             <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px;border-bottom:1px solid #dcdcdc"><span style="color:#343434;font-weight:700">Category</span><span style="color:#07729c;font-weight:700">+</span></div>
             <div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#343434;font-weight:700">Brand</span><span style="color:#07729c;font-weight:700">&minus;</span></div><div style="padding:0 16px 20px 16px;color:#343434"><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> Checkbox Filter</div><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;background:#343434;display:inline-block"></span> <strong>Checkbox Filter</strong></div><div style="color:#07729c;padding:4px 0">Link Filter (10)</div><div style="color:#07729c;font-weight:700;padding-top:6px">See more</div></div></div>
             <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px;border-bottom:1px solid #dcdcdc"><span style="color:#343434;font-weight:700">Price Range</span><span style="color:#07729c;font-weight:700">+</span></div>
           </div>
         </div>
-        <div class="stc">Storybook</div><div class="cell">
+        <div class="stc">Storybook build<br><span style="font-weight:400;color:#757575">(base story)</span></div><div class="cell">
           <div style="width:300px;font-size:14px;border-top:1px solid #dcdcdc">
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px;border-bottom:1px solid #dcdcdc"><span style="color:#343434;font-weight:700">Category</span><span style="color:#07729c;font-weight:700">+</span></div>
-            <div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#343434;font-weight:700">Brand</span><span style="color:#07729c;font-weight:700">&minus;</span></div><div style="padding:0 16px 20px 16px;color:#343434"><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> Checkbox Filter</div><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;background:#343434;display:inline-block"></span> <strong>Checkbox Filter</strong></div><div style="color:#07729c;padding:4px 0">Link Filter (10)</div><div style="color:#07729c;font-weight:700;padding-top:6px">See more</div></div></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px;border-bottom:1px solid #dcdcdc"><span style="color:#343434;font-weight:700">Price Range</span><span style="color:#07729c;font-weight:700">+</span></div>
+            <div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#343434;font-weight:700">Brand</span><span style="color:#07729c;font-weight:700">&minus;</span></div><div style="padding:0 16px 20px 16px;color:#343434"><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> Rheem</div><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> Honeywell</div><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> Watts</div></div></div>
+            <div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#343434;font-weight:700">Availability</span><span style="color:#07729c;font-weight:700">&minus;</span></div><div style="padding:0 16px 20px 16px;color:#343434"><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> In Stock</div><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> Ships Today</div></div></div>
           </div>
         </div>
       </div>
+      <p style="font-size:12px;color:#757575">Note the Figma column ends with a blue "See more" link below its filters; the build column has no such element. That is the open question below.</p>
 
       <h2>3. States &amp; layout</h2>
       <p>State Collapsed / Expanded (default Collapsed); base size only (no Small/Medium/Large). Full-width header with a trailing +/- toggle; the content region is full-width (padding-x 16, not indented like FAQ) and holds the filter group's controls. Story pins the base variant. <span class="m y">✓ Pass</span></p>
@@ -1974,6 +1976,7 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-FIL-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Bold #343434 14px label, trailing #07729c toggle, bottom divider #dcdcdc, header 16/20, content 16/20 match Figma.</td></tr>
         <tr><td class="id">QA-FIL-STATE</td><td>States &amp; layout</td><td><span class="tag pass">PASS</span></td><td>Collapsed/Expanded, base size only, full-width header + trailing toggle, full-width (non-indented) content.</td></tr>
         <tr><td class="id">QA-FIL-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Header button + aria-expanded, content region, +/- beyond color, focus ring; 0 contrast failures.</td></tr>
+        <tr><td class="id">QA-FIL-SEEMORE</td><td>Parity / scope</td><td><span class="tag obs">OPEN Q</span></td><td>Figma component has a built-in "See more" link in the Expanded panel (layer <code>see more</code>, peer to the content slot). Build has no equivalent prop or element; base story omits it. Needs design/dev alignment on whether "See more" is a component affordance or page-composed <code>children</code>.</td></tr>
       </table>
     `
   }
