@@ -1788,5 +1788,76 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-TT-02</td><td>Panel padding</td><td><span class="tag obs">INFO</span></td><td>Right padding is larger than left to clear the close button; expected for the with-close default.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'selectable-card',
+    name: 'Selectable Card',
+    group: 'Forms',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Selectable Card</h1>
+      <p class="rmeta">Figma component 16307:73935 · Frame doc 16313:15880 · Storybook /story/forms-selectable-card · Captured 2026-07-27</p>
+      <p>A card that acts as a selection control, for choosing an option, plan, or method presented as a full card. The card's state styles the container; a control (Radio for single-select, Checkbox for multi-select) and the card body sit in slots. Single or multiple selection.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Container states, control, radius &amp; padding match Figma</p></div>
+        <div class="v pass"><p class="k">STATES · VARIANTS</p><div class="val">Pass</div><p class="sub">Default/Hover/Selected/Disabled, L/S, radio &amp; checkbox</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">Selection = control + strong border, not color alone</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>State</th><th>Property</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Default</td><td>bg / border</td><td><span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span> / <span class="chip" style="background:#c4c4c4"></span><span class="mono">#c4c4c4</span> 1px</td><td class="mono">#ffffff / #c4c4c4 1px</td><td class="m y">✓</td></tr>
+        <tr><td>Hover</td><td>bg / border</td><td><span class="chip" style="background:#eff5fd"></span><span class="mono">#eff5fd</span> / <span class="chip" style="background:#c5e0f0"></span><span class="mono">#c5e0f0</span> 1px</td><td class="mono">#eff5fd / #c5e0f0 1px</td><td class="m y">✓</td></tr>
+        <tr><td>Selected</td><td>bg / border</td><td><span class="mono">#ffffff</span> / <span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> 2px</td><td class="mono">#07729c, 2px (1px border + 1px inset)</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td>bg / border</td><td><span class="chip" style="background:#f8f8f8"></span><span class="mono">#f8f8f8</span> / <span class="chip" style="background:#e3e3e3"></span><span class="mono">#e3e3e3</span> 1px</td><td class="mono">#f8f8f8 / #e3e3e3 1px</td><td class="m y">✓</td></tr>
+        <tr><td>Control (checked)</td><td>bg / icon</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> / <span class="chip" style="background:#fff"></span><span class="mono">#ffffff</span></td><td class="mono">#343434 / #ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Radius / padding (L / S)</td><td class="mono">6px · 20 / 16</td><td class="mono">6px · 20 / 16</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side - states (Large, single-select)</h2>
+      <p>Facsimiles from the matching token values. Selected shows the checked radio + the strong 2px blue border.</p>
+      <div class="swatchgrid" style="grid-template-columns:130px 1fr 1fr">
+        <div class="hd">State</div><div class="hd">Figma (design truth)</div><div class="hd">Storybook (built)</div>
+        <div class="stc">Default</div>
+          <div class="cell" id="sc-default-fig"></div><div class="cell" id="sc-default-sb"></div>
+        <div class="stc">Hover</div>
+          <div class="cell" id="sc-hover-fig"></div><div class="cell" id="sc-hover-sb"></div>
+        <div class="stc">Selected</div>
+          <div class="cell" id="sc-selected-fig"></div><div class="cell" id="sc-selected-sb"></div>
+        <div class="stc">Disabled</div>
+          <div class="cell" id="sc-disabled-fig"></div><div class="cell" id="sc-disabled-sb"></div>
+      </div>
+
+      <h2>3. States, variants &amp; props</h2>
+      <p>State (Default, Hover, Selected, Disabled) x Size (Large, Small); Control slot swaps Radio (single-select) for Checkbox (multi-select); Content slot for the card body. Stories pin the states matrix, single-select, multi-select, rich content, and a trailing-action variant. The state variant styles the container; the control is set to checked to match Selected (it does not auto-check). <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>The card is the label/target for its control: single-select uses radio (role=radio in a radiogroup), multi-select uses checkbox (role=checkbox), and the whole card is the click target, not just the control. Tab to the control, Space to select, Arrow keys move within a radio group; disabled cards are skipped. Focus ring <span class="mono">#005fcc</span> / 2px on the card/control. Selection is conveyed by the control's checked state plus the strong blue border, not by color alone.</p>
+      <table>
+        <tr><th>Pair</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Label #343434 on white</td><td>12.45:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Label on hover fill #eff5fd</td><td>11.35:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Selected border #07729C on white</td><td>5.39:1</td><td class="m y">Pass (non-text ≥3:1)</td></tr>
+        <tr><td>Hover border #C5E0F0 on white</td><td>~1.2:1</td><td>Decorative (see note)</td></tr>
+        <tr><td>Focus ring #005FCC</td><td>5.98:1</td><td class="m y">Pass</td></tr>
+      </table>
+      <div class="callout info">
+        <p style="margin:0"><span class="tag obs">QA-SC-01 · BY DESIGN</span> The hover border (<span class="mono">#c5e0f0</span>, ~1.2:1) is decorative; the hover <em>fill</em> (<span class="mono">#eff5fd</span>) plus the control carry the state, so the low border contrast does not affect usability. Selected uses a 2px blue border (built as a 1px border + 1px inset shadow) plus the checked control, so selection never relies on color alone.</p>
+      </div>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-SC-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Default/Hover/Selected/Disabled container tokens, checked control, radius 6, padding 20/16 match Figma.</td></tr>
+        <tr><td class="id">QA-SC-STATE</td><td>States · variants</td><td><span class="tag pass">PASS</span></td><td>State x Size; radio (single) and checkbox (multi); content + trailing-action slots pinned.</td></tr>
+        <tr><td class="id">QA-SC-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>radio/checkbox roles, whole-card target, arrow-key group nav, disabled skipped; selection = control + border, not color alone.</td></tr>
+        <tr><td class="id">QA-SC-01</td><td>Hover border contrast</td><td><span class="tag obs">BY DESIGN</span></td><td>~1.2:1 decorative; hover fill + control convey state. Selected 2px border = 1px border + 1px inset shadow.</td></tr>
+      </table>
+    `,
+    cardset: true
   }
 ];
