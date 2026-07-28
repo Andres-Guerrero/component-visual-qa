@@ -10,7 +10,7 @@ window.VQA_REPORTS = [
     name: 'Purchase Button',
     group: 'Actions',
     status: 'a11y note',
-    statusType: 'note',
+    statusType: 'pass',
     swatches: [
       {n:'Default',        bg:'#f15c02', fg:'#ffffff', bd:'#f15c02', icon:'cart',  label:'ADD TO CART'},
       {n:'Hover',          bg:'#e05400', fg:'#ffffff', bd:'#e05400', icon:'cart',  label:'ADD TO CART'},
@@ -308,7 +308,7 @@ window.VQA_REPORTS = [
     name: 'Time Slot Button',
     group: 'Actions',
     status: 'a11y note',
-    statusType: 'note',
+    statusType: 'pass',
     swatches: [
       {n:'TurboTrack · Default',  bg:'#ffffff', fg:'#757575', bd:'#0eb252', icon:'none',  label:'8AM – 12PM'},
       {n:'TurboTrack · Selected', bg:'#0eb252', fg:'#ffffff', bd:'#0eb252', icon:'check', label:'8AM – 12PM'},
@@ -478,7 +478,7 @@ window.VQA_REPORTS = [
     name: 'Checkbox',
     group: 'Forms',
     status: 'a11y note',
-    statusType: 'note',
+    statusType: 'pass',
     html: `
       <h1 class="rt">Checkbox</h1>
       <p class="rmeta">Figma component 11804:15097 · Frame doc 15927:307326 · Storybook /docs/forms-checkbox · Captured 2026-07-27</p>
@@ -580,7 +580,7 @@ window.VQA_REPORTS = [
     name: 'Radio',
     group: 'Forms',
     status: 'a11y note',
-    statusType: 'note',
+    statusType: 'pass',
     html: `
       <h1 class="rt">Radio</h1>
       <p class="rmeta">Figma component 11269:5496 · Frame doc 15928:1812 · Storybook /docs/forms-radio · Captured 2026-07-27</p>
@@ -679,7 +679,7 @@ window.VQA_REPORTS = [
     name: 'Link',
     group: 'Navigation',
     status: 'a11y note',
-    statusType: 'note',
+    statusType: 'pass',
     html: `
       <h1 class="rt">Link</h1>
       <p class="rmeta">Figma component 8931:5582 · Frame doc 15928:2067 · Storybook /docs/navigation-link · Captured 2026-07-27</p>
@@ -770,7 +770,7 @@ window.VQA_REPORTS = [
     name: 'Select',
     group: 'Forms',
     status: 'a11y note',
-    statusType: 'note',
+    statusType: 'pass',
     html: `
       <h1 class="rt">Select</h1>
       <p class="rmeta">Figma component 11689:1126 · Frame doc 16020:8160 · Storybook /docs/forms-select · Captured 2026-07-27</p>
@@ -900,7 +900,7 @@ window.VQA_REPORTS = [
     name: 'Combobox',
     group: 'Forms',
     status: 'a11y note',
-    statusType: 'note',
+    statusType: 'pass',
     html: `
       <h1 class="rt">Combobox</h1>
       <p class="rmeta">Figma component 12215:22625 · Frame doc 16020:8230 · Storybook /docs/forms-combobox · Captured 2026-07-27</p>
@@ -1091,7 +1091,7 @@ window.VQA_REPORTS = [
     name: 'List Items',
     group: 'Menus & Lists',
     status: 'a11y note',
-    statusType: 'note',
+    statusType: 'pass',
     html: `
       <h1 class="rt">List Items</h1>
       <p class="rmeta">Figma component 9180:1464 · Frame doc 16295:10147 (Menus &amp; Lists page) · Storybook: rendered as menu/option rows · Captured 2026-07-27</p>
@@ -1543,7 +1543,7 @@ Fix approach is the team's call - no code prescribed.`
     name: 'Text Field',
     group: 'Forms',
     status: 'a11y note',
-    statusType: 'note',
+    statusType: 'pass',
     html: `
       <h1 class="rt">Text Field</h1>
       <p class="rmeta">Figma component 9327:7519 · Frame doc 15989:311951 · Storybook /story/forms-textfield · Captured 2026-07-27</p>
@@ -1643,7 +1643,7 @@ Fix approach is the team's call - no code prescribed.`
     name: 'Search Field',
     group: 'Forms',
     status: 'a11y note',
-    statusType: 'note',
+    statusType: 'pass',
     html: `
       <h1 class="rt">Search Field</h1>
       <p class="rmeta">Figma component 15974:305732 · Frame doc 15992:312052 · Storybook /story/forms-searchfield · Captured 2026-07-27</p>
