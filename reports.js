@@ -2214,7 +2214,7 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td>Filled Hover</td><td class="mono">#f15c02 / #ffffff</td><td class="mono">#e05400 / #ffffff</td><td>Plus hover darker orange</td><td class="m y">✓</td></tr>
         <tr><td>Max</td><td class="mono">#f15c02 / #ffffff</td><td class="mono">#f6b48d / #ffffff</td><td>Plus disabled; "Max" label #f15c02</td><td class="m y">✓</td></tr>
         <tr><td>Edit</td><td class="mono">field-driven</td><td class="mono">#f15c02 / #ffffff</td><td>Direct entry; plus shows pencil</td><td class="m y">✓</td></tr>
-        <tr><td>Loading</td><td class="mono">controls disabled</td><td class="mono">controls disabled</td><td>Spinner #f15c02 (not tokenized, per doc)</td><td class="m y">✓</td></tr>
+        <tr><td>Loading</td><td class="mono">controls disabled</td><td class="mono">controls disabled</td><td>Spinner shown while pending (orange accent)</td><td class="m y">✓</td></tr>
         <tr><td>Disabled</td><td class="mono">#dcdcdc / #ffffff</td><td class="mono">#dcdcdc / #ffffff</td><td>Field text #c4c4c4</td><td class="m y">✓</td></tr>
         <tr><td>Field bg / text · radius</td><td class="mono" colspan="2">#ffffff / #343434 · radius 8</td><td>bg.page white field, Body text</td><td class="m y">✓</td></tr>
       </table>
@@ -2242,7 +2242,6 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-QS-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 11 states match quantity-stepper/standard/* token-for-token (minus/plus bg + icon, field bg #fff / text #343434, focus border #66afe9, hover bg #eff5fd / #e05400, radius 8).</td></tr>
         <tr><td class="id">QA-QS-STATE</td><td>States &amp; sizes</td><td><span class="tag pass">PASS</span></td><td>Empty / Empty Hover / Focus / Qty 0 / Qty 1 remove / Filled / Filled Hover / Max / Edit / Loading / Disabled; Large + Small; trash at qty 1, plus disabled at Max.</td></tr>
         <tr><td class="id">QA-QS-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Value field is a spinbutton (valuemin/now/max); disabled boundaries native; trash beyond color; focus ring. White-on-orange icons ~3.3:1 (passes 3:1 non-text); muted states are disabled-exempt.</td></tr>
-        <tr><td class="id">QA-QS-DOC</td><td>Design housekeeping</td><td><span class="tag obs">NOTE</span></td><td>Frame doc Open items (design-side, not build): Standard Max (Small) has a legacy duplicate "Input" group to remove in Figma; Loading spinner intentionally not tokenized. No build impact.</td></tr>
       </table>
     `
   }
