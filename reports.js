@@ -1913,5 +1913,68 @@ Fix approach is the team's call - no code prescribed.`
       </table>
     `,
     faqset: true
+  },
+  {
+    id: 'filter-accordion',
+    name: 'Filter Accordion',
+    group: 'Accordions',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Filter Accordion</h1>
+      <p class="rmeta">Figma component 8246:1551 · Usage 8653:7455 · Shared frame doc 16369:309440 · Storybook /story/disclosure-filteraccordion · Captured 2026-07-27</p>
+      <p>The accordion tuned for PLP filter groups. Base size only, a full-width header with a <strong>trailing</strong> +/- toggle, a bottom-border divider, and a full-width content region (not indented) that holds the filter controls (checkbox, link, and rating filters). Shares the accordion behavior model with FAQ, Product Specification, and Footer.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Bold label, trailing toggle, divider, padding all match</p></div>
+        <div class="v pass"><p class="k">STATES · LAYOUT</p><div class="val">Pass</div><p class="sub">Collapsed/Expanded, base size, full-width, trailing toggle</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">button + aria-expanded, region, +/- beyond color</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>Element</th><th>Figma value</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Group label</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> · 14px Bold</td><td class="mono">#343434 · 700 · 14px</td><td class="m y">✓</td></tr>
+        <tr><td>Toggle icon (trailing)</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span></td><td class="mono">#07729c · trailing (right of label)</td><td class="m y">✓</td></tr>
+        <tr><td>Header bg / divider</td><td><span class="mono">#ffffff</span> / <span class="chip" style="background:#dcdcdc"></span><span class="mono">#dcdcdc</span> 1px bottom</td><td class="mono">#ffffff / 1px #dcdcdc bottom</td><td class="m y">✓</td></tr>
+        <tr><td>Header padding-x / y · icon-gap</td><td class="mono">16 / 20 · 16</td><td class="mono">16 / 20</td><td class="m y">✓</td></tr>
+        <tr><td>Content padding-x / bottom</td><td class="mono">16 / 20 (full-width, not indented)</td><td class="mono">16 / 20</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side</h2>
+      <p>Rendered from the token values (full-width header, trailing +/- toggle, one group expanded with filter controls).</p>
+      <div class="swatchgrid" style="grid-template-columns:110px 1fr">
+        <div class="hd">Source</div><div class="hd">Rendering</div>
+        <div class="stc">Figma</div><div class="cell">
+          <div style="width:300px;font-size:14px;border-top:1px solid #dcdcdc">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px;border-bottom:1px solid #dcdcdc"><span style="color:#343434;font-weight:700">Category</span><span style="color:#07729c;font-weight:700">+</span></div>
+            <div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#343434;font-weight:700">Brand</span><span style="color:#07729c;font-weight:700">&minus;</span></div><div style="padding:0 16px 20px 16px;color:#343434"><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> Checkbox Filter</div><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;background:#343434;display:inline-block"></span> <strong>Checkbox Filter</strong></div><div style="color:#07729c;padding:4px 0">Link Filter (10)</div><div style="color:#07729c;font-weight:700;padding-top:6px">See more</div></div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px;border-bottom:1px solid #dcdcdc"><span style="color:#343434;font-weight:700">Price Range</span><span style="color:#07729c;font-weight:700">+</span></div>
+          </div>
+        </div>
+        <div class="stc">Storybook</div><div class="cell">
+          <div style="width:300px;font-size:14px;border-top:1px solid #dcdcdc">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px;border-bottom:1px solid #dcdcdc"><span style="color:#343434;font-weight:700">Category</span><span style="color:#07729c;font-weight:700">+</span></div>
+            <div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#343434;font-weight:700">Brand</span><span style="color:#07729c;font-weight:700">&minus;</span></div><div style="padding:0 16px 20px 16px;color:#343434"><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> Checkbox Filter</div><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;background:#343434;display:inline-block"></span> <strong>Checkbox Filter</strong></div><div style="color:#07729c;padding:4px 0">Link Filter (10)</div><div style="color:#07729c;font-weight:700;padding-top:6px">See more</div></div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px;border-bottom:1px solid #dcdcdc"><span style="color:#343434;font-weight:700">Price Range</span><span style="color:#07729c;font-weight:700">+</span></div>
+          </div>
+        </div>
+      </div>
+
+      <h2>3. States &amp; layout</h2>
+      <p>State Collapsed / Expanded (default Collapsed); base size only (no Small/Medium/Large). Full-width header with a trailing +/- toggle; the content region is full-width (padding-x 16, not indented like FAQ) and holds the filter group's controls. Story pins the base variant. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>Each group header is a <code>button</code> with <code>aria-expanded</code>; the content is a <code>role="region"</code> labelled by its header. Tab to the header, Enter or Space toggles. Focus ring <span class="mono">#005fcc</span> / 2px. The +/- icon conveys collapsed vs expanded independently of color. Shared frame doc: 0 contrast failures.</p>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-FIL-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Bold #343434 14px label, trailing #07729c toggle, bottom divider #dcdcdc, header 16/20, content 16/20 match Figma.</td></tr>
+        <tr><td class="id">QA-FIL-STATE</td><td>States &amp; layout</td><td><span class="tag pass">PASS</span></td><td>Collapsed/Expanded, base size only, full-width header + trailing toggle, full-width (non-indented) content.</td></tr>
+        <tr><td class="id">QA-FIL-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Header button + aria-expanded, content region, +/- beyond color, focus ring; 0 contrast failures.</td></tr>
+      </table>
+    `
   }
 ];
