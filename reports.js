@@ -1918,20 +1918,43 @@ Fix approach is the team's call - no code prescribed.`
     id: 'filter-accordion',
     name: 'Filter Accordion',
     group: 'Accordions',
-    status: 'Pass · 1 open Q',
-    statusType: 'pass',
+    status: 'Fix: See more',
+    statusType: 'fix',
+    handoffs: [{
+      code: 'QA-FIL-SEEMORE',
+      title: 'Long-list "See more" truncation (fix)',
+      text: `Component: Filter Accordion
+Storybook: http://34.74.189.135:30100/?path=/story/disclosure-filteraccordion--base
+Figma (source of truth): UI-Kit__Web component 8246:1551 · usage 8653:7455 · frame doc 16369:309440
+
+Finding QA-FIL-SEEMORE - missing "See more" long-list affordance
+Observed: the coded FilterAccordion exposes only type, value, defaultValue, onValueChange, collapsible, headingLevel, className, style, and a generic children slot. There is no "See more" element or prop, and no truncation of long filter lists. Every item passed in renders.
+Expected (per frame doc 16369:309440 and sample 8653:7455): when a single filter group has more than 10 items, the group shows the first 10 and a "See more" link below the list that reveals the remaining items. A group with 10 or fewer items shows no link. In the sample, the 5-item Brand group has no "See more"; the 11+ item Size group (pipe sizes) shows 10 items plus "See more".
+
+Acceptance criteria:
+- A filter group with 10 or fewer items renders no "See more" link.
+- A filter group with more than 10 items renders the first 10 plus a "See more" link below the list.
+- Activating "See more" reveals the remaining items of that group; behavior is keyboard operable and announced to assistive tech.
+- The link sits inside the panel, below the content (content-padding-x 16), using the filter link treatment: #07729c, Maison Neue.
+- Re-verify against Figma component 8246:1551 and usage 8653:7455.
+
+Confirm with design: exact threshold semantics (more-than-10 vs 10-or-more) and whether "See more" reveals all remaining at once or in pages.
+
+Fix approach is the team's call - no code prescribed.`
+    }],
     html: `
       <h1 class="rt">Filter Accordion</h1>
       <p class="rmeta">Figma component 8246:1551 · Usage 8653:7455 · Shared frame doc 16369:309440 · Storybook /story/disclosure-filteraccordion · Captured 2026-07-27</p>
       <p>The accordion tuned for PLP filter groups. Base size only, a full-width header with a <strong>trailing</strong> +/- toggle, a bottom-border divider, and a full-width content region (not indented) that holds the filter controls (checkbox, link, and rating filters). Shares the accordion behavior model with FAQ, Product Specification, and Footer.</p>
 
-      <div class="callout info"><strong>Open question: the "See more" affordance.</strong> The Figma component includes a built-in "See more" link in its Expanded state: a layer named <code>see more</code> that sits inside the panel, below the content slot (peer to it, not part of the swappable content). The coded component does not implement it. The Storybook API exposes only <code>type</code>, <code>value</code>, <code>defaultValue</code>, <code>onValueChange</code>, <code>collapsible</code>, <code>headingLevel</code>, <code>className</code>, <code>style</code>, and a generic <code>children</code> slot; there is no "See more" prop or element, and the base story omits it. This may be intentional (the page composes "See more" into <code>children</code>) or unimplemented. Flagged for design/dev alignment. See QA-FIL-SEEMORE.</div>
+      <div class="callout warn"><strong>The "See more" long-list rule (fix).</strong> The frame doc specifies, and the updated sample (8653:7455) confirms, a truncation behavior: when a filter group has <strong>more than 10 items</strong>, it shows the first 10 and a "See more" link that reveals the rest; a group of 10 or fewer shows no link. In the sample, the 5-item Brand group has no "See more" (its <code>see more</code> layer is hidden), while the 11+ item Size group of pipe sizes shows 10 items plus "See more". The coded component does not implement this: its API is only <code>type</code> / <code>value</code> / <code>defaultValue</code> / <code>onValueChange</code> / <code>collapsible</code> / <code>headingLevel</code> / <code>className</code> / <code>style</code> / <code>children</code>, with no "See more" element, prop, or list truncation. Logged as QA-FIL-SEEMORE with a handoff below.</div>
 
       <h2>Verdict</h2>
       <div class="verdict">
         <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Bold label, trailing toggle, divider, padding all match</p></div>
         <div class="v pass"><p class="k">STATES · LAYOUT</p><div class="val">Pass</div><p class="sub">Collapsed/Expanded, base size, full-width, trailing toggle</p></div>
         <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">button + aria-expanded, region, +/- beyond color</p></div>
+        <div class="v fix"><p class="k">PARITY · SCOPE</p><div class="val">1 fix</div><p class="sub">"See more" (&gt;10-item rule) not implemented</p></div>
       </div>
 
       <h2>1. Token fidelity</h2>
@@ -1945,27 +1968,50 @@ Fix approach is the team's call - no code prescribed.`
       </table>
 
       <h2>2. Side-by-side</h2>
-      <p>Chrome parity matches (full-width header, trailing +/- toggle, bottom divider, non-indented content). The content differs because each side composes its own filter items, and the difference makes the gap visible: the Figma component ends the expanded group with a built-in "See more" link; the Storybook base story does not.</p>
-      <div class="swatchgrid" style="grid-template-columns:150px 1fr">
-        <div class="hd">Source</div><div class="hd">Rendering</div>
-        <div class="stc">Figma component<br><span style="font-weight:400;color:#757575">(intended)</span></div><div class="cell">
-          <div style="width:300px;font-size:14px;border-top:1px solid #dcdcdc">
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px;border-bottom:1px solid #dcdcdc"><span style="color:#343434;font-weight:700">Category</span><span style="color:#07729c;font-weight:700">+</span></div>
-            <div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#343434;font-weight:700">Brand</span><span style="color:#07729c;font-weight:700">&minus;</span></div><div style="padding:0 16px 20px 16px;color:#343434"><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> Checkbox Filter</div><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;background:#343434;display:inline-block"></span> <strong>Checkbox Filter</strong></div><div style="color:#07729c;padding:4px 0">Link Filter (10)</div><div style="color:#07729c;font-weight:700;padding-top:6px">See more</div></div></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px;border-bottom:1px solid #dcdcdc"><span style="color:#343434;font-weight:700">Price Range</span><span style="color:#07729c;font-weight:700">+</span></div>
+      <p>Header chrome matches (full-width header, trailing +/- toggle, bottom divider, non-indented content). The gap is in long-list handling. Both columns show the same 11+ item Size group from the sample; the Figma component truncates to 10 and appends "See more", the build renders every item with no link.</p>
+      <div class="swatchgrid" style="grid-template-columns:170px 1fr">
+        <div class="hd">Source</div><div class="hd">Size group (&gt; 10 items)</div>
+        <div class="stc">Figma component<br><span style="font-weight:400;color:#757575">(truncates to 10 + See more)</span></div><div class="cell">
+          <div style="width:280px;font-size:14px;border-top:1px solid #dcdcdc">
+            <div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#343434;font-weight:700">Size</span><span style="color:#07729c;font-weight:700">&minus;</span></div><div style="padding:0 16px 16px 16px;color:#343434">
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 1/8" (7)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 1/4" (46)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 3/8" (43)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 1/2" (176)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 3/4" (228)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 1" (185)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 1-1/4" (143)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 1-1/2" (124)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 2" (109)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 2-1/2" (37)</div>
+              <div style="color:#07729c;font-weight:700;padding-top:8px">See more</div>
+            </div></div>
           </div>
         </div>
-        <div class="stc">Storybook build<br><span style="font-weight:400;color:#757575">(base story)</span></div><div class="cell">
-          <div style="width:300px;font-size:14px;border-top:1px solid #dcdcdc">
-            <div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#343434;font-weight:700">Brand</span><span style="color:#07729c;font-weight:700">&minus;</span></div><div style="padding:0 16px 20px 16px;color:#343434"><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> Rheem</div><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> Honeywell</div><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> Watts</div></div></div>
-            <div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#343434;font-weight:700">Availability</span><span style="color:#07729c;font-weight:700">&minus;</span></div><div style="padding:0 16px 20px 16px;color:#343434"><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> In Stock</div><div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block"></span> Ships Today</div></div></div>
+        <div class="stc">Storybook build<br><span style="font-weight:400;color:#757575">(no truncation, no link)</span></div><div class="cell">
+          <div style="width:280px;font-size:14px;border-top:1px solid #dcdcdc">
+            <div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 16px"><span style="color:#343434;font-weight:700">Size</span><span style="color:#07729c;font-weight:700">&minus;</span></div><div style="padding:0 16px 16px 16px;color:#343434">
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 1/8" (7)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 1/4" (46)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 3/8" (43)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 1/2" (176)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 3/4" (228)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 1" (185)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 1-1/4" (143)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 1-1/2" (124)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 2" (109)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 2-1/2" (37)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 3" (18)</div>
+              <div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="width:16px;height:16px;border:1px solid #c4c4c4;display:inline-block;flex:0 0 16px"></span> 4" (11)</div>
+            </div></div>
           </div>
         </div>
       </div>
-      <p style="font-size:12px;color:#757575">Note the Figma column ends with a blue "See more" link below its filters; the build column has no such element. That is the open question below.</p>
+      <p style="font-size:12px;color:#757575">Figma stops at 10 items and shows a blue "See more"; the build keeps listing every item and never shows the link. A group of 10 or fewer (like the 5-item Brand group) shows no "See more" on either side.</p>
 
       <h2>3. States &amp; layout</h2>
-      <p>State Collapsed / Expanded (default Collapsed); base size only (no Small/Medium/Large). Full-width header with a trailing +/- toggle; the content region is full-width (padding-x 16, not indented like FAQ) and holds the filter group's controls. Story pins the base variant. <span class="m y">✓ Pass</span></p>
+      <p>State Collapsed / Expanded (default Collapsed); base size only (no Small/Medium/Large). Full-width header with a trailing +/- toggle; the content region is full-width (padding-x 16, not indented like FAQ) and holds the filter group's controls. These layout and state basics all match. <span class="m y">✓ Pass</span></p>
+      <p>The one behavior the build is missing is long-list truncation: per the frame doc, a group of more than 10 items should show 10 plus a "See more" link. The build renders every item instead. Tracked as QA-FIL-SEEMORE below. <span class="m n">Fix</span></p>
 
       <h2>4. Accessibility</h2>
       <p>Each group header is a <code>button</code> with <code>aria-expanded</code>; the content is a <code>role="region"</code> labelled by its header. Tab to the header, Enter or Space toggles. Focus ring <span class="mono">#005fcc</span> / 2px. The +/- icon conveys collapsed vs expanded independently of color. Shared frame doc: 0 contrast failures.</p>
@@ -1976,7 +2022,7 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-FIL-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Bold #343434 14px label, trailing #07729c toggle, bottom divider #dcdcdc, header 16/20, content 16/20 match Figma.</td></tr>
         <tr><td class="id">QA-FIL-STATE</td><td>States &amp; layout</td><td><span class="tag pass">PASS</span></td><td>Collapsed/Expanded, base size only, full-width header + trailing toggle, full-width (non-indented) content.</td></tr>
         <tr><td class="id">QA-FIL-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Header button + aria-expanded, content region, +/- beyond color, focus ring; 0 contrast failures.</td></tr>
-        <tr><td class="id">QA-FIL-SEEMORE</td><td>Parity / scope</td><td><span class="tag obs">OPEN Q</span></td><td>Figma component has a built-in "See more" link in the Expanded panel (layer <code>see more</code>, peer to the content slot). Build has no equivalent prop or element; base story omits it. Needs design/dev alignment on whether "See more" is a component affordance or page-composed <code>children</code>.</td></tr>
+        <tr><td class="id">QA-FIL-SEEMORE</td><td>Long-list truncation</td><td><span class="tag fail">FIX</span></td><td>Frame doc + sample 8653:7455: a group of more than 10 items shows 10 plus a "See more" link (layer <code>see more</code>, in the panel below the content); a group of 10 or fewer shows none. Build has no such element, prop, or truncation and renders every item. See the handoff for context + acceptance criteria.</td></tr>
       </table>
     `
   }
