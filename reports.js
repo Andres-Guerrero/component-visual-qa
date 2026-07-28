@@ -2116,5 +2116,71 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-FTR-CONTENT</td><td>Content link color</td><td><span class="tag fail">FIX</span></td><td>Design now tokenizes footer links as white via accordion/footer/color/content/link/default (#ffffff), Body1 16px Book, on the accordion/footer/color/content/bg (#89847f) band. The build renders them black (#000000). Bind the content link color to the white token. See the handoff for context + acceptance criteria.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'product-spec-accordion',
+    name: 'Product Specification Accordion',
+    group: 'Accordions',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Product Specification Accordion</h1>
+      <p class="rmeta">Figma component 7731:7700 · Usage 8653:7456 · Shared frame doc 16369:309440 · Storybook /docs/disclosure-productspecificationaccordion · Captured 2026-07-28</p>
+      <p>The accordion for PDP specification tables. Small / Medium / Large sizes, a dark label with a trailing +/- toggle on a white surface, and a full-width content region for spec rows. It is the only accordion that carries <strong>both a top and bottom</strong> hairline border, and its label type scales by size. Shares the accordion behavior model with FAQ, Filters, and Footer.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Label, icon, top + bottom borders, per-size type + padding match</p></div>
+        <div class="v pass"><p class="k">STATES · SIZES</p><div class="val">Pass</div><p class="sub">Small / Medium / Large, Collapsed / Expanded, +/- icon</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">button + aria-expanded, region, +/- beyond color</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>Element</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Label color</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span></td><td class="mono">#343434</td><td class="m y">✓</td></tr>
+        <tr><td>Icon (+/-)</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> · svg</td><td class="mono">#07729c · svg</td><td class="m y">✓</td></tr>
+        <tr><td>Surface bg</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span></td><td class="mono">#ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Borders (top + bottom)</td><td><span class="chip" style="background:#dcdcdc"></span><span class="mono">#dcdcdc</span> · 1px top &amp; 1px bottom</td><td class="mono">1px #dcdcdc top + 1px #dcdcdc bottom</td><td class="m y">✓</td></tr>
+        <tr><td>Label type (Small / Medium / Large)</td><td class="mono">16 / 18 / 20px Bold</td><td class="mono">16 / 18 / 20px · 700</td><td class="m y">✓</td></tr>
+        <tr><td>Header padding-y (Small / Medium / Large)</td><td class="mono">16 / 16 / 20</td><td class="mono">16 / 16 / 20</td><td class="m y">✓</td></tr>
+        <tr><td>Header padding-x · icon-gap</td><td class="mono">0 (no x token) · 16</td><td class="mono">0 · token-verified</td><td class="m y">✓</td></tr>
+        <tr><td>content-padding-bottom (Small / Medium / Large)</td><td class="mono">24 / 24 / 28</td><td class="mono">token-verified</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side</h2>
+      <p>Rendered from the token values (Large, one section expanded). Identical on Figma and Storybook. Note the hairline border above the first row as well as below each row, which is the top + bottom treatment unique to this accordion, and the full-bleed header (no horizontal padding).</p>
+      <div class="swatchgrid" style="grid-template-columns:150px 1fr">
+        <div class="hd">Source</div><div class="hd">Rendering (Large, expanded)</div>
+        <div class="stc">Figma</div><div class="cell">
+          <div style="width:420px;font-size:14px;border-top:1px solid #dcdcdc">
+            <div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 0"><span style="color:#343434;font-weight:700;font-size:20px">Product Highlights</span><span style="color:#07729c;font-weight:700;font-size:20px">&minus;</span></div><div style="padding:0 0 28px 0;color:#343434"><div style="padding:3px 0">4-11/16" x 2-7/8" x 1-1/8"</div><div style="padding:3px 0">Standard High Capacity Output Compact Design</div><div style="padding:3px 0">Quiet, Efficient Operation</div></div></div>
+            <div style="border-bottom:1px solid #dcdcdc;display:flex;justify-content:space-between;align-items:center;padding:20px 0"><span style="color:#343434;font-weight:700;font-size:20px">Description</span><span style="color:#07729c;font-weight:700;font-size:20px">+</span></div>
+            <div style="border-bottom:1px solid #dcdcdc;display:flex;justify-content:space-between;align-items:center;padding:20px 0"><span style="color:#343434;font-weight:700;font-size:20px">Specs</span><span style="color:#07729c;font-weight:700;font-size:20px">+</span></div>
+          </div>
+        </div>
+        <div class="stc">Storybook</div><div class="cell">
+          <div style="width:420px;font-size:14px;border-top:1px solid #dcdcdc">
+            <div style="border-bottom:1px solid #dcdcdc"><div style="display:flex;justify-content:space-between;align-items:center;padding:20px 0"><span style="color:#343434;font-weight:700;font-size:20px">Product Highlights</span><span style="color:#07729c;font-weight:700;font-size:20px">&minus;</span></div><div style="padding:0 0 28px 0;color:#343434"><div style="padding:3px 0">4-11/16" x 2-7/8" x 1-1/8"</div><div style="padding:3px 0">Standard High Capacity Output Compact Design</div><div style="padding:3px 0">Quiet, Efficient Operation</div></div></div>
+            <div style="border-bottom:1px solid #dcdcdc;display:flex;justify-content:space-between;align-items:center;padding:20px 0"><span style="color:#343434;font-weight:700;font-size:20px">Description</span><span style="color:#07729c;font-weight:700;font-size:20px">+</span></div>
+            <div style="border-bottom:1px solid #dcdcdc;display:flex;justify-content:space-between;align-items:center;padding:20px 0"><span style="color:#343434;font-weight:700;font-size:20px">Specs</span><span style="color:#07729c;font-weight:700;font-size:20px">+</span></div>
+          </div>
+        </div>
+      </div>
+
+      <h2>3. States &amp; sizes</h2>
+      <p>Three sizes present as separate stories: Small (label 16px, padding-y 16), Medium (18px, 16), Large (20px, 20), all with the dark #343434 label, blue #07729c toggle, and top + bottom #dcdcdc borders on white. State Collapsed / Expanded toggles via the header button; the +/- icon is an svg. All match the frame doc. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>Each section header is a <code>button</code> with <code>aria-expanded</code>; the expanded content is a <code>role="region"</code>. The +/- icon conveys collapsed vs expanded beyond color. Contrast is clean: the dark #343434 label on white is high-contrast, and the #07729c icon on white clears 3:1 for non-text. No contrast notes on this one.</p>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-PS-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>#343434 label, #07729c icon, #ffffff bg, 1px #dcdcdc top + bottom borders, per-size label type (16/18/20 Bold) and padding-y (16/16/20), x padding 0 all match Figma.</td></tr>
+        <tr><td class="id">QA-PS-STATE</td><td>States &amp; sizes</td><td><span class="tag pass">PASS</span></td><td>Small / Medium / Large stories; Collapsed / Expanded via header button; +/- svg icon.</td></tr>
+        <tr><td class="id">QA-PS-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Header button + aria-expanded, content region, +/- beyond color; label + icon contrast clean.</td></tr>
+      </table>
+    `
   }
 ];
