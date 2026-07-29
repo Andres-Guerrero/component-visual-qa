@@ -2045,14 +2045,14 @@ Fix approach is the team's call - no code prescribed.`
 Storybook: http://34.74.189.135:30100/?path=/story/disclosure-footeraccordion--small
 Figma (source of truth): UI-Kit__Web component 8646:6886 · usage 16365:71761 · frame doc 16369:309440
 
-Finding QA-FTR-CONTENT - content link color
-Observed: the expanded footer links render black (rgb(0,0,0)) at 16px on the #89847f band.
-Expected: content links use the token accordion/footer/color/content/link/default (#ffffff), Maison Neue Book 16px (WEB/Body1/16px-N), on the accordion/footer/color/content/bg (#89847f) band. This token was added to the design system to make footer links white.
+Finding QA-FTR-CONTENT - content link color (retested 2026-07-29, still open)
+Observed: the expanded footer links still render black (rgb(0,0,0)) and underlined at 16px on the #89847f band.
+Expected: the footer content uses the Link component's inverse variant, bound to color/pattern/link/inverse/default (#ffffff), Maison Neue Book 16px (WEB/Body1/16px-N), with pattern link icon-gap 8, on the accordion/footer/color/content/bg (#89847f) band. Design updated the Link component with this inverse variant for the footer content.
 
 Acceptance criteria:
-- Expanded footer links render white (#ffffff), bound to accordion/footer/color/content/link/default.
+- Expanded footer links use the Link inverse variant and render white (#ffffff), bound to color/pattern/link/inverse/default.
 - Link type is Maison Neue 16px / 400 (Body1).
-- Works whether the component styles its content links directly or sets an inverse text context that the content slot inherits; confirm the intended approach with design.
+- Confirm the underline treatment matches the inverse variant (the Figma sample shows the links without an underline; the build currently underlines them).
 - Re-verify against usage 16365:71761.
 
 Fix approach is the team's call - no code prescribed.`
@@ -2062,7 +2062,7 @@ Fix approach is the team's call - no code prescribed.`
       <p class="rmeta">Figma component 8646:6886 · Usage 16365:71761 · Shared frame doc 16369:309440 · Storybook /docs/disclosure-footeraccordion · Captured 2026-07-28</p>
       <p>The accordion tuned for dark footer surfaces. Small / Medium / Large sizes, a <strong>filled</strong> header band (<span class="mono">#89847f</span>) with an inverse white label and +/- icon, a hairline bottom divider between sections, and a filled band that wraps the expanded content. Shares the accordion behavior model with FAQ, Filters, and Product Specification.</p>
 
-      <div class="callout warn"><strong>Content link color (fix).</strong> The design system now defines footer content links as white via <code>accordion/footer/color/content/link/default</code> (<span class="mono">#ffffff</span>), Body1 16px Book, on the <code>accordion/footer/color/content/bg</code> (<span class="mono">#89847f</span>) band. The build renders these links <strong>black</strong> (<span class="mono">rgb(0,0,0)</span>) instead. Logged as QA-FTR-CONTENT with a handoff below. The header chrome (band, white label, white icon, divider, per-size padding) all matches.</div>
+      <div class="callout warn"><strong>Content link color (fix, retested 2026-07-29).</strong> Design updated the Link component with an <strong>inverse variant</strong> for the footer content, bound to <code>color/pattern/link/inverse/default</code> (<span class="mono">#ffffff</span>), Body1 16px Book, on the <code>accordion/footer/color/content/bg</code> (<span class="mono">#89847f</span>) band. The build still renders these links <strong>black</strong> (<span class="mono">rgb(0,0,0)</span>) and underlined, so the fix has not landed yet. Logged as QA-FTR-CONTENT with a handoff below. The header chrome (band, white label, white icon, divider, per-size padding) all matches.</div>
 
       <h2>Verdict</h2>
       <div class="verdict">
@@ -2080,7 +2080,7 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td>Header band bg</td><td><span class="chip" style="background:#89847f"></span><span class="mono">#89847f</span> (accordion/footer/color/default/bg)</td><td class="mono">#89847f (on header wrapper)</td><td class="m y">✓</td></tr>
         <tr><td>Divider (bottom)</td><td><span class="chip" style="background:#b6afa8"></span><span class="mono">#b6afa8</span> · 1px</td><td class="mono">1px #b6afa8 bottom</td><td class="m y">✓</td></tr>
         <tr><td>Content bg</td><td><span class="chip" style="background:#89847f"></span><span class="mono">#89847f</span> (accordion/footer/color/content/bg)</td><td class="mono">#89847f (content wrapper)</td><td class="m y">✓</td></tr>
-        <tr><td>Content link color</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> (accordion/footer/color/content/link/default)</td><td class="mono">#000000</td><td class="m n">✗</td></tr>
+        <tr><td>Content link color</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> (Link inverse variant, color/pattern/link/inverse/default)</td><td class="mono">#000000 · underlined</td><td class="m n">✗</td></tr>
         <tr><td>Content link type</td><td class="mono">Maison Neue 16px / 400 (Body1)</td><td class="mono">16px / 400</td><td class="m y">✓</td></tr>
         <tr><td>Header padding-x / y (Small)</td><td class="mono">16 / 20</td><td class="mono">16 / 20</td><td class="m y">✓</td></tr>
         <tr><td>Header padding-x / y (Medium)</td><td class="mono">20 / 24</td><td class="mono">20 / 24</td><td class="m y">✓</td></tr>
@@ -2089,7 +2089,7 @@ Fix approach is the team's call - no code prescribed.`
       </table>
 
       <h2>2. Side-by-side</h2>
-      <p>Header chrome matches across sizes (filled band, white label, white +/- toggle, hairline divider between sections). The content links differ: Figma renders them white per <code>accordion/footer/color/content/link/default</code>; the build renders them black. That is the fix below.</p>
+      <p>Header chrome matches across sizes (filled band, white label, white +/- toggle, hairline divider between sections). The content links differ: Figma renders them white via the Link inverse variant (<code>color/pattern/link/inverse/default</code>); the build renders them black and underlined. That is the fix below.</p>
       <div class="swatchgrid" style="grid-template-columns:170px 1fr">
         <div class="hd">Source</div><div class="hd">Rendering</div>
         <div class="stc">Figma sample<br><span style="font-weight:400;color:#757575">(white links)</span></div><div class="cell">
@@ -2111,7 +2111,7 @@ Fix approach is the team's call - no code prescribed.`
       <p>Three sizes present as separate stories: Small (padding 16 / 20), Medium (20 / 24), Large (36 / 24), all with the white 18px label and #89847f band. State Collapsed / Expanded toggles via the header; the +/- icon is an svg. All match the frame doc. <span class="m y">✓ Pass</span></p>
 
       <h2>4. Accessibility</h2>
-      <p>Each section header is a <code>button</code> with <code>aria-expanded</code>; the expanded content is a <code>role="region"</code>. The +/- icon conveys collapsed vs expanded beyond color. One known contrast note: white on the <span class="mono">#89847f</span> band computes about <strong>3.7:1</strong>, which clears 3:1 for non-text and large text but is under 4.5:1 for normal-weight text (this applies to both the 18px label and the newly tokenized 16px white links). The frame doc acknowledges this for the header and treats it as acceptable; the same tradeoff now extends to the white links. Carried as a note, not a blocker (consistent with the other known-contrast items). Note this is separate from QA-FTR-CONTENT, which is that the build renders the links black rather than the tokenized white.</p>
+      <p>Each section header is a <code>button</code> with <code>aria-expanded</code>; the expanded content is a <code>role="region"</code>. The +/- icon conveys collapsed vs expanded beyond color. One known contrast note: white on the <span class="mono">#89847f</span> band computes about <strong>3.7:1</strong>, which clears 3:1 for non-text and large text but is under 4.5:1 for normal-weight text (this applies to both the 18px label and the 16px inverse-variant white links). The frame doc acknowledges this for the header and treats it as acceptable; the same tradeoff now extends to the white links. Carried as a note, not a blocker (consistent with the other known-contrast items). Note this is separate from QA-FTR-CONTENT, which is that the build renders the links black rather than the inverse white.</p>
 
       <h2>Findings log</h2>
       <table>
@@ -2119,7 +2119,7 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-FTR-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>White #fff 18px label + icon, #89847f band, #b6afa8 1px divider, per-size padding (16/20, 20/24, 36/24) all match Figma; band wraps expanded content.</td></tr>
         <tr><td class="id">QA-FTR-STATE</td><td>States &amp; sizes</td><td><span class="tag pass">PASS</span></td><td>Small / Medium / Large stories; Collapsed / Expanded via header button; +/- svg icon.</td></tr>
         <tr><td class="id">QA-FTR-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Header button + aria-expanded, content region, +/- beyond color. Note: white-on-#89847f label ~3.7:1 (passes 3:1 non-text/large, under 4.5:1 for 18px normal); documented and accepted in the frame doc.</td></tr>
-        <tr><td class="id">QA-FTR-CONTENT</td><td>Content link color</td><td><span class="tag fail">FIX</span></td><td>Design now tokenizes footer links as white via accordion/footer/color/content/link/default (#ffffff), Body1 16px Book, on the accordion/footer/color/content/bg (#89847f) band. The build renders them black (#000000). Bind the content link color to the white token. See the handoff for context + acceptance criteria.</td></tr>
+        <tr><td class="id">QA-FTR-CONTENT</td><td>Content link color</td><td><span class="tag fail">FIX</span></td><td>Retested 2026-07-29, still open. Design updated the Link component with an inverse variant for the footer content, bound to color/pattern/link/inverse/default (#ffffff), Body1 16px Book, on the accordion/footer/color/content/bg (#89847f) band. The build still renders the links black (#000000) and underlined. See the handoff for context + acceptance criteria.</td></tr>
       </table>
     `
   },
