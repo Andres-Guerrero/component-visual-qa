@@ -576,6 +576,85 @@ window.VQA_REPORTS = [
     `
   },
   {
+    id: 'checkbox-group',
+    name: 'Checkbox Group',
+    group: 'Forms',
+    status: 'Pass · 1 note',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Checkbox Group</h1>
+      <p class="rmeta">Figma usage 12012:7129 (checkbox + label) / 16786:1218 (layout) · Boxes: Checkbox component 11804:15097 · Storybook /docs/forms-checkboxgroup · Captured 2026-07-30</p>
+      <p>Groups related checkboxes with a group label, optional description and error message, vertical or horizontal layout, and an optional "Select all" parent that goes indeterminate on a partial selection. The individual boxes are the Checkbox component (all states and sizes already verified in the <a href="#checkbox" style="color:var(--sh-blue)">Checkbox</a> report); this report covers the group-level surface: label, item layout, gaps, error, and grouping semantics.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">ITEM &amp; LAYOUT</p><div class="val">Pass</div><p class="sub">Label 14px, 8px gap, vertical/horizontal, select-all</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">role=group + aria-labelledby; indeterminate parent</p></div>
+        <div class="v pass"><p class="k">TYPE RECONCILE</p><div class="val">1 note</div><p class="sub">Error weight + group-label type vs design frames</p></div>
+      </div>
+
+      <h2>1. Group-level fidelity</h2>
+      <table>
+        <tr><th>Element</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Item label</td><td><span class="mono">#343434</span> · Body2 14px Book (400)</td><td class="mono">#343434 · 14px · 400</td><td class="m y">✓</td></tr>
+        <tr><td>Box to label gap</td><td class="mono">8 (Web/8)</td><td class="mono">flex gap 8px</td><td class="m y">✓</td></tr>
+        <tr><td>Vertical item gap</td><td class="mono">12 (spacing/12)</td><td class="mono">column · gap 12px</td><td class="m y">✓</td></tr>
+        <tr><td>Horizontal layout</td><td class="mono">row</td><td class="mono">row · gap 12px</td><td class="m y">✓*</td></tr>
+        <tr><td>Error message</td><td class="mono">#b00000 · Body3 13px <strong>Bold</strong></td><td class="mono">#b00000 · 13px · 400</td><td class="m n">weight</td></tr>
+        <tr><td>Group label</td><td class="mono">~#343434 · Headline5 18px Bold (per usage frame)</td><td class="mono">#000000 · 16px · 600</td><td class="m n">confirm</td></tr>
+        <tr><td>Boxes (fill / border / glyph)</td><td class="mono">form-control tokens</td><td class="mono">verified in Checkbox report</td><td class="m y">✓</td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--sh-mid-gray)">* Horizontal gap is 12px in the build; the layout frame exposes both spacing/12 and spacing/16, so confirm whether the horizontal gap should be 16.</p>
+
+      <h2>2. Side-by-side (rendered from tokens)</h2>
+      <p>Vertical group with an error, the horizontal variant, and the select-all pattern.</p>
+      <div class="swatchgrid" style="grid-template-columns:130px 1fr">
+        <div class="hd">Layout</div><div class="hd">Rendering</div>
+        <div class="stc">Vertical + error</div><div class="cell">
+          <div style="font-size:14px">
+            <div style="font-weight:700;color:#343434;margin-bottom:8px">Preferred contact methods</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>Email</span>
+              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>Phone</span>
+              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>SMS</span>
+            </div>
+            <div style="color:#b00000;font-size:13px;margin-top:8px">Pick at least one contact method.</div>
+          </div>
+        </div>
+        <div class="stc">Horizontal</div><div class="cell">
+          <div style="display:flex;gap:12px;font-size:14px">
+            <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>Email</span>
+            <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>Phone</span>
+            <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>SMS</span>
+          </div>
+        </div>
+        <div class="stc">Select all</div><div class="cell">
+          <div style="font-size:14px">
+            <span style="display:flex;align-items:center;gap:8px;color:#343434;font-weight:700"><span style="width:18px;height:18px;background:#343434;flex:0 0 18px;display:inline-flex;align-items:center;justify-content:center"><span style="width:9px;height:2px;background:#fff;display:block"></span></span>Select all (1/3)</span>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;padding-left:26px">
+              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;background:#343434;flex:0 0 18px;display:inline-flex;align-items:center;justify-content:center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Apples</span>
+              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>Bananas</span>
+              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>Carrots</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>3. Behavior &amp; accessibility</h2>
+      <p>The group is a <code>div role="group"</code> labelled by its heading via <code>aria-labelledby</code> (a valid alternative to fieldset/legend). Orientation is Vertical (flex column) or Horizontal (flex row). The Select-all parent goes <strong>indeterminate</strong> when only some children are checked and updates its "(n/total)" count; verified in the build by checking one child (parent flipped to <code>indeterminate</code>, count went to 1/3). Focus and box a11y follow the Checkbox: 2px <span class="mono">#005fcc</span> focus ring, Space toggles. The unselected box border (gray.400, 1.74:1) carries the same known system-wide resting-border note documented on Checkbox, not a build defect.</p>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-CG-ITEM</td><td>Item label &amp; gap</td><td><span class="tag pass">PASS</span></td><td>Label #343434 14px Book, 8px box-to-label gap; boxes reuse the verified Checkbox form-control tokens.</td></tr>
+        <tr><td class="id">QA-CG-LAYOUT</td><td>Orientation &amp; spacing</td><td><span class="tag pass">PASS</span></td><td>Vertical column gap 12px (spacing/12); Horizontal row gap 12px (confirm 12 vs 16).</td></tr>
+        <tr><td class="id">QA-CG-SELECTALL</td><td>Select-all pattern</td><td><span class="tag pass">PASS</span></td><td>Parent goes indeterminate on partial selection and updates the (n/total) count; uses the checkbox dash glyph.</td></tr>
+        <tr><td class="id">QA-CG-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>role=group + aria-labelledby, keyboard + 2px focus ring. Inherits the Checkbox known resting-border note (unselected border 1.74:1), pending team review.</td></tr>
+        <tr><td class="id">QA-CG-TYPE</td><td>Type reconcile</td><td><span class="tag obs">NOTE</span></td><td>Error message renders weight 400 but the single-checkbox frame shows it Bold (Body3 13px-B). Group label renders 16px/600/#000000 vs the usage frame's ~18px Bold #343434 (confirm whether the frame labels are the group-label spec). Reconcile type/spacing vs design before publish.</td></tr>
+      </table>
+    `
+  },
+  {
     id: 'radio',
     name: 'Radio',
     group: 'Forms',
@@ -2575,85 +2654,6 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-PILL-GROUP</td><td>Pill Group</td><td><span class="tag pass">PASS</span></td><td>8px gap; single-select (radiogroup, one active, verified deselect) and multi-select (independent + checkmark); flexible width, optional fixed width for 4+.</td></tr>
         <tr><td class="id">QA-PILL-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Arrow-key nav, focus ring, selection beyond color (fill + border + check), dashed muted. Labels 12.46/11.36 AAA, selected check 4.91 pass; muted/disabled label 2.27 (disabled exempt / muted by-design).</td></tr>
         <tr><td class="id">QA-PILL-BORDER</td><td>Resting-border contrast</td><td><span class="tag obs">NOTE</span></td><td>Default/muted/disabled borders below 3:1 (#c4c4c4 1.74, #acacac 2.27); selected #07729c 5.39 passes. Known system-level resting-border item (same as Select/ComboBox/Filter); pending team review.</td></tr>
-      </table>
-    `
-  },
-  {
-    id: 'checkbox-group',
-    name: 'Checkbox Group',
-    group: 'Forms',
-    status: 'Pass · 1 note',
-    statusType: 'pass',
-    html: `
-      <h1 class="rt">Checkbox Group</h1>
-      <p class="rmeta">Figma usage 12012:7129 (checkbox + label) / 16786:1218 (layout) · Boxes: Checkbox component 11804:15097 · Storybook /docs/forms-checkboxgroup · Captured 2026-07-30</p>
-      <p>Groups related checkboxes with a group label, optional description and error message, vertical or horizontal layout, and an optional "Select all" parent that goes indeterminate on a partial selection. The individual boxes are the Checkbox component (all states and sizes already verified in the <a href="#checkbox" style="color:var(--sh-blue)">Checkbox</a> report); this report covers the group-level surface: label, item layout, gaps, error, and grouping semantics.</p>
-
-      <h2>Verdict</h2>
-      <div class="verdict">
-        <div class="v pass"><p class="k">ITEM &amp; LAYOUT</p><div class="val">Pass</div><p class="sub">Label 14px, 8px gap, vertical/horizontal, select-all</p></div>
-        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">role=group + aria-labelledby; indeterminate parent</p></div>
-        <div class="v pass"><p class="k">TYPE RECONCILE</p><div class="val">1 note</div><p class="sub">Error weight + group-label type vs design frames</p></div>
-      </div>
-
-      <h2>1. Group-level fidelity</h2>
-      <table>
-        <tr><th>Element</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
-        <tr><td>Item label</td><td><span class="mono">#343434</span> · Body2 14px Book (400)</td><td class="mono">#343434 · 14px · 400</td><td class="m y">✓</td></tr>
-        <tr><td>Box to label gap</td><td class="mono">8 (Web/8)</td><td class="mono">flex gap 8px</td><td class="m y">✓</td></tr>
-        <tr><td>Vertical item gap</td><td class="mono">12 (spacing/12)</td><td class="mono">column · gap 12px</td><td class="m y">✓</td></tr>
-        <tr><td>Horizontal layout</td><td class="mono">row</td><td class="mono">row · gap 12px</td><td class="m y">✓*</td></tr>
-        <tr><td>Error message</td><td class="mono">#b00000 · Body3 13px <strong>Bold</strong></td><td class="mono">#b00000 · 13px · 400</td><td class="m n">weight</td></tr>
-        <tr><td>Group label</td><td class="mono">~#343434 · Headline5 18px Bold (per usage frame)</td><td class="mono">#000000 · 16px · 600</td><td class="m n">confirm</td></tr>
-        <tr><td>Boxes (fill / border / glyph)</td><td class="mono">form-control tokens</td><td class="mono">verified in Checkbox report</td><td class="m y">✓</td></tr>
-      </table>
-      <p style="font-size:12px;color:var(--sh-mid-gray)">* Horizontal gap is 12px in the build; the layout frame exposes both spacing/12 and spacing/16, so confirm whether the horizontal gap should be 16.</p>
-
-      <h2>2. Side-by-side (rendered from tokens)</h2>
-      <p>Vertical group with an error, the horizontal variant, and the select-all pattern.</p>
-      <div class="swatchgrid" style="grid-template-columns:130px 1fr">
-        <div class="hd">Layout</div><div class="hd">Rendering</div>
-        <div class="stc">Vertical + error</div><div class="cell">
-          <div style="font-size:14px">
-            <div style="font-weight:700;color:#343434;margin-bottom:8px">Preferred contact methods</div>
-            <div style="display:flex;flex-direction:column;gap:12px">
-              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>Email</span>
-              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>Phone</span>
-              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>SMS</span>
-            </div>
-            <div style="color:#b00000;font-size:13px;margin-top:8px">Pick at least one contact method.</div>
-          </div>
-        </div>
-        <div class="stc">Horizontal</div><div class="cell">
-          <div style="display:flex;gap:12px;font-size:14px">
-            <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>Email</span>
-            <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>Phone</span>
-            <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>SMS</span>
-          </div>
-        </div>
-        <div class="stc">Select all</div><div class="cell">
-          <div style="font-size:14px">
-            <span style="display:flex;align-items:center;gap:8px;color:#343434;font-weight:700"><span style="width:18px;height:18px;background:#343434;flex:0 0 18px;display:inline-flex;align-items:center;justify-content:center"><span style="width:9px;height:2px;background:#fff;display:block"></span></span>Select all (1/3)</span>
-            <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;padding-left:26px">
-              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;background:#343434;flex:0 0 18px;display:inline-flex;align-items:center;justify-content:center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Apples</span>
-              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>Bananas</span>
-              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;flex:0 0 18px;display:inline-block"></span>Carrots</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h2>3. Behavior &amp; accessibility</h2>
-      <p>The group is a <code>div role="group"</code> labelled by its heading via <code>aria-labelledby</code> (a valid alternative to fieldset/legend). Orientation is Vertical (flex column) or Horizontal (flex row). The Select-all parent goes <strong>indeterminate</strong> when only some children are checked and updates its "(n/total)" count; verified in the build by checking one child (parent flipped to <code>indeterminate</code>, count went to 1/3). Focus and box a11y follow the Checkbox: 2px <span class="mono">#005fcc</span> focus ring, Space toggles. The unselected box border (gray.400, 1.74:1) carries the same known system-wide resting-border note documented on Checkbox, not a build defect.</p>
-
-      <h2>Findings log</h2>
-      <table>
-        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
-        <tr><td class="id">QA-CG-ITEM</td><td>Item label &amp; gap</td><td><span class="tag pass">PASS</span></td><td>Label #343434 14px Book, 8px box-to-label gap; boxes reuse the verified Checkbox form-control tokens.</td></tr>
-        <tr><td class="id">QA-CG-LAYOUT</td><td>Orientation &amp; spacing</td><td><span class="tag pass">PASS</span></td><td>Vertical column gap 12px (spacing/12); Horizontal row gap 12px (confirm 12 vs 16).</td></tr>
-        <tr><td class="id">QA-CG-SELECTALL</td><td>Select-all pattern</td><td><span class="tag pass">PASS</span></td><td>Parent goes indeterminate on partial selection and updates the (n/total) count; uses the checkbox dash glyph.</td></tr>
-        <tr><td class="id">QA-CG-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>role=group + aria-labelledby, keyboard + 2px focus ring. Inherits the Checkbox known resting-border note (unselected border 1.74:1), pending team review.</td></tr>
-        <tr><td class="id">QA-CG-TYPE</td><td>Type reconcile</td><td><span class="tag obs">NOTE</span></td><td>Error message renders weight 400 but the single-checkbox frame shows it Bold (Body3 13px-B). Group label renders 16px/600/#000000 vs the usage frame's ~18px Bold #343434 (confirm whether the frame labels are the group-label spec). Reconcile type/spacing vs design before publish.</td></tr>
       </table>
     `
   }
