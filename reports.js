@@ -2577,19 +2577,19 @@ Fix approach is the team's call - no code prescribed.`
   },
   {
     id: 'pill',
-    name: 'Pill and Pill Group',
+    name: 'Pill',
     group: 'Display',
     status: 'Pass · 1 note',
     statusType: 'pass',
     html: `
-      <h1 class="rt">Pill and Pill Group</h1>
-      <p class="rmeta">Figma component 14131:5026 · Frame doc 16175:305 · Usage 14443:662 / 14443:660 · Storybook /docs/display-pill and /docs/display-pill-group · Captured 2026-07-30</p>
-      <p>An interactive selection control (a toggle pill) for filtering and in-page view switching. Pills toggle on/off with no dismiss action (distinct from the removable Chip). Composed into a Pill Group that runs single-select (one active, the rest deselect) or multi-select (each toggles independently and shows a checkmark). Sizes Large (40px) and Small (34px). Bound to the <code>pattern/selectable/*</code> tokens.</p>
+      <h1 class="rt">Pill</h1>
+      <p class="rmeta">Figma component 14131:5026 · Frame doc 16175:305 · Storybook /docs/display-pill · Captured 2026-07-30</p>
+      <p>An interactive selection control (a toggle pill) for filtering and in-page view switching. Pills toggle on/off with no dismiss action (distinct from the removable Chip). Sizes Large (40px) and Small (34px). Bound to the <code>pattern/selectable/*</code> tokens. Composed into the <a href="#pill-group" style="color:var(--sh-blue)">Pill Group</a> for single/multi-select filter sets.</p>
 
       <h2>Verdict</h2>
       <div class="verdict">
         <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">6 states × 2 sizes match; selected 2px via border + inset</p></div>
-        <div class="v pass"><p class="k">STATES · GROUP</p><div class="val">Pass</div><p class="sub">Default/Hover/Selected/Muted/Disabled(+Selected); single + multi select, 8px gap</p></div>
+        <div class="v pass"><p class="k">STATES · SIZES</p><div class="val">Pass</div><p class="sub">Default/Hover/Selected/Muted/Disabled(+Selected); Large + Small</p></div>
         <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass<span style="font-size:11px;font-weight:400;color:#757575"> · 1 note</span></div><p class="sub">radiogroup, selection beyond color; resting-border note</p></div>
       </div>
 
@@ -2608,7 +2608,7 @@ Fix approach is the team's call - no code prescribed.`
       </table>
 
       <h2>2. Side-by-side</h2>
-      <p>States rendered from the token values (Large), then a single-select group with an 8px gap.</p>
+      <p>States rendered from the token values (Large).</p>
       <div style="display:flex;flex-wrap:wrap;gap:20px;margin:14px 0 18px">
         <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Default</div><span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px solid #c4c4c4;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">3/8"</span></div>
         <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Hover</div><span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#f8f8f8;border:2px solid #343434;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">3/8"</span></div>
@@ -2616,19 +2616,12 @@ Fix approach is the team's call - no code prescribed.`
         <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Muted</div><span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px dashed #acacac;border-radius:9999px;font-size:14px;font-weight:700;color:#acacac">3/8"</span></div>
         <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Disabled</div><span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px solid #acacac;border-radius:9999px;font-size:14px;font-weight:700;color:#acacac">3/8"</span></div>
       </div>
-      <div style="font-size:11px;color:#757575;margin-bottom:4px">Pill Group (single-select, 8px gap)</div>
-      <span style="display:inline-flex;flex-wrap:wrap;gap:8px">
-        <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#eff5fd;border:2px solid #07729c;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">Plumbing</span>
-        <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px solid #c4c4c4;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">HVAC</span>
-        <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px solid #c4c4c4;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">Fittings</span>
-        <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px solid #c4c4c4;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">Electrical</span>
-      </span>
 
-      <h2>3. States, sizes &amp; group</h2>
-      <p>Six states (Default, Hover, Selected, Muted, Disabled, Disabled-Selected) across Large and Small, pinned in the states-matrix. The Pill Group runs <strong>single-select</strong> (role="radio"; verified in the build that selecting HVAC deselects Plumbing, one active at a time) and <strong>multi-select</strong> (each toggles independently with a checkmark). Group layout: 8px horizontal gap, flexible (hug) width by default, optional fixed width for 4+ pills (padding stays 16px, content truncates with ellipsis). <span class="m y">✓ Pass</span></p>
+      <h2>3. States &amp; sizes</h2>
+      <p>Six states (Default, Hover, Selected, Muted, Disabled, Disabled-Selected) across Large and Small, pinned in the states-matrix. Selection shows a checkmark; muted uses a dashed border; disabled dims via the gray tokens. <span class="m y">✓ Pass</span></p>
 
       <h2>4. Accessibility</h2>
-      <p>Tab moves to the group and Arrow keys move between pills; Enter / Space toggles selection (single-select is a radiogroup). Focus ring is the shared <span class="mono">#005fcc</span> / 2px. Selection is conveyed by fill + border + checkmark, not color alone; muted uses a dashed border as a non-color cue; disabled is not focusable.</p>
+      <p>Enter / Space toggles selection; focus ring is the shared <span class="mono">#005fcc</span> / 2px. Selection is conveyed by fill + border + checkmark, not color alone; muted uses a dashed border as a non-color cue; disabled is not focusable. (Arrow-key navigation across a set is covered in the Pill Group report.)</p>
       <h3>Contrast - text vs surface</h3>
       <table>
         <tr><th>Pair</th><th>Ratio</th><th>Result</th></tr>
@@ -2651,9 +2644,51 @@ Fix approach is the team's call - no code prescribed.`
         <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
         <tr><td class="id">QA-PILL-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 6 states across Large/Small match pattern/selectable/* (bg, border, text, checkmark); selected 2px via 1px border + 1px inset shadow; padding-x 16, 14px Bold, pill radius.</td></tr>
         <tr><td class="id">QA-PILL-STATE</td><td>States &amp; sizes</td><td><span class="tag pass">PASS</span></td><td>Default/Hover/Selected/Muted/Disabled/Disabled-Selected; Large + Small; checkmark on selected.</td></tr>
-        <tr><td class="id">QA-PILL-GROUP</td><td>Pill Group</td><td><span class="tag pass">PASS</span></td><td>8px gap; single-select (radiogroup, one active, verified deselect) and multi-select (independent + checkmark); flexible width, optional fixed width for 4+.</td></tr>
         <tr><td class="id">QA-PILL-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Arrow-key nav, focus ring, selection beyond color (fill + border + check), dashed muted. Labels 12.46/11.36 AAA, selected check 4.91 pass; muted/disabled label 2.27 (disabled exempt / muted by-design).</td></tr>
         <tr><td class="id">QA-PILL-BORDER</td><td>Resting-border contrast</td><td><span class="tag obs">NOTE</span></td><td>Default/muted/disabled borders below 3:1 (#c4c4c4 1.74, #acacac 2.27); selected #07729c 5.39 passes. Known system-level resting-border item (same as Select/ComboBox/Filter); pending team review.</td></tr>
+      </table>
+    `
+  },
+  {
+    id: 'pill-group',
+    name: 'Pill Group',
+    group: 'Display',
+    status: 'Pass',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Pill Group</h1>
+      <p class="rmeta">Figma usage 14443:662 / 14443:660 · Storybook /docs/display-pill-group · Captured 2026-07-30</p>
+      <p>Composes the <a href="#pill" style="color:var(--sh-blue)">Pill</a> into a selectable set. Single-select keeps one pill active and deselects the others (a radiogroup); multi-select toggles each pill independently and shows a checkmark. The pills themselves are token-verified in the Pill report; this covers the group layout and selection behavior.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">LAYOUT</p><div class="val">Pass</div><p class="sub">8px gap, flexible width, optional fixed for 4+</p></div>
+        <div class="v pass"><p class="k">SELECTION</p><div class="val">Pass</div><p class="sub">Single-select (radiogroup) + multi-select</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">Arrow-key nav; selection beyond color</p></div>
+      </div>
+
+      <h2>1. Layout</h2>
+      <p>Pills sit in a row with an 8px horizontal gap, flexible (hug) width by default; an optional fixed width applies when showing 4+ pills (padding stays 16px, content truncates with ellipsis). The 8px gap is verified in the build.</p>
+      <div style="font-size:11px;color:#757575;margin-bottom:4px">Single-select group (one active, 8px gap)</div>
+      <span style="display:inline-flex;flex-wrap:wrap;gap:8px">
+        <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#eff5fd;border:2px solid #07729c;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">Plumbing</span>
+        <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px solid #c4c4c4;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">HVAC</span>
+        <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px solid #c4c4c4;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">Fittings</span>
+        <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px solid #c4c4c4;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">Electrical</span>
+      </span>
+
+      <h2>2. Selection behavior</h2>
+      <p><strong>Single-select</strong> uses <code>role="radio"</code> in a radiogroup: verified in the build that selecting HVAC deselects Plumbing, so exactly one stays active. <strong>Multi-select</strong> toggles each pill independently and shows a checkmark on the selected ones. Stories: Single Select, Multi Select, Fixed Width, Small, Disabled. <span class="m y">✓ Pass</span></p>
+
+      <h2>3. Accessibility</h2>
+      <p>Tab moves to the group and Arrow keys move between pills; Enter / Space toggles the focused pill. Focus ring is the shared <span class="mono">#005fcc</span> / 2px. Selection is conveyed by fill + border + checkmark, not color alone. The individual pill resting-border note is documented in the Pill report.</p>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-PILLGRP-LAYOUT</td><td>Layout</td><td><span class="tag pass">PASS</span></td><td>8px horizontal gap; flexible (hug) width; optional fixed width for 4+ pills (16px padding, ellipsis truncation).</td></tr>
+        <tr><td class="id">QA-PILLGRP-SELECT</td><td>Selection</td><td><span class="tag pass">PASS</span></td><td>Single-select radiogroup (verified one-active deselect) and independent multi-select with checkmark.</td></tr>
+        <tr><td class="id">QA-PILLGRP-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Arrow-key nav, Enter/Space toggle, 2px focus ring, selection beyond color.</td></tr>
       </table>
     `
   }
