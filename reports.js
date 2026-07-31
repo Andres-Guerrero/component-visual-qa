@@ -880,27 +880,8 @@ Fix approach is the team's call - no code prescribed.`
     id: 'link',
     name: 'Link',
     group: 'Navigation',
-    status: 'Fix: inverse variant',
-    statusType: 'fix',
-    handoffs: [{
-      code: 'QA-LN-02',
-      title: 'Inverse Link variant not in build (new addition)',
-      text: `Component: Link (inverse variant)
-Storybook: http://34.74.189.135:30100/?path=/docs/navigation-link
-Figma (source of truth): UI-Kit__Web component 8931:5582
-
-Finding QA-LN-02 - inverse Link variant not implemented
-Observed: Storybook exposes only the default Link (stories: standalone, inline, leading/trailing icon, disabled, states-matrix). There is no inverse variant and no inverse prop. The Footer accordion content that should use it renders black (this is the root of QA-FTR-CONTENT).
-Expected: an inverse Link variant for dark surfaces where every state resolves to white, bound to color/pattern/link/inverse/{default, hover, active, visited, disabled} (#ffffff), Maison Neue Bold 14px (WEB/Body2/14px-B), pattern link icon-gap 8.
-
-Acceptance criteria:
-- Link supports an inverse variant whose state colors resolve to color/pattern/link/inverse/* (#ffffff).
-- The Footer accordion content uses this variant (resolves QA-FTR-CONTENT: links render white, not black).
-- Underline / hover behavior is confirmed against the default variant.
-- Re-verify against Figma 8931:5582.
-
-Fix approach is the team's call - no code prescribed.`
-    }],
+    status: 'a11y note',
+    statusType: 'pass',
     html: `
       <h1 class="rt">Link</h1>
       <p class="rmeta">Figma component 8931:5582 · Frame doc 15928:2067 · Storybook /docs/navigation-link · Captured 2026-07-27 · Inverse variant added 2026-07-29</p>
@@ -911,7 +892,7 @@ Fix approach is the team's call - no code prescribed.`
         <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">All 5 state colors, type &amp; icon-gap match</p></div>
         <div class="v pass"><p class="k">STATES · VARIANTS · PROPS</p><div class="val">Pass</div><p class="sub">5 states + inline persistent-underline + leading/trailing icon</p></div>
         <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass · note</div><p class="sub">Contrast AA+; underline cues; visited=default is a known item</p></div>
-        <div class="v fix"><p class="k">INVERSE VARIANT</p><div class="val">1 fix</div><p class="sub">New in Figma; not in the build yet</p></div>
+        <div class="v pass"><p class="k">INVERSE VARIANT</p><div class="val">Pass</div><p class="sub">Implemented; white states verified on dark surface</p></div>
       </div>
       <p>The default variant is a faithful token translation with strong color-independence (hover/active underline, inline persistent underline). One documented note: visited currently resolves to the same blue as default. New this pass: the inverse variant (section 5) is defined in Figma but not yet in the build.</p>
 
@@ -976,15 +957,15 @@ Fix approach is the team's call - no code prescribed.`
         <strong>Visited is not visually distinct from Default.</strong> Both resolve to <span class="mono">#07729c</span> (the <code>link/visited</code> token maps to <code>text.link</code>). Faithfully implemented - but a user can't tell visited from unvisited by color. Per the frame doc this is pending a future token decision; no build change implied.
       </div>
 
-      <h2>5. Inverse variant (new addition, 2026-07-29)</h2>
-      <p>Design added an inverse Link variant for dark surfaces (used by the Footer accordion content). Every state resolves to white; the type (Maison Neue Bold 14px) and icon-gap (8) are unchanged from the default variant. The variant is defined in Figma but is <strong>not yet in the Storybook build</strong> (no inverse story or prop across the Link stories), which is why the footer content links currently render black. This is the root of the Footer's QA-FTR-CONTENT.</p>
+      <h2>5. Inverse variant (added 2026-07-29, resolved 2026-07-30)</h2>
+      <p>Design added an inverse Link variant for dark surfaces (used by the Footer accordion content). Every state resolves to white; the type (Maison Neue Bold 14px) and icon-gap (8) are unchanged from the default variant. <strong>Retested 2026-07-30: implemented in the build.</strong> The new "Inverse Surface" story renders every state white on the <span class="mono">#89847f</span> band, verified: standalone, back-to-results (leading chevron), the inline link with its persistent underline, and disabled, all <span class="mono">#ffffff</span>. This resolves QA-LN-02 and unblocks the Footer's QA-FTR-CONTENT.</p>
       <table>
         <tr><th>State</th><th>Figma (inverse)</th><th>Storybook</th><th>Status</th></tr>
-        <tr><td>Default</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> (color/pattern/link/inverse/default)</td><td class="mono">not implemented</td><td class="m n">✗</td></tr>
-        <tr><td>Hover</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> (inverse/hover)</td><td class="mono">not implemented</td><td class="m n">✗</td></tr>
-        <tr><td>Active</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> (inverse/active)</td><td class="mono">not implemented</td><td class="m n">✗</td></tr>
-        <tr><td>Visited</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> (inverse/visited)</td><td class="mono">not implemented</td><td class="m n">✗</td></tr>
-        <tr><td>Disabled</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> (inverse/disabled)</td><td class="mono">not implemented</td><td class="m n">✗</td></tr>
+        <tr><td>Default</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> (color/pattern/link/inverse/default)</td><td class="mono">#ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Hover</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> (inverse/hover)</td><td class="mono">#ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Active</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> (inverse/active)</td><td class="mono">#ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Visited</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> (inverse/visited)</td><td class="mono">#ffffff</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td><span class="chip" style="background:#ffffff"></span><span class="mono">#ffffff</span> (inverse/disabled)</td><td class="mono">#ffffff</td><td class="m y">✓</td></tr>
         <tr><td>Type · icon-gap</td><td class="mono">Maison Neue Bold 14px · 8</td><td class="mono">unchanged</td><td class="m y">=</td></tr>
       </table>
       <p>The two variants side by side (default on white, inverse on the footer <span class="mono">#89847f</span> band):</p>
@@ -1010,7 +991,7 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-LN-FOCUS</td><td>Focus &amp; color independence</td><td><span class="tag pass">PASS</span></td><td>Focus ring #005FCC / 2px; hover/active underline; inline persistent underline (1.4.1).</td></tr>
         <tr><td class="id">QA-LN-A11Y</td><td>Contrast</td><td><span class="tag pass">PASS</span></td><td>Default/hover/visited 5.39:1; active 8.57:1; disabled exempt.</td></tr>
         <tr><td class="id">QA-LN-01</td><td>Visited color</td><td><span class="tag obs">KNOWN</span></td><td>Visited = default (#07729c) - not visually distinct; pending future token decision.</td></tr>
-        <tr><td class="id">QA-LN-02</td><td>Inverse variant</td><td><span class="tag fail">FIX</span></td><td>New in Figma (2026-07-29): inverse variant, all states #ffffff via color/pattern/link/inverse/*, Body2 14px Bold, icon-gap 8. Not in the build (no inverse story or prop). Root of the Footer's QA-FTR-CONTENT (footer links render black). See the handoff.</td></tr>
+        <tr><td class="id">QA-LN-02</td><td>Inverse variant</td><td><span class="tag pass">RESOLVED</span></td><td>Retested 2026-07-30: the "Inverse Surface" story implements the inverse variant, all states #ffffff via color/pattern/link/inverse/*, on the #89847f band (Body2 14px Bold, icon-gap 8, inline underline intact). Was a fix; now landed. Unblocks the Footer's QA-FTR-CONTENT.</td></tr>
       </table>
     `
   },
