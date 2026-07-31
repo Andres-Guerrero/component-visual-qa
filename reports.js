@@ -2495,5 +2495,87 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-CHIP-HOVER</td><td>Hover feedback</td><td><span class="tag obs">NOTE</span></td><td>Hover tokens equal default and border width stays 1px, so hover shows no visible change. Frame doc open items: hover border design 2px vs token 1px; label-to-× gap design 6px vs token 8px. Build follows current tokens; pending design/token reconciliation.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'pill',
+    name: 'Pill',
+    group: 'Display',
+    status: 'Pass · 1 note',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Pill</h1>
+      <p class="rmeta">Figma component 14131:5026 · Frame doc 16175:305 · Usage 14443:662 / 14443:660 · Storybook /docs/display-pill · Captured 2026-07-30</p>
+      <p>An interactive selection control (a toggle pill) for filtering and in-page view switching. Pills toggle on/off with no dismiss action (distinct from the removable Chip). Composed into a Pill Group that runs single-select (one active, the rest deselect) or multi-select (each toggles independently and shows a checkmark). Sizes Large (40px) and Small (34px). Bound to the <code>pattern/selectable/*</code> tokens.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">6 states × 2 sizes match; selected 2px via border + inset</p></div>
+        <div class="v pass"><p class="k">STATES · GROUP</p><div class="val">Pass</div><p class="sub">Default/Hover/Selected/Muted/Disabled(+Selected); single + multi select, 8px gap</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass<span style="font-size:11px;font-weight:400;color:#757575"> · 1 note</span></div><p class="sub">radiogroup, selection beyond color; resting-border note</p></div>
+      </div>
+
+      <h2>1. Token fidelity (by state)</h2>
+      <p>Computed build styles from the states-matrix story, checked against <code>pattern/selectable/*</code>.</p>
+      <table>
+        <tr><th>State</th><th>Figma (bg / border / text)</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Default</td><td class="mono">#ffffff / #c4c4c4 1px / #343434</td><td class="mono">#ffffff / #c4c4c4 1px / #343434</td><td class="m y">✓</td></tr>
+        <tr><td>Hover</td><td class="mono">#f8f8f8 / #343434 2px / #343434</td><td class="mono">tokens #f8f8f8 / #343434 / 2px</td><td class="m y">✓</td></tr>
+        <tr><td>Selected</td><td class="mono">#eff5fd / #07729c 2px / #343434 · check #07729c</td><td class="mono">#eff5fd / #07729c (1px + 1px inset = 2px) · check #07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Muted</td><td class="mono">#ffffff / #acacac 1px dashed / #acacac</td><td class="mono">#ffffff / 1px dashed #acacac / #acacac</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled</td><td class="mono">#ffffff / #acacac 1px / #acacac</td><td class="mono">#ffffff / #acacac 1px / #acacac</td><td class="m y">✓</td></tr>
+        <tr><td>Disabled-Selected</td><td class="mono">as Disabled + check #acacac</td><td class="mono">#acacac + check #acacac</td><td class="m y">✓</td></tr>
+        <tr><td>Size (Large / Small)</td><td class="mono">40 / 34px</td><td class="mono">40 / 34px</td><td class="m y">✓</td></tr>
+        <tr><td>Padding-x · icon-gap · type</td><td class="mono">16 · 4 · Body2 14px Bold</td><td class="mono">16 · token-verified · 14px 700</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side</h2>
+      <p>States rendered from the token values (Large), then a single-select group with an 8px gap.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;margin:14px 0 18px">
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Default</div><span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px solid #c4c4c4;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">3/8"</span></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Hover</div><span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#f8f8f8;border:2px solid #343434;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">3/8"</span></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Selected</div><span style="display:inline-flex;align-items:center;gap:4px;height:40px;padding:0 16px;background:#eff5fd;border:2px solid #07729c;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">3/8" <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#07729c" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Muted</div><span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px dashed #acacac;border-radius:9999px;font-size:14px;font-weight:700;color:#acacac">3/8"</span></div>
+        <div><div style="font-size:11px;color:#757575;margin-bottom:4px">Disabled</div><span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px solid #acacac;border-radius:9999px;font-size:14px;font-weight:700;color:#acacac">3/8"</span></div>
+      </div>
+      <div style="font-size:11px;color:#757575;margin-bottom:4px">Pill Group (single-select, 8px gap)</div>
+      <span style="display:inline-flex;flex-wrap:wrap;gap:8px">
+        <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#eff5fd;border:2px solid #07729c;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">Plumbing</span>
+        <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px solid #c4c4c4;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">HVAC</span>
+        <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px solid #c4c4c4;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">Fittings</span>
+        <span style="display:inline-flex;align-items:center;height:40px;padding:0 16px;background:#fff;border:1px solid #c4c4c4;border-radius:9999px;font-size:14px;font-weight:700;color:#343434">Electrical</span>
+      </span>
+
+      <h2>3. States, sizes &amp; group</h2>
+      <p>Six states (Default, Hover, Selected, Muted, Disabled, Disabled-Selected) across Large and Small, pinned in the states-matrix. The Pill Group runs <strong>single-select</strong> (role="radio"; verified in the build that selecting HVAC deselects Plumbing, one active at a time) and <strong>multi-select</strong> (each toggles independently with a checkmark). Group layout: 8px horizontal gap, flexible (hug) width by default, optional fixed width for 4+ pills (padding stays 16px, content truncates with ellipsis). <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>Tab moves to the group and Arrow keys move between pills; Enter / Space toggles selection (single-select is a radiogroup). Focus ring is the shared <span class="mono">#005fcc</span> / 2px. Selection is conveyed by fill + border + checkmark, not color alone; muted uses a dashed border as a non-color cue; disabled is not focusable.</p>
+      <h3>Contrast - text vs surface</h3>
+      <table>
+        <tr><th>Pair</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Label default / hover (#343434 on white)</td><td>12.46:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Label selected (#343434 on #eff5fd)</td><td>11.36:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Selected checkmark (#07729c on #eff5fd)</td><td>4.91:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Muted / Disabled label (#acacac)</td><td>2.27:1</td><td>Below AA (disabled exempt; muted by-design)</td></tr>
+      </table>
+      <h3>Contrast - border vs background (non-text, 3:1)</h3>
+      <table>
+        <tr><th>Border</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Default border (#c4c4c4) on white</td><td>1.74:1</td><td class="m n">Below 3:1</td></tr>
+        <tr><td>Selected border (#07729c) on white</td><td>5.39:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Muted / Disabled border (#acacac) on white</td><td>2.27:1</td><td class="m n">Below 3:1</td></tr>
+      </table>
+      <p>The default / muted / disabled resting borders fall below the 3:1 non-text minimum. This is the same system-level resting-border item already flagged on Select, ComboBox, and the Filter pills, pending team review. Selected (blue.700) clears it.</p>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-PILL-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 6 states across Large/Small match pattern/selectable/* (bg, border, text, checkmark); selected 2px via 1px border + 1px inset shadow; padding-x 16, 14px Bold, pill radius.</td></tr>
+        <tr><td class="id">QA-PILL-STATE</td><td>States &amp; sizes</td><td><span class="tag pass">PASS</span></td><td>Default/Hover/Selected/Muted/Disabled/Disabled-Selected; Large + Small; checkmark on selected.</td></tr>
+        <tr><td class="id">QA-PILL-GROUP</td><td>Pill Group</td><td><span class="tag pass">PASS</span></td><td>8px gap; single-select (radiogroup, one active, verified deselect) and multi-select (independent + checkmark); flexible width, optional fixed width for 4+.</td></tr>
+        <tr><td class="id">QA-PILL-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Arrow-key nav, focus ring, selection beyond color (fill + border + check), dashed muted. Labels 12.46/11.36 AAA, selected check 4.91 pass; muted/disabled label 2.27 (disabled exempt / muted by-design).</td></tr>
+        <tr><td class="id">QA-PILL-BORDER</td><td>Resting-border contrast</td><td><span class="tag obs">NOTE</span></td><td>Default/muted/disabled borders below 3:1 (#c4c4c4 1.74, #acacac 2.27); selected #07729c 5.39 passes. Known system-level resting-border item (same as Select/ComboBox/Filter); pending team review.</td></tr>
+      </table>
+    `
   }
 ];
