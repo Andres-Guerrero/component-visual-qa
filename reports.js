@@ -579,8 +579,26 @@ window.VQA_REPORTS = [
     id: 'checkbox-group',
     name: 'Checkbox Group',
     group: 'Forms',
-    status: 'Pass · 1 note',
-    statusType: 'pass',
+    status: 'Fix: error weight',
+    statusType: 'fix',
+    handoffs: [{
+      code: 'QA-CG-ERROR',
+      title: 'Group error message should be Bold (shared with Radio Group)',
+      text: `Component: Checkbox Group (shared with Radio Group)
+Storybook: http://34.74.189.135:30100/?path=/docs/forms-checkboxgroup--with-label-and-error
+Figma (source of truth): single checkbox + label 12012:7129
+
+Finding QA-CG-ERROR - error message weight
+Observed: the group error message renders at font-weight 400 (regular), 13px, #b00000.
+Expected: Bold - WEB/Body3/13px-B (weight 700), 13px, #b00000, matching the error message shown in the single checkbox + label frame.
+
+Acceptance criteria:
+- The group error message renders at weight 700 (Bold), 13px, #b00000.
+- Same treatment applied to Radio Group (likely one shared field/error component).
+- Re-verify against Figma 12012:7129.
+
+Fix approach is the team's call - no code prescribed.`
+    }],
     html: `
       <h1 class="rt">Checkbox Group</h1>
       <p class="rmeta">Figma usage 12012:7129 (checkbox + label) / 16786:1218 (layout) · Boxes: Checkbox component 11804:15097 · Storybook /docs/forms-checkboxgroup · Captured 2026-07-30</p>
@@ -590,7 +608,7 @@ window.VQA_REPORTS = [
       <div class="verdict">
         <div class="v pass"><p class="k">ITEM &amp; LAYOUT</p><div class="val">Pass</div><p class="sub">Label 14px, 8px gap, vertical/horizontal, select-all</p></div>
         <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">role=group + aria-labelledby; indeterminate parent</p></div>
-        <div class="v pass"><p class="k">TYPE RECONCILE</p><div class="val">1 note</div><p class="sub">Error weight + group-label type vs design frames</p></div>
+        <div class="v fix"><p class="k">ERROR STYLE</p><div class="val">1 fix</div><p class="sub">Message should be Bold; group error model is an open question</p></div>
       </div>
 
       <h2>1. Group-level fidelity</h2>
@@ -643,6 +661,10 @@ window.VQA_REPORTS = [
       <h2>3. Behavior &amp; accessibility</h2>
       <p>The group is a <code>div role="group"</code> labelled by its heading via <code>aria-labelledby</code> (a valid alternative to fieldset/legend). Orientation is Vertical (flex column) or Horizontal (flex row). The Select-all parent goes <strong>indeterminate</strong> when only some children are checked and updates its "(n/total)" count; verified in the build by checking one child (parent flipped to <code>indeterminate</code>, count went to 1/3). Focus and box a11y follow the Checkbox: 2px <span class="mono">#005fcc</span> focus ring, Space toggles. The unselected box border (gray.400, 1.74:1) carries the same known system-wide resting-border note documented on Checkbox, not a build defect.</p>
 
+      <h2>4. Error handling</h2>
+      <p><strong>Fix (QA-CG-ERROR):</strong> the group error message renders regular weight (400); per the single checkbox + label frame it should be <strong>Bold</strong> (Body3 13px-B, weight 700), 13px, #b00000. Same size and color, weight only. Likely a shared field/error component with Radio Group, so one change covers both.</p>
+      <p><strong>Open question (QA-CG-ERRMODEL, team alignment):</strong> how should an error be shown on a group? The build uses a single <em>group-level</em> error message with the items left in their default state (no per-item red). The alternative is turning each item's control red plus the message. The group-level approach is the more standard and accessible pattern for grouped choices, GOV.UK, USWDS, and the ARIA Authoring Practices associate the error with the group and announce it once rather than flagging every option, and it is the preferred direction here. Since checkboxes and radios almost always appear in groups, this is worth aligning as a team.</p>
+
       <h2>Findings log</h2>
       <table>
         <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
@@ -650,7 +672,9 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-CG-LAYOUT</td><td>Orientation &amp; spacing</td><td><span class="tag pass">PASS</span></td><td>Vertical column gap 12px (spacing/12); Horizontal row gap 12px (confirm 12 vs 16).</td></tr>
         <tr><td class="id">QA-CG-SELECTALL</td><td>Select-all pattern</td><td><span class="tag pass">PASS</span></td><td>Parent goes indeterminate on partial selection and updates the (n/total) count; uses the checkbox dash glyph.</td></tr>
         <tr><td class="id">QA-CG-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>role=group + aria-labelledby, keyboard + 2px focus ring. Inherits the Checkbox known resting-border note (unselected border 1.74:1), pending team review.</td></tr>
-        <tr><td class="id">QA-CG-TYPE</td><td>Type reconcile</td><td><span class="tag obs">NOTE</span></td><td>Error message renders weight 400 but the single-checkbox frame shows it Bold (Body3 13px-B). Group label renders 16px/600/#000000 vs the usage frame's ~18px Bold #343434 (confirm whether the frame labels are the group-label spec). Reconcile type/spacing vs design before publish.</td></tr>
+        <tr><td class="id">QA-CG-ERROR</td><td>Error message weight</td><td><span class="tag fail">FIX</span></td><td>Group error message renders weight 400; the single checkbox + label frame shows it Bold (Body3 13px-B). Make it 700 / 13px / #b00000. Likely shared with Radio Group. See the handoff.</td></tr>
+        <tr><td class="id">QA-CG-ERRMODEL</td><td>Group error model</td><td><span class="tag obs">OPEN Q</span></td><td>Team alignment: group-level error with items in default state (build's current approach, and the standard/accessible pattern) vs per-item red + message. Preferred direction is group-level. Applies to both Checkbox and Radio groups.</td></tr>
+        <tr><td class="id">QA-CG-LABEL</td><td>Group-label type</td><td><span class="tag obs">NOTE</span></td><td>Group label renders 16px/600/#000000 vs the usage frame's ~18px Bold #343434; confirm whether the frame labels are the group-label spec.</td></tr>
       </table>
     `
   },
@@ -757,8 +781,26 @@ window.VQA_REPORTS = [
     id: 'radio-group',
     name: 'Radio Group',
     group: 'Forms',
-    status: 'Pass · 1 note',
-    statusType: 'pass',
+    status: 'Fix: error weight',
+    statusType: 'fix',
+    handoffs: [{
+      code: 'QA-RG-ERROR',
+      title: 'Group error message should be Bold (shared with Checkbox Group)',
+      text: `Component: Radio Group (shared with Checkbox Group)
+Storybook: http://34.74.189.135:30100/?path=/docs/forms-radiogroup--with-label-and-error
+Figma (source of truth): single radio + label 9874:10774
+
+Finding QA-RG-ERROR - error message weight
+Observed: the group error message renders at font-weight 400 (regular), 13px, #b00000.
+Expected: Bold - WEB/Body3/13px-B (weight 700), 13px, #b00000, matching the error message shown in the single radio + label frame.
+
+Acceptance criteria:
+- The group error message renders at weight 700 (Bold), 13px, #b00000.
+- Same treatment applied to Checkbox Group (likely one shared field/error component).
+- Re-verify against Figma 9874:10774.
+
+Fix approach is the team's call - no code prescribed.`
+    }],
     html: `
       <h1 class="rt">Radio Group</h1>
       <p class="rmeta">Figma usage 9874:10774 (radio + label) / 16789:1290 (layout) · Radios: Radio component 11269:5496 · Storybook /docs/forms-radiogroup · Captured 2026-07-30</p>
@@ -768,7 +810,7 @@ window.VQA_REPORTS = [
       <div class="verdict">
         <div class="v pass"><p class="k">ITEM &amp; LAYOUT</p><div class="val">Pass</div><p class="sub">Label 14px, 8px gap, vertical/horizontal</p></div>
         <div class="v pass"><p class="k">SELECTION · A11Y</p><div class="val">Pass</div><p class="sub">role=radiogroup, single-select enforced, aria-labelledby</p></div>
-        <div class="v pass"><p class="k">TYPE RECONCILE</p><div class="val">1 note</div><p class="sub">Error weight + group-label type vs design frames</p></div>
+        <div class="v fix"><p class="k">ERROR STYLE</p><div class="val">1 fix</div><p class="sub">Message should be Bold; group error model is an open question</p></div>
       </div>
 
       <h2>1. Group-level fidelity</h2>
@@ -811,6 +853,10 @@ window.VQA_REPORTS = [
       <h2>3. Behavior &amp; accessibility</h2>
       <p>The group is a <code>div role="radiogroup"</code> labelled by its heading via <code>aria-labelledby</code> (the correct grouping semantic for a single-choice set). Orientation is Vertical (flex column) or Horizontal (flex row). Single-select is enforced: verified in the build that clicking two radios leaves only one selected. Arrow keys move between options and Enter / Space selects; focus ring is the shared 2px <span class="mono">#005fcc</span>. The unselected radio border (gray.400, 1.74:1) carries the same known system-wide resting-border note documented on Radio, not a build defect.</p>
 
+      <h2>4. Error handling</h2>
+      <p><strong>Fix (QA-RG-ERROR):</strong> the group error message renders regular weight (400); per the single radio + label frame it should be <strong>Bold</strong> (Body3 13px-B, weight 700), 13px, #b00000. Same size and color, weight only. Likely a shared field/error component with Checkbox Group, so one change covers both.</p>
+      <p><strong>Open question (QA-RG-ERRMODEL, team alignment):</strong> how should an error be shown on a group? The build uses a single <em>group-level</em> error message with the items left in their default state (no per-item red). The alternative is turning each item's control red plus the message. The group-level approach is the more standard and accessible pattern for grouped choices, GOV.UK, USWDS, and the ARIA Authoring Practices associate the error with the group and announce it once rather than flagging every option, and it is the preferred direction here. Since radios and checkboxes almost always appear in groups, this is worth aligning as a team.</p>
+
       <h2>Findings log</h2>
       <table>
         <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
@@ -818,7 +864,9 @@ window.VQA_REPORTS = [
         <tr><td class="id">QA-RG-LAYOUT</td><td>Orientation &amp; spacing</td><td><span class="tag pass">PASS</span></td><td>Vertical column gap 12px (spacing/12); Horizontal row gap 12px (confirm 12 vs 16).</td></tr>
         <tr><td class="id">QA-RG-SELECT</td><td>Single-select</td><td><span class="tag pass">PASS</span></td><td>role=radiogroup enforces one active; verified clicking two radios leaves only one selected.</td></tr>
         <tr><td class="id">QA-RG-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>role=radiogroup + aria-labelledby, arrow-key nav, 2px focus ring. Inherits the Radio known resting-border note (unselected border 1.74:1), pending team review.</td></tr>
-        <tr><td class="id">QA-RG-TYPE</td><td>Type reconcile</td><td><span class="tag obs">NOTE</span></td><td>Error message renders weight 400 but the single-radio frame shows it Bold (Body3 13px-B). Group label renders 16px/600/#000000 vs the usage frame's ~18px Bold #343434 (confirm whether the frame labels are the group-label spec). Same items flagged on Checkbox Group.</td></tr>
+        <tr><td class="id">QA-RG-ERROR</td><td>Error message weight</td><td><span class="tag fail">FIX</span></td><td>Group error message renders weight 400; the single radio + label frame shows it Bold (Body3 13px-B). Make it 700 / 13px / #b00000. Likely shared with Checkbox Group. See the handoff.</td></tr>
+        <tr><td class="id">QA-RG-ERRMODEL</td><td>Group error model</td><td><span class="tag obs">OPEN Q</span></td><td>Team alignment: group-level error with items in default state (build's current approach, and the standard/accessible pattern) vs per-item red + message. Preferred direction is group-level. Applies to both Checkbox and Radio groups.</td></tr>
+        <tr><td class="id">QA-RG-LABEL</td><td>Group-label type</td><td><span class="tag obs">NOTE</span></td><td>Group label renders 16px/600/#000000 vs the usage frame's ~18px Bold #343434; confirm whether the frame labels are the group-label spec.</td></tr>
       </table>
     `
   },
