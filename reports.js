@@ -2421,5 +2421,79 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-QSA-HOVER</td><td>Hover feedback</td><td><span class="tag obs">NOTE</span></td><td>Design decision (per frame doc note), not a build defect: the plus hover bg token (#eff5fd) equals the field bg, so the plus blends into the field on hover. Build correctly implements the current token. Pending the owner's call on a distinct hover value.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'chip',
+    name: 'Chip',
+    group: 'Display',
+    status: 'Pass · 1 note',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Chip</h1>
+      <p class="rmeta">Figma component 14470:1784 · Frame doc 16175:363 · Usage 14472:622 / 14484:471 · Storybook /docs/display-chip · Captured 2026-07-30</p>
+      <p>A removable filter chip: a pill showing an active selection (for example "Category: Value") that the user can dismiss with a trailing × . The whole chip is the dismiss target. Chips are composed into a Chip Group for applied-filter bars, which wraps across rows, condenses with a "+n More" control, and offers "Clear All". Bound to the <code>pattern/removable/*</code> tokens.</p>
+
+      <div class="callout info"><strong>Hover has no visible change in the build.</strong> The build wires hover to the <code>removable/hover/*</code> tokens, but those resolve to the same values as default (bg <span class="mono">#eff5fd</span>, border <span class="mono">#07729c</span>) and the hover rule does not change border width, so a hovered chip looks identical to its resting state. This matches the frame doc's own open items: hover border-width is design 2px vs token 1px, and the label-to-× gap is design 6px vs token 8px, both flagged as "reconcile token vs design before publish." The build faithfully follows the current tokens; this is a design/token decision, not a build defect. See QA-CHIP-HOVER.</div>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Default bg, border, text, icon, padding, type all match</p></div>
+        <div class="v pass"><p class="k">STATES · GROUP</p><div class="val">Pass</div><p class="sub">Default + Hover; Chip Group 8px gap, flexible width, Clear All</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">button + focus ring; dismiss target; contrast AA+</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <p>Computed build styles from the states story, checked against <code>pattern/removable/*</code>.</p>
+      <table>
+        <tr><th>Element</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Chip bg</td><td><span class="chip" style="background:#eff5fd"></span><span class="mono">#eff5fd</span> (removable/default/bg)</td><td class="mono">#eff5fd</td><td class="m y">✓</td></tr>
+        <tr><td>Border</td><td><span class="chip" style="background:#07729c"></span><span class="mono">#07729c</span> · 1px (border-width 1)</td><td class="mono">1px solid #07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Label text</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span> · Caption1 12px (value Bold)</td><td class="mono">#343434 · 12px</td><td class="m y">✓</td></tr>
+        <tr><td>Dismiss (×) icon</td><td><span class="chip" style="background:#343434"></span><span class="mono">#343434</span></td><td class="mono">#343434</td><td class="m y">✓</td></tr>
+        <tr><td>Padding-x · icon-gap</td><td class="mono">12 · 4</td><td class="mono">12 · token-verified</td><td class="m y">✓</td></tr>
+        <tr><td>Radius</td><td class="mono">pill (fully rounded)</td><td class="mono">9999px</td><td class="m y">✓</td></tr>
+        <tr><td>Hover (bg / border / text)</td><td class="mono">#eff5fd / #07729c / #343434</td><td class="mono">same as default (see note)</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side</h2>
+      <p>Chip and Chip Group rendered from the token values. The build matches the resting design; the group uses an 8px gap and hugs its content.</p>
+      <div class="swatchgrid" style="grid-template-columns:150px 1fr">
+        <div class="hd">Source</div><div class="hd">Rendering</div>
+        <div class="stc">Single chip</div><div class="cell">
+          <span style="display:inline-flex;align-items:center;gap:4px;height:32px;padding:0 12px;background:#eff5fd;border:1px solid #07729c;border-radius:9999px;font-size:12px;color:#343434">Category: <strong>Value</strong> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#343434" stroke-width="2" style="margin-left:2px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+        </div>
+        <div class="stc">Chip Group</div><div class="cell">
+          <span style="display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px">
+            <span style="display:inline-flex;align-items:center;gap:4px;height:32px;padding:0 12px;background:#eff5fd;border:1px solid #07729c;border-radius:9999px;font-size:12px;color:#343434">Size: <strong>1/4"</strong> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#343434" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+            <span style="display:inline-flex;align-items:center;gap:4px;height:32px;padding:0 12px;background:#eff5fd;border:1px solid #07729c;border-radius:9999px;font-size:12px;color:#343434">Lead Free: <strong>Yes</strong> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#343434" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+            <span style="display:inline-flex;align-items:center;gap:4px;height:32px;padding:0 12px;background:#eff5fd;border:1px solid #07729c;border-radius:9999px;font-size:12px;color:#343434"><strong>Bluefin</strong> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#343434" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+            <span style="color:#07729c;font-weight:700;font-size:12px;padding:0 4px">Clear All</span>
+          </span>
+        </div>
+      </div>
+
+      <h2>3. States &amp; group</h2>
+      <p>State Default and Hover (no disabled variant, matching the frame doc note that a <code>removable.disabled</code> token exists but no disabled variant is built yet). Label is "Category: Value" or value-only; the value is Bold. The Chip Group (stories: Applied Filters, With Categories) lays chips out with an 8px horizontal gap, flexible (hug) width, wraps to multiple rows, and shows a "Clear All" control; the responsive "+n More" / "View Less" condense-and-expand and mobile horizontal scroll are described in the usage frames. <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>Each chip is a <code>button</code> (the whole chip is the dismiss target); Tab reaches it and Enter / Delete / Backspace dismisses. Focus ring is the shared <span class="mono">#005fcc</span> / 2px. Removal should be announced and focus moved to the next chip or the container. Contrast is clean:</p>
+      <table>
+        <tr><th>Pair</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Label / × (#343434) on chip bg #eff5fd</td><td>11.36:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Border #07729c on chip bg #eff5fd</td><td>4.91:1</td><td class="m y">Pass</td></tr>
+        <tr><td>Border #07729c on page (white)</td><td>5.39:1</td><td class="m y">Pass</td></tr>
+      </table>
+      <p>Unlike Select / ComboBox / Filter pills, the chip's border is blue.700, so it clears the 3:1 non-text minimum: no resting-border contrast note here.</p>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-CHIP-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Default bg #eff5fd, 1px #07729c border, #343434 label + × icon, padding-x 12, pill radius, Caption1 12px (value Bold) all match pattern/removable/*.</td></tr>
+        <tr><td class="id">QA-CHIP-STATE</td><td>States</td><td><span class="tag pass">PASS</span></td><td>Default + Hover; no disabled variant (matches frame doc). Label "Category: Value" or value-only.</td></tr>
+        <tr><td class="id">QA-CHIP-GROUP</td><td>Chip Group</td><td><span class="tag pass">PASS</span></td><td>8px horizontal gap, flexible (hug) width, Clear All present; wrap + "+n More" / "View Less" + mobile scroll per the usage frames.</td></tr>
+        <tr><td class="id">QA-CHIP-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>button + focus ring, whole chip dismiss target, keyboard dismiss; label/icon 11.36:1, border 4.91:1 / 5.39:1 all pass.</td></tr>
+        <tr><td class="id">QA-CHIP-HOVER</td><td>Hover feedback</td><td><span class="tag obs">NOTE</span></td><td>Hover tokens equal default and border width stays 1px, so hover shows no visible change. Frame doc open items: hover border design 2px vs token 1px; label-to-× gap design 6px vs token 8px. Build follows current tokens; pending design/token reconciliation.</td></tr>
+      </table>
+    `
   }
 ];
