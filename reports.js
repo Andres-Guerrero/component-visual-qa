@@ -663,7 +663,10 @@ Fix approach is the team's call - no code prescribed.`
 
       <h2>4. Error handling</h2>
       <p><strong>Fix (QA-CG-ERROR):</strong> the group error message renders regular weight (400); per the single checkbox + label frame it should be <strong>Bold</strong> (Body3 13px-B, weight 700), 13px, #b00000. Same size and color, weight only. Likely a shared field/error component with Radio Group, so one change covers both.</p>
-      <p><strong>Open question (QA-CG-ERRMODEL, team alignment):</strong> how should an error be shown on a group? The build uses a single <em>group-level</em> error message with the items left in their default state (no per-item red). The alternative is turning each item's control red plus the message. The group-level approach is the more standard and accessible pattern for grouped choices, GOV.UK, USWDS, and the ARIA Authoring Practices associate the error with the group and announce it once rather than flagging every option, and it is the preferred direction here. Since checkboxes and radios almost always appear in groups, this is worth aligning as a team.</p>
+      <div class="callout info" style="border-left-width:6px">
+        <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--info)">Open question · team alignment</p>
+        <strong>How should an error be shown on a group?</strong> The build uses a single <em>group-level</em> error message with the items left in their default state (no per-item red). The alternative is turning each item's control red plus the message. The group-level approach is the more standard and accessible pattern for grouped choices: GOV.UK, USWDS, and the ARIA Authoring Practices associate the error with the group and announce it once rather than flagging every option, and it is the preferred direction here. Since checkboxes and radios almost always appear in groups, this needs team alignment. Tracked as QA-CG-ERRMODEL.
+      </div>
 
       <h2>Findings log</h2>
       <table>
@@ -855,7 +858,10 @@ Fix approach is the team's call - no code prescribed.`
 
       <h2>4. Error handling</h2>
       <p><strong>Fix (QA-RG-ERROR):</strong> the group error message renders regular weight (400); per the single radio + label frame it should be <strong>Bold</strong> (Body3 13px-B, weight 700), 13px, #b00000. Same size and color, weight only. Likely a shared field/error component with Checkbox Group, so one change covers both.</p>
-      <p><strong>Open question (QA-RG-ERRMODEL, team alignment):</strong> how should an error be shown on a group? The build uses a single <em>group-level</em> error message with the items left in their default state (no per-item red). The alternative is turning each item's control red plus the message. The group-level approach is the more standard and accessible pattern for grouped choices, GOV.UK, USWDS, and the ARIA Authoring Practices associate the error with the group and announce it once rather than flagging every option, and it is the preferred direction here. Since radios and checkboxes almost always appear in groups, this is worth aligning as a team.</p>
+      <div class="callout info" style="border-left-width:6px">
+        <p style="margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--info)">Open question · team alignment</p>
+        <strong>How should an error be shown on a group?</strong> The build uses a single <em>group-level</em> error message with the items left in their default state (no per-item red). The alternative is turning each item's control red plus the message. The group-level approach is the more standard and accessible pattern for grouped choices: GOV.UK, USWDS, and the ARIA Authoring Practices associate the error with the group and announce it once rather than flagging every option, and it is the preferred direction here. Since radios and checkboxes almost always appear in groups, this needs team alignment. Tracked as QA-RG-ERRMODEL.
+      </div>
 
       <h2>Findings log</h2>
       <table>
