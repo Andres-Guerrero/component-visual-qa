@@ -754,6 +754,75 @@ window.VQA_REPORTS = [
     `
   },
   {
+    id: 'radio-group',
+    name: 'Radio Group',
+    group: 'Forms',
+    status: 'Pass · 1 note',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Radio Group</h1>
+      <p class="rmeta">Figma usage 9874:10774 (radio + label) / 16789:1290 (layout) · Radios: Radio component 11269:5496 · Storybook /docs/forms-radiogroup · Captured 2026-07-30</p>
+      <p>Groups related radios for choosing exactly one option, with a group label, optional description and error message, and vertical or horizontal layout. The individual radios are the Radio component (all states and sizes verified in the <a href="#radio" style="color:var(--sh-blue)">Radio</a> report); this report covers the group-level surface: label, item layout, gaps, error, single-select enforcement, and grouping semantics.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">ITEM &amp; LAYOUT</p><div class="val">Pass</div><p class="sub">Label 14px, 8px gap, vertical/horizontal</p></div>
+        <div class="v pass"><p class="k">SELECTION · A11Y</p><div class="val">Pass</div><p class="sub">role=radiogroup, single-select enforced, aria-labelledby</p></div>
+        <div class="v pass"><p class="k">TYPE RECONCILE</p><div class="val">1 note</div><p class="sub">Error weight + group-label type vs design frames</p></div>
+      </div>
+
+      <h2>1. Group-level fidelity</h2>
+      <table>
+        <tr><th>Element</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Item label</td><td><span class="mono">#343434</span> · Body2 14px Book (400)</td><td class="mono">#343434 · 14px · 400</td><td class="m y">✓</td></tr>
+        <tr><td>Radio to label gap</td><td class="mono">8 (Web/8)</td><td class="mono">flex gap 8px</td><td class="m y">✓</td></tr>
+        <tr><td>Vertical item gap</td><td class="mono">12 (spacing/12)</td><td class="mono">column · gap 12px</td><td class="m y">✓</td></tr>
+        <tr><td>Horizontal layout</td><td class="mono">row</td><td class="mono">row · gap 12px</td><td class="m y">✓*</td></tr>
+        <tr><td>Error message</td><td class="mono">#b00000 · Body3 13px <strong>Bold</strong></td><td class="mono">#b00000 · 13px · 400</td><td class="m n">weight</td></tr>
+        <tr><td>Group label</td><td class="mono">~#343434 · Headline5 18px Bold (per usage frame)</td><td class="mono">#000000 · 16px · 600</td><td class="m n">confirm</td></tr>
+        <tr><td>Radios (fill / border / dot)</td><td class="mono">form-control tokens</td><td class="mono">verified in Radio report</td><td class="m y">✓</td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--sh-mid-gray)">* Horizontal gap is 12px in the build; the layout frame exposes both spacing/12 and spacing/16, so confirm whether the horizontal gap should be 16.</p>
+
+      <h2>2. Side-by-side (rendered from tokens)</h2>
+      <p>Vertical group with description and error, then the horizontal variant.</p>
+      <div class="swatchgrid" style="grid-template-columns:130px 1fr">
+        <div class="hd">Layout</div><div class="hd">Rendering</div>
+        <div class="stc">Vertical + error</div><div class="cell">
+          <div style="font-size:14px">
+            <div style="font-weight:700;color:#343434;margin-bottom:8px">Shipping method *</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border-radius:50%;background:#343434;flex:0 0 18px;display:inline-flex;align-items:center;justify-content:center"><span style="width:6px;height:6px;border-radius:50%;background:#fff;display:block"></span></span>Ground</span>
+              <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;border-radius:50%;flex:0 0 18px;display:inline-block"></span>Express</span>
+            </div>
+            <div style="font-size:13px;color:#757575;margin-top:8px">Choose how fast you want it.</div>
+            <div style="color:#b00000;font-size:13px;margin-top:2px">Please select a shipping method.</div>
+          </div>
+        </div>
+        <div class="stc">Horizontal</div><div class="cell">
+          <div style="display:flex;gap:12px;font-size:14px">
+            <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;border-radius:50%;flex:0 0 18px;display:inline-block"></span>Small</span>
+            <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;border-radius:50%;flex:0 0 18px;display:inline-block"></span>Medium</span>
+            <span style="display:flex;align-items:center;gap:8px;color:#343434"><span style="width:18px;height:18px;border:1px solid #c4c4c4;border-radius:50%;flex:0 0 18px;display:inline-block"></span>Large</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>3. Behavior &amp; accessibility</h2>
+      <p>The group is a <code>div role="radiogroup"</code> labelled by its heading via <code>aria-labelledby</code> (the correct grouping semantic for a single-choice set). Orientation is Vertical (flex column) or Horizontal (flex row). Single-select is enforced: verified in the build that clicking two radios leaves only one selected. Arrow keys move between options and Enter / Space selects; focus ring is the shared 2px <span class="mono">#005fcc</span>. The unselected radio border (gray.400, 1.74:1) carries the same known system-wide resting-border note documented on Radio, not a build defect.</p>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-RG-ITEM</td><td>Item label &amp; gap</td><td><span class="tag pass">PASS</span></td><td>Label #343434 14px Book, 8px radio-to-label gap; radios reuse the verified Radio form-control tokens.</td></tr>
+        <tr><td class="id">QA-RG-LAYOUT</td><td>Orientation &amp; spacing</td><td><span class="tag pass">PASS</span></td><td>Vertical column gap 12px (spacing/12); Horizontal row gap 12px (confirm 12 vs 16).</td></tr>
+        <tr><td class="id">QA-RG-SELECT</td><td>Single-select</td><td><span class="tag pass">PASS</span></td><td>role=radiogroup enforces one active; verified clicking two radios leaves only one selected.</td></tr>
+        <tr><td class="id">QA-RG-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>role=radiogroup + aria-labelledby, arrow-key nav, 2px focus ring. Inherits the Radio known resting-border note (unselected border 1.74:1), pending team review.</td></tr>
+        <tr><td class="id">QA-RG-TYPE</td><td>Type reconcile</td><td><span class="tag obs">NOTE</span></td><td>Error message renders weight 400 but the single-radio frame shows it Bold (Body3 13px-B). Group label renders 16px/600/#000000 vs the usage frame's ~18px Bold #343434 (confirm whether the frame labels are the group-label spec). Same items flagged on Checkbox Group.</td></tr>
+      </table>
+    `
+  },
+  {
     id: 'link',
     name: 'Link',
     group: 'Navigation',
