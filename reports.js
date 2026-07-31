@@ -2814,5 +2814,66 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-PILLGRP-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Arrow-key nav, Enter/Space toggle, 2px focus ring, selection beyond color.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'alert',
+    name: 'Alert',
+    group: 'Feedback',
+    status: 'Pass · 1 note',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Alert</h1>
+      <p class="rmeta">Figma component 13381:520 · Frame doc 16330:64513 · Usage 13462:942 · Storybook /docs/feedback-alert · Captured 2026-07-30</p>
+      <p>A persistent, inline message tied to page content, used to communicate status or important information that stays until resolved. Status-driven (Info, Caution, Error subtle, Error strong) and sized by content length (1 to 3 lines, no token differences). Icons are neutral for info/caution/error-subtle; only error-strong uses the error color.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">4 status tints, borders, icon colors, padding match</p></div>
+        <div class="v pass"><p class="k">STATES · VARIANTS</p><div class="val">Pass</div><p class="sub">Info/Caution/Error 1/Error 2; 1-3 lines; details link + expandable</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass<span style="font-size:11px;font-weight:400;color:#757575"> · 1 note</span></div><p class="sub">role status/alert; icon + text; borderline-AA link note</p></div>
+      </div>
+
+      <h2>1. Token fidelity (by status)</h2>
+      <table>
+        <tr><th>Status</th><th>Figma (bg / border / icon)</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Info</td><td class="mono"><span class="chip" style="background:#eff5fd"></span>#eff5fd / <span class="chip" style="background:#c5e0f0"></span>#c5e0f0 / #343434</td><td class="mono">#eff5fd / #c5e0f0 / #343434</td><td class="m y">✓</td></tr>
+        <tr><td>Caution</td><td class="mono"><span class="chip" style="background:#fffce2"></span>#fffce2 / <span class="chip" style="background:#f7e18c"></span>#f7e18c / #343434</td><td class="mono">#fffce2 / #f7e18c / #343434</td><td class="m y">✓</td></tr>
+        <tr><td>Error subtle</td><td class="mono"><span class="chip" style="background:#fde5e5"></span>#fde5e5 / <span class="chip" style="background:#ffa3a3"></span>#ffa3a3 / #343434</td><td class="mono">#fde5e5 / #ffa3a3 / #343434</td><td class="m y">✓</td></tr>
+        <tr><td>Error strong</td><td class="mono"><span class="chip" style="background:#ffffff"></span>#ffffff / <span class="chip" style="background:#ffa3a3"></span>#ffa3a3 / <span class="chip" style="background:#b00000"></span>#b00000</td><td class="mono">#ffffff / #ffa3a3 / #b00000</td><td class="m y">✓</td></tr>
+        <tr><td>Text · type</td><td class="mono">#343434 · Body3 13px (title Bold / body Book)</td><td class="mono">#343434 · 13px</td><td class="m y">✓</td></tr>
+        <tr><td>Header padding-x / y · icon-gap</td><td class="mono">20 / 16 · 12</td><td class="mono">20 / 16 · token-verified</td><td class="m y">✓</td></tr>
+        <tr><td>Inline link</td><td class="mono"><span class="chip" style="background:#07729c"></span>#07729c</td><td class="mono">#07729c</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side (rendered from tokens)</h2>
+      <p>The four status variants. Icons are neutral #343434 except error-strong (#b00000).</p>
+      <div style="display:flex;flex-direction:column;gap:12px;margin:14px 0;max-width:520px">
+        <div style="display:flex;gap:12px;padding:16px 20px;background:#eff5fd;border:1px solid #c5e0f0;font-size:13px;color:#343434"><span style="width:18px;height:18px;flex:0 0 18px;border-radius:50%;background:#343434;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">i</span><span><strong>Requires: Your Signature</strong><br>Lorem ipsum is simply dummy text</span></div>
+        <div style="display:flex;gap:12px;padding:16px 20px;background:#fffce2;border:1px solid #f7e18c;font-size:13px;color:#343434"><span style="width:18px;height:18px;flex:0 0 18px;border-radius:50%;background:#343434;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">!</span><span><strong>Requires: Your Signature</strong><br>Lorem ipsum is simply dummy text</span></div>
+        <div style="display:flex;gap:12px;padding:16px 20px;background:#fde5e5;border:1px solid #ffa3a3;font-size:13px;color:#343434"><span style="width:18px;height:18px;flex:0 0 18px;border-radius:50%;background:#343434;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">!</span><span><strong>Requires: Your Signature</strong><br>Lorem ipsum is simply dummy text</span></div>
+        <div style="display:flex;gap:12px;padding:16px 20px;background:#ffffff;border:1px solid #ffa3a3;font-size:13px;color:#343434"><span style="width:18px;height:18px;flex:0 0 18px;border-radius:50%;background:#b00000;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">!</span><span><strong>Requires: Your Signature</strong><br>Lorem ipsum is simply dummy text</span></div>
+      </div>
+
+      <h2>3. States &amp; variants</h2>
+      <p>Status Info / Caution / Error subtle / Error strong; content length 1 to 3 lines (no token differences); a body-only variant (no title); an inline "Details" link (#07729c, uses the Link style) and an expandable "Details" disclosure. All pinned as stories (Info, Caution, Error 1, Error 2, Body Only, Three Lines, With Details Link, With Details Expandable, All Statuses). <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>Verified in the build: Info and Caution expose <code>role="status"</code> (polite), while Error subtle and Error strong expose <code>role="alert"</code> (assertive), matching the frame doc. Status is conveyed by icon + text, not color alone, and the alert is persistent (not auto-dismissed).</p>
+      <table>
+        <tr><th>Pair</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Text #343434 on status tints</td><td>10.3 to 12.5:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Error-strong icon #b00000 on white</td><td>7.38:1</td><td class="m y">Pass (non-text)</td></tr>
+        <tr><td>Inline link #07729c on tints</td><td>~4.5:1</td><td>AA (borderline)</td></tr>
+      </table>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-AL-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 4 status tints/borders/icons, #343434 text, 20/16 padding, icon-gap 12, and #07729c link match alert/color/* tokens.</td></tr>
+        <tr><td class="id">QA-AL-ICON</td><td>Icon color rule</td><td><span class="tag pass">PASS</span></td><td>Icons neutral #343434 for info/caution/error-subtle; only error-strong uses #b00000. Matches the frame doc note.</td></tr>
+        <tr><td class="id">QA-AL-STATE</td><td>States &amp; variants</td><td><span class="tag pass">PASS</span></td><td>4 statuses, 1 to 3 lines, body-only, inline details link, expandable details, all pinned as stories.</td></tr>
+        <tr><td class="id">QA-AL-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>role=status (info/caution) and role=alert (errors) verified; icon + text beyond color; persistent. Note: inline link #07729c on the tints computes ~4.5:1, borderline AA (per frame doc).</td></tr>
+      </table>
+    `
   }
 ];
