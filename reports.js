@@ -3000,5 +3000,170 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-TE-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Disclosure with aria-expanded, focusable per-row dismiss, icon + text. Note: warning text-strong #d63d08 on #f8e6da is 3.82:1, below AA for small text; the frame doc defers this to a future orange.650 token.</td></tr>
       </table>
     `
+  },
+  {
+    id: 'invitation-badge',
+    name: 'Invitation Badge',
+    group: 'Display',
+    status: 'Pass · 1 note',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Invitation Badge</h1>
+      <p class="rmeta">Figma component 16219:303616 · Frame doc 16229:305807 · Storybook /docs/display-invitation-badge · Captured 2026-07-30</p>
+      <p>A filled pill showing an invitation state. Non-interactive status label bound to <code>color/invite/*</code>. States: Pending, Expired, Declined, Unlinked. Radius 4, Caption2 11px Bold, padding 4 / 8.</p>
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">4 states, tint + text, radius, padding, type match</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass<span style="font-size:11px;font-weight:400;color:#757575"> · 1 note</span></div><p class="sub">Non-interactive label; documented sub-AA tints</p></div>
+      </div>
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>State</th><th>Figma (bg / text)</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Pending</td><td class="mono"><span class="chip" style="background:#fffce2"></span>#fffce2 / <span class="chip" style="background:#b7804e"></span>#b7804e</td><td class="mono">#fffce2 / #b7804e</td><td class="m y">✓</td></tr>
+        <tr><td>Expired</td><td class="mono"><span class="chip" style="background:#f8e6da"></span>#f8e6da / <span class="chip" style="background:#e05400"></span>#e05400</td><td class="mono">#f8e6da / #e05400</td><td class="m y">✓</td></tr>
+        <tr><td>Declined</td><td class="mono"><span class="chip" style="background:#fde5e5"></span>#fde5e5 / <span class="chip" style="background:#b00000"></span>#b00000</td><td class="mono">#fde5e5 / #b00000</td><td class="m y">✓</td></tr>
+        <tr><td>Unlinked</td><td class="mono"><span class="chip" style="background:#f8f8f8"></span>#f8f8f8 / <span class="chip" style="background:#757575"></span>#757575</td><td class="mono">#f8f8f8 / #757575</td><td class="m y">✓</td></tr>
+        <tr><td>Radius · padding · type</td><td class="mono">4 · 4/8 · Caption2 11px Bold</td><td class="mono">4px · 4/8 · 11px 700</td><td class="m y">✓</td></tr>
+      </table>
+      <h2>2. Side-by-side</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0">
+        <span style="background:#fffce2;color:#b7804e;border-radius:4px;padding:4px 8px;font-size:11px;font-weight:700">Pending</span>
+        <span style="background:#f8e6da;color:#e05400;border-radius:4px;padding:4px 8px;font-size:11px;font-weight:700">Expired</span>
+        <span style="background:#fde5e5;color:#b00000;border-radius:4px;padding:4px 8px;font-size:11px;font-weight:700">Declined</span>
+        <span style="background:#f8f8f8;color:#757575;border-radius:4px;padding:4px 8px;font-size:11px;font-weight:700">Unlinked</span>
+      </div>
+      <h2>3. Accessibility</h2>
+      <p>Non-interactive status label; status is conveyed by the bold text, not color alone. Per the frame doc, text-on-tint contrast is Declined 6.15:1 (Pass AA), Unlinked 4.34:1 (marginal, just below AA), Pending 3.26:1 and Expired 3.19:1 (below AA). This is a documented, known limitation of the mid-tone hues on light tints, with a future darker-shade token pass planned; the label text always carries the meaning.</p>
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-IB-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 4 states match color/invite/* (tint + text), radius 4, padding 4/8, Caption2 11px Bold.</td></tr>
+        <tr><td class="id">QA-IB-A11Y</td><td>Accessibility (contrast)</td><td><span class="tag obs">NOTE</span></td><td>Pending 3.26 / Expired 3.19 / Unlinked 4.34 below AA; Declined 6.15 passes. Documented known limitation; non-interactive label, meaning carried by text; future darker-shade token pass planned.</td></tr>
+      </table>
+    `
+  },
+  {
+    id: 'order-status-badge',
+    name: 'Order Status Badge',
+    group: 'Display',
+    status: 'Pass · 1 note',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Order Status Badge</h1>
+      <p class="rmeta">Figma component 6321:16713 · Frame doc 16229:305450 · Storybook /docs/display-order-status-badge · Captured 2026-07-30</p>
+      <p>Order lifecycle status as a <strong>text-only</strong> label (no fill), uppercase. Uses a Tone axis (Positive, In-progress, Negative, Neutral) with color from <code>color/status/*</code>; sizes Large and Small. The app populates the real status string at runtime.</p>
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">4 tones, text-only, uppercase Bold match</p></div>
+        <div class="v pass"><p class="k">SIZES</p><div class="val">Pass<span style="font-size:11px;font-weight:400;color:#757575"> · 1 note</span></div><p class="sub">Small 12px + 3% tracking; Large 14px (tracking note)</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass<span style="font-size:11px;font-weight:400;color:#757575"> · 1 note</span></div><p class="sub">Text conveys status; documented sub-AA hues</p></div>
+      </div>
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>Tone</th><th>Figma text</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Neutral</td><td class="mono"><span class="chip" style="background:#343434"></span>#343434</td><td class="mono">#343434</td><td class="m y">✓</td></tr>
+        <tr><td>Positive</td><td class="mono"><span class="chip" style="background:#5e9a41"></span>#5e9a41</td><td class="mono">#5e9a41</td><td class="m y">✓</td></tr>
+        <tr><td>In-progress</td><td class="mono"><span class="chip" style="background:#f15c02"></span>#f15c02</td><td class="mono">#f15c02</td><td class="m y">✓</td></tr>
+        <tr><td>Negative</td><td class="mono"><span class="chip" style="background:#b00000"></span>#b00000</td><td class="mono">#b00000</td><td class="m y">✓</td></tr>
+        <tr><td>Type (Small)</td><td class="mono">Caption1 12px Bold, uppercase, 3% tracking</td><td class="mono">12px 700 · 0.36px · uppercase</td><td class="m y">✓</td></tr>
+        <tr><td>Type (Large)</td><td class="mono">uppercase Bold, 3% tracking</td><td class="mono">14px 700 · no tracking</td><td class="m n">tracking</td></tr>
+      </table>
+      <h2>2. Side-by-side</h2>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin:14px 0;font-weight:700;font-size:12px;letter-spacing:.36px;text-transform:uppercase">
+        <span style="color:#343434">Neutral</span><span style="color:#5e9a41">Positive</span><span style="color:#f15c02">In-progress</span><span style="color:#b00000">Negative</span>
+      </div>
+      <h2>3. Accessibility</h2>
+      <p>Non-interactive, text-only status label; meaning is carried by the text string, not color alone. Contrast on white: Neutral #343434 12.45:1 (AAA), Negative #b00000 7.38:1 (AA), Positive #5e9a41 3.4:1 and In-progress #f15c02 3.35:1 (below AA). The sub-AA mid-tones are a documented known limitation with a future darker-shade token pass planned.</p>
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-OS-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>4 tones match color/status/* (text-only, uppercase Bold); Small 12px with 3% tracking (0.36px).</td></tr>
+        <tr><td class="id">QA-OS-SIZE</td><td>Large tracking</td><td><span class="tag obs">NOTE</span></td><td>Large renders 14px with no letter-spacing, while Small applies the 3% AllCap tracking (0.36px). Confirm Large should also carry the tracking.</td></tr>
+        <tr><td class="id">QA-OS-A11Y</td><td>Accessibility (contrast)</td><td><span class="tag obs">NOTE</span></td><td>Positive 3.4 / In-progress 3.35 below AA; Negative 7.38 AA, Neutral 12.45 AAA. Documented known limitation; text conveys status.</td></tr>
+      </table>
+    `
+  },
+  {
+    id: 'role-badge',
+    name: 'Role Badge',
+    group: 'Display',
+    status: 'Pass · 1 note',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Role Badge</h1>
+      <p class="rmeta">Figma component 16219:303598 · Storybook /docs/display-role-badge · Captured 2026-07-30</p>
+      <p>A filled pill showing a user role. Non-interactive label bound to <code>color/role/*</code>. Roles: Admin, Member, Owner. Radius 4, Caption2 11px Bold, padding 4 / 8.</p>
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">3 roles, tint + text, radius, padding, type match</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass<span style="font-size:11px;font-weight:400;color:#757575"> · 1 note</span></div><p class="sub">Non-interactive label; mid-tone tints</p></div>
+      </div>
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>Role</th><th>Figma (bg / text)</th><th>Storybook</th><th>Match</th></tr>
+        <tr><td>Admin</td><td class="mono"><span class="chip" style="background:#ecf3f7"></span>#ecf3f7 / <span class="chip" style="background:#07729c"></span>#07729c</td><td class="mono">#ecf3f7 / #07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Member</td><td class="mono"><span class="chip" style="background:#fffce2"></span>#fffce2 / <span class="chip" style="background:#996a3f"></span>#996a3f</td><td class="mono">#fffce2 / #996a3f</td><td class="m y">✓</td></tr>
+        <tr><td>Owner</td><td class="mono"><span class="chip" style="background:#f8e6da"></span>#f8e6da / <span class="chip" style="background:#b64400"></span>#b64400</td><td class="mono">#f8e6da / #b64400</td><td class="m y">✓</td></tr>
+        <tr><td>Radius · padding · type</td><td class="mono">4 · 4/8 · Caption2 11px Bold</td><td class="mono">4px · 4/8 · 11px 700</td><td class="m y">✓</td></tr>
+      </table>
+      <h2>2. Side-by-side</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0">
+        <span style="background:#ecf3f7;color:#07729c;border-radius:4px;padding:4px 8px;font-size:11px;font-weight:700">Admin</span>
+        <span style="background:#fffce2;color:#996a3f;border-radius:4px;padding:4px 8px;font-size:11px;font-weight:700">Member</span>
+        <span style="background:#f8e6da;color:#b64400;border-radius:4px;padding:4px 8px;font-size:11px;font-weight:700">Owner</span>
+      </div>
+      <h2>3. Accessibility</h2>
+      <p>Non-interactive status label; meaning carried by the text, not color alone. Admin (#07729c on #ecf3f7) reads clearly; Member (#996a3f) and Owner (#b64400) are mid-tone hues on light tints in the same family as the other badges' documented sub-AA note. No separate frame doc was provided for Role Badge; treat the contrast the same as the Invitation / Order / Stock badges (known limitation, future darker-shade token pass).</p>
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-RB-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 3 roles match color/role/* (tint + text), radius 4, padding 4/8, Caption2 11px Bold.</td></tr>
+        <tr><td class="id">QA-RB-A11Y</td><td>Accessibility (contrast)</td><td><span class="tag obs">NOTE</span></td><td>Member/Owner are mid-tone hues on light tints (same family as the other badges' documented sub-AA note); non-interactive, text carries meaning. No Role-Badge frame doc provided; confirm contrast handling with the shared badge decision.</td></tr>
+      </table>
+    `
+  },
+  {
+    id: 'stock-status-badge',
+    name: 'Stock Status Badge',
+    group: 'Display',
+    status: 'Pass · 1 note',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Stock Status Badge</h1>
+      <p class="rmeta">Figma component 3944:2524 · Frame doc 16229:305569 · Storybook /docs/display-stock-status-badge · Captured 2026-07-30</p>
+      <p>Product availability shown as <strong>icon + colored label</strong> (supplier chips). Bound to <code>color/status/*</code>, Body2 14px Bold. Statuses: In Stock, Out of Stock, Backordered, Not Available, Pre-Order. The icon and label share the status color.</p>
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">5 statuses match the frame-doc tone mapping; 14px Bold</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass<span style="font-size:11px;font-weight:400;color:#757575"> · 1 note</span></div><p class="sub">Icon + text; documented sub-AA hues</p></div>
+      </div>
+      <h2>1. Token fidelity (status to tone)</h2>
+      <table>
+        <tr><th>Status</th><th>Tone (frame doc)</th><th>Figma / Storybook color</th><th>Match</th></tr>
+        <tr><td>In Stock</td><td>Positive</td><td class="mono"><span class="chip" style="background:#5e9a41"></span>#5e9a41</td><td class="m y">✓</td></tr>
+        <tr><td>Out of Stock</td><td>In-progress</td><td class="mono"><span class="chip" style="background:#f15c02"></span>#f15c02</td><td class="m y">✓</td></tr>
+        <tr><td>Backordered</td><td>Negative</td><td class="mono"><span class="chip" style="background:#b00000"></span>#b00000</td><td class="m y">✓</td></tr>
+        <tr><td>Not Available</td><td>Negative</td><td class="mono"><span class="chip" style="background:#b00000"></span>#b00000</td><td class="m y">✓</td></tr>
+        <tr><td>Pre-Order</td><td>In-progress</td><td class="mono"><span class="chip" style="background:#f15c02"></span>#f15c02</td><td class="m y">✓</td></tr>
+        <tr><td>Type · icon</td><td colspan="2" class="mono">Body2 14px Bold · icon shares the status color</td><td class="m y">✓</td></tr>
+      </table>
+      <h2>2. Side-by-side</h2>
+      <div style="display:flex;flex-direction:column;gap:6px;margin:14px 0;font-size:14px;font-weight:700">
+        <span style="color:#5e9a41">&#10003; In Stock</span>
+        <span style="color:#f15c02">&#10005; Out of Stock</span>
+        <span style="color:#b00000">&#8722; Backordered</span>
+        <span style="color:#b00000">&#10005; Not Available</span>
+        <span style="color:#f15c02">&#10003; Pre-Order</span>
+      </div>
+      <h2>3. Accessibility</h2>
+      <p>Non-interactive label; status is conveyed by icon + text, not color alone. Contrast on white: Backordered / Not Available (#b00000) 7.38:1 (AA); In Stock (#5e9a41) 3.4:1 and Out of Stock / Pre-Order (#f15c02) 3.35:1 (below AA). Documented known limitation with a future darker-shade token pass; the icon + label carry the meaning.</p>
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-SS-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 5 statuses match the frame doc's status-to-tone mapping (color/status/*), icon shares text color, Body2 14px Bold.</td></tr>
+        <tr><td class="id">QA-SS-TONE</td><td>Out of Stock tone</td><td><span class="tag obs">NOTE</span></td><td>Frame doc + build map Out of Stock to in-progress (orange); the component art (3944:2524) can read as negative (red). Confirm the intended tone with design.</td></tr>
+        <tr><td class="id">QA-SS-A11Y</td><td>Accessibility (contrast)</td><td><span class="tag obs">NOTE</span></td><td>Positive 3.4 / in-progress 3.35 below AA; negative 7.38 AA. Documented known limitation; icon + text convey status.</td></tr>
+      </table>
+    `
   }
 ];
