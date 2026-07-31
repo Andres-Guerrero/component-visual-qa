@@ -2275,24 +2275,24 @@ Fix approach is the team's call - no code prescribed.`
 Storybook: http://34.74.189.135:30100/?path=/story/disclosure-footeraccordion--small
 Figma (source of truth): UI-Kit__Web component 8646:6886 · usage 16365:71761 · frame doc 16369:309440
 
-Finding QA-FTR-CONTENT - content link color (retested 2026-07-29, still open)
-Observed: the expanded footer links still render black (rgb(0,0,0)) and underlined at 16px on the #89847f band.
-Expected: the footer content uses the Link component's inverse variant, bound to color/pattern/link/inverse/default (#ffffff), Maison Neue Book 16px (WEB/Body1/16px-N), with pattern link icon-gap 8, on the accordion/footer/color/content/bg (#89847f) band. Design updated the Link component with this inverse variant for the footer content.
+Finding QA-FTR-CONTENT - content link color (retested 2026-07-30, still open)
+Observed: the expanded footer links still render black (rgb(0,0,0)) and underlined at 16px on the #89847f band. The inverse Link variant now EXISTS in the build (QA-LN-02 resolved, verified in the Link "Inverse Surface" story), but the Footer accordion content is not consuming it yet.
+Expected: the footer content uses the Link component's inverse variant, bound to color/pattern/link/inverse/default (#ffffff), Maison Neue Book 16px (WEB/Body1/16px-N), with pattern link icon-gap 8, on the accordion/footer/color/content/bg (#89847f) band.
 
 Acceptance criteria:
-- Expanded footer links use the Link inverse variant and render white (#ffffff), bound to color/pattern/link/inverse/default.
+- Footer content links render white (#ffffff) by applying the now-available Link inverse variant (color/pattern/link/inverse/*).
 - Link type is Maison Neue 16px / 400 (Body1).
 - Confirm the underline treatment matches the inverse variant (the Figma sample shows the links without an underline; the build currently underlines them).
 - Re-verify against usage 16365:71761.
 
-Fix approach is the team's call - no code prescribed.`
+Remaining work is wiring, not tokens: the inverse variant already ships. Fix approach is the team's call - no code prescribed.`
     }],
     html: `
       <h1 class="rt">Footer Accordion</h1>
       <p class="rmeta">Figma component 8646:6886 · Usage 16365:71761 · Shared frame doc 16369:309440 · Storybook /docs/disclosure-footeraccordion · Captured 2026-07-28</p>
       <p>The accordion tuned for dark footer surfaces. Small / Medium / Large sizes, a <strong>filled</strong> header band (<span class="mono">#89847f</span>) with an inverse white label and +/- icon, a hairline bottom divider between sections, and a filled band that wraps the expanded content. Shares the accordion behavior model with FAQ, Filters, and Product Specification.</p>
 
-      <div class="callout warn"><strong>Content link color (fix, retested 2026-07-29).</strong> Design updated the Link component with an <strong>inverse variant</strong> for the footer content, bound to <code>color/pattern/link/inverse/default</code> (<span class="mono">#ffffff</span>), Body1 16px Book, on the <code>accordion/footer/color/content/bg</code> (<span class="mono">#89847f</span>) band. The build still renders these links <strong>black</strong> (<span class="mono">rgb(0,0,0)</span>) and underlined, so the fix has not landed yet. Logged as QA-FTR-CONTENT with a handoff below. The header chrome (band, white label, white icon, divider, per-size padding) all matches.</div>
+      <div class="callout warn"><strong>Content link color (fix, retested 2026-07-30).</strong> The inverse Link variant now ships in the build (QA-LN-02 resolved, verified in Link's "Inverse Surface" story), but the Footer accordion content is <strong>not consuming it yet</strong>: the expanded links still render <strong>black</strong> (<span class="mono">rgb(0,0,0)</span>) and underlined instead of white via <code>color/pattern/link/inverse/*</code> on the <code>accordion/footer/color/content/bg</code> (<span class="mono">#89847f</span>) band. So the remaining work is wiring the footer content to the inverse variant, not building tokens. Logged as QA-FTR-CONTENT. The header chrome (band, white label, white icon, divider, per-size padding) all matches.</div>
 
       <h2>Verdict</h2>
       <div class="verdict">
@@ -2349,7 +2349,7 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-FTR-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>White #fff 18px label + icon, #89847f band, #b6afa8 1px divider, per-size padding (16/20, 20/24, 36/24) all match Figma; band wraps expanded content.</td></tr>
         <tr><td class="id">QA-FTR-STATE</td><td>States &amp; sizes</td><td><span class="tag pass">PASS</span></td><td>Small / Medium / Large stories; Collapsed / Expanded via header button; +/- svg icon.</td></tr>
         <tr><td class="id">QA-FTR-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Header button + aria-expanded, content region, +/- beyond color. Note: white-on-#89847f label ~3.7:1 (passes 3:1 non-text/large, under 4.5:1 for 18px normal); documented and accepted in the frame doc.</td></tr>
-        <tr><td class="id">QA-FTR-CONTENT</td><td>Content link color</td><td><span class="tag fail">FIX</span></td><td>Retested 2026-07-29, still open. Design updated the Link component with an inverse variant for the footer content, bound to color/pattern/link/inverse/default (#ffffff), Body1 16px Book, on the accordion/footer/color/content/bg (#89847f) band. The build still renders the links black (#000000) and underlined. See the handoff for context + acceptance criteria.</td></tr>
+        <tr><td class="id">QA-FTR-CONTENT</td><td>Content link color</td><td><span class="tag fail">FIX</span></td><td>Retested 2026-07-30, still open. The inverse Link variant now ships (QA-LN-02 resolved), but the Footer content still renders links black (#000000) and underlined instead of applying it. Remaining work is wiring the footer content to color/pattern/link/inverse/* (white, Body1 16px). See the handoff.</td></tr>
       </table>
     `
   },
