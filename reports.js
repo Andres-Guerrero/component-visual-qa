@@ -2498,13 +2498,13 @@ Fix approach is the team's call - no code prescribed.`
   },
   {
     id: 'pill',
-    name: 'Pill',
+    name: 'Pill and Pill Group',
     group: 'Display',
     status: 'Pass · 1 note',
     statusType: 'pass',
     html: `
-      <h1 class="rt">Pill</h1>
-      <p class="rmeta">Figma component 14131:5026 · Frame doc 16175:305 · Usage 14443:662 / 14443:660 · Storybook /docs/display-pill · Captured 2026-07-30</p>
+      <h1 class="rt">Pill and Pill Group</h1>
+      <p class="rmeta">Figma component 14131:5026 · Frame doc 16175:305 · Usage 14443:662 / 14443:660 · Storybook /docs/display-pill and /docs/display-pill-group · Captured 2026-07-30</p>
       <p>An interactive selection control (a toggle pill) for filtering and in-page view switching. Pills toggle on/off with no dismiss action (distinct from the removable Chip). Composed into a Pill Group that runs single-select (one active, the rest deselect) or multi-select (each toggles independently and shows a checkmark). Sizes Large (40px) and Small (34px). Bound to the <code>pattern/selectable/*</code> tokens.</p>
 
       <h2>Verdict</h2>
