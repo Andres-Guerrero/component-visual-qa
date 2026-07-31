@@ -2875,5 +2875,130 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-AL-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>role=status (info/caution) and role=alert (errors) verified; icon + text beyond color; persistent. Note: inline link #07729c on the tints computes ~4.5:1, borderline AA (per frame doc).</td></tr>
       </table>
     `
+  },
+  {
+    id: 'toast',
+    name: 'Toast',
+    group: 'Feedback',
+    status: 'Pass · 1 note',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Toast</h1>
+      <p class="rmeta">Figma component 13558:484 · Frame doc 16330:64458 · Storybook /docs/feedback-toast · Captured 2026-07-30</p>
+      <p>A transient notification that appears over the UI to confirm an action or surface a status, then dismisses. Status-driven (Success, Warning, Caution, Error subtle, Error strong, Info), five sizes (XL to XS), Body or Title+Body content (XS is body-only), with a close control. Unlike Alert, Toast uses <strong>status-colored icons</strong>.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">6 status tints, borders, status-colored icons, padding match</p></div>
+        <div class="v pass"><p class="k">STATES · SIZES</p><div class="val">Pass</div><p class="sub">6 statuses; XL-XS; Body / Title+Body; dismissible; inline link</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass<span style="font-size:11px;font-weight:400;color:#757575"> · 1 note</span></div><p class="sub">role status/alert; icon+text; icon-contrast note</p></div>
+      </div>
+
+      <h2>1. Token fidelity (by status)</h2>
+      <table>
+        <tr><th>Status</th><th>Figma (bg / border / icon)</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Success</td><td class="mono"><span class="chip" style="background:#edf7ee"></span>#edf7ee / <span class="chip" style="background:#c2e2c9"></span>#c2e2c9 / <span class="chip" style="background:#5e9a41"></span>#5e9a41</td><td class="mono">#edf7ee / #c2e2c9 / #5e9a41</td><td class="m y">✓</td></tr>
+        <tr><td>Info</td><td class="mono"><span class="chip" style="background:#eff5fd"></span>#eff5fd / <span class="chip" style="background:#c5e0f0"></span>#c5e0f0 / <span class="chip" style="background:#07729c"></span>#07729c</td><td class="mono">#eff5fd / #c5e0f0 / #07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Warning</td><td class="mono"><span class="chip" style="background:#f8e6da"></span>#f8e6da / <span class="chip" style="background:#f6b48d"></span>#f6b48d / <span class="chip" style="background:#f15c02"></span>#f15c02</td><td class="mono">#f8e6da / #f6b48d / #f15c02</td><td class="m y">✓</td></tr>
+        <tr><td>Caution</td><td class="mono"><span class="chip" style="background:#fffce2"></span>#fffce2 / <span class="chip" style="background:#f7e18c"></span>#f7e18c / <span class="chip" style="background:#deac00"></span>#deac00</td><td class="mono">#fffce2 / #f7e18c / #deac00</td><td class="m y">✓</td></tr>
+        <tr><td>Error subtle</td><td class="mono"><span class="chip" style="background:#fde5e5"></span>#fde5e5 / <span class="chip" style="background:#ffa3a3"></span>#ffa3a3 / <span class="chip" style="background:#b00000"></span>#b00000</td><td class="mono">#fde5e5 / #ffa3a3 / #b00000</td><td class="m y">✓</td></tr>
+        <tr><td>Error strong</td><td class="mono"><span class="chip" style="background:#ffffff"></span>#ffffff / <span class="chip" style="background:#ffa3a3"></span>#ffa3a3 / <span class="chip" style="background:#b00000"></span>#b00000</td><td class="mono">#ffffff / #ffa3a3 / #b00000</td><td class="m y">✓</td></tr>
+        <tr><td>Text</td><td class="mono">#343434 (all statuses)</td><td class="mono">#343434</td><td class="m y">✓</td></tr>
+        <tr><td>Padding (M) · icon-gap · close clearance</td><td class="mono">12 / 12 / 12 · 16 · right 40</td><td class="mono">12px 40px 12px 12px · 16</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side (rendered from tokens)</h2>
+      <p>The six statuses with their status-colored icons and close control.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin:14px 0;max-width:520px">
+        <div style="display:flex;gap:16px;padding:12px 40px 12px 12px;background:#edf7ee;border:1px solid #c2e2c9;font-size:14px;color:#343434;position:relative"><span style="width:18px;height:18px;flex:0 0 18px;border-radius:50%;background:#5e9a41;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">✓</span><span><strong>Success</strong><br>Please check below for when to expect your items.</span><span style="position:absolute;top:12px;right:14px;color:#343434">×</span></div>
+        <div style="display:flex;gap:16px;padding:12px 40px 12px 12px;background:#eff5fd;border:1px solid #c5e0f0;font-size:14px;color:#343434;position:relative"><span style="width:18px;height:18px;flex:0 0 18px;border-radius:50%;background:#07729c;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">i</span><span><strong>Info</strong><br>Please check below for when to expect your items.</span><span style="position:absolute;top:12px;right:14px;color:#343434">×</span></div>
+        <div style="display:flex;gap:16px;padding:12px 40px 12px 12px;background:#f8e6da;border:1px solid #f6b48d;font-size:14px;color:#343434;position:relative"><span style="width:18px;height:18px;flex:0 0 18px;border-radius:50%;background:#f15c02;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">!</span><span><strong>Warning</strong><br>Please check below for when to expect your items.</span><span style="position:absolute;top:12px;right:14px;color:#343434">×</span></div>
+        <div style="display:flex;gap:16px;padding:12px 40px 12px 12px;background:#fffce2;border:1px solid #f7e18c;font-size:14px;color:#343434;position:relative"><span style="width:18px;height:18px;flex:0 0 18px;border-radius:50%;background:#deac00;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">!</span><span><strong>Caution</strong><br>Please check below for when to expect your items.</span><span style="position:absolute;top:12px;right:14px;color:#343434">×</span></div>
+        <div style="display:flex;gap:16px;padding:12px 40px 12px 12px;background:#fde5e5;border:1px solid #ffa3a3;font-size:14px;color:#343434;position:relative"><span style="width:18px;height:18px;flex:0 0 18px;border-radius:50%;background:#b00000;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">!</span><span><strong>Error 1 (subtle)</strong><br>Please check below for when to expect your items.</span><span style="position:absolute;top:12px;right:14px;color:#343434">×</span></div>
+        <div style="display:flex;gap:16px;padding:12px 40px 12px 12px;background:#ffffff;border:1px solid #ffa3a3;font-size:14px;color:#343434;position:relative"><span style="width:18px;height:18px;flex:0 0 18px;border-radius:50%;background:#b00000;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">!</span><span><strong>Error 2 (strong)</strong><br>Please check below for when to expect your items.</span><span style="position:absolute;top:12px;right:14px;color:#343434">×</span></div>
+      </div>
+
+      <h2>3. States &amp; sizes</h2>
+      <p>Six statuses; five sizes XL / L / M / S / XS with per-size padding (XS-M 12 / L 16 / XL 40x20) and a right padding of 40 reserving space for the close control; Body and Title+Body content (XS is body-only); a dismissible close (X) and an inline link. All pinned as stories (All Statuses, Sizes, Title And Body, Body Only, Dismissible, With Inline Link, plus a Legacy Danger alias). <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>Verified in the build: Success / Info / Warning / Caution expose <code>role="status"</code> (polite); Error subtle and Error strong expose <code>role="alert"</code> (assertive). Status is conveyed by icon + text (not color alone), and the close control is focusable (Esc dismisses; auto-dismiss timing is a consumer decision).</p>
+      <table>
+        <tr><th>Pair</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Body / title text #343434 on tints</td><td>10.3 to 12.5:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Icon - Info / Error / Success</td><td>4.92 / 6.15-7.38 / 3.1:1</td><td class="m y">Pass (non-text)</td></tr>
+        <tr><td>Icon - Warning</td><td>2.76:1</td><td class="m n">Below 3:1 (shape + label carry state)</td></tr>
+        <tr><td>Icon - Caution</td><td>2.03:1</td><td class="m n">Below 3:1 (shape + label carry state)</td></tr>
+        <tr><td>Inline link #07729c</td><td>~4.5:1</td><td>AA (borderline)</td></tr>
+      </table>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-TS-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>All 6 status tints/borders/icons, #343434 text, per-size padding + 40 close clearance, icon-gap 16 match toast/color/* tokens.</td></tr>
+        <tr><td class="id">QA-TS-ICON</td><td>Icon color rule</td><td><span class="tag pass">PASS</span></td><td>Status-colored icons (success #5e9a41, info #07729c, warning #f15c02, caution #deac00, errors #b00000), differing from Alert's neutral icons, exactly as the frame doc specifies.</td></tr>
+        <tr><td class="id">QA-TS-STATE</td><td>States &amp; sizes</td><td><span class="tag pass">PASS</span></td><td>6 statuses, XL-XS, Body / Title+Body, XS body-only, dismissible, inline link, legacy danger alias.</td></tr>
+        <tr><td class="id">QA-TS-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>role=status (success/info/warning/caution) and role=alert (errors) verified; focusable close. Note: warning (2.76:1) and caution (2.03:1) icons fall below the 3:1 non-text minimum; the frame doc accepts this because the icon shape + text label carry the status. Inline link ~4.5:1 borderline AA.</td></tr>
+      </table>
+    `
+  },
+  {
+    id: 'toast-expandable',
+    name: 'Toast Expandable',
+    group: 'Feedback',
+    status: 'Pass · 1 note',
+    statusType: 'pass',
+    html: `
+      <h1 class="rt">Toast Expandable</h1>
+      <p class="rmeta">Figma component 13353:37435 · Frame doc 16330:64458 · Storybook /docs/feedback-toast-expandable · Captured 2026-07-30</p>
+      <p>A warning-semantic Toast variant that surfaces cart-change details in a dismissible list. It toggles Closed / Open and comes in sizes L / M / S. The title and each item's status line use warning <strong>text-strong</strong> (<span class="mono">#d63d08</span>); rows are individually dismissible and can carry inline links.</p>
+
+      <h2>Verdict</h2>
+      <div class="verdict">
+        <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Warning tint/border/icon, text-strong title, link match</p></div>
+        <div class="v pass"><p class="k">STATES · SIZES</p><div class="val">Pass</div><p class="sub">Closed / Open; L / M / S; dismissible rows</p></div>
+        <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass<span style="font-size:11px;font-weight:400;color:#757575"> · 1 note</span></div><p class="sub">disclosure aria-expanded; text-strong contrast note</p></div>
+      </div>
+
+      <h2>1. Token fidelity</h2>
+      <table>
+        <tr><th>Element</th><th>Figma value</th><th>Storybook computed</th><th>Match</th></tr>
+        <tr><td>Surface (bg / border)</td><td class="mono"><span class="chip" style="background:#f8e6da"></span>#f8e6da / <span class="chip" style="background:#f6b48d"></span>#f6b48d</td><td class="mono">#f8e6da / #f6b48d</td><td class="m y">✓</td></tr>
+        <tr><td>Icon (warning)</td><td class="mono"><span class="chip" style="background:#f15c02"></span>#f15c02</td><td class="mono">#f15c02</td><td class="m y">✓</td></tr>
+        <tr><td>Title (Headline5 18px Bold)</td><td class="mono"><span class="chip" style="background:#d63d08"></span>#d63d08 · 18px 700</td><td class="mono">#d63d08 · 18px · 700</td><td class="m y">✓</td></tr>
+        <tr><td>Item status line (text-strong)</td><td class="mono"><span class="chip" style="background:#d63d08"></span>#d63d08</td><td class="mono">#d63d08</td><td class="m y">✓</td></tr>
+        <tr><td>Inline link</td><td class="mono"><span class="chip" style="background:#07729c"></span>#07729c</td><td class="mono">#07729c</td><td class="m y">✓</td></tr>
+        <tr><td>Row dismiss (×)</td><td class="mono">per-row close</td><td class="mono">4 dismissible rows (X each)</td><td class="m y">✓</td></tr>
+      </table>
+
+      <h2>2. Side-by-side (rendered from tokens, Open)</h2>
+      <div style="max-width:560px;margin:14px 0;background:#f8e6da;border:1px solid #f6b48d;font-size:14px">
+        <div style="display:flex;gap:16px;align-items:center;padding:14px 16px"><span style="width:20px;height:20px;flex:0 0 20px;border-radius:50%;background:#f15c02;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">!</span><span style="flex:1;font-weight:700;font-size:18px;color:#d63d08">Your cart's been updated.</span><span style="color:#343434">⌃</span></div>
+        <div style="border-top:1px solid #f6b48d;padding:12px 16px;color:#343434"><div><strong>Due to limited inventory, <span style="color:#07729c">Duplex Receptacle</span> has a limit of 10 units.</strong></div><div style="color:#d63d08;font-size:12px">The quantity in your cart has been adjusted.</div></div>
+        <div style="border-top:1px solid #f6b48d;padding:12px 16px;color:#343434"><div><strong>1/2 in. x 10 ft. Black Steel Pipe is not available in your area.</strong></div><div style="color:#d63d08;font-size:12px">It's been removed from your cart.</div></div>
+        <div style="border-top:1px solid #f6b48d;padding:12px 16px;color:#343434"><div><strong><span style="color:#07729c">3-Speed Circulator Pump</span> is currently unavailable. <span style="color:#07729c">View Alternative</span></strong></div><div style="color:#d63d08;font-size:12px">It's been removed from your cart.</div></div>
+      </div>
+      <p style="font-size:12px;color:#757575">Each row has a trailing × to dismiss it individually; the header chevron collapses/expands the list.</p>
+
+      <h2>3. States &amp; sizes</h2>
+      <p>State Closed (header only, chevron down) and Open (header + expanded list, chevron up), verified via <code>aria-expanded</code>. Sizes L / M / S (Closed Sizes and Sizes stories). Each list row is individually dismissible (Dismissible Rows story, 4 rows verified). <span class="m y">✓ Pass</span></p>
+
+      <h2>4. Accessibility</h2>
+      <p>The header is a disclosure control with <code>aria-expanded</code> that toggles the list; each row has a focusable dismiss. Warning status is conveyed by the icon + text.</p>
+      <table>
+        <tr><th>Pair</th><th>Ratio</th><th>Result</th></tr>
+        <tr><td>Warning emphasis #d63d08 on #f8e6da</td><td>3.82:1</td><td class="m n">Below AA (small); deferred to orange.650</td></tr>
+        <tr><td>Body text #343434 on #f8e6da</td><td>~11:1</td><td class="m y">Pass AAA</td></tr>
+        <tr><td>Inline link #07729c</td><td>~4.5:1</td><td>AA (borderline)</td></tr>
+      </table>
+
+      <h2>Findings log</h2>
+      <table>
+        <tr><th>ID</th><th>Area</th><th>Result</th><th>Note</th></tr>
+        <tr><td class="id">QA-TE-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Warning bg #f8e6da / border #f6b48d / icon #f15c02; title + item status lines in text-strong #d63d08 (Headline5 18px Bold title); link #07729c; per-row dismiss all match.</td></tr>
+        <tr><td class="id">QA-TE-STATE</td><td>States &amp; sizes</td><td><span class="tag pass">PASS</span></td><td>Closed / Open (aria-expanded) verified; sizes L / M / S; individually dismissible rows.</td></tr>
+        <tr><td class="id">QA-TE-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Disclosure with aria-expanded, focusable per-row dismiss, icon + text. Note: warning text-strong #d63d08 on #f8e6da is 3.82:1, below AA for small text; the frame doc defers this to a future orange.650 token.</td></tr>
+      </table>
+    `
   }
 ];
