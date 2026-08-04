@@ -2136,21 +2136,37 @@ Fix approach is the team's call - no code prescribed.`
     id: 'filter-accordion',
     name: 'Filter Accordion',
     group: 'Accordions',
-    status: 'Pass · 1 note',
-    statusType: 'pass',
+    status: 'Fix: See more weight',
+    statusType: 'fix',
+    handoffs: [{
+      code: 'QA-FIL-SEEMORE',
+      title: '"See more" should be Bold',
+      text: `Component: Filter Accordion
+Storybook: http://34.74.189.135:30100/?path=/story/disclosure-filteraccordion--see-more
+Figma (source of truth): UI-Kit__Web component 8246:1551 · usage 8653:7455
+
+Finding QA-FIL-SEEMORE - "See more" font weight
+The See more / See less long-list toggle is implemented and correct (color #07729c, 14px, left-aligned at content-padding-x 16, margin-top 16, no underline). Remaining: it renders font-weight 400 (regular); the Figma "See more" is Bold (Body2 14px-B).
+
+Acceptance criteria:
+- "See more" / "See less" render at weight 700 (Bold), 14px, #07729c.
+- Re-verify against usage 8653:7455.
+
+Fix approach is the team's call - no code prescribed.`
+    }],
     html: `
       <h1 class="rt">Filter Accordion</h1>
       <p class="rmeta">Figma component 8246:1551 · Usage 8653:7455 · Shared frame doc 16369:309440 · Storybook /story/disclosure-filteraccordion · Captured 2026-07-27</p>
       <p>The accordion tuned for PLP filter groups. Base size only, a full-width header with a <strong>trailing</strong> +/- toggle, a bottom-border divider, and a full-width content region (not indented) that holds the filter controls (checkbox, link, and rating filters). Shares the accordion behavior model with FAQ, Product Specification, and Footer.</p>
 
-      <div class="callout info"><strong>The "See more" long-list rule (resolved 2026-07-30).</strong> Retested: the build now implements the truncation. A group of more than 10 items shows the first 10 plus a <strong>See more / See less</strong> toggle (a <code>button</code>), and a group of 10 or fewer shows none, matching the frame doc and the sample (8653:7455). Verified in the new "See more (long list)" story: the 11+ item Size group toggles, while the 5-item Brand group has no link. The link is <span class="mono">#07729c</span> (color/pattern/link/default), 14px, left-aligned with the items (content-padding-x 16), with a 16px top margin and no underline. One minor note: it renders at weight 400 (regular) while the Figma "See more" reads Bold (Body2 14px-B). See QA-FIL-SEEMORE.</div>
+      <div class="callout warn"><strong>The "See more" long-list rule (mostly landed, one visual fix).</strong> The truncation behavior is implemented and correct: a group of more than 10 items shows the first 10 plus a <strong>See more / See less</strong> toggle (a <code>button</code>), and a group of 10 or fewer shows none, verified in the "See more (long list)" story. The link is <span class="mono">#07729c</span> (color/pattern/link/default), 14px, left-aligned with the items (content-padding-x 16), 16px top margin, no underline. <strong>Remaining fix:</strong> it renders weight 400 (regular); the Figma "See more" is Bold (Body2 14px-B). Tracked as QA-FIL-SEEMORE.</div>
 
       <h2>Verdict</h2>
       <div class="verdict">
         <div class="v pass"><p class="k">TOKEN FIDELITY</p><div class="val">Pass</div><p class="sub">Bold label, trailing toggle, divider, padding all match</p></div>
         <div class="v pass"><p class="k">STATES · LAYOUT</p><div class="val">Pass</div><p class="sub">Collapsed/Expanded, base size, full-width, trailing toggle</p></div>
         <div class="v pass"><p class="k">ACCESSIBILITY</p><div class="val">Pass</div><p class="sub">button + aria-expanded, region, +/- beyond color</p></div>
-        <div class="v pass"><p class="k">SEE MORE</p><div class="val">Resolved</div><p class="sub">&gt;10-item truncation + See more/See less now implemented</p></div>
+        <div class="v fix"><p class="k">SEE MORE</p><div class="val">1 fix</div><p class="sub">Truncation implemented; "See more" should be Bold</p></div>
       </div>
 
       <h2>1. Token fidelity</h2>
@@ -2206,7 +2222,7 @@ Fix approach is the team's call - no code prescribed.`
 
       <h2>3. States &amp; layout</h2>
       <p>State Collapsed / Expanded (default Collapsed); base size only (no Small/Medium/Large). Full-width header with a trailing +/- toggle; the content region is full-width (padding-x 16, not indented like FAQ) and holds the filter group's controls. These layout and state basics all match. <span class="m y">✓ Pass</span></p>
-      <p>Long-list truncation is now implemented (retested 2026-07-30): a group of more than 10 items shows 10 plus a "See more" / "See less" toggle; a group of 10 or fewer shows none. Tracked as QA-FIL-SEEMORE below. <span class="m y">✓ Resolved</span></p>
+      <p>Long-list truncation is now implemented (retested 2026-07-30): a group of more than 10 items shows 10 plus a "See more" / "See less" toggle; a group of 10 or fewer shows none. The one remaining item is the "See more" weight (should be Bold). Tracked as QA-FIL-SEEMORE below. <span class="m n">Fix</span></p>
 
       <h2>4. Accessibility</h2>
       <p>Each group header is a <code>button</code> with <code>aria-expanded</code>; the content is a <code>role="region"</code> labelled by its header. Tab to the header, Enter or Space toggles. Focus ring <span class="mono">#005fcc</span> / 2px. The +/- icon conveys collapsed vs expanded independently of color. Shared frame doc: 0 contrast failures.</p>
@@ -2217,7 +2233,7 @@ Fix approach is the team's call - no code prescribed.`
         <tr><td class="id">QA-FIL-TOK</td><td>Token fidelity</td><td><span class="tag pass">PASS</span></td><td>Bold #343434 14px label, trailing #07729c toggle, bottom divider #dcdcdc, header 16/20, content 16/20 match Figma.</td></tr>
         <tr><td class="id">QA-FIL-STATE</td><td>States &amp; layout</td><td><span class="tag pass">PASS</span></td><td>Collapsed/Expanded, base size only, full-width header + trailing toggle, full-width (non-indented) content.</td></tr>
         <tr><td class="id">QA-FIL-A11Y</td><td>Accessibility</td><td><span class="tag pass">PASS</span></td><td>Header button + aria-expanded, content region, +/- beyond color, focus ring; 0 contrast failures.</td></tr>
-        <tr><td class="id">QA-FIL-SEEMORE</td><td>Long-list truncation</td><td><span class="tag pass">RESOLVED</span></td><td>Retested 2026-07-30: the "See more (long list)" story truncates a &gt;10-item group to 10 with a See more / See less toggle (button); a group of 10 or fewer shows none. Link #07729c (color/pattern/link/default), 14px, left-aligned with items (content-padding-x 16), margin-top 16, no underline. Minor: renders weight 400 vs Figma Bold (Body2 14px-B), confirm weight.</td></tr>
+        <tr><td class="id">QA-FIL-SEEMORE</td><td>See more (weight)</td><td><span class="tag fail">FIX</span></td><td>Truncation + See more/See less toggle implemented and correct (color #07729c, 14px, aligned content-padding-x 16, margin-top 16, no underline). Remaining fix: renders weight 400; Figma "See more" is Bold (Body2 14px-B). See the handoff.</td></tr>
       </table>
     `
   },
